@@ -1,0 +1,18 @@
+.main-content-container {
+  margin-left: 15px;
+}
+.ant-layout-sider-zero-width-trigger {
+  top: 5px !important;
+  color: black !important;
+  background-color: white !important;
+}
+main > section {
+  background-color: white;
+  min-height: calc(100vh - 60px);
+}
+
+@media screen and (max-width: 991px) {
+  .main-content-container {
+    margin: 0;
+  }
+}

@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
+
+.create-new-post-container {
+  padding: 0 18px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: calc(100vh - 50px);
+  background-color: #fff;
+  padding-top: 30px;
+  scroll-behavior: smooth;
+  margin-top: 10px;
+}
+
+.add-new-post-country-input {
+  width: 388px !important;
+}
+.create-new-post-container h1 {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.create-posts-items-container {
+  display: flex;
+  margin-top: 50px;
+}
+
+.create-posts-items-container label {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+.create-post-items {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.create-post-items p {
+  color: rgba(80, 79, 79, 0.7);
+  font-size: 16px;
+  padding-bottom: 15px;
+  font-weight: 500;
+}
+
+.create-post-items div > input {
+  width: 388px;
+  height: 50px;
+  padding: 17px 0px 16px 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.create-post-items {
+  display: grid;
+  grid-column-gap: 7rem;
+  grid-row-gap: 30px;
+  grid-template-columns: repeat(2, minmax(388px, 1fr));
+}
+
+.select-box {
+  border: none;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.select-box option {
+  font-size: 16px;
+  display: block;
+  color: black;
+  font-size-adjust: 0.3;
+  padding: 20px;
+}
+
+.ant-picker-input {
+  flex-direction: row !important;
+  padding: 10px 0px !important;
+}
+
+.post-type {
+  width: 388px;
+  border: "none";
+}
+
+.code-verify-container {
+  display: flex;
+  flex-direction: row !important;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 29px;
+}
+
+.code-verify {
+  color: rgba(0, 0, 0, 0.5);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+#code-verify {
+  width: 20px;
+  padding: 3px;
+}
+
+.add-new-btn {
+  border-radius: 50px;
+
+  padding: 13px 70px;
+  outline: none;
+  border: 1px solid rgb(219, 219, 219);
+  color: black;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  background: #fff;
+}
+
+.add-new-btn:hover {
+  background: #5a6acf;
+  color: #ffff;
+  transition: all 0.4s;
+}
+
+.create-new-coupon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px;
+  padding-bottom: 40px;
+}
+
+@media (max-width: 950px) {
+  .create-post-items {
+    grid-template-columns: repeat(1, minmax(250px, 1fr));
+  }
+  .create-posts-items-container {
+    display: block;
+  }
+
+  .create-new-post-container h1 {
+    text-align: center;
+  }
+  .add-new-post-country-input {
+    width: 100% !important;
+  }
+
+  .create-post-items {
+    /* margin: 0 auto; */
+    width: 100%;
+  }
+  .add-new-btn {
+    width: 100%;
+    text-wrap: nowrap;
+  }
+  .code-verify-container {
+    justify-content: space-between;
+  }
+}
+
+/* @media (max-width: 630px) {
+  .create-post-items {
+    grid-template-columns: repeat(auto-fit, minmax(388px, 1fr));
+  }
+  .create-new-post-container {
+    padding: 30px 10px;
+    margin: 0 auto;
+  }
+
+  #post-description {
+    height: 80px;
+  }
+
+  .add-new-btn {
+    margin-left: 0;
+  }
+
+  .create-new-post-container {
+    width: 100%;
+    height: 100vh;
+    overflow: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  .create-posts-items-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .create-new-post-container h1 {
+    text-align: center;
+  }
+
+  .add-new-btn {
+    width: 100%;
+  }
+
+  .code-verify-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .create-posts-items-container {
+    padding: 0;
+  }
+} */

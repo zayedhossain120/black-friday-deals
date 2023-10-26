@@ -1,0 +1,46 @@
+.global-search-main-container {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  height: 100vh;
+  width: 100vw;
+  z-index: 10;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+.global-search-content-container {
+  max-height: 70vh;
+  max-width: 570px;
+  width: 100%;
+  background-color: white;
+  box-shadow: none;
+  margin-top: 100px;
+  border-radius: 10px;
+  display: grid;
+}
+.global-search-display-three-section {
+  grid-template-rows: 120px 120px 1fr;
+  /* height: 320px; */
+}
+.global-search-display-two-section {
+  grid-template-rows: 120px 1fr;
+}
+.global-search-content-container > section {
+  padding: 10px clamp(10px, 3vw, 40px);
+  min-width: 100%;
+}
+
+@media screen and (max-width: 570px) {
+  .global-search-content-container {
+    margin-top: 0;
+    border-radius: 0;
+    max-height: 100vh;
+    height: 100vh;
+  }
+}
+
+/* scroll bar customization ==================*/
+.global-search-content-container ::-webkit-scrollbar {
+  display: none;
+}

@@ -1,0 +1,33 @@
+.global-search-content-container .global-search-administrators-container {
+  display: flex;
+  gap: 20px;
+  padding: 10px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-bottom: 1px solid gainsboro;
+}
+
+.global-search-display-two-section .global-search-administrators-container {
+  flex-wrap: wrap;
+  overflow-y: auto;
+  border: none;
+}
+.global-search-content-container .global-search-administrators-container > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+}
+.global-search-content-container .administrator-image-container {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: white;
+}
+.global-search-content-container .administrator-image-container img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  object-fit: contain;
+  object-position: center;
+}

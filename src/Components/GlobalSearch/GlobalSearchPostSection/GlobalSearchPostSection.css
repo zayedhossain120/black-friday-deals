@@ -1,0 +1,6 @@
+.global-search-content-container .global-search-posts-section-container {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+  position: relative;
+}

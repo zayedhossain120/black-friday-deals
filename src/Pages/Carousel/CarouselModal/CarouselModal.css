@@ -1,0 +1,169 @@
+.Carosel-modal-container {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.4);
+  inset: 0;
+  opacity: 25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+}
+.Carosel-modal-container .modal-container {
+  /* width: 90%; */
+  width: 570px;
+  /* height: 100%; */
+  /* max-height: 700px; */
+  border-radius: 20px;
+}
+.modal-content {
+  background-color: white;
+  padding: 0 20px 5px 20px;
+  /* height: 630px; */
+  border-radius: 10px;
+}
+.carousel-cancel-btn {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 30px;
+}
+
+.carousel-cancel-btn button {
+  border: none;
+  font-size: large;
+  font-weight: 400;
+  background: none;
+}
+.carousel-cancel-btn img {
+  padding: 6px;
+  border-radius: 50%;
+  margin-right: -30px;
+  transition: transform 0.2s ease-in-out;
+  box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9e9e9;
+}
+.carousel-cancel-btn img:hover {
+  transform: rotate(90deg);
+}
+.modal-container .carousel-cancel-btn p {
+  font-weight: 600;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.7);
+}
+.modal-container .carousel-cancel-btn button {
+  cursor: pointer;
+}
+.carousel-image-input input {
+  display: none;
+}
+.carousel-image-input .uploaded {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 88%;
+  height: 200px;
+  border-radius: 10px;
+  background: #fff;
+  margin-bottom: 50px;
+  margin: 0 30px;
+  cursor: pointer;
+}
+.carousel-image-input .uploaded .upload-file-other-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* margin: 0; */
+}
+.carousel-image-input .uploaded .upload-file-other-img p {
+  margin-top: 20px;
+}
+.carousel-image-input .uploaded .uploadedImg {
+  height: 100%;
+  width: 100%;
+  padding: 2px;
+}
+.carousel-image-input .uploaded .uploadedImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+.uploaded img {
+  margin: 0;
+}
+
+.carousel-coupon1 {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 6px;
+}
+.carousel-coupon {
+  margin: 35px 30px;
+}
+.carousel-coupon1 input {
+  height: 50px;
+  margin: 12px 0 12px 0;
+  border-radius: 10px;
+  padding-left: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  outline: none;
+  /* margin-bottom: 30px; */
+}
+.carousel-coupon1 input[type="text"] {
+  font-size: 17px;
+  padding-left: 20px;
+}
+/* .carousel-add-coursel-btn {
+  gap: 10px;
+  border-radius: 30px;
+  background: #5a6acf;
+  cursor: pointer;
+} */
+.carousel-add-coursel-btn #input-submit {
+  /* margin-bottom: 38px; */
+  border: none;
+  outline: none;
+  background: #5a6acf;
+  color: #fff;
+  font-weight: 500;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 15px 185px;
+  border-radius: 50px;
+  text-align: center;
+  width: 100%;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .Carosel-modal-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .Carosel-modal-container .modal-container {
+    width: 100%;
+    height: 100%;
+  }
+  .modal-content {
+    height: 100%;
+    border-radius: unset;
+  }
+  .Carosel-modal-container {
+    background-color: #fff;
+  }
+  .carousel-add-coursel-btn {
+    justify-content: center;
+    width: 100%;
+  }
+  .carousel-coupon .carousel-add-coursel-btn button {
+    font-weight: 500;
+  }
+  /* //Update by poran */
+  .carousel-add-coursel-btn #input-submit{
+    padding: 15px 33%;
+  }
+}

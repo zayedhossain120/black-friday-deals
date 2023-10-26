@@ -1,0 +1,69 @@
+.menu-bar-container {
+  background: #24323d;
+}
+.menu-bar-container svg:hover path {
+  fill: #5a67ba;
+}
+
+.menu-bar .logo {
+  padding: 20px;
+}
+
+.menu-bar .logo span {
+  font-size: clamp(16px, 2vw, 18px);
+}
+.menu-bar .all-menu-container {
+  height: calc(100vh - 110px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 20px 20px 0px 0px;
+}
+.menu-bar .all-menu-container > a:last-child {
+  margin-bottom: clamp(10px, 3vh, 30px);
+}
+.menu-bar .main-menu-container {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 2vh, 20px);
+  width: 100%;
+}
+.main-menu-container p {
+  padding: 30px 0 0 20px;
+  color: rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
+}
+.menu {
+  display: flex;
+  align-items: center;
+  padding-top: clamp(5px, 1vh, 14px);
+  padding-bottom: clamp(5px, 1vh, 20px);
+  padding-left: 15px;
+  /* padding-right: 40px; */
+  font-weight: 400;
+  font-size: 14px;
+  color: #a6abc8;
+  cursor: pointer;
+  gap: 10px;
+  padding-left: 20px;
+}
+.menu:hover {
+  font-weight: 600;
+  background-color: #f1f2fc;
+  color: #5a67ba;
+  fill: #5a67ba;
+}
+
+.menu.active {
+  background-color: #f1f2fc;
+  font-weight: 600;
+  color: #5a67ba;
+}
+
+.menu.active svg path {
+  fill: #5a67ba;
+}
+.menu:hover svg path {
+  fill: #5a67ba;
+}

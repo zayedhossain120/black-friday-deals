@@ -1,0 +1,50 @@
+.inactiveuser-page-main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f4f9fb;
+  height: 100vh;
+}
+.inactiveuser-page-main-container .inactiveuser-parent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: clamp(30px, 2vh, 30px);
+  align-items: center;
+  box-shadow: 0px 4px 100px 0px rgba(255, 0, 0, 0.13);
+  border-radius: 40px;
+  background-color: white;
+  /* padding: 40px; */
+  width: 550px;
+  height: clamp(500px, 70vh, 620px);
+}
+.inactiveuser-page-main-container .inactiveuser-title h1 {
+  color: red;
+}
+.inactiveuser-page-main-container .frame-parent .inactiveuser-description a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 700;
+  font-size: 18px;
+}
+.inactiveuser-parent p {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: clamp(15px, 2vh, 18px);
+}
+.inactiveuser-parent hr {
+  width: 500px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+@media only screen and (max-width: 600px) {
+  .inactiveuser-page-main-container {
+    width: 100vw;
+    height: 100vh;
+  }
+  .inactiveuser-parent {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+}

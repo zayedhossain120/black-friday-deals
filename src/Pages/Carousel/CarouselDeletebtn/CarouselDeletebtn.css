@@ -1,0 +1,62 @@
+.carousel-delete-main-container {
+  position: fixed;
+  background-color: rgba(133, 130, 130, 0.4);
+  opacity: 25;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+}
+.carousel-delete-container {
+  width: 406px;
+  height: 357px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+.carousel-delete-content-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 40px;
+  width: 313px;
+}
+.carousel-delete-content-container img {
+  width: 50px;
+  height: 50px;
+}
+.carousel-delete-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+}
+.carousel-delete-content-container p {
+  font-size: 18px;
+  text-align: center;
+}
+.carousel-delete-content-container
+  .carousel-delete-button-container
+  .carousel-delete-btn1 {
+  padding: 14px 51px;
+  border-radius: 5px;
+  border: 0.5px solid rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+.carousel-delete-content-container
+  .carousel-delete-button-container
+  .carousel-delete-btn2 {
+  padding: 14px 51px;
+  border-radius: 5px;
+  border: 0.5px solid rgba(0, 0, 0, 0.1);
+  background: #5a6acf;
+  color: #fff;
+  margin-left: 20px;
+  cursor: pointer;
+}

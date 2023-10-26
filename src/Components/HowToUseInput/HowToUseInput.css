@@ -1,0 +1,73 @@
+.add-how-to-use-form > div {
+  width: 50%;
+  position: relative;
+}
+.add-how-to-use-form div > .howtouse-input-close-button {
+  position: absolute;
+  top: -8px;
+  right: -12px;
+  background-color: white;
+  border: 0;
+  height: 20px;
+  width: 20px;
+  color: gainsboro;
+  border: 0.5px solid gainsboro;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.add-how-to-use-form div > input[type="text"],
+.add-how-to-use-form div > textarea {
+  border-radius: 8px;
+  border: 0;
+  padding: 10px;
+  width: 100%;
+  padding-left: 10px;
+}
+.add-how-to-use-form div > input[type="file"] {
+  display: none;
+}
+.add-how-to-use-form label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 50vw;
+  height: 20vw; */
+}
+.add-how-to-use-form label > img {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.add-how-to-use-form label > img.placeholder-for-howtouse {
+  width: 25%;
+  height: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.add-how-to-use-form div > input.title {
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.paragraph {
+  font-family: Inter, sans-serif !important;
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+  .add-how-to-use-form > div {
+    width: 90%;
+    /* padding: 0 20px; */
+    /* position: relative; */
+  }
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .add-how-to-use-form > div {
+    width: 90%;
+    /* padding: 0 20px; */
+    /* position: relative; */
+  }
+}

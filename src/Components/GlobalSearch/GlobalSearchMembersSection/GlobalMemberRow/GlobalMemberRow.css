@@ -1,0 +1,31 @@
+.global-search-member-row {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr;
+  gap: 20px;
+  align-items: center;
+  background: #fff;
+  box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.06);
+  margin: 10px 0;
+}
+.global-search-member-title-and-photo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.global-search-member-title-and-photo-container img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+.global-search-member-title-and-photo-container .name-joining-date-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+.global-search-member-row .email-container {
+  display: flex;
+  gap: 5px;
+}

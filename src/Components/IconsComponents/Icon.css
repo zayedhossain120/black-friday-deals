@@ -1,0 +1,25 @@
+.custom-icons {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+.delete-icon:hover path {
+  stroke-opacity: 1;
+  stroke: red;
+  stroke-width: 1.2px;
+}
+.edit-icon:hover path {
+  stroke-opacity: 1;
+  stroke: #5a67ba;
+  stroke-width: 1.2px;
+}
+.store-link:hover path {
+  stroke-opacity: 1;
+  stroke: #fff;
+  stroke-width: 1.2px;
+}
+
+@media screen and (max-width: 480px) {
+  .custom-icons {
+    transform: scale(1);
+  }
+}

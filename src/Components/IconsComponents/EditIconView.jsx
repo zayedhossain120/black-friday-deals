@@ -1,0 +1,42 @@
+// import React from 'react';
+
+const EditIconView = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="25"
+      viewBox="0 0 24 25"
+      fill="none"
+    >
+      <g clipPath="url(#clip0_272_12784)">
+        <path
+          d="M4 20.5001H8L18.5 10.0001C18.7626 9.73741 18.971 9.42561 19.1131 9.08245C19.2553 8.73929 19.3284 8.37149 19.3284 8.00006C19.3284 7.62862 19.2553 7.26083 19.1131 6.91767C18.971 6.57451 18.7626 6.2627 18.5 6.00006C18.2374 5.73741 17.9256 5.52907 17.5824 5.38693C17.2392 5.24479 16.8714 5.17163 16.5 5.17163C16.1286 5.17163 15.7608 5.24479 15.4176 5.38693C15.0744 5.52907 14.7626 5.73741 14.5 6.00006L4 16.5001V20.5001Z"
+          stroke="black"
+          strokeOpacity="0.7"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M13.5 7L17.5 11"
+          stroke="black"
+          strokeOpacity="0.7"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_272_12784">
+          <rect
+            width="24"
+            height="24"
+            fill="white"
+            transform="translate(0 0.5)"
+          />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+};
+
+export default EditIconView;

@@ -1,0 +1,47 @@
+.how-to-use-content-editor {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 250px; */
+  height: 70px;
+  padding: 20px 40px;
+  gap: 30px;
+  border-radius: 60px;
+  background: #fff;
+  box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.12);
+  position: absolute;
+  left: 50%;
+  bottom: 25px;
+  transform: translateX(-50%, -50%);
+}
+.how-to-use-content-editor button {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+}
+.how-to-use-content-editor button > img {
+  height: 16px;
+  width: 16px;
+}
+.how-to-use-content-editor button:hover {
+  padding: 10px;
+  transition: 0.4s ease-in-out;
+  background-color: #20c275;
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+  .how-to-use-content-editor {
+    /* width: 100%; */
+    box-shadow: none;
+  }
+}
+@media screen and (max-width: 600px) {
+  .how-to-use-content-editor {
+    width: 100%;
+    box-shadow: none;
+    /* background-color: #fff; */
+    /* width: clamp(300px, 10vh, 300px); */
+  }
+}

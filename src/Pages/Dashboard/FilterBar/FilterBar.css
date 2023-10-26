@@ -1,0 +1,46 @@
+.dashboard-filter-container {
+  padding: 14px 0 16px 40px;
+  background: #fff;
+  box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.04);
+  margin-top: 10px;
+  scroll-behavior: smooth;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+.dashboard-filter-container::-webkit-scrollbar {
+  display: none;
+}
+
+.dashboard-filter-container .dashboard-filter {
+  padding-right: 50px;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 16px;
+}
+.dashboard-filter-container.ant-select {
+  width: 170px !important;
+}
+.dashboard-filter-container .ant-select-selector {
+  width: 158px !important;
+}
+.dashboard-filter-flex-container {
+  width: 72vw;
+  align-items: center;
+}
+.dashboard-filter-container .ant-select {
+  width: 160px !important;
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 1125px) {
+  .dashboard-filter-flex-container {
+    width: 700px;
+  }
+  .dashboard-filter-container .ant-select {
+    width: 170px !important;
+  }
+  .dashboard-filter-container .ant-select-selector {
+    width: 165px !important;
+  }
+  .dashboard-filter-flex-container {
+    display: flex;
+  }
+}

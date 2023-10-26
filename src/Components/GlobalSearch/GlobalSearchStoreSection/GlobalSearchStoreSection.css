@@ -1,0 +1,39 @@
+.global-search-content-container .global-search-stores-container {
+  display: flex;
+  gap: 20px;
+  padding: 10px 20px 10px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-bottom: 1px solid gainsboro;
+}
+/* for two section */
+.global-search-display-two-section .global-search-stores-container {
+  flex-wrap: wrap;
+  overflow-y: auto;
+  border: none;
+}
+.global-search-content-container .global-search-stores-container > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+}
+.global-search-content-container .store-image-container {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: white;
+}
+.global-search-content-container .store-image-container img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  object-fit: contain;
+  object-position: center;
+}
+.global-search-content-container .global-search-store {
+  cursor: pointer;
+}
+.global-search-content-container .global-search-store:hover > div {
+  box-shadow: 1px 1px 10px #00000050;
+}
