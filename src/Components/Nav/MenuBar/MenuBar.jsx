@@ -11,7 +11,7 @@ import logoIcon from "../../../assets/Icons/logoIcon.svg";
 import WhatsappIcon from "../../../../src/Components/IconsComponents/dashboardIcon/WhatsappIcon";
 
 const MenuBar = () => {
-  const [showWatsapp, setShowWhatsapp] = useState(false);
+  const [showWhatsapp, setShowWhatsapp] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -41,6 +41,7 @@ const MenuBar = () => {
                 }
               >
                 <menu.icon />
+
                 {menu.label}
               </NavLink>
             ))}
@@ -50,14 +51,33 @@ const MenuBar = () => {
               Whatsapp
             </span>
             <WhatsappModal
-              isVisible={showWatsapp}
+              isVisible={showWhatsapp}
               onClose={() => setShowWhatsapp(false)}
             />
           </div>
+
           <NavLink to="/promotion" className="menu">
             <img src={promotionIcon} alt="" />
             Promotion
           </NavLink>
+          <NavLink to="/onlinestore" className="menu">
+            <img src={promotionIcon} alt="" />
+            Online Store
+          </NavLink>
+          <NavLink to="/brands" className="menu">
+            <img src={promotionIcon} alt="" />
+            Brands
+          </NavLink>
+          <NavLink to="/category" className="menu">
+            <img src={promotionIcon} alt="" />
+            Category
+          </NavLink>
+          {/* //Setting Route */}
+          <NavLink to="/setting" className="menu">
+            <img src={promotionIcon} alt="" />
+            Setting
+          </NavLink>
+
           <span onClick={handleLogout} className="menu">
             <LogoutIcon />
             Logout
