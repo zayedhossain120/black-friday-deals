@@ -26,6 +26,10 @@ import fetchStoreDataAtRouterLevel from "../Utils/fetchDataAtRouterLevel";
 import ViewStoreOutlet from "../Pages/Store/ViewStore/ViewStoreOutletShowPosts/ViewStoreOutletShowPosts";
 import ViewStoreOutletHowToUse from "../Pages/Store/ViewStore/ViewStoreOutletHowToUse/ViewStoreOutletHowToUse";
 import PostModalsProvider from "../Contexts/PostModalContext/PostModalContext";
+import Campaign from "../Pages/Campaign/Campaign";
+import ViewCampaign from "../Pages/Campaign/ViewCampaign/ViewCampaign";
+import CreateCampaign from "../Pages/CreateCampaign/CreateCampaign";
+
 
 const Routes = () => {
   const router = createBrowserRouter([
@@ -42,6 +46,22 @@ const Routes = () => {
         {
           path: "/",
           element: <Dashboard />,
+        },
+        {
+          path: "/campaign",
+          element: <Campaign/>
+        },
+        {
+          path: "/campaign/:id/",
+          loader: async({params}) => fetchStoreDataAtRouterLevel(params.id),
+          element: <ViewCampaign />,
+          children: [
+         
+          ]
+        },
+        {
+          path: "/campaign/create",
+          element: <CreateCampaign />
         },
         {
           path: "/store",
@@ -180,6 +200,7 @@ const Routes = () => {
       path: "/login",
       element: <Login></Login>,
     },
+   
     {
       path: "*",
       element: <NotFound />,

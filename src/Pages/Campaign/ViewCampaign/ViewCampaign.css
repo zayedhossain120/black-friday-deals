@@ -1,0 +1,15 @@
+.view-campaign-main-container {
+    height: 100dvh;
+  }
+  .view-campaign-outlet-and-nav-container {
+    background-color: white;
+    height: calc(100vh - 50px);
+    padding-bottom: 50px;
+    scroll-behavior: smooth;
+    /* height: 100vh; */
+  }
+  
+  .view-campaign-container {
+    height: 100vh;
+    overflow: hidden;
+  }
