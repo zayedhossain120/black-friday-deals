@@ -16,11 +16,7 @@ export const menus = [
     icon: StoreIcon,
     link: "/store",
   },
-  {
-    label: "Category",
-    icon: StoreIcon,
-    link: "/category",
-  },
+
   {
     label: "Post",
     icon: PostIcon,
