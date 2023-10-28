@@ -49,7 +49,7 @@ const CampaignsCardsContainer = ({
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                // navigate(`/store/edit/${store?._id}`);
+                navigate(`/store/edit/${store?._id}`);
               }}
             >
               <EditIcon />

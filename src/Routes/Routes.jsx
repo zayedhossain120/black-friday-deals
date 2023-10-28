@@ -29,6 +29,7 @@ import PostModalsProvider from "../Contexts/PostModalContext/PostModalContext";
 import Campaign from "../Pages/Campaign/Campaign";
 import ViewCampaign from "../Pages/Campaign/ViewCampaign/ViewCampaign";
 import CreateCampaign from "../Pages/CreateCampaign/CreateCampaign";
+import ViewCampaignOutlet from "../Pages/Campaign/ViewCampaign/ViewCampaignOutletShowPosts/ViewCampaignOutletShowPosts";
 
 
 const Routes = () => {
@@ -56,7 +57,41 @@ const Routes = () => {
           loader: async({params}) => fetchStoreDataAtRouterLevel(params.id),
           element: <ViewCampaign />,
           children: [
-         
+            {
+              path: "",
+              loader: async ({params}) => fetchStoreDataAtRouterLevel(params.id),
+              element: <ViewCampaignOutlet query={`${hasValidity()}`} />,
+            },
+            {
+              path: "deals",
+              loader: async ({ params }) =>
+              fetchStoreDataAtRouterLevel(params.id),
+              element: (
+                <ViewCampaignOutlet query={`${hasValidity()}&postType=deal`} />
+              ),
+              
+            },
+            {
+              path: "coupons",
+              loader: async ({params}) => 
+              fetchStoreDataAtRouterLevel(params.id),
+              element: (
+                <ViewCampaignOutlet query={`${hasValidity()}&postType=coupon`} />
+              ),
+            },
+            {
+              path: "expired",
+              loader: async ({ params }) =>
+                fetchStoreDataAtRouterLevel(params.id),
+              element: (
+                <ViewCampaignOutlet query={`expireDate[lt]=${new Date()}`} />
+              ),
+            },
+            {
+              path: "voucher",
+              loader: async () => fetchStoreDataAtRouterLevel(params.id),
+              element: <ViewCampaignOutlet query={`${new Date()}=&expireDate[lt]`} />
+            }
           ]
         },
         {
@@ -75,7 +110,7 @@ const Routes = () => {
             {
               path: "",
               loader: async ({ params }) =>
-                fetchStoreDataAtRouterLevel(params.id),
+              fetchStoreDataAtRouterLevel(params.id),
               element: <ViewStoreOutlet query={`${hasValidity()}`} />,
             },
             {

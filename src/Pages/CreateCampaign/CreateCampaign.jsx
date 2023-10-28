@@ -117,11 +117,11 @@ const CreateCampaign = () => {
                     <div className='datepicker-container' >
                         <div className='start-period' >
                         <label htmlFor='start-date'>Period Start Date</label>
-                    <DatePicker id='start-date' />
+                    <DatePicker id='start-date' placeholder='Start Date' />
                         </div>
                    <div className='end-period' >
                    <label htmlFor="end-date">Period End Date</label>
-                    <DatePicker id='end-date' />
+                    <DatePicker id='end-date'  placeholder='End Date' />
                    </div>
                   </div>
                    

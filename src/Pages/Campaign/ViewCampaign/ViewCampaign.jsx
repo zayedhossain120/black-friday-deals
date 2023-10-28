@@ -1,9 +1,10 @@
 import React from 'react';
 import "./ViewCampaign.css";
 import { Outlet } from 'react-router-dom';
-import ViewStoreInnerNav from '../../Store/ViewStore/ViewStoreInnerNav/ViewStoreInnerNav';
-import ViewStoreDetails from '../../Store/ViewStore/ViewStoreDetails/ViewStoreDetails';
+
 import TopBar from '../../../Components/TopBar/TopBar';
+import ViewCampaignDetails from './ViewCampaignDetails/ViewCampaignDetails';
+import ViewCampaignInnerNav from './ViewCampaignInnerNav/ViewCampaignInnerNav';
 
 
 const ViewCampaign = () => {
@@ -12,9 +13,9 @@ const ViewCampaign = () => {
         <TopBar pageTitle={"View Campaign"} />
   
         <div className="view-campaign-container">
-          <ViewStoreDetails />
+          <ViewCampaignDetails />
           <section className="view-campaign-outlet-and-nav-container">
-            <ViewStoreInnerNav />
+            <ViewCampaignInnerNav />
             <Outlet />
           </section>
         </div>

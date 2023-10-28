@@ -1,0 +1,35 @@
+.campaign-outlet-container {
+    height: 90%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* padding-bottom: 150px; */
+    position: relative;
+  }
+  .campaign-outlet-container .campaign-table > button {
+    border: none;
+    color: rgb(210, 7, 7);
+    background-color: white;
+    box-shadow: 0px 0px 5px 1px rgb(210, 7, 7);
+    border-radius: 10px;
+    cursor: pointer;
+    position: fixed;
+    padding: 10px 20px;
+    bottom: 20px;
+    width: fit-content;
+    left: 0;
+    right: 0;
+    margin-left: 51%;
+    z-index: 2;
+  }
+  .campaign-outlet-container .view-campaign-table > button:hover {
+    border: 1px solid red;
+    color: red;
+  }
+  
+  @media screen and (max-width: 990px) {
+    .campaign-outlet-container .campaign-table > button {
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  
