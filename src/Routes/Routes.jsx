@@ -26,6 +26,7 @@ import fetchStoreDataAtRouterLevel from "../Utils/fetchDataAtRouterLevel";
 import ViewStoreOutlet from "../Pages/Store/ViewStore/ViewStoreOutletShowPosts/ViewStoreOutletShowPosts";
 import ViewStoreOutletHowToUse from "../Pages/Store/ViewStore/ViewStoreOutletHowToUse/ViewStoreOutletHowToUse";
 import PostModalsProvider from "../Contexts/PostModalContext/PostModalContext";
+import ProductDeal from "../Pages/Post/ProductDeal/ProductDeal";
 
 const Routes = () => {
   const router = createBrowserRouter([
@@ -165,6 +166,10 @@ const Routes = () => {
         {
           path: "/howtouse",
           element: <CreateStoreHowToUse />,
+        },
+        {
+          path: "/productdeal",
+          element: <ProductDeal />,
         },
       ],
     },

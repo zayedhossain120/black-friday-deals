@@ -1,0 +1,13 @@
+.product-deal-information-container {
+  outline: 1px solid red;
+}
+.product-deal-information-container {
+  display: grid;
+  /* grid-template-columns: repeat(1fr, 1fr, 1fr); */
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+.product-deal-information-container-grid {
+  grid-column: span 4;
+  background: yellow;
+}
