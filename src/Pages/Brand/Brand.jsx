@@ -1,11 +1,11 @@
-import "./Store.css";
+import './Brand.css'
 import TopBar from "../../Components/TopBar/TopBar";
-import StoreCardsContainer from "../../Components/StoreCardsContainer/StoreCardsContainer";
 import { SelectedCountryContext } from "../../Contexts/CountryContext/CountryProviderContext";
 import { useContext } from "react";
 import useFetchInfinite from "../../CustomHooks/useFetchInfinite";
+import BrandCardContainer from "../../Components/BrandCardContainer/BrandCardContainer";
 
-const Store = () => {
+const Brand = () => {
   const country = useContext(SelectedCountryContext);
   const {
     data: storesData,
@@ -23,9 +23,9 @@ const Store = () => {
 
   return (
     <section className="store-main-container">
-      <TopBar navigateTo="/store/create" pageTitle="Retailer" />
+      <TopBar navigateTo="/store/create" pageTitle="Brand" />
 
-      <StoreCardsContainer
+      <BrandCardContainer
         storesData={storesData}
         error={error}
         hasNextPage={hasNextPage}
@@ -38,4 +38,4 @@ const Store = () => {
   );
 };
 
-export default Store;
+export default Brand;

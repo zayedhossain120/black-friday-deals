@@ -22,7 +22,7 @@ export const menus = [
     link: "/store/onlinestore",
       },
       {
-        label: "Brands",
+        label: "Brand",
     icon: DashboardIcon,
     link: "/store/brands",
       },

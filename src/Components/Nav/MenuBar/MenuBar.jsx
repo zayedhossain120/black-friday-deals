@@ -10,6 +10,7 @@ import LogoutIcon from "../../IconsComponents/dashboardIcon/logoutIcon";
 import logoIcon from "../../../assets/Icons/logoIcon.svg";
 import WhatsappIcon from "../../../../src/Components/IconsComponents/dashboardIcon/WhatsappIcon";
 
+
 const MenuBar = () => {
   const [showWhatsapp, setShowWhatsapp] = useState(false);
   const navigate = useNavigate();
@@ -45,6 +46,82 @@ const MenuBar = () => {
                 {menu.label}
               </NavLink>
             ))}
+
+
+{/* <NavLink>
+        <Menu
+          // onClick={({ key }) => {
+          //   if (key === "signout") {
+          //     console.log("sign out");
+          //   } else {
+          //     navigate(key);
+          //   }
+            // if(key === true){
+            //   navigate(key)
+            // }
+          // }}
+          mode="inline"
+          defaultOpenKeys={["/"]}
+          items={[
+            {
+              label: "Dashboard",
+              icon: DashboardIcon,
+              link: "/",
+              key: "/",
+            },
+            {
+              label: "Retailer",
+              icon: <StoreIcon></StoreIcon>,
+              link: "/store",
+              key: "/store",
+              children: [
+                {
+                  label: "Online Store",
+                  icon: <StepForwardFilled></StepForwardFilled>,
+                  link: "/onlinestore",
+                  key: "/onlinestore",
+                },
+                {
+                  label: "Brand",
+                  icon: <BranchesOutlined />,
+                  link: "/brands",
+                  key: "/brands",
+                },
+                {
+                  label: "Category",
+                  icon: DashboardIcon,
+                  link: "/category",
+                  key: "/category",
+                },
+              ],
+            },
+            {
+              label: "Post",
+              icon: DashboardIcon,
+              link: "/post/",
+            },
+            {
+              label: "Carousel",
+              icon: DashboardIcon,
+              link: "/carousel",
+              key: "/carousel",
+            },
+            {
+              label: "Members",
+              icon: DashboardIcon,
+              link: "/members",
+              key: "/members",
+            },
+            {
+              label: "Administrators",
+              icon: DashboardIcon,
+              link: "/administrators",
+              key: "/administrators",
+            },
+          ]}
+        ></Menu>
+      </NavLink> */}
+
             {/* Whatsapp button */}
             <span onClick={() => setShowWhatsapp(true)} className="menu">
               <WhatsappIcon />
@@ -68,16 +145,6 @@ const MenuBar = () => {
             <img src={promotionIcon} alt="" />
             Brands
           </NavLink>
-          <NavLink to="/category" className="menu">
-            <img src={promotionIcon} alt="" />
-            Category
-          </NavLink>
-          {/* //Setting Route */}
-          <NavLink to="/setting" className="menu">
-            <img src={promotionIcon} alt="" />
-            Setting
-          </NavLink>
-
           <span onClick={handleLogout} className="menu">
             <LogoutIcon />
             Logout

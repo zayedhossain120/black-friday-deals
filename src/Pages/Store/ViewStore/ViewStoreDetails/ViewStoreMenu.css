@@ -10,6 +10,7 @@
   display: flex;
   align-items: center;
   gap: 32px;
+  
 }
 .view-store-section-container .view-store-left-container img {
   width: 50px;
@@ -235,4 +236,8 @@
 .view-store-second-button img {
   width: 15px;
 } */
+.view-store-left-container{
+  border-bottom: 1px solid rgb(219, 216, 216);
+  margin-bottom: 10px;
+}
 }

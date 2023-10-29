@@ -26,10 +26,8 @@ import fetchStoreDataAtRouterLevel from "../Utils/fetchDataAtRouterLevel";
 import ViewStoreOutlet from "../Pages/Store/ViewStore/ViewStoreOutletShowPosts/ViewStoreOutletShowPosts";
 import ViewStoreOutletHowToUse from "../Pages/Store/ViewStore/ViewStoreOutletHowToUse/ViewStoreOutletHowToUse";
 import PostModalsProvider from "../Contexts/PostModalContext/PostModalContext";
-import Setting from "../Pages/Setting/Setting";
 import OnlineStore from "../Pages/OnlineStore/OnlineStore";
-import Brands from "../Pages/Brands/Brands";
-import Category from "../Pages/Category/Category";
+import Brand from "../Pages/Brand/Brand";
 
 const Routes = () => {
   const router = createBrowserRouter([
@@ -53,11 +51,7 @@ const Routes = () => {
         },
         {
           path: "/brands",
-          element: <Brands />,
-        },
-        {
-          path: "/category",
-          element: <Category />,
+          element: <Brand />,
         },
         {
           path: "/store",
@@ -191,10 +185,6 @@ const Routes = () => {
     {
       path: "/secured",
       element: <Secured />,
-    },
-    {
-      path: "/setting",
-      element: <Setting />,
     },
     {
       path: "/login",

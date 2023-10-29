@@ -5,7 +5,7 @@
 .view-store-table-row {
   /*  only change post table**/
   display: grid;
-  grid-template-columns: 2.5fr 1fr 1fr 1fr;
+  grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr 1fr;
   justify-content: start;
   align-items: center;
   padding: 20px;
@@ -26,12 +26,7 @@
   width: clamp(14px, 2vw, 1.1rem);
   height: clamp(14px, 2vw, 1.1rem);
 }
-.view-store-table-row .country-flags {
-  display: flex;
-  justify-content: start;
-  margin-left: 20px;
-  cursor: pointer;
-}
+
 .view-store-table-row .table-data h4 {
   display: flex;
   gap: 5px;
@@ -65,6 +60,7 @@
   word-wrap: break-word;
 }
 .view-store-table-row .table-data.expire-time {
+  justify-content: center;
   font-size: 12px;
   color: rgba(0, 0, 0, 0.5);
   font-weight: 400;
@@ -98,19 +94,91 @@
   width: fit-content;
 }
 
+/* dynamic price and available store poran change */
+.dynamic-price-div{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.dynamic-price-div .dynamic-price-div-childOne{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dynamic-price-div .dynamic-price-div-childOne p{
+ color: rgba(0, 0, 0, 0.8);
+ font-size: 20px;
+ font-weight: 700;
+}
+.dynamic-price-div .dynamic-price-div-childOne del{
+  color: rgba(255, 0, 0, 0.4);
+}
+.dynamic-price-div .percentage{
+  font-size: 14px;
+  color: rgba(0, 0, 0, 1)
+}
+.available-online-store{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding-right: 36%;
+}
+.available-online-store p{
+color: rgba(0, 0, 0, 0.6);
+font-size: 10px;
+font-weight: 400;
+}
+.available-online-store img{
+width: 70px;
+height: 40px;
+}
+.country-flags .view-store-flag-img{
+  width: 14px;
+  height: 16px;
+}
+.country-flags .country-flags-child-div{
+  display: flex;
+  align-items: center;
+gap: 8px;
+}
+.mobile-v-flag{
+  display: none;
+}
+.available-online-store .expired-item-copy{
+  display: none;
+}
+/* .country-flags-child-div .country-show-button{
+  color: rgba(0, 0, 0, 1);
+  font-size: 16px;
+  border: none;
+  padding: 0;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: none;
+}
+.country-flags-child-div .country-show-button:hover{
+  background: rgba(255, 255, 255, 1);
+  box-shadow: none;
+  color: rgba(0, 0, 0, 1);
+} */
+
 /* responsive========================= */
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 700px) {
   .view-store-table-row {
-    grid-template-columns: 3fr 1fr;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
     box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.09);
     min-height: 150px;
     position: relative;
     margin-bottom: 20px;
+    padding: 20px 20px 10px 20px;
   }
 
   .view-store-table-row .post-title-photo-container {
-    grid-template-columns: 20px 50px 1fr;
-    gap: 10px;
+   display: flex;
   }
   .view-store-table-row .table-data h4 ~ p {
     visibility: hidden;
@@ -123,6 +191,7 @@
     justify-content: center;
     margin-left: 0;
     padding-top: 18px;
+    display: none;
   }
   .store-table .table-data:nth-child(2) {
     order: 4;
@@ -133,5 +202,56 @@
     position: absolute;
     left: 110px;
     top: 60px;
+  }
+
+
+  /* //responsive by poran */
+  .view-store-table-row .post-title-photo-container img {
+  max-width: 200%;
+  max-height: 100%;
+  }
+  .mobile-v-flag{
+    display: block;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    gap: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding-top: 10px;
+  }
+  .view-store-table-row input[type="checkbox"]{
+    display: none;
+  }
+  .view-store-table-row .table-data h4 > img{
+    display: none;
+  }
+  .dynamic-price-div{
+    padding-left: 70px;
+  }
+  .modifier-buttons-container img, span{
+    display: none;
+  }
+  .available-online-store{
+    width: 100%;
+    flex-direction: row;
+    padding-left: 70px; 
+    gap: 10px;
+    padding-bottom: 10px;
+  }
+  .available-online-store .expired-item-copy{
+    display: block;
+  }
+  .available-online-store p{
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+  .available-online-store img{
+    width: 50px;
+    height: 30px;
+  }
+  .modifier-buttons-container{
+    position: absolute;
+    right: 40px;
+    top: 50px;
   }
 }
