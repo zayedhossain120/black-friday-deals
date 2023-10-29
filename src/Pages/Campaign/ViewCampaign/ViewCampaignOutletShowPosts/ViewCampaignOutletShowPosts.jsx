@@ -7,7 +7,7 @@ import EmptyData from '../../../../Components/EmptyData/EmptyData';
 import { Button, Spin } from 'antd';
 import PostViewCustomModal from '../../../../Components/PostViewCustomModal/PostViewCustomModal';
 import PostDeleteModal from '../../../../Components/PostDeleteModal/PostDeleteModal';
-import ViewStorePostRow from '../../../Store/ViewStore/ViewStoreOutletShowPosts/ViewStorePostRow/ViewStorePostRow';
+import postDeleteIcon from '../../../../assets/Icons/postDelete.svg';
 import ViewCampaignPostRow from '../../ViewCampaign/ViewCampaignOutletShowPosts/ViewCampaignPostRow/ViewCampaignPostRow';
 import { SelectedCountryContext } from '../../../../Contexts/CountryContext/CountryProviderContext';
 
@@ -63,6 +63,7 @@ const ViewCampaignOutlet = ({query}) => {
         )}
         {selectMultipleItem.length ? (
           <button onClick={() => setOpenDeletePostModal(selectMultipleItem)}>
+            <img src={postDeleteIcon} alt='' />
             Delete all selected items
           </button>
         ) : (

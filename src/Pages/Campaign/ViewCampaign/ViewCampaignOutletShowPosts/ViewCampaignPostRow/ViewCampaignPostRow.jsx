@@ -4,12 +4,14 @@ import viewEye from "../../../../../assets/Icons/viewEye.svg";
 import verifiedChecked from "../../../../../assets/Icons/verifiedChecked.svg";
 import placeholder from "../../../../../assets/placeholder.svg";
 import flag from '../../../../../assets/Icons/flag.svg';
+import appearance from '../../../../../assets/Icons/appearance.svg';
 import flags from '../../../../../Utils/variables/flags';
 import { useNavigate } from 'react-router-dom';
 import usePostFetch from '../../../../../CustomHooks/usePostFetch';
 import { getExpireInAtDays } from '../../../../../Utils/variables/formattedDates';
-import { Select } from 'antd';
-import { Option } from 'antd/es/mentions';
+import { Tooltip } from 'antd';
+
+
 
 const ViewCampaignPostRow = ({
     post,
@@ -47,6 +49,7 @@ const ViewCampaignPostRow = ({
       if (isLoading) {
         return <p className="text-center">Loading...</p>;
       }
+     
     return (
         <div
       className="view-campaign-table-row"
@@ -84,23 +87,53 @@ const ViewCampaignPostRow = ({
           </div>
         </div>
       </div>
-      {/* flags section */}
-      <div className="table-data">
-        <div className="country-flags">
-          {post?.country?.map((country) => (
-            <img
-              key={country}
-              src={flags.find((flag) => flag.countryName === country).flagUrl}
-              alt={country}
-              title={country}
-            />
-          ))}
-        </div>
+      
+      {/* Price & discount section */}
+      <div className='table-data price-and-discount'>
+                <div>
+                <div className='basic-price-and-off'>
+                  <h1><span>20</span>$</h1>
+                  <p>70<span>$</span></p>
+                </div>
+                <div className='discount'>
+                  <p><span>75%</span> off</p>
+                </div>
+                </div>
       </div>
+
+      {/* available on store */}
+      <div className='store-logo'>
+                <p>Available on</p>
+                <p>
+              {post?.store?.storeName}{" "}
+              {post?.postType === "deal" && (
+                <small className="tooltip">Deal</small>
+              )}
+            </p>
+      </div>
+
       {/* validity section */}
-      <div className="table-data available-countries">
-           <img src={flag} alt="flag" />
-          
+      <div className="table-data">
+      <Tooltip placement="bottom" className=' available-countries' title={
+      <div>
+          {
+            post?.country?.map((country) => (
+              <div style={{display: "flex", justifyContent: "space-between", gap: "5px"}}
+              key={country}
+              >
+              <img src={flags.find((flag) => flag.countryName === country).flagUrl} alt="" />
+              
+               <p>{ post?.country?.map(c => `${c}`)}</p>
+              
+              </div>
+            ))
+          }
+        </div>} >
+      <img src={flag} alt="flag" />
+            <p>{post?.country?.length} countries</p>
+            <img src={appearance} alt='appearance' />
+        </Tooltip>
+        
       </div>
       {/* modifier buttons section */}
       <div className="table-data expire-time">
@@ -116,11 +149,28 @@ const ViewCampaignPostRow = ({
         )}
 
 
-      <div className='modifier-buttons-container'>
+      <div className='table-data modifier-buttons-container'>
       <img src={viewEye} alt="view icon" />
         <span>{post?.revealed}</span>
       </div>
       </div>
+
+       {/* flags section */}
+       <div className="table-data">
+        <div className="country-flags">
+          {post?.country?.map((country) => (
+
+            <img
+              key={country}
+              src={flags.find((flag) => flag.countryName === country).flagUrl}
+              alt={country}
+              title={country}
+            />
+          ))}
+        </div>
+            
+      </div>
+
     </div>
     );
 };
