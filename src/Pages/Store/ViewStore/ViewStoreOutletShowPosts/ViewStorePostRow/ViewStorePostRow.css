@@ -149,20 +149,10 @@ gap: 8px;
 .available-online-store .expired-item-copy{
   display: none;
 }
-/* .country-flags-child-div .country-show-button{
-  color: rgba(0, 0, 0, 1);
-  font-size: 16px;
+.ant-select-selector{
   border: none;
   padding: 0;
-  background: rgba(255, 255, 255, 1);
-  box-shadow: none;
 }
-.country-flags-child-div .country-show-button:hover{
-  background: rgba(255, 255, 255, 1);
-  box-shadow: none;
-  color: rgba(0, 0, 0, 1);
-} */
-
 /* responsive========================= */
 @media screen and (max-width: 700px) {
   .view-store-table-row {

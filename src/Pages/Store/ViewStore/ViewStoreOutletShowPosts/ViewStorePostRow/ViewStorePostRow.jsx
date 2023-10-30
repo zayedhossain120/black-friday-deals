@@ -10,11 +10,8 @@ import placeholder from "../../../../../assets/placeholder.svg";
 import viewStoreFlagIcon from "../../../../../assets/Icons/view-store-flag-icon.svg";
 import { useState } from "react";
 import { getExpireInAtDays } from "../../../../../Utils/variables/formattedDates";
-import {  useNavigate } from "react-router-dom";
-import { Button, Dropdown } from 'antd';
-
-
-
+import { useNavigate } from "react-router-dom";
+import { Select } from "antd";
 
 const ViewStorePostRow = ({
   post,
@@ -53,35 +50,33 @@ const ViewStorePostRow = ({
     return <p className="text-center">Loading...</p>;
   }
 
+  // const items = post?.country?.map(item => ({
+  //   key: item.key,
+  //   label: (
+  //     <img
+  //     src={item.flagUrl}
+  //     title={item.countryName}
+  //     width={250}
+  //     >
+  //     </img>
+  //   ),
+  // }));
 
-  const items = [
-    {
-      key: '1',
-      label: (
-        <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-          1st menu item
-        </a>
-      ),
-    },
-    {
-      key: '2',
-      label: (
-        <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
-          2nd menu item
-        </a>
-      ),
-    },
-    {
-      key: '3',
-      label: (
-        <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
-          3rd menu item
-        </a>
-      ),
-    },
-  ];
+  const dynamicData = flags;
 
+  const items = dynamicData.map((item) => ({
+    key: item.key,
+    label: (
+      <img src={item.flagUrl} title={item.countryName} width={20}>
+        {/* {item.flagUrl} */}
+      </img>
+    ),
+  }));
 
+  // const selectStyle = {
+  //   border: 'none',
+  //   width: 120
+  // }
 
   return (
     <div
@@ -137,7 +132,6 @@ const ViewStorePostRow = ({
           width={50}
           loading="lazy"
         />
-        {/* {console.log(post)} */}
         {getExpireInAtDays(post?.expireDate) < 1 ? (
           "Expired"
         ) : (
@@ -150,17 +144,13 @@ const ViewStorePostRow = ({
       <div className="table-data">
         <div className="country-flags">
           <div className="country-flags-child-div">
-          <img src={viewStoreFlagIcon} alt="view-store-flag-img" />
-            
-            <Dropdown
-      menu={{
-        items,
-      }}
-      placement="bottom "
-      arrow
-    >
-      <Button>{post?.country?.length} Countries</Button>
-    </Dropdown>
+            <img src={viewStoreFlagIcon} alt="view-store-flag-img" />
+            <Select
+              className="country-flags-dropdown"
+              defaultValue={`${post?.country?.length} Countries`}
+              // style={selectStyle}
+              options={items}
+            ></Select>
           </div>
         </div>
       </div>
