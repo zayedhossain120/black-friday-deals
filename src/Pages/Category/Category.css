@@ -26,6 +26,17 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.category-card-item-child:nth-child(1) {
+  flex: 10%;
+}
+.category-card-item-child:nth-child(2) {
+  flex: 70%;
+}
+.category-card-item-child:nth-child(3) {
+  flex: 20%;
+}
+
 .category-card-btn {
   display: flex;
   align-items: center;
