@@ -25,7 +25,7 @@ const CampaignsCardsContainer = ({
     }
 
     if(error || storesData.status === "failed") {
-        return <p>{error.message || storesData?.message}</p>;
+        return <p>{error.message || storesData?.message} Check your Router Modem or Mobile Data</p>;
     }
 
 

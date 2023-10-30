@@ -1,3 +1,16 @@
+/* antd's tooltip designs changed here */
+
+.ant-tooltip-inner {
+  color: rgba(0, 0, 0, 0.80) !important;
+  text-align: center !important;
+  font-size: 18px !important;
+  background-color: #FFFF !important;
+}
+.ant-tooltip-placement-bottom .ant-tooltip-arrow, .ant-tooltip-placement-bottomLeft .ant-tooltip-arrow, .ant-tooltip-placement-bottomRight .ant-tooltip-arrow {
+  border-bottom-color: green !important;
+}
+/* antd's tooltip designs changed here */
+
 .post-table {
     width: 100%;
     margin: 0 auto;
@@ -5,7 +18,7 @@
   .view-campaign-table-row {
     /*  only change post table**/
     display: grid;
-    grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr ;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr ;
     justify-content: start;
     align-items: center;
     padding: 20px;
@@ -65,7 +78,8 @@
   }
   
   .view-campaign-table-row .table-data.expire-time > .display-only-on-mobile {
-    display: none;
+    position: absolute;
+    visibility: hidden;
   }
   .view-campaign-table-row .table-data:last-child {
     display: flex;
@@ -73,23 +87,22 @@
     align-items: center;
     transition: all 1s ease;
   }
-  .modifier-buttons-container{
+  .modifiers-buttons-container{
+    position: absolute;
+    visibility: hidden ;
     opacity: 0;
   }
- 
-
-  /* .view-campaign-table-row:hover .expire-time{
-    display: none;
-  } */
-  
-  .view-campaign-table-row:hover .modifier-buttons-container{
-  
-
-    opacity: 1;
+  .modifiers-buttons-container button {
+    /** this post table*/
+    border: none;
+    background: transparent;
+    transition: all 0.5s ease;
+    opacity: 0;
+    width: 0;
   }
   
  
-  /* .view-campaign-table-row:hover .modifier-buttons-container button {
+  /* .view-campaign-table-row:hover .modifier-buttons-container  {
     margin-left: clamp(5px, 1vw, 20px);
     margin-right: clamp(5px, 1vw, 20px);
     opacity: 1;
@@ -138,15 +151,18 @@ color: rgba(0, 0, 0, 0.60);
 text-align: center;
 font-size: 14px;
  }
+
+
   
   /* responsive========================= */
   @media screen and (max-width: 780px) {
     .view-campaign-table-row {
-      grid-template-columns: 3fr 1fr;
+      grid-template-columns: 3fr 2fr;
       box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.09);
       min-height: 150px;
       position: relative;
       margin-bottom: 20px;
+      align-items:first baseline;
     }
   
     .view-campaign-table-row .post-title-photo-container {
@@ -160,13 +176,18 @@ font-size: 14px;
     .view-campaign-table-row .table-data.expire-time > .display-only-on-mobile {
       display: block;
     }
+    .view-campaign-table-row .table-data:last-child {
+      justify-content: center;
+    }
     .view-campaign-table-row .country-flags {
-      display: block;
+  
+      display: flex;
+      justify-content: center;
       cursor: pointer;
-      padding-top: 18px;
+      
     }
     .view-campaign-table-row .country-flags img {
-      margin-right: 10px;
+      margin-right: 5px;
     }
     .store-table .table-data:nth-child(2) {
       order: 4;
@@ -178,9 +199,39 @@ font-size: 14px;
       left: 110px;
       top: 60px;
     }
+    .price-and-discount{
+      align-items: top;
+    }
     .available-countries{
-      display: none;
-     
-    
+      position: absolute;
+      visibility: hidden;
+    }
+    .store-logo{
+      display: flex;
+      justify-content: flex-start;
+    }
+  
+    .modifiers-buttons-container button{
+      opacity: 1;
+      width: fit-content;
+      margin-right: 20px;
+    }
+    .view-campaign-table-row .modifiers-buttons-container  {
+      justify-content: flex-end;
+      visibility: visible;
+      right: 10%;
+      top: 80px;
+      /* margin-top: 8%;
+      margin-left: clamp(65%, 1vw, 20px);
+      margin-right: clamp(5px, 1vw, 20px); */
+      opacity: 1;
+      width: fit-content;
+    }
+    .table-data .modifiers-buttons-container :is(img, span){
+      position: absolute;
+      visibility: hidden;
+    }
+    .view-campaign-table-row .table-data.expire-time{
+      justify-content: flex-start;
     }
   }

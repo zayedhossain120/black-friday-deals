@@ -10,6 +10,8 @@ import { useNavigate } from 'react-router-dom';
 import usePostFetch from '../../../../../CustomHooks/usePostFetch';
 import { getExpireInAtDays } from '../../../../../Utils/variables/formattedDates';
 import { Tooltip } from 'antd';
+import EditIcon from '../../../../../Components/IconsComponents/EditIcon';
+import DeleteIcon from '../../../../../Components/IconsComponents/DeleteIcon';
 
 
 
@@ -88,6 +90,7 @@ const ViewCampaignPostRow = ({
         </div>
       </div>
       
+      
       {/* Price & discount section */}
       <div className='table-data price-and-discount'>
                 <div>
@@ -112,9 +115,28 @@ const ViewCampaignPostRow = ({
             </p>
       </div>
 
+      <div className='modifiers-buttons-container'>
+      <button
+          onClick={(e) => {
+            e.stopPropagation();
+            navigate(`/post/editpost/${post?._id}`);
+          }}
+        >
+          <EditIcon />
+        </button>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            setOpenDeletePostModal(post);
+          }}
+        >
+          <DeleteIcon />
+        </button>
+      </div>
+
       {/* validity section */}
       <div className="table-data">
-      <Tooltip placement="bottom" className=' available-countries' title={
+      <Tooltip placement="bottom"  className=' available-countries' title={
       <div>
           {
             post?.country?.map((country) => (
@@ -128,7 +150,8 @@ const ViewCampaignPostRow = ({
               </div>
             ))
           }
-        </div>} >
+        </div>
+      } >
       <img src={flag} alt="flag" />
             <p>{post?.country?.length} countries</p>
             <img src={appearance} alt='appearance' />
@@ -141,15 +164,14 @@ const ViewCampaignPostRow = ({
           "Expired"
         ) : (
           <span>
-            End in <strong>{getExpireInAtDays(post?.expireDate)}</strong> days
+            End in  <strong>{getExpireInAtDays(post?.expireDate)}</strong>  days
           </span>
         )}
         {post?.postType === "deal" && (
           <small className="tooltip display-only-on-mobile">Deal</small>
         )}
 
-
-      <div className='table-data modifier-buttons-container'>
+      <div className='table-data modifiers-buttons-container'>
       <img src={viewEye} alt="view icon" />
         <span>{post?.revealed}</span>
       </div>

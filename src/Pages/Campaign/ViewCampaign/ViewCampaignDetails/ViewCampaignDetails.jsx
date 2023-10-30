@@ -35,7 +35,7 @@ const ViewCampaignDetails = () => {
           <hr className="view-campaign-hr" />
           <div className="view-campaign-button">
             <p className="shipping-cost-text">
-              {store?.data?.description ? store.data.description : ""}
+              {store?.data?.description ? store.data.description : "Time period"}
             </p>
             <div className="set-two-button">
               
