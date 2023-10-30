@@ -28,6 +28,7 @@ import ViewStoreOutletHowToUse from "../Pages/Store/ViewStore/ViewStoreOutletHow
 import PostModalsProvider from "../Contexts/PostModalContext/PostModalContext";
 import OnlineStore from "../Pages/OnlineStore/OnlineStore";
 import Brand from "../Pages/Brand/Brand";
+import DemoMenu from "../Pages/DemoMenu";
 
 const Routes = () => {
   const router = createBrowserRouter([
@@ -52,6 +53,10 @@ const Routes = () => {
         {
           path: "/brands",
           element: <Brand />,
+        },
+        {
+          path: "demomenu",
+          element: <DemoMenu />,
         },
         {
           path: "/store",

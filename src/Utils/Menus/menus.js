@@ -15,23 +15,6 @@ export const menus = [
     label: "Retailer",
     icon: StoreIcon,
     link: "/store",
-    submenu: [
-      {
-        label: "Online Store",
-    icon: DashboardIcon,
-    link: "/store/onlinestore",
-      },
-      {
-        label: "Brand",
-    icon: DashboardIcon,
-    link: "/store/brands",
-      },
-      {
-        label: "Category",
-    icon: DashboardIcon,
-    link: "/category",
-      }
-    ]
   },
   {
     label: "Post",

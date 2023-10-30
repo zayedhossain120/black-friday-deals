@@ -13,6 +13,7 @@ import { getExpireInAtDays } from "../../../../../Utils/variables/formattedDates
 import { useNavigate } from "react-router-dom";
 import { Select } from "antd";
 
+
 const ViewStorePostRow = ({
   post,
   setOpenPostViewModal,
@@ -31,6 +32,7 @@ const ViewStorePostRow = ({
       setOpenPostViewModal({ data, error });
     }
   };
+
 
   // select multiple items to delete
   const handleMultipleSelectItem = (e) => {
@@ -58,25 +60,47 @@ const ViewStorePostRow = ({
   //     title={item.countryName}
   //     width={250}
   //     >
+  //       {console.log(item)}
   //     </img>
   //   ),
   // }));
 
+
+  // const items =   post?.country?.map((country) => ({
+  //   key: country.key,
+  //   label: (
+  //        <div key={country}>
+  //          {post?.country?.map((country) => (
+  //         <img
+  //           key={country}
+  //           src={flags.find((flag) => flag.countryName === country).flagUrl}
+  //           alt={country}
+  //           title={country}
+  //         />
+  //         <p></p>
+  //       ))}
+  //        </div>
+  //   )
+  // }))
+
+
+  const selectStyle = {
+    display: 'flex',
+    gap: '5px'
+  }
+
   const dynamicData = flags;
 
-  const items = dynamicData.map((item) => ({
+  const items = dynamicData?.map((item) => ({
     key: item.key,
     label: (
-      <img src={item.flagUrl} title={item.countryName} width={20}>
-        {/* {item.flagUrl} */}
+      <div className="" style={selectStyle}>
+        <img src={item.flagUrl} title={item.countryName} width={20}>
       </img>
+      <p>{item.shortForm}</p>
+      </div>
     ),
   }));
-
-  // const selectStyle = {
-  //   border: 'none',
-  //   width: 120
-  // }
 
   return (
     <div
