@@ -2,7 +2,7 @@
     height: 90%;
     overflow-x: hidden;
     overflow-y: auto;
-    /* padding-bottom: 150px; */
+    padding-bottom: 80px;
     position: relative;
   }
   .campaign-outlet-container .campaign-table > button {
