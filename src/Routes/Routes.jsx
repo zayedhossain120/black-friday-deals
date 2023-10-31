@@ -27,6 +27,7 @@ import ViewStoreOutlet from "../Pages/Store/ViewStore/ViewStoreOutletShowPosts/V
 import ViewStoreOutletHowToUse from "../Pages/Store/ViewStore/ViewStoreOutletHowToUse/ViewStoreOutletHowToUse";
 import PostModalsProvider from "../Contexts/PostModalContext/PostModalContext";
 import Category from "../Pages/Category/Category";
+import Network from "../Pages/Network/Network";
 
 const Routes = () => {
   const router = createBrowserRouter([
@@ -98,6 +99,10 @@ const Routes = () => {
         {
           path: "/retailer/category",
           element: <Category />,
+        },
+        {
+          path: "/retailer/network",
+          element: <Network />,
         },
         {
           path: "/store/create/howtouse/:id",

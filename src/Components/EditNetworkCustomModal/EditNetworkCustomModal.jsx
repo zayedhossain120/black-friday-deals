@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import "./EditCategoryCustomModal.css";
+import "./EditNetworkCustomModal.css";
 import { useState } from "react";
 import { Select } from "antd";
 import axios from "axios";
@@ -9,18 +9,18 @@ import removeIcon from "../../assets/Icons/remove.svg";
 import googleIcon from "../../assets/Icons/googleIcon.png";
 import { toast } from "react-toastify";
 
-const EditCategoryCustomModal = ({
-  openEditCategoryModal,
-  setOpenEditCategoryModal,
+const EdiNetworkCustomModal = ({
+  openEditNetworkModal,
+  setOpenEditNetworkModal,
 }) => {
-  console.log(openEditCategoryModal, "Item get in edit modal");
+  console.log(openEditNetworkModal, "Item get in edit modal");
 
-  const [newCategoryName, setNewCategoryName] = useState(
-    openEditCategoryModal?.categoryName
+  const [newNetworkName, setNewNetworkName] = useState(
+    openEditNetworkModal?.networkName
   );
 
   const handleCancel = () => {
-    setOpenEditCategoryModal(false);
+    setOpenEditNetworkModal(false);
   };
 
   const handleSubmit = async (e) => {
@@ -30,9 +30,9 @@ const EditCategoryCustomModal = ({
 
     try {
       const { data } = await axios.patch(
-        `${apiUrl}/category/${openEditCategoryModal?._id}`,
+        `${apiUrl}/network/${openEditNetworkModal?._id}`,
         {
-          categoryName: newCategoryName,
+          networkName: newNetworkName,
         },
         {
           headers: {
@@ -52,7 +52,7 @@ const EditCategoryCustomModal = ({
       toast.error("An error occurred while updating the category");
     }
 
-    setOpenEditCategoryModal(false);
+    setOpenEditNetworkModal(false);
   };
 
   return (
@@ -76,8 +76,8 @@ const EditCategoryCustomModal = ({
               id="category"
               type="text"
               placeholder="Type Category"
-              value={newCategoryName}
-              onChange={(e) => setNewCategoryName(e.target.value)}
+              value={newNetworkName}
+              onChange={(e) => setNewNetworkName(e.target.value)}
             />
             <button className="add-new-user-btn" type="submit">
               Update
@@ -89,4 +89,4 @@ const EditCategoryCustomModal = ({
   );
 };
 
-export default EditCategoryCustomModal;
+export default EdiNetworkCustomModal;

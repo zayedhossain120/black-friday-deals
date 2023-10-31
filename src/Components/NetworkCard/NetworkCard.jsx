@@ -1,35 +1,32 @@
 /* eslint-disable react/prop-types */
 // import React from 'react';
 
-import { Checkbox } from "antd";
 import DeleteIcon from "../IconsComponents/DeleteIcon";
 import EditIcon from "../IconsComponents/EditIcon";
 import useFetch from "../../CustomHooks/useFetch";
 
 // eslint-disable-next-line react/prop-types
-const CategoryCard = ({
-  setOpenDeleteCategoryModal,
-  setOpenEditCategoryModal,
+const NetworkCard = ({
+  setOpenDeleteNetworkModal,
+  setOpenEditNetworkModal,
 }) => {
-  const { data: category } = useFetch("category");
-  // console.log("here come the category", category);
-
+  const { data: network } = useFetch("network");
+  console.log(network);
   return (
     <section className="category-card-main-section">
-      <h2>All Category</h2>
+      <h2>All Network</h2>
       <div className="category-card">
-        {category?.data?.map((item) => (
+        {network?.data?.map((item) => (
           <div key={item?._id} className="category-card-container">
             <div className="category-card-item">
-              <div className="category-card-item-child">
-                <Checkbox />
-                <h3>{item?.categoryName}</h3>
+              <div className="">
+                <h3>{item?.networkName}</h3>
               </div>
               <div className=" category-card-btn modifier-buttons-container">
                 <button
                   onClick={(e) => {
                     e.stopPropagation;
-                    setOpenEditCategoryModal(item);
+                    setOpenEditNetworkModal(item);
                   }}
                 >
                   {" "}
@@ -38,7 +35,7 @@ const CategoryCard = ({
                 <button
                   onClick={(e) => {
                     e.stopPropagation;
-                    setOpenDeleteCategoryModal(item);
+                    setOpenDeleteNetworkModal(item);
                   }}
                 >
                   {" "}
@@ -53,4 +50,4 @@ const CategoryCard = ({
   );
 };
 
-export default CategoryCard;
+export default NetworkCard;

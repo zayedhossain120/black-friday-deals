@@ -73,7 +73,7 @@ const CategoryDeleteModal = ({
         ) : (
           <p>
             Are You sure, want to delete{" "}
-            <strong>{openDeleteCategoryModal?._id}</strong> Category?
+            <strong>{openDeleteCategoryModal?.categoryName}</strong> Category?
           </p>
         )}
         <form onSubmit={handleSubmit}>

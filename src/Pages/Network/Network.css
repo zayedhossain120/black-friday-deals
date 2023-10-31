@@ -26,12 +26,6 @@
   align-items: center;
   justify-content: space-between;
 }
-.category-card-item-child {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
 
 .category-card-btn {
   display: flex;

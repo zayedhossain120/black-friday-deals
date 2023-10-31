@@ -6,7 +6,6 @@ import EditIcon from "../../Components/IconsComponents/EditIcon";
 import DeleteIcon from "../../Components/IconsComponents/DeleteIcon";
 import { useEffect, useState } from "react";
 import CategoryCard from "../../Components/CategoryCard/CategoryCard";
-import Item from "antd/es/list/Item";
 import CategoryDeleteModal from "../../Components/CategoryDeleteModal/CategoryDeleteModal";
 import EditCategoryCustomModal from "../../Components/EditCategoryCustomModal/EditCategoryCustomModal";
 
@@ -21,6 +20,7 @@ const Category = () => {
   return (
     <div className="category-main">
       <TopBar pageTitle="All Categories" />
+
       <CategoryCard
         setOpenDeleteCategoryModal={setOpenDeleteCategoryModal}
         setOpenEditCategoryModal={setOpenEditCategoryModal}
