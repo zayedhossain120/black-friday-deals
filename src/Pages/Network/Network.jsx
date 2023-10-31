@@ -5,14 +5,20 @@ import NetworkCard from "../../Components/NetworkCard/NetworkCard";
 import NetworkDeleteModal from "../../Components/NetworkDeleteModal/NetworkDeleteModal";
 import EditNetworkCustomModal from "../../Components/EditNetworkCustomModal/EditNetworkCustomModal";
 import { useState } from "react";
+import AddNewNetworkCustomModal from "../../Components/AddNewNetworkCustomModal/AddNewNetworkCustomModal";
 
 const Network = () => {
   const [openDeleteNetworkModal, setOpenDeleteNetworkModal] = useState(false);
   const [openEditNetworkModal, setOpenEditNetworkModal] = useState(false);
+  const [addNewNetworkModal, setAddNewNetworkModal] = useState();
 
   return (
     <div className="category-main">
-      <TopBar pageTitle="All Categories" />
+      <TopBar pageTitle="All Network" />
+
+      <button onClick={(e) => setAddNewNetworkModal(true)}>
+        Add new network
+      </button>
       <NetworkCard
         setOpenDeleteNetworkModal={setOpenDeleteNetworkModal}
         setOpenEditNetworkModal={setOpenEditNetworkModal}
@@ -26,8 +32,14 @@ const Network = () => {
       )}
       {openEditNetworkModal && (
         <EditNetworkCustomModal
-          openEditNetworkModal={openEditNetworkModal}
-          setOpenEditNetworkModal={setOpenEditNetworkModal}
+          addNewNetworkModal={addNewNetworkModal}
+          setAddNewNetworkModal={setAddNewNetworkModal}
+        />
+      )}
+      {addNewNetworkModal && (
+        <AddNewNetworkCustomModal
+          addNewNetworkModal={addNewNetworkModal}
+          setAddNewNetworkModal={setAddNewNetworkModal}
         />
       )}
     </div>

@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 // import React from 'react';
 
-import { Checkbox } from "antd";
 import DeleteIcon from "../IconsComponents/DeleteIcon";
 import EditIcon from "../IconsComponents/EditIcon";
 import useFetch from "../../CustomHooks/useFetch";
@@ -22,7 +21,6 @@ const CategoryCard = ({
           <div key={item?._id} className="category-card-container">
             <div className="category-card-item">
               <div className="category-card-item-child">
-                <Checkbox />
                 <h3>{item?.categoryName}</h3>
               </div>
               <div className=" category-card-btn modifier-buttons-container">

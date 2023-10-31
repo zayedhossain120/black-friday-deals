@@ -15,67 +15,44 @@ const CategoryDeleteModal = ({
     setOpenDeleteCategoryModal(false);
   };
 
-  console.log(openDeleteCategoryModal, "get the delete modal");
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const store = openDeletePostModal?.store?.storeName;
-    // const accessToken = getToken();
 
-    // try {
-    //   let url;
-    //   let dataToDelete;
+    const accessToken = getToken();
 
-    //   if (Array.isArray(openDeletePostModal)) {
-    //     url = `${apiUrl}/post/many`;
-    //     dataToDelete = {
-    //       posts: openDeletePostModal,
-    //     };
-    //   } else {
-    //     url = `${apiUrl}/post/${openDeletePostModal._id}`;
-    //     dataToDelete = { storeName: store };
-    //   }
+    try {
+      const { data } = await axios.delete(
+        `${apiUrl}/category/${openDeleteCategoryModal?._id}`,
 
-    //   const { data } = await axios.delete(url, {
-    //     data: dataToDelete,
-    //     headers: {
-    //       authorization: `bearer ${accessToken}`,
-    //     },
-    //   });
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+      console.log(data);
+      // Check if the user was added successfully
+      if (data?.success) {
+        toast.warning("Category successfully Deleted");
+      } else {
+        toast.error("Failed to update category");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("An error occurred while deleting the category");
+    }
 
-    //   if (data?.status === "success") {
-    //     if (Array.isArray(openDeletePostModal)) {
-    //       toast.warning("Post(s) are deleted");
-    //     } else {
-    //       toast.warning("Post is deleted");
-    //     }
-    //   } else {
-    //     toast.error("Failed to delete post(s)");
-    //   }
-    // } catch (error) {
-    //   console.error("Error deleting post:", error);
-    //   toast.error("An error occurred while deleting the post(s)");
-    // } finally {
-    //   refetch();
-    //   setOpenDeletePostModal(false);
-    // }
+    setOpenDeleteCategoryModal(false);
   };
 
   return (
     <Modal centered open={openDeleteCategoryModal} onCancel={handleCancel}>
       <div className="post-delete-modal-container">
         <img src={DeleteIcon} alt="Delete icon" />
-        {Array.isArray(openDeleteCategoryModal) ? (
-          <p>
-            Are You sure, want to delete{" "}
-            <strong>{openDeleteCategoryModal?.length}</strong> Category?
-          </p>
-        ) : (
-          <p>
-            Are You sure, want to delete{" "}
-            <strong>{openDeleteCategoryModal?.categoryName}</strong> Category?
-          </p>
-        )}
+        <p>
+          Are You sure, want to delete{" "}
+          <strong>{openDeleteCategoryModal?.categoryName}</strong> Category?
+        </p>
         <form onSubmit={handleSubmit}>
           <button onClick={handleCancel}>Cancel</button>
           <button>Yes</button>

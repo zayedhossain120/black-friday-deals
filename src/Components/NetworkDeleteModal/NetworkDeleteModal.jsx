@@ -15,8 +15,6 @@ const NetworkDeleteModal = ({
     setOpenDeleteNetworkModal(false);
   };
 
-  console.log(openDeleteNetworkModal, "get the delete modal");
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 

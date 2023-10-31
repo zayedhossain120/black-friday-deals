@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import "./AddNewCategoryCustomModal.css";
+import "./AddNewNetworkCustomModal.css";
 import { useState } from "react";
 import axios from "axios";
 import apiUrl from "../../Utils/variables/apiUrl";
@@ -7,15 +7,15 @@ import getToken from "../../Utils/getToken";
 import removeIcon from "../../assets/Icons/remove.svg";
 import { toast } from "react-toastify";
 
-const AddNewCategoryCustomModal = ({
-  openAddNewCategoryModal,
-  setOpenAddNewCategoryModal,
+const AddNewNetworkCustomModal = ({
+  addNewNetworkModal,
+  setAddNewNetworkModal,
 }) => {
-  const [newCategoryName, setNewCategoryName] = useState();
-  console.log(newCategoryName);
+  console.log(addNewNetworkModal);
+  const [newNetworkName, setNewNetworkName] = useState();
 
   const handleCancel = () => {
-    setOpenAddNewCategoryModal(false);
+    setAddNewNetworkModal(false);
   };
 
   const handleSubmit = async (e) => {
@@ -25,9 +25,9 @@ const AddNewCategoryCustomModal = ({
 
     try {
       const { data } = await axios.post(
-        `${apiUrl}/category/add`,
+        `${apiUrl}/network/add`,
         {
-          categoryName: newCategoryName,
+          networkName: newNetworkName,
         },
         {
           headers: {
@@ -38,16 +38,15 @@ const AddNewCategoryCustomModal = ({
       console.log(data);
       // Check if the user was added successfully
       if (data?.success) {
-        toast.success("Category successfully added");
+        toast.success("Network successfully added");
       } else {
-        toast.error("Failed to update category");
+        toast.error("Failed to add network");
       }
     } catch (error) {
       console.error("Error:", error);
-      toast.error("An error occurred while updating the category");
+      toast.error("An error occurred while adding the network");
     }
-
-    setOpenAddNewCategoryModal(false);
+    setAddNewNetworkModal(false);
   };
 
   return (
@@ -63,19 +62,19 @@ const AddNewCategoryCustomModal = ({
           onClick={handleCancel}
         />
         <div className="edit-category-modal-container">
-          <h2>Update the Category</h2>
-          <p>This category can be help to find specific deals</p>
+          <h2>Add new network</h2>
+          <p>This network can be help to find specific deals</p>
 
           <form className="edit-category-form" onSubmit={handleSubmit}>
             <input
-              id="category"
+              id="network"
               type="text"
-              placeholder="Type Category"
-              value={newCategoryName}
-              onChange={(e) => setNewCategoryName(e.target.value)}
+              placeholder="Type network"
+              value={newNetworkName}
+              onChange={(e) => setNewNetworkName(e.target.value)}
             />
             <button className="add-new-user-btn" type="submit">
-              Update
+              Add Network
             </button>
           </form>
         </div>
@@ -84,4 +83,4 @@ const AddNewCategoryCustomModal = ({
   );
 };
 
-export default AddNewCategoryCustomModal;
+export default AddNewNetworkCustomModal;
