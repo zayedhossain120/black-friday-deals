@@ -102,12 +102,7 @@
   }
   
  
-  /* .view-campaign-table-row:hover .modifier-buttons-container  {
-    margin-left: clamp(5px, 1vw, 20px);
-    margin-right: clamp(5px, 1vw, 20px);
-    opacity: 1;
-    width: fit-content;
-  } */
+  
   .available-countries{
     display: flex;
     gap: 6px;
@@ -199,9 +194,6 @@ font-size: 14px;
       left: 110px;
       top: 60px;
     }
-    .price-and-discount{
-      align-items: top;
-    }
     .available-countries{
       position: absolute;
       visibility: hidden;
@@ -217,15 +209,13 @@ font-size: 14px;
       margin-right: 20px;
     }
     .view-campaign-table-row .modifiers-buttons-container  {
-      justify-content: flex-end;
       visibility: visible;
-      right: 10%;
-      top: 80px;
-      /* margin-top: 8%;
-      margin-left: clamp(65%, 1vw, 20px);
-      margin-right: clamp(5px, 1vw, 20px); */
+      margin-left: clamp(5px, 1vw, 20px);
+      margin-right: clamp(5px, 1vw, 20px); 
       opacity: 1;
       width: fit-content;
+      right: 10%;
+      top: 10px;
     }
     .table-data .modifiers-buttons-container :is(img, span){
       position: absolute;
@@ -233,5 +223,10 @@ font-size: 14px;
     }
     .view-campaign-table-row .table-data.expire-time{
       justify-content: flex-start;
+    }
+
+    .view-campaign-table-row .table-data.expire-time > .display-only-on-mobile {
+      
+      visibility: visible;
     }
   }

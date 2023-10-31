@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import "./ViewCampaignOutletShowPosts.css";
 import useFetchInfinite from '../../../../CustomHooks/useFetchInfinite';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import MainLoading from '../../../../Components/MainLoading/MainLoading';
 import EmptyData from '../../../../Components/EmptyData/EmptyData';
 import { Button, Spin } from 'antd';
@@ -10,9 +10,12 @@ import PostDeleteModal from '../../../../Components/PostDeleteModal/PostDeleteMo
 import postDeleteIcon from '../../../../assets/Icons/postDelete.svg';
 import ViewCampaignPostRow from '../../ViewCampaign/ViewCampaignOutletShowPosts/ViewCampaignPostRow/ViewCampaignPostRow';
 import { SelectedCountryContext } from '../../../../Contexts/CountryContext/CountryProviderContext';
+import EditCampaignButton from '../../../../Components/EditCampaignButton/EditCampaignButton';
+
 
 const ViewCampaignOutlet = ({query}) => {
     const store = useLoaderData();
+    const navigate = useNavigate();
 
   const countryContext = useContext(SelectedCountryContext);
   const [openPostViewModal, setOpenPostViewModal] = useState(null);
@@ -106,7 +109,12 @@ const ViewCampaignOutlet = ({query}) => {
           refetch={refetch}
         />
       )}{" "}
+
+     
+     <EditCampaignButton />
+     
     </section>
+    
     );
 };
 

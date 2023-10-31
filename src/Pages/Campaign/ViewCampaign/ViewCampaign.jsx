@@ -7,6 +7,7 @@ import ViewCampaignDetails from './ViewCampaignDetails/ViewCampaignDetails';
 import ViewCampaignInnerNav from './ViewCampaignInnerNav/ViewCampaignInnerNav';
 
 
+
 const ViewCampaign = () => {
     return (
         <div className="view-campaign-main-container">
@@ -18,6 +19,7 @@ const ViewCampaign = () => {
             <ViewCampaignInnerNav />
             <Outlet />
           </section>
+          
         </div>
       </div>
     );
