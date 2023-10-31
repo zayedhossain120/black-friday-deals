@@ -32,8 +32,8 @@ const Network = () => {
       )}
       {openEditNetworkModal && (
         <EditNetworkCustomModal
-          addNewNetworkModal={addNewNetworkModal}
-          setAddNewNetworkModal={setAddNewNetworkModal}
+          openEditNetworkModal={openEditNetworkModal}
+          setOpenEditNetworkModal={setOpenEditNetworkModal}
         />
       )}
       {addNewNetworkModal && (

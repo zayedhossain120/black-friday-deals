@@ -43,13 +43,13 @@ const EdiNetworkCustomModal = ({
       console.log(data);
       // Check if the user was added successfully
       if (data?.success) {
-        toast.success("Category successfully added");
+        toast.success("Network successfully updated");
       } else {
-        toast.error("Failed to update category");
+        toast.error("Failed to update network");
       }
     } catch (error) {
       console.error("Error:", error);
-      toast.error("An error occurred while updating the category");
+      toast.error("An error occurred while updating the network");
     }
 
     setOpenEditNetworkModal(false);
@@ -68,14 +68,14 @@ const EdiNetworkCustomModal = ({
           onClick={handleCancel}
         />
         <div className="edit-category-modal-container">
-          <h2>Update the Category</h2>
-          <p>This category can be help to find specific deals</p>
+          <h2>Update the Network</h2>
+          <p>This network can be help to find specific deals</p>
 
           <form className="edit-category-form" onSubmit={handleSubmit}>
             <input
-              id="category"
+              id="network"
               type="text"
-              placeholder="Type Category"
+              placeholder="Type network"
               value={newNetworkName}
               onChange={(e) => setNewNetworkName(e.target.value)}
             />
