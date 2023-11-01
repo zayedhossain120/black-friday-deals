@@ -50,17 +50,17 @@ const Routes = () => {
           path: "/",
           element: <Dashboard />,
         },
+        // {
+        //   path: "/onlinestore",
+        //   element: <OnlineStore />,
+        // },
         {
-          path: "/onlinestore",
-          element: <OnlineStore />,
+          path: "/store",
+          element: <Store />,
         },
         {
           path: "/brands",
           element: <Brand />,
-        },
-        {
-          path: "/store",
-          element: <OnlineStore />,
         },
         {
           path: "/store/:id/",
