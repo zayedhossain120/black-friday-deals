@@ -1,9 +1,9 @@
+import "./EditStore.css";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import okIcon from "../../assets/Icons/okIcon.svg";
 import flags from "../../Utils/variables/flags";
-import "./EditStore.css";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import apiUrl from "../../Utils/variables/apiUrl";
@@ -164,7 +164,21 @@ const EditStore = () => {
                       name="storeExternalLink"
                       onChange={handleChange}
                     />
-                  </div>{" "}
+                  </div>
+
+                  <div>
+                    <label htmlFor="description">Description By Poran</label>
+                    <TextArea
+                      value={formData.description}
+                      id="description"
+                      name="description"
+                      style={{
+                        height: "138px",
+                        resize: "none",
+                      }}
+                      onChange={handleChange}
+                    />
+                  </div>
                   {/* <div className=" edit-store-form-btn ">
                     <label htmlFor="country">Country</label>
                     <Select
@@ -185,19 +199,7 @@ const EditStore = () => {
                       })}
                     />
                   </div> */}
-                  <div>
-                    <label htmlFor="description">Description</label>
-                    <TextArea
-                      value={formData.description}
-                      id="description"
-                      name="description"
-                      style={{
-                        height: "138px",
-                        resize: "none",
-                      }}
-                      onChange={handleChange}
-                    />
-                  </div>
+                  
                 </div>
               </section>
               <div className="form-submit-btn-main3">

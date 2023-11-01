@@ -138,10 +138,8 @@
 }
 
 .edit-store-form {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(388px, 1fr));
-  grid-gap: 3.1rem;
-  /* position: relative; */
+ 
+
 }
 
 .edit-store-form > div {

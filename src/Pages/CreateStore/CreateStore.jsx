@@ -116,7 +116,8 @@ const CreateStore = () => {
                   </div>
                   <div className="edit-store-form">
                     {/* <p>Progress {progress}%</p> */}
-                    <div>
+                  <div>
+                  <div>
                       <label htmlFor="name">Store Name</label>
                       <Input
                         required
@@ -135,8 +136,23 @@ const CreateStore = () => {
                         style={{ width: "100%" }}
                         name="link"
                       />
-                    </div>{" "}
-                    <div className="">
+                    </div>
+                  </div>
+
+                    <div>
+                      <label htmlFor="description">Description</label>
+                      <TextArea
+                        id="description"
+                        name="description"
+                        style={{
+                          height: "138px",
+                          resize: "none",
+                        }}
+                      />
+                    </div>
+
+
+                    {/* <div className="">
                       <label htmlFor="country">Country</label>
                       <Select
                         id="country"
@@ -152,18 +168,7 @@ const CreateStore = () => {
                           };
                         })}
                       />
-                    </div>
-                    <div>
-                      <label htmlFor="description">Description</label>
-                      <TextArea
-                        id="description"
-                        name="description"
-                        style={{
-                          height: "138px",
-                          // resize: "none",
-                        }}
-                      />
-                    </div>
+                    </div> */}
                   </div>
                 </section>
                 <div className="form-submit-btn-main">
