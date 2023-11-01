@@ -40,7 +40,6 @@
   padding-top: clamp(5px, 1vh, 14px);
   padding-bottom: clamp(5px, 1vh, 20px);
   padding-left: 15px;
-  /* padding-right: 40px; */
   font-weight: 400;
   font-size: 14px;
   color: #a6abc8;
@@ -66,4 +65,9 @@
 }
 .menu:hover svg path {
   fill: #5a67ba;
+}
+
+
+.custom-menu-item:last-child{
+  background-color: red;
 }

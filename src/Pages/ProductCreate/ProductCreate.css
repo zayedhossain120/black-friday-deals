@@ -1,0 +1,111 @@
+.product-create-main-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+/* product main section split */
+.product-create-main-section-child:nth-child(1) {
+  width: 70%;
+}
+.product-create-main-section-child:nth-child(2) {
+  width: 30%;
+  padding: 20px;
+  background-color: #fff;
+  max-height: 100vh;
+}
+
+/* 70% width div style start */
+
+.product-create-api-search-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  margin-bottom: 20px;
+  padding: 25px 0px 25px 0px;
+}
+.product-create-api-search-section p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+.product-create-api-search-section Input {
+  width: 90%;
+  padding: 10px;
+}
+
+/* product create input head section */
+
+.product-create-input-section-head {
+  background-color: #fff;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  padding: 20px;
+}
+.product-create-input-section-head div > h3 {
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 20px;
+}
+
+/* product input style start */
+.product-create-input-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+.product-create-input-section div > p {
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 15px;
+}
+.product-create-input-section div > Input {
+  padding: 10px;
+}
+.product-create-input-section:nth-last-child() {
+  column-span: all;
+  background-color: red;
+}
+.product-create-input-section-select-option {
+  width: 100%;
+}
+.product-create-input-section-text-aria {
+}
+
+/* disocunt price section */
+.product-create-input-section-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.product-create-input-section-price div {
+  width: 100%;
+}
+
+/* 70% width div style end */
+
+/* 30% width div style start  */
+.product-create-preview-section {
+}
+
+/* responsive start */
+@media screen and (max-width: 769px) {
+  .product-create-main-section-child:nth-child(1) {
+    width: 100%;
+  }
+  .product-create-main-section-child:nth-child(2) {
+    display: none;
+  }
+  .product-create-input-section {
+    grid-template-columns: 1fr;
+  }
+}

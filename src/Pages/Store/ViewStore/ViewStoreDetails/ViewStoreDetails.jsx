@@ -34,7 +34,7 @@ const ViewStoreDetails = () => {
             </div>
           </div>
         </div>
-        <hr className="view-store-hr" />
+        {/* <hr className="view-store-hr" /> */}
         <div className="view-store-button">
           <p className="shipping-cost-text">
             {store?.data?.description ? store.data.description : ""}

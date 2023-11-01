@@ -26,6 +26,12 @@ import fetchStoreDataAtRouterLevel from "../Utils/fetchDataAtRouterLevel";
 import ViewStoreOutlet from "../Pages/Store/ViewStore/ViewStoreOutletShowPosts/ViewStoreOutletShowPosts";
 import ViewStoreOutletHowToUse from "../Pages/Store/ViewStore/ViewStoreOutletHowToUse/ViewStoreOutletHowToUse";
 import PostModalsProvider from "../Contexts/PostModalContext/PostModalContext";
+import OnlineStore from "../Pages/OnlineStore/OnlineStore";
+import Brand from "../Pages/Brand/Brand";
+
+import Category from "../Pages/Category/Category";
+import Network from "../Pages/Network/Network";
+import ProductCreate from "../Pages/ProductCreate/ProductCreate";
 import ProductDeal from "../Pages/Post/ProductDeal/ProductDeal";
 
 const Routes = () => {
@@ -45,8 +51,16 @@ const Routes = () => {
           element: <Dashboard />,
         },
         {
+          path: "/onlinestore",
+          element: <OnlineStore />,
+        },
+        {
+          path: "/brands",
+          element: <Brand />,
+        },
+        {
           path: "/store",
-          element: <Store />,
+          element: <OnlineStore />,
         },
         {
           path: "/store/:id/",
@@ -96,6 +110,14 @@ const Routes = () => {
           element: <CreateStore />,
         },
         {
+          path: "/retailer/category",
+          element: <Category />,
+        },
+        {
+          path: "/retailer/network",
+          element: <Network />,
+        },
+        {
           path: "/store/create/howtouse/:id",
           element: <CreateStoreHowToUse />,
         },
@@ -139,6 +161,10 @@ const Routes = () => {
         {
           path: "/post/create",
           element: <AddNewPost />,
+        },
+        {
+          path: "/product/create",
+          element: <ProductCreate />,
         },
         {
           path: "/post/editpost/:id",

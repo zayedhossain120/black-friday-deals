@@ -1,21 +1,23 @@
-import DashboardIcon from "../../../src/Components/IconsComponents/dashboardIcon/DashboardIcon.jsx";
-import StoreIcon from "../../../src/Components/IconsComponents/dashboardIcon/StoreIcon";
-import PostIcon from "../../../src/Components/IconsComponents/dashboardIcon/PostIcon";
-import CarouselIcon from "../../../src/Components/IconsComponents/dashboardIcon/CarouselIcon";
-import MembersIcon from "../../../src/Components/IconsComponents/dashboardIcon/MemberIcon";
+import PostIcon from "../../Components/IconsComponents/dashboardIcon/PostIcon";
+import CarouselIcon from "../../Components/IconsComponents/dashboardIcon/CarouselIcon";
+// import MembersIcon from "../../Components/IconsComponents/dashboardIcon/MemberIcon";
 import AdministratorIcon from "../../Components/IconsComponents/dashboardIcon/AdministratorIcon.jsx";
+// import {
+//   DashboardOutlined,
+//   ShoppingCartOutlined,
+//   ShoppingFilled,
+//   TrademarkCircleTwoTone,
+//   FolderOutlined,
+//   GlobalOutlined,
+//   MailOutlined,
+//   SlidersOutlined,
+//   NotificationOutlined,
+//   TeamOutlined,
+//   WhatsAppOutlined,
+//   UserSwitchOutlined,
 
+//   } from '@ant-design/icons';
 export const menus = [
-  {
-    label: "Dashboard",
-    icon: DashboardIcon,
-    link: "/",
-  },
-  {
-    label: "Store",
-    icon: StoreIcon,
-    link: "/store",
-  },
   {
     label: "Post",
     icon: PostIcon,
@@ -28,7 +30,7 @@ export const menus = [
   },
   {
     label: "Members",
-    icon: MembersIcon,
+    icon: CarouselIcon,
     link: "/members",
   },
   {
