@@ -116,7 +116,7 @@ const CreateStore = () => {
                   </div>
                   <div className="edit-store-form">
                     {/* <p>Progress {progress}%</p> */}
-                  <div>
+                  <div className="store-name">
                   <div>
                       <label htmlFor="name">Store Name</label>
                       <Input

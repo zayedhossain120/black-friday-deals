@@ -138,10 +138,14 @@
 }
 
 .edit-store-form {
- 
+ display: flex;
+ flex-direction: column;
 
 }
-
+.store-name{
+  display: flex;
+  flex-direction: row;
+}
 .edit-store-form > div {
   display: flex;
   flex-direction: column;
