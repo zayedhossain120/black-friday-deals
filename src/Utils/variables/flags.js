@@ -1,47 +1,66 @@
-import bahrain from "../../assets/Flags/bahrain.svg";
-import egypt from "../../assets/Flags/egypt.svg";
-import kuwait from "../../assets/Flags/kuwait.svg";
-import oman from "../../assets/Flags/oman.svg";
-import qatar from "../../assets/Flags/qatar.svg";
-import ksa from "../../assets/Flags/saudiArabia.svg";
-import uae from "../../assets/Flags/unitedArabEmirate.svg";
-
 const flags = [
   {
-    countryName: "Bahrain",
-    flagUrl: bahrain,
-    shortForm: "Bahrain",
+    countryName: "United State",
+    flagUrl: US,
+    shortForm: "US",
   },
   {
-    countryName: "Egypt",
-    flagUrl: egypt,
-    shortForm: "Egypt",
+    countryName: "Canada",
+    flagUrl: Canda,
+    shortForm: "Canada",
   },
   {
-    countryName: "Kuwait",
-    flagUrl: kuwait,
-    shortForm: "Kuwait",
+    countryName: "France",
+    flagUrl: France,
+    shortForm: "France",
   },
   {
-    countryName: "Oman",
-    flagUrl: oman,
-    shortForm: "Oman",
+    countryName: "Germany",
+    flagUrl: Germany,
+    shortForm: "Germany",
   },
   {
-    countryName: "Qatar",
-    flagUrl: qatar,
-    shortForm: "Qatar",
+    countryName: "India",
+    flagUrl: India,
+    shortForm: "India",
   },
   {
-    countryName: "Saudi Arabia",
-    flagUrl: ksa,
-    shortForm: "KSA",
+    countryName: "Italy",
+    flagUrl: Italy,
+    shortForm: "Italy",
   },
   {
-    countryName: "United Arab Emirates",
-    flagUrl: uae,
-    shortForm: "UAE",
+    countryName: "Poland",
+    flagUrl: "Poland",
+    shortForm: "Poland",
+  },
+  {
+    countryName: "Spain",
+    flagUrl: "Spain",
+    shortForm: "Spain",
+  },
+  {
+    countryName: "Sweden",
+    flagUrl: "Sweden",
+    shortForm: "Sweden",
+  },
+  {
+    countryName: "United Kingdom",
+    flagUrl: "UK",
+    shortForm: "United Kingdom",
   },
 ];
 
 export default flags;
+
+// "United State",
+// "Canada",
+// "France",
+// "Germany",
+// "India",
+// "Italy",
+// "Netherlands",
+// "Poland",
+// "Spain",
+// "Sweden",
+// "United Kingdom",
