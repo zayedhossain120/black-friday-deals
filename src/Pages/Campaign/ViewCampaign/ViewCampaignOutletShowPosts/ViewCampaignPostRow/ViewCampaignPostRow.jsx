@@ -27,6 +27,7 @@ const ViewCampaignPostRow = ({
 
     const handleOpenPostViewModalWithApiData = async (postId) => {
         const { data, isLoading, error } = await fetchPostById(postId);
+        console.log(data);
         if (isLoading) {
           setIsLoading(true);
         } else {
@@ -50,7 +51,7 @@ const ViewCampaignPostRow = ({
       if (isLoading) {
         return <p className="text-center">Loading...</p>;
       }
-     
+    console.log(post);
     return (
         <div
       className="view-campaign-table-row"

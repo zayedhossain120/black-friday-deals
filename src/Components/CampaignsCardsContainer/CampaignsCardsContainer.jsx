@@ -28,7 +28,7 @@ const CampaignsCardsContainer = ({
         return <p>{error.message || campaignData?.message} Check your Router Modem or Mobile Data</p>;
     }
 
-
+console.log(campaignData);
     return (
 <div className="campaigns-sub-main-container">
 <div className="campaign-cards-container">
@@ -42,7 +42,7 @@ const CampaignsCardsContainer = ({
           onClick={() => navigate(`${campaign?._id}/`)}
         >
           <div className="store-image-container">
-            <img src={campaign.photoURL} alt="" />
+            <img src={campaign.campaignPhotoURL} alt="" />
           </div>
 
           <div className="modifier-buttons-container">
@@ -64,9 +64,9 @@ const CampaignsCardsContainer = ({
             </button>
           </div>
           <div className="campaign-info">
-            <h1>{campaign?.storeName}</h1>
+            <h1>{campaign?.campaignName}</h1>
             <div className="country-flags-container">
-              {campaign?.country?.map((country) => (
+              {campaign?.countries?.map((country) => (
                 <img
                   key={country}
                   src={
