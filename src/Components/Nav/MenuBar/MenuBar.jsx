@@ -4,10 +4,7 @@ import { signOut } from "firebase/auth";
 import auth from "../../../../firebase.init";
 import { useState } from "react";
 import WhatsappModal from "../../../Pages/Whatsapp/WhatsppModal/WhatsappModal";
-// import promotionIcon from "../../../assets/Icons/promotion.png";
-// import LogoutIcon from "../../IconsComponents/dashboardIcon/logoutIcon";
 import logoIcon from "../../../assets/Icons/logoIcon.svg";
-// import WhatsappIcon from "../../../../src/Components/IconsComponents/dashboardIcon/WhatsappIcon";
 import { Menu } from "antd";
 import {
   DashboardOutlined,
@@ -17,10 +14,13 @@ import {
   ShoppingFilled,
   TrademarkOutlined,
   WhatsAppOutlined,
-  UserSwitchOutlined,
   LoginOutlined,
+  MailOutlined,
+  SlidersOutlined,
+  NotificationOutlined,
+  UsergroupAddOutlined,
+  UserOutlined
 } from "@ant-design/icons";
-import { menus } from "../../../Utils/Menus/menus";
 
 const MenuBar = () => {
   const [showWhatsapp, setShowWhatsapp] = useState(false);
@@ -39,6 +39,7 @@ const MenuBar = () => {
     fontSize: "14px",
     fontWeight: 400,
     color: "#a6abc8",
+    gap: '12px'
   };
   return (
     <div className="menu-bar-container">
@@ -113,9 +114,44 @@ const MenuBar = () => {
                     },
                   ],
                 },
+                {
+                  label: "Post",
+                  icon: <MailOutlined />,
+                  link: "/post",
+                  key: "/post"
+                },
+                
+                {
+                  label: "Carousel",
+                  icon: <SlidersOutlined />,
+                  link: "/carousel",
+                  key: "/carousel"
+                },
+                
+                {
+                  label: "Campaign",
+                  icon: <NotificationOutlined />,
+                  link: "/campaign",
+                  key: "/campaign"
+                },
+                
+                {
+                  label: "Members",
+                  icon: <UsergroupAddOutlined />,
+                  link: "/members",
+                  key: "/members"
+                },
+                {
+                  label: "Administrators",
+                  icon: <UserOutlined />,
+                  link: "/administrators",
+                  key: "/administrators"
+                },
+              
+                
               ]}
             ></Menu>
-            {menus.map((menu) => (
+            {/* {menus.map((menu) => (
               <NavLink
                 key={menu.label}
                 to={menu.link}
@@ -131,7 +167,7 @@ const MenuBar = () => {
 
                 {menu.label}
               </NavLink>
-            ))}
+            ))} */}
             {/* Whatsapp button */}
             <NavLink>
               <span onClick={() => setShowWhatsapp(true)} className="menu">
@@ -144,12 +180,12 @@ const MenuBar = () => {
               onClose={() => setShowWhatsapp(false)}
             />
           </div>
-          <span>
+          {/* <span>
             <NavLink to="/administrators" className="menu">
               <UserSwitchOutlined />
               Administrators
             </NavLink>
-          </span>
+          </span> */}
           <span onClick={handleLogout} className="menu">
             <LoginOutlined />
             Logout

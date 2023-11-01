@@ -116,8 +116,8 @@ const CreateStore = () => {
                   </div>
                   <div className="edit-store-form">
                     {/* <p>Progress {progress}%</p> */}
+                  <div className="store-name-link">
                   <div className="store-name">
-                  <div>
                       <label htmlFor="name">Store Name</label>
                       <Input
                         required
@@ -126,7 +126,7 @@ const CreateStore = () => {
                         style={{ width: "100%" }}
                       />
                     </div>
-                    <div>
+                    <div className="link-div">
                       {" "}
                       <label htmlFor="link">Link*</label>
                       <Input
@@ -150,25 +150,6 @@ const CreateStore = () => {
                         }}
                       />
                     </div>
-
-
-                    {/* <div className="">
-                      <label htmlFor="country">Country</label>
-                      <Select
-                        id="country"
-                        className="create-store-ant-input1"
-                        name="country"
-                        mode="multiple"
-                        placeholder="Select Country"
-                        onChange={(value) => setSelectedCountries(value)}
-                        options={flags.map((flag) => {
-                          return {
-                            label: flag.shortForm,
-                            value: flag.countryName,
-                          };
-                        })}
-                      />
-                    </div> */}
                   </div>
                 </section>
                 <div className="form-submit-btn-main">

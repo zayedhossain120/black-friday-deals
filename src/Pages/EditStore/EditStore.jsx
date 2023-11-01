@@ -143,64 +143,42 @@ const EditStore = () => {
                   />
                 </div>
                 <div className="edit-store-form">
-                  <div>
-                    <label htmlFor="name">Store Name</label>
-                    <Input
-                      value={formData?.storeName}
-                      id="name"
-                      name="storeName"
-                      style={{ width: "100%" }}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div>
-                    {" "}
-                    <label htmlFor="storeExternalLink">Link*</label>
-                    <Input
-                      value={formData?.storeExternalLink}
-                      id="storeExternalLink"
-                      placeholder="https://"
-                      style={{ width: "100%" }}
-                      name="storeExternalLink"
-                      onChange={handleChange}
-                    />
+                    {/* <p>Progress {progress}%</p> */}
+                  <div className="store-name-link">
+                  <div className="store-name">
+                      <label htmlFor="name">Store Name</label>
+                      <Input
+                        required
+                        id="name"
+                        name="name"
+                        style={{ width: "100%" }}
+                      />
+                    </div>
+                    <div className="link-div">
+                      {" "}
+                      <label htmlFor="link">Link*</label>
+                      <Input
+                        required
+                        id="link"
+                        placeholder="https://"
+                        style={{ width: "100%" }}
+                        name="link"
+                      />
+                    </div>
                   </div>
 
-                  <div>
-                    <label htmlFor="description">Description By Poran</label>
-                    <TextArea
-                      value={formData.description}
-                      id="description"
-                      name="description"
-                      style={{
-                        height: "138px",
-                        resize: "none",
-                      }}
-                      onChange={handleChange}
-                    />
+                    <div>
+                      <label htmlFor="description">Description</label>
+                      <TextArea
+                        id="description"
+                        name="description"
+                        style={{
+                          height: "138px",
+                          resize: "none",
+                        }}
+                      />
+                    </div>
                   </div>
-                  {/* <div className=" edit-store-form-btn ">
-                    <label htmlFor="country">Country</label>
-                    <Select
-                      value={formData.country}
-                      id="country"
-                      className="create-store-ant-input"
-                      name="country"
-                      mode="multiple"
-                      placeholder="Select Country"
-                      onChange={(value) =>
-                        handleChange({ target: { name: "country", value } })
-                      }
-                      options={flags.map((flag) => {
-                        return {
-                          label: flag.shortForm,
-                          value: flag.countryName,
-                        };
-                      })}
-                    />
-                  </div> */}
-                  
-                </div>
               </section>
               <div className="form-submit-btn-main3">
                 {" "}
