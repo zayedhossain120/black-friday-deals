@@ -1,10 +1,14 @@
-import bahrain from "../../assets/Flags/bahrain.svg";
-import egypt from "../../assets/Flags/egypt.svg";
-import kuwait from "../../assets/Flags/kuwait.svg";
-import oman from "../../assets/Flags/oman.svg";
-import qatar from "../../assets/Flags/qatar.svg";
-import ksa from "../../assets/Flags/saudiArabia.svg";
-import uae from "../../assets/Flags/unitedArabEmirate.svg";
+import US from "../../assets/Flags/UnitedState.png";
+import UK from "../../assets/Flags/UnitedKingdom.png";
+import Canada from "../../assets/Flags/Canada.png";
+import France from "../../assets/Flags/France.png";
+import Germany from "../../assets/Flags/Germany.png";
+import India from "../../assets/Flags/India.png";
+import Italy from "../../assets/Flags/Italy.png";
+import Netherlands from "../../assets/flags/Netherlands.png";
+import Poland from "../../assets/Flags/Poland.png";
+import Spain from "../../assets/Flags/Spain.png";
+import Sweden from "../../assets/Flags/Sweden.png";
 
 const flags = [
   {
