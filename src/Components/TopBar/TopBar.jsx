@@ -11,7 +11,12 @@ import TopBarAddBtnModal from "./TopBarAddBtnModal/TopBarAddBtnModal";
 
 // global country selection
 
-const TopBar = ({ navigateTo, pageTitle }) => {
+const TopBar = ({
+  navigateTo,
+  pageTitle,
+  openAddNewNetworkModal,
+  openAddNewCategorykModal,
+}) => {
   const countryContext = useContext(SelectedCountryContext);
   const navigate = useNavigate();
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -27,6 +32,10 @@ const TopBar = ({ navigateTo, pageTitle }) => {
   const handleAddNewButtonClick = () => {
     if (navigateTo) {
       return navigate(navigateTo);
+    } else if (openAddNewNetworkModal) {
+      openAddNewNetworkModal(true);
+    } else if (openAddNewCategorykModal) {
+      openAddNewCategorykModal(true);
     } else {
       return setOpenDropdown(!openDropdown);
     }
