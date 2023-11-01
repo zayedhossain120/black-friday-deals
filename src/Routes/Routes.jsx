@@ -206,7 +206,7 @@ const Routes = () => {
           children: [
             {
               path: "",
-              element: <PostOutlet query={`${hasValidity()}&postType=deals`} />,
+              element: <PostOutlet query={`${hasValidity()}`} />,
             },
             {
               path: "voucher",
