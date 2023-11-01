@@ -22,7 +22,6 @@ const ViewCampaignPostRow = ({
     setSelectMultipleItem,
 }) => {
     const [isLoading, setIsLoading] = useState(false);
-    const [countries, setCountries] = useState([]);
     const navigate = useNavigate();
     const { fetchPostById } = usePostFetch();
 
@@ -145,7 +144,7 @@ const ViewCampaignPostRow = ({
               >
               <img src={flags.find((flag) => flag.countryName === country).flagUrl} alt="" />
               
-               <p>{ post?.country?.map(c => `${c}`)}</p>
+               <p>{ post?.country?.find((c) => c.countryName === country).shortForm}</p>
               
               </div>
             ))

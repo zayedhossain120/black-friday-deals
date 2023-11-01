@@ -9,7 +9,7 @@ import CampaignsCardsContainer from '../../Components/CampaignsCardsContainer/Ca
 const Campaign = () => {
     const country = useContext(SelectedCountryContext);
     const {
-        data: storesData,
+        data: campaignData,
         error,
         hasNextPage,
         fetchNextPage,
@@ -17,7 +17,7 @@ const Campaign = () => {
         isFetchingNextPage,
         refetch,
       } = useFetchInfinite(
-        `store/all?country=${country.selectedCountry}&limit=100`,
+        `campaign/all?country=${country.selectedCountry}&limit=100`,
         "store-page-stores",
         { country: country.selectedCountry }
       );
@@ -28,7 +28,7 @@ const Campaign = () => {
             <TopBar navigateTo='campaigns/create' pageTitle=" Campaigns" />
             
             <CampaignsCardsContainer
-                storesData={storesData}
+                campaignData={campaignData}
                 error={error}
                 hasNextPage={hasNextPage}
                 fetchNextPage={fetchNextPage}
