@@ -103,8 +103,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* padding-bottom: 50px; */
-  /* margin-bottom: 50px; */
   overflow-x: hidden;
 }
 
@@ -208,7 +206,7 @@
     grid-template-columns: repeat(1, minmax(350px, 1fr));
     /* grid-gap: 3.1rem; */
 
-    padding: 0 16px 10px 16px;
+    padding: 0 16px 15px 16px;
   }
   .form-submit-btn-main3 {
     justify-content: center;

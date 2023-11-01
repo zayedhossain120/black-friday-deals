@@ -165,7 +165,7 @@ const EditStore = () => {
                       onChange={handleChange}
                     />
                   </div>{" "}
-                  <div className=" edit-store-form-btn ">
+                  {/* <div className=" edit-store-form-btn ">
                     <label htmlFor="country">Country</label>
                     <Select
                       value={formData.country}
@@ -184,7 +184,7 @@ const EditStore = () => {
                         };
                       })}
                     />
-                  </div>
+                  </div> */}
                   <div>
                     <label htmlFor="description">Description</label>
                     <TextArea

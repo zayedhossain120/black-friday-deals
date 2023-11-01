@@ -1,23 +1,23 @@
 const viewStoreRoutes = (id) => {
   return [
     {
-      label: "All",
-      link: `/store/${id}/`,
+      label: "Deal",
+      link: `/store/${id}/deals`,
     },
     {
-      label: "Coupons",
+      label: "Coupon",
       link: `/store/${id}/coupons`,
     },
     {
-      label: "Deals",
-      link: `/store/${id}/deals`,
+      label: "Voucher",
+      link: `/post/${id}/voucher`,
     },
     {
       label: "Expired",
       link: `/store/${id}/expired`,
     },
     {
-      label: "How to use",
+      label: "How To Use",
       link: `/store/${id}/howtouse`,
     },
   ];

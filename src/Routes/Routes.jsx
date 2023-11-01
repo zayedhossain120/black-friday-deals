@@ -26,6 +26,9 @@ import fetchStoreDataAtRouterLevel from "../Utils/fetchDataAtRouterLevel";
 import ViewStoreOutlet from "../Pages/Store/ViewStore/ViewStoreOutletShowPosts/ViewStoreOutletShowPosts";
 import ViewStoreOutletHowToUse from "../Pages/Store/ViewStore/ViewStoreOutletHowToUse/ViewStoreOutletHowToUse";
 import PostModalsProvider from "../Contexts/PostModalContext/PostModalContext";
+import OnlineStore from "../Pages/OnlineStore/OnlineStore";
+import Brand from "../Pages/Brand/Brand";
+
 import Category from "../Pages/Category/Category";
 import Network from "../Pages/Network/Network";
 import ProductCreate from "../Pages/ProductCreate/ProductCreate";
@@ -47,8 +50,16 @@ const Routes = () => {
           element: <Dashboard />,
         },
         {
+          path: "/onlinestore",
+          element: <OnlineStore />,
+        },
+        {
+          path: "/brands",
+          element: <Brand />,
+        },
+        {
           path: "/store",
-          element: <Store />,
+          element: <OnlineStore />,
         },
         {
           path: "/store/:id/",
