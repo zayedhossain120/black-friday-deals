@@ -8,7 +8,7 @@ import { Button, Spin } from 'antd';
 import CampaignDeleteModal from '../CampaignDeleteModal/CampaignDeleteModal';
 
 const CampaignsCardsContainer = ({
-    storesData,
+  campaignData,
   error,
   hasNextPage,
   fetchNextPage,
@@ -24,32 +24,32 @@ const CampaignsCardsContainer = ({
         return <MainLoading />;
     }
 
-    if(error || storesData.status === "failed") {
-        return <p>{error.message || storesData?.message} Check your Router Modem or Mobile Data</p>;
+    if(error || campaignData.status === "failed") {
+        return <p>{error.message || campaignData?.message} Check your Router Modem or Mobile Data</p>;
     }
 
-
+console.log(campaignData);
     return (
 <div className="campaigns-sub-main-container">
 <div className="campaign-cards-container">
-  {storesData?.map((page) =>
+  {campaignData?.map((page) =>
     page?.data
       ?.sort((a, b) => (a?.totalPosts > b?.totalPosts ? -1 : 1))
-      ?.map((store) => (
+      ?.map((campaign) => (
         <div
-          key={store?._id}
+          key={campaign?._id}
           className="individual-campaign-container"
-          onClick={() => navigate(`${store?._id}/`)}
+          onClick={() => navigate(`${campaign?._id}/`)}
         >
           <div className="store-image-container">
-            <img src={store.photoURL} alt="" />
+            <img src={campaign.campaignPhotoURL} alt="" />
           </div>
 
           <div className="modifier-buttons-container">
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                navigate(`/store/edit/${store?._id}`);
+                navigate(`/store/edit/${campaign?._id}`);
               }}
             >
               <EditIcon />
@@ -57,16 +57,16 @@ const CampaignsCardsContainer = ({
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                setOpenCampaignDeleteModal(store);
+                setOpenCampaignDeleteModal(campaign);
               }}
             >
               <DeleteIcon />
             </button>
           </div>
           <div className="campaign-info">
-            <h1>{store?.storeName}</h1>
+            <h1>{campaign?.campaignName}</h1>
             <div className="country-flags-container">
-              {store?.country?.map((country) => (
+              {campaign?.countries?.map((country) => (
                 <img
                   key={country}
                   src={
@@ -77,7 +77,7 @@ const CampaignsCardsContainer = ({
                 />
               ))}
             </div>
-            <p>offer available {store?.totalPosts}</p>
+            <p>offer available {campaign?.totalPosts}</p>
           </div>
         </div>
       ))

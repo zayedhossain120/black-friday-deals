@@ -14,7 +14,7 @@ import EditCampaignButton from '../../../../Components/EditCampaignButton/EditCa
 
 
 const ViewCampaignOutlet = ({query}) => {
-    const store = useLoaderData();
+    const post = useLoaderData();
     const navigate = useNavigate();
 
   const countryContext = useContext(SelectedCountryContext);
@@ -32,7 +32,7 @@ const ViewCampaignOutlet = ({query}) => {
         isFetchingNextPage,
         refetch,
       } = useFetchInfinite(
-        `post/all?storeName=${store?.data?.storeName}&${query}&country=${countryContext?.selectedCountry}&limit=10`,
+        `post/all?storeName=${post?.data?.storeName}&${query}&country=${countryContext?.selectedCountry}&limit=10`,
         "store-route",
         { query, countryContext }
       );

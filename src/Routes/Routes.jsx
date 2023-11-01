@@ -86,7 +86,7 @@ const Routes = () => {
               ),
             },
             {
-              path: "coupons",
+              path: "coupon",
               loader: async ({ params }) =>
                 fetchStoreDataAtRouterLevel(params.id),
               element: (
@@ -105,9 +105,9 @@ const Routes = () => {
             },
             {
               path: "voucher",
-              loader: async () => fetchStoreDataAtRouterLevel(params.id),
+              loader: async ({params}) => fetchStoreDataAtRouterLevel(params.id),
               element: (
-                <ViewCampaignOutlet query={`${new Date()}=&expireDate[lt]`} />
+                <ViewCampaignOutlet query={`${new Date()}=&postType=voucher`} />
               ),
             },
           ],
