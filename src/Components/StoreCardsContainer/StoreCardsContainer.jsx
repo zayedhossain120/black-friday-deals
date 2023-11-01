@@ -37,7 +37,8 @@ const StoreCardsContainer = ({
               <div
                 key={store?._id}
                 className="individual-store-container"
-                onClick={() => navigate(`${store?._id}/`)}
+                onClick={() => navigate(`${store?._id}`)}
+
                 // onClick={() => navigate('carousel')}
               >
                 <div className="store-image-container">

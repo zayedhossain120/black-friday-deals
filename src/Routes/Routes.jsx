@@ -54,10 +54,10 @@ const Routes = () => {
           path: "/",
           element: <Dashboard />,
         },
-        {
-          path: "/onlinestore",
-          element: <OnlineStore />,
-        },
+        // {
+        //   path: "/onlinestore",
+        //   element: <OnlineStore />,
+        // },
         {
           path: "/brands",
           element: <Brand />,

@@ -90,8 +90,8 @@ const MenuBar = () => {
                     {
                       label: "Online Store",
                       icon: <ShoppingFilled />,
-                      link: "/onlinestore",
-                      key: "/onlinestore",
+                      link: "/store",
+                      key: "/store",
                     },
                     {
                       label: "Brand",
