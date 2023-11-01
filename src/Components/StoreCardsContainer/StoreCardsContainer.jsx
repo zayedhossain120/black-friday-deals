@@ -41,7 +41,7 @@ const StoreCardsContainer = ({
                 // onClick={() => navigate('carousel')}
               >
                 <div className="store-image-container">
-                  <img src={store.photoURL} alt="" />
+                  <img src={store.storePhotoURL} alt="" />
                 </div>
 
                 <div className="modifier-buttons-container">

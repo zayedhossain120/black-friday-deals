@@ -17,6 +17,7 @@ const BrandCardContainer = ({
   isFetchingNextPage,
   refetch,
 }) => {
+  console.log(brandData, 'get brandData')
   const navigate = useNavigate();
   const [openDeleteUserModal, setOpenStoreDeleteModal] = useState(false);
 
@@ -33,21 +34,21 @@ const BrandCardContainer = ({
         {brandData?.map((page) =>
           page?.data
             ?.sort((a, b) => (a?.totalPosts > b?.totalPosts ? -1 : 1))
-            ?.map((store) => (
+            ?.map((brand) => (
               <div
-                key={store?._id}
+              key={brand?._id}
                 className="individual-store-container"
-                onClick={() => navigate(`${store?._id}/`)}
+                onClick={() => navigate(`${brand?._id}/`)}
               >
                 <div className="store-image-container">
-                  <img src={store.photoURL} alt="" />
+                  <img src={brand?.brandPhotoURL} alt="" />
                 </div>
 
                 <div className="modifier-buttons-container">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      navigate(`/store/edit/${store?._id}`);
+                      navigate(`/store/edit/${brand?._id}`);
                     }}
                   >
                     <EditIcon />
@@ -55,16 +56,16 @@ const BrandCardContainer = ({
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      setOpenStoreDeleteModal(store);
+                      setOpenStoreDeleteModal(brand);
                     }}
                   >
                     <DeleteIcon />
                   </button>
                 </div>
                 <div className="store-info">
-                  <h1>{store?.storeName}</h1>
+                  <h1>{brand?.brandName}</h1>
                   <div className="country-flags">
-                    {store?.country?.map((country) => (
+                    {brand?.country?.map((country) => (
                       <img
                         key={country}
                         src={
@@ -75,7 +76,7 @@ const BrandCardContainer = ({
                       />
                     ))}
                   </div>
-                  <p>offer available {store?.totalPosts}</p>
+                  <p>offer available {brand?.totalPosts}</p>
                 </div>
               </div>
             ))
