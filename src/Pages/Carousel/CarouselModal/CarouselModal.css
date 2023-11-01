@@ -10,21 +10,21 @@
 }
 .Carosel-modal-container .modal-container {
   /* width: 90%; */
-  width: 570px;
+  width: 480px;
   /* height: 100%; */
   /* max-height: 700px; */
   border-radius: 20px;
 }
 .modal-content {
   background-color: white;
-  padding: 0 20px 5px 20px;
+  /* padding: 0 20px 5px 20px; */
   /* height: 630px; */
   border-radius: 10px;
 }
 .carousel-cancel-btn {
   display: flex;
   justify-content: space-between;
-  padding: 30px 30px;
+  padding: 10px 30px;
 }
 
 .carousel-cancel-btn button {
@@ -36,7 +36,7 @@
 .carousel-cancel-btn img {
   padding: 6px;
   border-radius: 50%;
-  margin-right: -30px;
+  margin-right: -15px;
   transition: transform 0.2s ease-in-out;
   box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
   border: 1px solid #e9e9e9;
@@ -62,7 +62,7 @@
   flex-direction: column;
   border: 1px solid rgba(0, 0, 0, 0.1);
   width: 88%;
-  height: 200px;
+  height: clamp(180px, 8vh, 230px);
   border-radius: 10px;
   background: #fff;
   margin-bottom: 50px;
@@ -98,10 +98,10 @@
 .carousel-coupon1 {
   display: flex;
   flex-direction: column;
-  padding-bottom: 6px;
+  /* padding-bottom: 6px; */
 }
 .carousel-coupon {
-  margin: 35px 30px;
+  padding: 4% 6.1%;
 }
 .carousel-coupon1 input {
   height: 50px;
@@ -116,14 +116,9 @@
   font-size: 17px;
   padding-left: 20px;
 }
-/* .carousel-add-coursel-btn {
-  gap: 10px;
-  border-radius: 30px;
-  background: #5a6acf;
-  cursor: pointer;
-} */
+
 .carousel-add-coursel-btn #input-submit {
-  /* margin-bottom: 38px; */
+  margin-top: 5px;
   border: none;
   outline: none;
   background: #5a6acf;
@@ -163,7 +158,7 @@
     font-weight: 500;
   }
   /* //Update by poran */
-  .carousel-add-coursel-btn #input-submit{
+  .carousel-add-coursel-btn #input-submit {
     padding: 15px 33%;
   }
 }

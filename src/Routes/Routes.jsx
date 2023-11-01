@@ -32,6 +32,7 @@ import Brand from "../Pages/Brand/Brand";
 import Category from "../Pages/Category/Category";
 import Network from "../Pages/Network/Network";
 import ProductCreate from "../Pages/ProductCreate/ProductCreate";
+import ProductDeal from "../Pages/Post/ProductDeal/ProductDeal";
 
 const Routes = () => {
   const router = createBrowserRouter([
@@ -192,6 +193,10 @@ const Routes = () => {
           path: "/howtouse",
           element: <CreateStoreHowToUse />,
         },
+        {
+          path: "/productdeal",
+          element: <ProductDeal />,
+        },
       ],
     },
     {
@@ -206,6 +211,7 @@ const Routes = () => {
       path: "/login",
       element: <Login></Login>,
     },
+
     {
       path: "*",
       element: <NotFound />,

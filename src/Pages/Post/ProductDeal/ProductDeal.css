@@ -1,0 +1,25 @@
+/* .product-deal-information-container {
+  outline: 1px solid red;
+} */
+.product-deal-page-main-container {
+  background: #f4f9fb;
+  height: 100vh;
+}
+.product-deal-information-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  background: none;
+}
+.product-deal-information-container-grid {
+  grid-column: span 4;
+  /* background: yellow; */
+}
+@media only screen and (max-width: 993px) {
+  .product-deal-information-container-grid {
+    grid-column: span 5;
+  }
+  .product-deal-information-container-asidebar {
+    display: none;
+  }
+}
