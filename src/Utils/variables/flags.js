@@ -1,3 +1,15 @@
+import US from "../../assets/Flags/UnitedState.png";
+import UK from "../../assets/Flags/UnitedKingdom.png";
+import Canada from "../../assets/Flags/Canada.png";
+import France from "../../assets/Flags/France.png";
+import Germany from "../../assets/Flags/Germany.png";
+import India from "../../assets/Flags/India.png";
+import Italy from "../../assets/Flags/Italy.png";
+import Netherlands from "../../assets/flags/Netherlands.png";
+import Poland from "../../assets/Flags/Poland.png";
+import Spain from "../../assets/Flags/Spain.png";
+import Sweden from "../../assets/Flags/Sweden.png";
+
 const flags = [
   {
     countryName: "United State",
@@ -6,13 +18,18 @@ const flags = [
   },
   {
     countryName: "Canada",
-    flagUrl: Canda,
+    flagUrl: Canada,
     shortForm: "Canada",
   },
   {
     countryName: "France",
     flagUrl: France,
     shortForm: "France",
+  },
+  {
+    countryName: "Netherlands",
+    flagUrl: Netherlands,
+    shortForm: "Netherlands",
   },
   {
     countryName: "Germany",
@@ -31,36 +48,24 @@ const flags = [
   },
   {
     countryName: "Poland",
-    flagUrl: "Poland",
+    flagUrl: Poland,
     shortForm: "Poland",
   },
   {
     countryName: "Spain",
-    flagUrl: "Spain",
+    flagUrl: Spain,
     shortForm: "Spain",
   },
   {
     countryName: "Sweden",
-    flagUrl: "Sweden",
+    flagUrl: Sweden,
     shortForm: "Sweden",
   },
   {
     countryName: "United Kingdom",
-    flagUrl: "UK",
+    flagUrl: UK,
     shortForm: "United Kingdom",
   },
 ];
 
 export default flags;
-
-// "United State",
-// "Canada",
-// "France",
-// "Germany",
-// "India",
-// "Italy",
-// "Netherlands",
-// "Poland",
-// "Spain",
-// "Sweden",
-// "United Kingdom",
