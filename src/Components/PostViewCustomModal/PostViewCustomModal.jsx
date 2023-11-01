@@ -18,7 +18,7 @@ const PostViewCustomModal = ({
   setOpenPostViewModal,
   setOpenDeletePostModal,
 }) => {
-  console.log(openPostViewModal);
+  
   const handleCancel = () => {
     setOpenPostViewModal(false);
   };

@@ -1,0 +1,234 @@
+.view-campaign-section-container {
+    display: flex;
+    flex-direction: column;
+    padding: 2.5% 3% 2.5% 3%;
+    position: relative;
+    background: #fff;
+    margin-bottom: 5px;
+  }
+  .view-campaign-left-container {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .view-campaign-section-container .view-campaign-left-container img {
+    width: 50px;
+    height: 55px;
+  }
+  .view-campaign-name-country-flags {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .h1Container {
+    /* padding-bottom: 15px; */
+    flex: 1;
+    width: 200px;
+  }
+  .h1Container h1 {
+    font-size: 24px;
+  }
+  .view-campaign-left-name-container p {
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 18px;
+  }
+  .view-campaign-button {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+    padding-left: 81px;
+  }
+  .shipping-cost-text {
+    font-size: 18px;
+  }
+  .campaign-country-flags-image {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 30px !important;
+    height: 22.5px !important;
+  }
+  .view-campaign-hr {
+    display: none;
+    position: absolute;
+    padding: 0 10px;
+    width: 95%;
+    border: 1px solid #e4e4e4;
+  }
+  .set-two-button {
+    display: flex;
+    gap: 10px;
+  }
+  .view-campaign-first-button a {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .view-campaign-first-button span {
+    color: #000;
+  }
+  .view-campaign-first-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1% 3%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.7);
+    background: white;
+    cursor: pointer;
+    width: clamp(120px, 10vw, 150px);
+    height: 40px;
+    border-radius: 50px;
+  }
+  /* .view-store-first-button path {
+    stroke-opacity: 1;
+    stroke: black;
+    stroke-width: 1.2px;
+  } */
+
+  .view-campaign-first-button:hover span,
+  .view-campaign-first-button:hover path {
+    color: #fff;
+    stroke-opacity: 1;
+    stroke: #fff;
+    stroke-width: 1.2px;
+  }
+  /* .view-store-first-button:hover img > svg path {
+    background-color: #fff;
+  } */
+  .view-campaign-second-button {
+    gap: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1% 7%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.7);
+    background: white;
+    cursor: pointer;
+    width: clamp(100px, 10vw, 124px);
+    height: 40px;
+    border-radius: 50px;
+  }
+  .view-campaign-second-button:hover,
+  .view-campaign-second-button:hover path {
+    border: 1px solid green;
+    transition: all 0.5s;
+    background-color: green;
+    color: #fff;
+    stroke-opacity: 1;
+    stroke: #fff;
+    stroke-width: 1.2px;
+  }
+  /* Extra small devices (phones, max: 600px and down min: 390px) */
+  @media only screen and (max-width: 600px) {
+    /* .view-store-section-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      flex-direction: column;
+    } */
+    .view-campaign-name-country-flags {
+      flex-direction: column;
+      align-items: start;
+      margin-top: 12px;
+      margin-bottom: 12px;
+    }
+    .campaign-country-flags-image {
+      width: 20px !important;
+      height: 15px !important;
+      margin-left: 0;
+      margin-right: 10px;
+      margin-top: 10px;
+    }
+    /* .view-store-left-container{
+      margin-bottom: 25px;
+    } */
+    .shipping-cost-text {
+      font-size: 14px;
+      /* margin-right: 60px; */
+      padding: 1% 14%;
+    }
+  
+    .view-campaign-button {
+      padding: 0;
+    }
+  
+    /* .view-store-left-name-container {
+      width: 100vh;
+    } */
+    /* .view-store-left-name-container p {
+      width: 100%;
+      position: absolute;
+      text-align: center;
+      font-size: 14px;
+      padding: 70px 0px 0 69px;
+      margin-left: -140px;
+    } */
+    .view-campaign-hr {
+      display: block;
+      background-color: gray;
+      color: gray;
+      margin-left: -2px;
+      bottom: 46px;
+    }
+    .view-campaign-country-flags {
+      padding-bottom: 10px;
+    }
+    .set-two-button {
+      position: absolute;
+      top: 10px;
+      right: 30px;
+    }
+    .view-campaign-first-button {
+      width: clamp(30px, 10vw, 40px);
+      font-size: 12px;
+    }
+    .view-campaign-second-button {
+      width: clamp(30px, 10vw, 40px);
+      font-size: 12px;
+    }
+    .button-text {
+      display: none;
+    }
+    .view-campaign-first-button img {
+      width: 20px;
+    }
+    .view-campaign-second-button img {
+      width: 20px;
+    }
+    /* .view-store-first-button {
+    top: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .view-store-first-button span {
+    font-size: 14px;
+    color: #000;
+  }
+  .view-store-first-button img {
+    width: 15px;
+  }
+  
+  .view-store-second-button {
+    top: 65px;
+    right: 15px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .view-store-second-button span {
+    font-size: 14px;
+  }
+  .view-store-second-button img {
+    width: 15px;
+  } */
+  }
