@@ -15,7 +15,7 @@ import AdministratorIcon from "../../Components/IconsComponents/dashboardIcon/Ad
 //   TeamOutlined,
 //   WhatsAppOutlined,
 //   UserSwitchOutlined,
-  
+
 //   } from '@ant-design/icons';
 export const menus = [
   {

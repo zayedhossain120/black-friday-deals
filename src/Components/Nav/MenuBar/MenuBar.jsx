@@ -18,7 +18,7 @@ import {
   TrademarkOutlined,
   WhatsAppOutlined,
   UserSwitchOutlined,
-  LoginOutlined
+  LoginOutlined,
 } from "@ant-design/icons";
 import { menus } from "../../../Utils/Menus/menus";
 
@@ -50,7 +50,7 @@ const MenuBar = () => {
           <div className="main-menu-container">
             <p>Menu</p>
             <Menu
-            className="custom-menu-item"
+              className="custom-menu-item"
               style={styleDemo}
               onClick={({ key }) => {
                 if (key) {
@@ -102,14 +102,14 @@ const MenuBar = () => {
                     {
                       label: "Category",
                       icon: <FolderOutlined />,
-                      link: "/category",
-                      key: "/category",
+                      link: "/retailer/category",
+                      key: "/retailer/category",
                     },
                     {
                       label: "Network",
                       icon: <GlobalOutlined />,
-                      link: "/network",
-                      key: "/network",
+                      link: "/retailer/network",
+                      key: "/retailer/network",
                     },
                   ],
                 },
@@ -134,22 +134,22 @@ const MenuBar = () => {
             ))}
             {/* Whatsapp button */}
             <NavLink>
-            <span onClick={() => setShowWhatsapp(true)} className="menu">
-              <WhatsAppOutlined />
-              Whatsapp
-            </span>
+              <span onClick={() => setShowWhatsapp(true)} className="menu">
+                <WhatsAppOutlined />
+                Whatsapp
+              </span>
             </NavLink>
             <WhatsappModal
               isVisible={showWhatsapp}
               onClose={() => setShowWhatsapp(false)}
             />
           </div>
-         <span>
-         <NavLink to="/administrators" className="menu">
-            <UserSwitchOutlined />
-            Administrators
-          </NavLink>
-         </span>
+          <span>
+            <NavLink to="/administrators" className="menu">
+              <UserSwitchOutlined />
+              Administrators
+            </NavLink>
+          </span>
           <span onClick={handleLogout} className="menu">
             <LoginOutlined />
             Logout
