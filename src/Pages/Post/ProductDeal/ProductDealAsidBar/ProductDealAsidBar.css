@@ -31,6 +31,21 @@
 .product-deal-asidebar-data-available-container {
   padding: 20px;
 }
+.product-deal-asidebar-data-available-container
+  .product-deal-asidebar-carousel-div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1.2rem;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 1.1rem;
+}
+.product-deal-asidebar-data-available-container
+  .product-deal-asidebar-carousel-div
+  img {
+  width: 50%;
+}
+
 @media only screen and (max-width: 993px) {
   /* .product-deal-aside-container {
     display: none;
