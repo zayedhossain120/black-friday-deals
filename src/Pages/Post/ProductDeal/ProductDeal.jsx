@@ -13,7 +13,9 @@ const ProductDeal = () => {
           <ProductDealApiUrl />
           <ProductInformation />
         </div>
-        <ProductDealAsidBar />
+        <div className="product-deal-information-container-asidebar">
+          <ProductDealAsidBar />
+        </div>
       </section>
     </main>
   );

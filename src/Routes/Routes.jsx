@@ -185,6 +185,7 @@ const Routes = () => {
       path: "/login",
       element: <Login></Login>,
     },
+
     {
       path: "*",
       element: <NotFound />,

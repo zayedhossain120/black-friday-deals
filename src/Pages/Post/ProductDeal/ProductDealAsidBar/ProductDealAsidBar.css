@@ -1,0 +1,38 @@
+.product-deal-asidebar-no-data-available-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100dvb;
+  /* text-align: center; */
+}
+.product-deal-asidebar-no-data-available-container
+  .product-deal-asidebar-no-data-available-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.product-deal-asidebar-no-data-available-container
+  .product-deal-asidebar-no-data-available-child
+  h2 {
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.7);
+}
+.product-deal-asidebar-no-data-available-container
+  .product-deal-asidebar-no-data-available-child
+  p {
+  font-size: 1.1rem;
+  padding-top: 1.2rem;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* product deal-available-container */
+.product-deal-asidebar-data-available-container {
+  padding: 20px;
+}
+@media only screen and (max-width: 993px) {
+  /* .product-deal-aside-container {
+    display: none;
+  } */
+}
