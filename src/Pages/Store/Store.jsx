@@ -20,9 +20,7 @@ const Store = () => {
     "store-page-stores",
     { country: country.selectedCountry }
   );
-
-  
-
+  console.log(storesData, "get store data");
   return (
     <section className="store-main-container">
       <TopBar navigateTo="/store/create" pageTitle="Retailer" />

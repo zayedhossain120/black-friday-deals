@@ -8,7 +8,7 @@ import BrandCardContainer from "../../Components/BrandCardContainer/BrandCardCon
 const Brand = () => {
   const country = useContext(SelectedCountryContext);
   const {
-    data: storesData,
+    data: brandData,
     error,
     hasNextPage,
     fetchNextPage,
@@ -16,7 +16,7 @@ const Brand = () => {
     isFetchingNextPage,
     refetch,
   } = useFetchInfinite(
-    `store/all?country=${country.selectedCountry}&limit=100`,
+    `brand/all?country=${country.selectedCountry}&limit=100`,
     "store-page-stores",
     { country: country.selectedCountry }
   );
@@ -26,7 +26,7 @@ const Brand = () => {
       <TopBar navigateTo="/store/create" pageTitle="Brand" />
 
       <BrandCardContainer
-        storesData={storesData}
+        brandData={brandData}
         error={error}
         hasNextPage={hasNextPage}
         fetchNextPage={fetchNextPage}

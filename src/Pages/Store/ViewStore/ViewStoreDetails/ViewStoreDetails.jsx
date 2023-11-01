@@ -42,7 +42,7 @@ const ViewStoreDetails = () => {
           <div className="set-two-button">
             <button className="view-store-first-button">
               <Link
-                to={store?.data?.storeExternalLink.toString()}
+                to={store?.data?.storeExternalLink?.toString()}
                 target="_blank"
                 className="view-store-button-link"
                 rel="noopener noreferrer"
