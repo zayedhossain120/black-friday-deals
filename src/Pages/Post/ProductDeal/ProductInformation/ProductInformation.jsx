@@ -13,7 +13,7 @@ const ProductInformation = () => {
   const { data: store } = useFetch("store/all?limit=1000");
   const { data: brand } = useFetch("brand/all?limit=1000");
   // const { data: category } = useFetch("category");
-  const { data: category } = useFetch("category/all?limit=1000");
+  const { data: category } = useFetch("category/?limit=1000");
   const { data: campaign } = useFetch("campaign/all?limit=1000");
   const [productlImage, setProductImage] = useState(null);
   const [formData, setFormData] = useState({});
@@ -194,7 +194,7 @@ const ProductInformation = () => {
                 required
                 className="product-deal-information-category-input"
                 id="post-type"
-                defaultValue="Coupon"
+                // defaultValue="Coupon"
                 value={formData.categoryName}
                 onChange={(value) =>
                   setFormData({ ...formData, categoryName: value })

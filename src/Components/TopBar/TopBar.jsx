@@ -16,6 +16,7 @@ const TopBar = ({
   pageTitle,
   openAddNewNetworkModal,
   openAddNewCategorykModal,
+  openAddNewCarouselModal,
 }) => {
   const countryContext = useContext(SelectedCountryContext);
   const navigate = useNavigate();
@@ -36,6 +37,8 @@ const TopBar = ({
       openAddNewNetworkModal(true);
     } else if (openAddNewCategorykModal) {
       openAddNewCategorykModal(true);
+    } else if (openAddNewCarouselModal) {
+      openAddNewCarouselModal(true);
     } else {
       return setOpenDropdown(!openDropdown);
     }
