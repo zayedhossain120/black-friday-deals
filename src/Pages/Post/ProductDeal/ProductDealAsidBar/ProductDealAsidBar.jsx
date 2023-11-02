@@ -28,26 +28,40 @@ const ProductDealAsidBar = () => {
 
   return (
     <aside className="product-deal-aside-main-container">
-      <h1>this is Aside bar page:</h1>
+      {/* <h1>this is Aside bar page:</h1> */}
       {asidebar ? (
         <section className="product-deal-asidebar-data-available-container">
           <div className="product-deal-asidebar-carousel-div">
             <label htmlFor="">Preview</label>
-            <img src={motorcaicle} alt="" />
+            <div>
+              <img src={motorcaicle} alt="" />
+            </div>
           </div>
           <div className="product-deal-asidebar-details-container">
             <h1>Nike Pink color Shoes</h1>
             <div className="product-deal-asidebar-details-product-price">
               <div className="product-deal-asidebar-product-price-dev">
                 <h2>
-                  200$ - <span>700$</span>{" "}
+                  $200{" "}
+                  <span className="prduct-deal-asidebar-product-price-delete-span">
+                    {" "}
+                    - <s>$700</s>
+                  </span>{" "}
                 </h2>
                 <p> 75% OFF</p>
               </div>
-              <p>Expire in 14 days</p>
+              <p>
+                Expire in{" "}
+                <span className="product-deal-aside-details-product-price-expire-day">
+                  14
+                </span>{" "}
+                days
+              </p>
             </div>
             <div className="product-deal-asidebar-product-company-name">
-              <img src={googleicon} alt="" />
+              <div>
+                <img src={googleicon} alt="" />
+              </div>
               <p> Nike</p>
             </div>
             <div className="product-deal-asidebar-product-country-flags">
@@ -61,22 +75,34 @@ const ProductDealAsidBar = () => {
           </div>
           <hr />
           <div className="product-deal-asidebar-discraption">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur et
-            dolorum dolor consectetur sequi magni delectus incidunt distinctio,
-            totam quo soluta provident eligendi reprehenderit in maxime at illum
-            fugit accusantium quos architecto, nisi, ipsum eos consequatur?
-            Consequuntur voluptate labore nobis repellat. Sunt, provident dolore
-            in perspiciatis sequi sapiente porro dignissimos. Ex voluptates
-            praesentium eius accusantium excepturi nobis cupiditate minus
-            ducimus, rem dolore sint sunt saepe amet temporibus? Fugiat maiores
-            numquam fugit officia totam, neque praesentium corporis ipsum
-            obcaecati debitis tempora qui asperiores ut itaque laborum,
-            aspernatur necessitatibus eos magni consequatur quae amet cum eius
-            sapiente? Nemo obcaecati corporis numquam laboriosam.
+            <h1>Discription</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
+              et dolorum dolor consectetur sequi magni delectus incidunt
+              distinctio, totam quo soluta provident eligendi reprehenderit in
+              maxime at illum fugit accusantium quos architecto, nisi, ipsum eos
+              consequatur? Consequuntur voluptate labore nobis repellat. Sunt,
+              provident dolore in perspiciatis sequi sapiente porro dignissimos.
+              Ex voluptates praesentium eius accusantium excepturi nobis
+              cupiditate minus ducimus, rem dolore sint sunt saepe amet
+              temporibus? Fugiat maiores numquam fugit officia totam, neque
+              praesentium corporis ipsum obcaecati debitis tempora qui
+              asperiores ut itaque laborum, aspernatur necessitatibus eos magni
+              consequatur quae amet cum eius sapiente? Nemo obcaecati corporis
+              numquam laboriosam. Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Aut inventore culpa ducimus, eum recusandae
+              consequatur magnam laborum corporis veniam tenetur? Lorem, ipsum
+              dolor sit amet consectetur adipisicing elit. Quo itaque quisquam
+              possimus, hic corrupti nam assumenda, iure natus ullam perferendis
+              saepe quam dolor reprehenderit voluptas molestiae aperiam iusto,
+              beatae ducimus.
+            </p>
           </div>
           <div className="product-deal-asidebar-footer">
-            <p>Available on</p>
-            <img src={googleicon} alt="" />
+            <div>
+              <p>Available on</p>
+              <img src={googleicon} alt="" />
+            </div>
           </div>
         </section>
       ) : (

@@ -82,7 +82,6 @@ const AddNewPost = () => {
                   <p>Store Name</p>
 
                   <Select
-                    // className="container-dropdown"
                     style={{ width: "100%" }}
                     required
                     placeholder="Select Store"
@@ -106,7 +105,6 @@ const AddNewPost = () => {
                   <p>Post Type</p>
                   <Select
                     required
-                    // className="add-new-post-type"
                     style={{ width: "100%" }}
                     id="post-type"
                     defaultValue="Coupon"
@@ -141,7 +139,6 @@ const AddNewPost = () => {
                   <p>Expire Date</p>
                   <DatePicker
                     required
-                    style={{ width: "100%" }}
                     id="expireDate"
                     value={formData.expireDate}
                     onChange={(value) =>

@@ -10,19 +10,34 @@ import flags from "../../../../Utils/variables/flags";
 import TextArea from "antd/es/input/TextArea";
 
 const ProductInformation = () => {
-  const { data: store } = useFetch("store/all?limit=1000");
+  const { data: bfaffiliate } = useFetch("bfaffiliate/all?limit=1000");
   const [productlImage, setProductImage] = useState(null);
   const [formData, setFormData] = useState({});
+  console.log("this is store", bfaffiliate);
 
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    setFormData({
+      ...formData,
+      [id]: value,
+    });
+  };
+  console.log(formData);
+
+  console.log(formData);
   const handleImageInput = (e) => {
     if (e.target.files && e.target.files[0])
       setProductImage(URL.createObjectURL(e.target.files[0]));
   };
 
+  // handleProductDeal
+  const handleProductDeal = (event) => {
+    event.preventDefault();
+  };
   return (
     <section className="product-deal-information-main-contaner">
       <h1>Product deal information</h1>
-      <form action="">
+      <form onSubmit={handleProductDeal}>
         <section className="product-deal-form-container">
           <div className="product-deal-form-container-left">
             <div className="produt-deal-information-img-upload-input-container">
@@ -33,7 +48,8 @@ const ProductInformation = () => {
                   name="photoURL"
                   id="photoURL"
                   onChange={handleImageInput}
-                  // accept="image/*"
+                  accept="image/*"
+                  value={formData.photoURL}
                 />
                 <label
                   htmlFor="photoURL"
@@ -59,19 +75,19 @@ const ProductInformation = () => {
 
               <Select
                 className="product-deal-information-brand-input"
-                // style={{ width: "100%" }}
                 showSearch
                 required
-                placeholder="Select Store"
-                id="store-name"
-                // value={formData.storeName}
-                // onChange={(value) =>
-                //   setFormData({ ...formData, storeName: value })
-                // }
+                placeholder="Select brand"
+                id="brand-name"
+                name:storeName
+                value={formData.brandName}
+                onChange={(value) =>
+                  setFormData({ ...formData, brandName: value })
+                }
               >
-                {store?.data?.map((item) => (
-                  <Option key={item?.storeName} value={item?.storeName}>
-                    {item?.storeName}
+                {bfaffiliate?.data?.map((item) => (
+                  <Option key={item?.brandName} value={item?.brandName}>
+                    {item?.brandName}
                   </Option>
                 ))}
               </Select>
@@ -86,8 +102,8 @@ const ProductInformation = () => {
                 id="externalLink"
                 placeholder="https://"
                 style={{ height: "50px", width: "100%" }}
-                // value={formData.externalLink}
-                // onChange={handleInputChange}
+                value={formData.externalLink}
+                onChange={handleInputChange}
               />
             </label>
             {/* select country */}
@@ -98,7 +114,6 @@ const ProductInformation = () => {
               <Select
                 required
                 mode="multiple"
-                // style={{ width: "100%" }}
                 className="product-deal-information-country-input"
                 value={formData.country}
                 placeholder={"Select One"}
@@ -129,12 +144,15 @@ const ProductInformation = () => {
               <p>Product Title</p>
               <Input
                 required
-                id="Type Post title"
+                id="Type product title"
                 type="text"
-                placeholder="Type post title"
+                placeholder="Type product title"
                 style={{ height: "50px", width: "100%" }}
-                value={formData.postTitle}
-                // onChange={handleInputChange}
+                value={formData.productTitle}
+                // onChange={(value) =>
+                //   setFormData({ ...formData, productTitle: value })
+                // }
+                onChange={handleInputChange}
               />
             </label>
 
@@ -154,7 +172,7 @@ const ProductInformation = () => {
                   setFormData({ ...formData, storeName: value })
                 }
               >
-                {store?.data?.map((item) => (
+                {bfaffiliate?.data?.map((item) => (
                   <Option key={item?.storeName} value={item?.storeName}>
                     {item?.storeName}
                   </Option>
@@ -170,9 +188,9 @@ const ProductInformation = () => {
                 className="product-deal-information-category-input"
                 id="post-type"
                 defaultValue="Coupon"
-                value={formData.postType}
+                value={formData.categoryType}
                 onChange={(value) =>
-                  setFormData({ ...formData, postType: value })
+                  setFormData({ ...formData, categoryType: value })
                 }
               >
                 <Option value="coupon">Coupon</Option>
@@ -204,15 +222,15 @@ const ProductInformation = () => {
                 required
                 showSearch
                 placeholder="Select One"
-                id="store-name"
-                value={formData.storeName}
+                id="campain-name"
+                value={formData.campaignName}
                 onChange={(value) =>
-                  setFormData({ ...formData, storeName: value })
+                  setFormData({ ...formData, campaignName: value })
                 }
               >
-                {store?.data?.map((item) => (
-                  <Option key={item?.storeName} value={item?.storeName}>
-                    {item?.storeName}
+                {bfaffiliate?.data?.map((item) => (
+                  <Option key={item?.campaignName} value={item?.campaignName}>
+                    {item?.campaignName}
                   </Option>
                 ))}
               </Select>
@@ -227,8 +245,8 @@ const ProductInformation = () => {
                   type="text"
                   placeholder="Old price"
                   style={{ height: "50px", width: "100%" }}
-                  value={formData.postTitle}
-                  // onChange={handleInputChange}
+                  value={formData.oldPrice}
+                  onChange={handleInputChange}
                 />
               </label>
               {/* Discounted Price */}
@@ -240,8 +258,8 @@ const ProductInformation = () => {
                   type="text"
                   placeholder="Discounted Price"
                   style={{ height: "50px", width: "100%" }}
-                  value={formData.postTitle}
-                  // onChange={handleInputChange}
+                  value={formData.discount}
+                  onChange={handleInputChange}
                 />
               </label>
             </div>
@@ -259,7 +277,7 @@ const ProductInformation = () => {
             }}
             placeholder="Type Here...."
             value={formData.postDescription}
-            // onChange={handleInputChange}
+            onChange={handleInputChange}
           />
         </div>
         <div className="product-deal-information-add-button">
