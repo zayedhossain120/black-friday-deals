@@ -14,8 +14,14 @@ import TopBar from "../../../Components/TopBar/TopBar";
 
 const AddNewPost = () => {
   const { data: store } = useFetch("store/all?limit=1000");
+  const { data: brand } = useFetch("brand/?limit=1000");
+  const { data: category } = useFetch("category/?limit=1000");
+  const { data: campaign } = useFetch("campaign/all?limit=1000");
+  const { data: network } = useFetch("network/?limit=1000");
   const [formData, setFormData] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // console.log(formData);
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -24,6 +30,7 @@ const AddNewPost = () => {
       [id]: value,
     });
   };
+  console.log(formData);
 
   const handleAddNewPost = async (e) => {
     e.preventDefault();
@@ -38,7 +45,7 @@ const AddNewPost = () => {
         },
       });
 
-      if (data?.status === "success") {
+      if (data?.success) {
         toast.success("New post added");
         setFormData({});
       } else {
@@ -111,14 +118,14 @@ const AddNewPost = () => {
                     className="create-new-coupn-post-type-input"
                     id="post-type"
                     showSearch
-                    defaultValue="Coupon"
+                    placeholder="Select Type"
                     value={formData.postType}
                     onChange={(value) =>
                       setFormData({ ...formData, postType: value })
                     }
                   >
-                    <Option value="coupon">Coupon</Option>
-                    <Option value="deal">Deal</Option>
+                    <Option value="Voucher">Voucher</Option>
+                    <Option value="Coupon">Coupon</Option>
                   </Select>
                 </span>
                 {/* select category name  */}
@@ -132,15 +139,18 @@ const AddNewPost = () => {
                     required
                     showSearch
                     placeholder="Select Store"
-                    id="store-name"
-                    value={formData.storeName}
+                    id="category"
+                    value={formData.categoryName}
                     onChange={(value) =>
-                      setFormData({ ...formData, storeName: value })
+                      setFormData({ ...formData, categoryName: value })
                     }
                   >
-                    {store?.data?.map((item) => (
-                      <Option key={item?.storeName} value={item?.storeName}>
-                        {item?.storeName}
+                    {category?.data?.map((item) => (
+                      <Option
+                        key={item?.categoryName}
+                        value={item?.categoryName}
+                      >
+                        {item?.categoryName}
                       </Option>
                     ))}
                   </Select>
@@ -181,12 +191,12 @@ const AddNewPost = () => {
                 <span>
                   <p>Link</p>
                   <Input
-                    required={formData?.postType === "deal"}
+                    required={formData?.postType === "Voucher"}
                     type="url"
-                    id="externalLink"
+                    id="dealLink"
                     placeholder="https://"
                     style={{ height: "50px", width: "100%" }}
-                    value={formData.externalLink}
+                    value={formData.dealLink}
                     onChange={handleInputChange}
                   />
                 </span>
@@ -201,15 +211,18 @@ const AddNewPost = () => {
                     required
                     showSearch
                     placeholder="Select Store"
-                    id="store-name"
-                    value={formData.storeName}
+                    id="campaign"
+                    value={formData.campaignName}
                     onChange={(value) =>
-                      setFormData({ ...formData, storeName: value })
+                      setFormData({ ...formData, campaignName: value })
                     }
                   >
-                    {store?.data?.map((item) => (
-                      <Option key={item?.storeName} value={item?.storeName}>
-                        {item?.storeName}
+                    {campaign?.data?.map((item) => (
+                      <Option
+                        key={item?.campaignName}
+                        value={item?.campaignName}
+                      >
+                        {item?.campaignName}
                       </Option>
                     ))}
                   </Select>
@@ -222,10 +235,10 @@ const AddNewPost = () => {
                     required
                     mode="multiple"
                     className="add-new-post-country-input"
-                    value={formData.country}
+                    value={formData.countries}
                     placeholder={"country"}
                     onChange={(value) =>
-                      setFormData({ ...formData, country: value })
+                      setFormData({ ...formData, countries: value })
                     }
                   >
                     {flags.map((flag) => (
@@ -282,15 +295,37 @@ const AddNewPost = () => {
                     required
                     showSearch
                     placeholder="Select Store"
-                    id="store-name"
-                    value={formData.storeName}
+                    id="network"
+                    value={formData.networkName}
                     onChange={(value) =>
-                      setFormData({ ...formData, storeName: value })
+                      setFormData({ ...formData, networkName: value })
                     }
                   >
-                    {store?.data?.map((item) => (
-                      <Option key={item?.storeName} value={item?.storeName}>
-                        {item?.storeName}
+                    {network?.data?.map((item) => (
+                      <Option key={item?.networkName} value={item?.networkName}>
+                        {item?.networkName}
+                      </Option>
+                    ))}
+                  </Select>
+                </span>
+                <span>
+                  <p>Select Brand</p>
+
+                  <Select
+                    // style={{ width: "100%" }}
+                    className="add-new-post-country-network-input"
+                    required
+                    showSearch
+                    placeholder="Select Store"
+                    id="brand"
+                    value={formData.brandName}
+                    onChange={(value) =>
+                      setFormData({ ...formData, brandName: value })
+                    }
+                  >
+                    {brand?.data?.map((item) => (
+                      <Option key={item?.brandName} value={item?.brandName}>
+                        {item?.brandName}
                       </Option>
                     ))}
                   </Select>
