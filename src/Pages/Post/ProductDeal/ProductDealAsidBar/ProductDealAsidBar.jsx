@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import notAvailable from "../../../../assets/nodataAvailable.png";
 import motorcaicle from "../../../../assets/Icons/motorcaicle.jpg";
 import googleicon from "../../../../assets/Icons/googleIcon.png";
-import bahrain from "../../../../assets/Flags/bahrain.svg";
-import egypt from "../../../../assets/Flags/egypt.svg";
-import kuwait from "../../../../assets/Flags/kuwait.svg";
-import oman from "../../../../assets/Flags/oman.svg";
-import qatar from "../../../../assets/Flags/qatar.svg";
-import saudi from "../../../../assets/Flags/SaudiArabia.svg";
+import bahrain from "../../../../assets/Flags/Canada.png";
+import egypt from "../../../../assets/Flags/France.png";
+import kuwait from "../../../../assets/Flags/Germany.png";
+import oman from "../../../../assets/Flags/India.png";
+import qatar from "../../../../assets/Flags/Italy.png";
+import saudi from "../../../../assets/Flags/Netherlands.png";
 
 const ProductDealAsidBar = () => {
   const [asidebar, setAsidebar] = useState(null);

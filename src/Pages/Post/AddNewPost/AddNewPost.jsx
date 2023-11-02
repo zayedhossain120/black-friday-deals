@@ -82,8 +82,10 @@ const AddNewPost = () => {
                   <p>Store Name</p>
 
                   <Select
-                    style={{ width: "100%" }}
+                    // style={{ width: "100%" }}
+                    className="add-new-post-country-stores-input"
                     required
+                    showSearch
                     placeholder="Select Store"
                     id="store-name"
                     value={formData.storeName}
@@ -105,8 +107,10 @@ const AddNewPost = () => {
                   <p>Post Type</p>
                   <Select
                     required
-                    style={{ width: "100%" }}
+                    // style={{ width: "100%" }}
+                    className="create-new-coupn-post-type-input"
                     id="post-type"
+                    showSearch
                     defaultValue="Coupon"
                     value={formData.postType}
                     onChange={(value) =>
@@ -115,6 +119,30 @@ const AddNewPost = () => {
                   >
                     <Option value="coupon">Coupon</Option>
                     <Option value="deal">Deal</Option>
+                  </Select>
+                </span>
+                {/* select category name  */}
+
+                <span>
+                  <p>Category</p>
+
+                  <Select
+                    // style={{ width: "100%" }}
+                    className="add-new-post-country-category-input"
+                    required
+                    showSearch
+                    placeholder="Select Store"
+                    id="store-name"
+                    value={formData.storeName}
+                    onChange={(value) =>
+                      setFormData({ ...formData, storeName: value })
+                    }
+                  >
+                    {store?.data?.map((item) => (
+                      <Option key={item?.storeName} value={item?.storeName}>
+                        {item?.storeName}
+                      </Option>
+                    ))}
                   </Select>
                 </span>
 
@@ -140,6 +168,7 @@ const AddNewPost = () => {
                   <DatePicker
                     required
                     id="expireDate"
+                    style={{ width: "100%" }}
                     value={formData.expireDate}
                     onChange={(value) =>
                       setFormData({ ...formData, expireDate: value })
@@ -150,7 +179,7 @@ const AddNewPost = () => {
                 {/* set deal link */}
 
                 <span>
-                  <p>externalLink</p>
+                  <p>Link</p>
                   <Input
                     required={formData?.postType === "deal"}
                     type="url"
@@ -162,24 +191,30 @@ const AddNewPost = () => {
                   />
                 </span>
 
-                {/* post description */}
+                {/* select campain  */}
 
-                <div className="post-description">
-                  <p>Post Description</p>
-                  <TextArea
-                    id="postDescription"
-                    style={{
-                      height: "100px",
-                      resize: "none",
-                    }}
-                    placeholder="Type Here...."
-                    value={formData.postDescription}
-                    onChange={handleInputChange}
-                  />
-                </div>
+                <span>
+                  <p>Campaign</p>
 
+                  <Select
+                    className="add-new-post-country-Campaign-input"
+                    required
+                    showSearch
+                    placeholder="Select Store"
+                    id="store-name"
+                    value={formData.storeName}
+                    onChange={(value) =>
+                      setFormData({ ...formData, storeName: value })
+                    }
+                  >
+                    {store?.data?.map((item) => (
+                      <Option key={item?.storeName} value={item?.storeName}>
+                        {item?.storeName}
+                      </Option>
+                    ))}
+                  </Select>
+                </span>
                 {/* select country */}
-
                 <div className="add-new-post-country-select">
                   <p>Country</p>
 
@@ -195,10 +230,28 @@ const AddNewPost = () => {
                   >
                     {flags.map((flag) => (
                       <Option key={flag.countryName} value={flag.countryName}>
+                        <img src={flag.flagUrl} alt="" />
                         {flag.countryName}
+                        {}
                       </Option>
                     ))}
                   </Select>
+
+                  {/* post description */}
+
+                  <div className="post-description">
+                    <p>Post Description</p>
+                    <TextArea
+                      id="postDescription"
+                      style={{
+                        height: "100px",
+                        resize: "none",
+                      }}
+                      placeholder="Type Here...."
+                      value={formData.postDescription}
+                      onChange={handleInputChange}
+                    />
+                  </div>
                   {/* verify checker */}
 
                   <div className="code-verify-container">
@@ -217,6 +270,31 @@ const AddNewPost = () => {
                     />
                   </div>
                 </div>
+
+                {/* select Network */}
+
+                <span>
+                  <p>Network</p>
+
+                  <Select
+                    // style={{ width: "100%" }}
+                    className="add-new-post-country-network-input"
+                    required
+                    showSearch
+                    placeholder="Select Store"
+                    id="store-name"
+                    value={formData.storeName}
+                    onChange={(value) =>
+                      setFormData({ ...formData, storeName: value })
+                    }
+                  >
+                    {store?.data?.map((item) => (
+                      <Option key={item?.storeName} value={item?.storeName}>
+                        {item?.storeName}
+                      </Option>
+                    ))}
+                  </Select>
+                </span>
               </div>
 
               <div className="create-new-coupon-btn">

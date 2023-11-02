@@ -10,10 +10,17 @@ import flags from "../../../../Utils/variables/flags";
 import TextArea from "antd/es/input/TextArea";
 
 const ProductInformation = () => {
-  const { data: bfaffiliate } = useFetch("bfaffiliate/all?limit=1000");
+  const { data: store } = useFetch("store/all?limit=1000");
+  const { data: brand } = useFetch("brand/all?limit=1000");
+  // const { data: category } = useFetch("category");
+  const { data: category } = useFetch("category/all?limit=1000");
+  const { data: campaign } = useFetch("campaign/all?limit=1000");
   const [productlImage, setProductImage] = useState(null);
   const [formData, setFormData] = useState({});
-  console.log("this is store", bfaffiliate);
+
+  // console.log("this is store:", store);
+  console.log("this is campaign:", campaign);
+  console.log("this is category:", category);
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -53,7 +60,7 @@ const ProductInformation = () => {
                 />
                 <label
                   htmlFor="photoURL"
-                  className="product-deal-img-upload-lable"
+                  className="product-deal-img-upload-lable "
                 >
                   {productlImage ? (
                     <div className="product-deal-information-img-top">
@@ -85,7 +92,7 @@ const ProductInformation = () => {
                   setFormData({ ...formData, brandName: value })
                 }
               >
-                {bfaffiliate?.data?.map((item) => (
+                {brand.data?.map((item) => (
                   <Option key={item?.brandName} value={item?.brandName}>
                     {item?.brandName}
                   </Option>
@@ -172,7 +179,7 @@ const ProductInformation = () => {
                   setFormData({ ...formData, storeName: value })
                 }
               >
-                {bfaffiliate?.data?.map((item) => (
+                {store?.data?.map((item) => (
                   <Option key={item?.storeName} value={item?.storeName}>
                     {item?.storeName}
                   </Option>
@@ -188,13 +195,18 @@ const ProductInformation = () => {
                 className="product-deal-information-category-input"
                 id="post-type"
                 defaultValue="Coupon"
-                value={formData.categoryType}
+                value={formData.categoryName}
                 onChange={(value) =>
-                  setFormData({ ...formData, categoryType: value })
+                  setFormData({ ...formData, categoryName: value })
                 }
               >
-                <Option value="coupon">Coupon</Option>
-                <Option value="deal">Deal</Option>
+                {category.data?.map((item) => (
+                  <Option key={item?.categoryName} value={item?.categoryName}>
+                    {item?.categoryName}
+                  </Option>
+                ))}
+                {/* <Option value="coupon">Coupon</Option>
+                <Option value="deal">Deal</Option> */}
               </Select>
             </label>
 
@@ -228,11 +240,16 @@ const ProductInformation = () => {
                   setFormData({ ...formData, campaignName: value })
                 }
               >
-                {bfaffiliate?.data?.map((item) => (
+                {campaign?.data?.map((item) => (
                   <Option key={item?.campaignName} value={item?.campaignName}>
                     {item?.campaignName}
                   </Option>
                 ))}
+                {/* {campaign?.data?.map((item) => (
+                  <Option key={item?.campaignName} value={item?.campaignName}>
+                    {item?.campaignName}
+                  </Option>
+                ))} */}
               </Select>
             </span>
             <div className="product-deal-information-old-discount-input">
