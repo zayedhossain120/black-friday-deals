@@ -10,7 +10,7 @@ const viewStoreRoutes = (id) => {
     },
     {
       label: "Voucher",
-      link: `/post/${id}/voucher`,
+      link: `/store/${id}/voucher`,
     },
     {
       label: "Expired",

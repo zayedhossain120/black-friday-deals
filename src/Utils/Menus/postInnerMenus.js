@@ -1,15 +1,15 @@
 const postInnerMenus = [
-  {
-    label: "All",
-    link: "/post/",
-  },
+{
+  label: "Deals",
+  link: "/post/deals"
+},
   {
     label: "Coupons",
     link: "/post/coupons",
   },
   {
-    label: "Deals",
-    link: "/post/deals",
+    label: "Voucher",
+    link: "/post/voucher",
   },
   {
     label: "Expired",

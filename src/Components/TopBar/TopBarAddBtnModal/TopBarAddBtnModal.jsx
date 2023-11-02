@@ -30,7 +30,7 @@ const TopBarAddBtnModal = ({ setOpenDropdown }) => {
             boxShadow: "none",
           }}
         >
-          <ShoppingCartOutlined /> Create Store
+          <ShoppingCartOutlined /> Create Store & Brand
         </Button>
 
         <Button
@@ -44,7 +44,7 @@ const TopBarAddBtnModal = ({ setOpenDropdown }) => {
             boxShadow: "none",
           }}
         >
-          <PictureOutlined /> Create Post
+          <PictureOutlined /> Create Deal & Voucher
         </Button>
 
         {openCreateNewStoreOrBrandModal && (

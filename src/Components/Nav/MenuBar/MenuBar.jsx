@@ -22,6 +22,7 @@ import {
   UserOutlined
 } from "@ant-design/icons";
 
+
 const MenuBar = () => {
   const [showWhatsapp, setShowWhatsapp] = useState(false);
   const navigate = useNavigate();
@@ -151,23 +152,6 @@ const MenuBar = () => {
                 
               ]}
             ></Menu>
-            {/* {menus.map((menu) => (
-              <NavLink
-                key={menu.label}
-                to={menu.link}
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? " pending menu"
-                    : isActive
-                    ? " active menu"
-                    : " menu "
-                }
-              >
-                <menu.icon />
-
-                {menu.label}
-              </NavLink>
-            ))} */}
             {/* Whatsapp button */}
             <NavLink>
               <span onClick={() => setShowWhatsapp(true)} className="menu">
