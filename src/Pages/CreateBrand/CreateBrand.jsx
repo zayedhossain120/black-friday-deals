@@ -1,7 +1,7 @@
 // import React from "react";
 import { useState } from "react";
 import okIcon from "../../assets/Icons/okIcon.svg";
-import "./CreateStore.css";
+import "./CreateBrand.css";
 import useSubmitPhotoAtFirebase from "../../Utils/useSubmitPhotoAtFirebase";
 import { Input, Select, Spin } from "antd";
 import flags from "../../Utils/variables/flags";
@@ -14,9 +14,10 @@ import placeholder from "../../assets/Icons/uploadImgIcon.svg";
 import TopBar from "../../Components/TopBar/TopBar";
 import { toast } from "react-toastify";
 
-const CreateStore = () => {
+const CreateBrand = () => {
   const navigate = useNavigate();
   const [imageShow, setImageShow] = useState("");
+  const [selectedCountries, setSelectedCountries] = useState(false);
   const { postPhotoAtFirebase } = useSubmitPhotoAtFirebase();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -27,6 +28,9 @@ const CreateStore = () => {
     const name = e.target.name;
     const link = e.target.link;
     const description = e.target.description;
+    if (!file || !name.value || !link.value || !selectedCountries.length) {
+      return; // return error to show;
+    }
 
     setIsLoading(true);
 
@@ -34,11 +38,12 @@ const CreateStore = () => {
     postPhotoAtFirebase(file)
       .then((url) => {
         axios
-          .patch(
-            `${apiUrl}/store/add`,
+          .post(
+            `${apiUrl}/brand/add`,
             {
               photoURL: url,
               storeName: name.value,
+              country: selectedCountries,
               storeExternalLink: link.value,
               description: description.value,
             },
@@ -70,11 +75,11 @@ const CreateStore = () => {
       <main>
         <section className="edit-store-main3">
           <div className="edit-store-header">
-            <h3>Add New Store</h3>
+            <h3>Add New Brand</h3>
             <div className="edit-store-img">
               <div className="edit-store-img-green">
                 <img src={okIcon} alt="Edit store proccessing" />
-                <p>New store details</p>
+                <p>New Brand details</p>
               </div>
               <div></div>
               <div className="edit-store-img-gray">
@@ -112,28 +117,28 @@ const CreateStore = () => {
                   </div>
                   <div className="edit-store-form">
                     {/* <p>Progress {progress}%</p> */}
-                    <div className="store-name-link">
-                      <div className="store-name">
-                        <label htmlFor="name">Store Name</label>
-                        <Input
-                          required
-                          id="name"
-                          name="name"
-                          style={{ width: "100%" }}
-                        />
-                      </div>
-                      <div className="link-div">
-                        {" "}
-                        <label htmlFor="link">Link*</label>
-                        <Input
-                          required
-                          id="link"
-                          placeholder="https://"
-                          style={{ width: "100%" }}
-                          name="link"
-                        />
-                      </div>
+                  <div className="store-name-link">
+                  <div className="store-name">
+                      <label htmlFor="name">Brand Name</label>
+                      <Input
+                        required
+                        id="name"
+                        name="name"
+                        style={{ width: "100%" }}
+                      />
                     </div>
+                    <div className="link-div">
+                      {" "}
+                      <label htmlFor="link">Link*</label>
+                      <Input
+                        required
+                        id="link"
+                        placeholder="https://"
+                        style={{ width: "100%" }}
+                        name="link"
+                      />
+                    </div>
+                  </div>
 
                     <div>
                       <label htmlFor="description">Description</label>
@@ -163,4 +168,4 @@ const CreateStore = () => {
   );
 };
 
-export default CreateStore;
+export default CreateBrand;

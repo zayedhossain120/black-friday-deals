@@ -1,4 +1,4 @@
-import './Brand.css'
+import "./Brand.css"
 import TopBar from "../../Components/TopBar/TopBar";
 import { SelectedCountryContext } from "../../Contexts/CountryContext/CountryProviderContext";
 import { useContext } from "react";
@@ -16,11 +16,10 @@ const Brand = () => {
     isFetchingNextPage,
     refetch,
   } = useFetchInfinite(
-    `brand/all?country=${country.selectedCountry}&limit=100`,
+    `brand/all?country=${country.selectedCountry}&limit=20`,
     "store-page-stores",
     { country: country.selectedCountry }
   );
-
   return (
     <section className="store-main-container">
       <TopBar navigateTo="/store/create" pageTitle="Brand" />

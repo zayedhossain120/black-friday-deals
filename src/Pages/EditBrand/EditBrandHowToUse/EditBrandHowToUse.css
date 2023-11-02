@@ -1,0 +1,128 @@
+/* .edit-store-main * {
+  outline: 1px solid red;
+} */
+.edit-store-main {
+  background: white;
+  /* height: 100vh; */
+  padding-bottom: clamp(100px, 2vh, 100px);
+}
+.edit-store-header h3 {
+  margin-bottom: 2%;
+}
+
+/* edit store details section */
+
+.add-edit-how-to-use-form {
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - 300px);
+  gap: 10px;
+  justify-content: center;
+  flex-direction: column;
+}
+/* .add-edit-how-to-use-form > div {
+  width: 100vw;
+} */
+.howtouse-next-button {
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  height: 50px;
+  width: 100px;
+  border-radius: 20px;
+  border: 1px solid rgb(204, 203, 203);
+  background-color: #fff;
+  color: black;
+  font-size: large;
+  cursor: pointer;
+}
+.howtouse-next-button:hover {
+  background-color: rgb(97, 190, 114);
+  color: white;
+}
+/* .edit-store-img-gray {
+  color: green;
+} */
+.edit-store-img-gray4 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.edit-store-img-green3 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.edit-store-img-gray4 img {
+  background-color: #20c275;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  padding: 5px;
+}
+.edit-store-img-gray4 p {
+  padding-top: 5px;
+  color: #20c275;
+  font-size: 16px;
+  font-weight: 400;
+}
+.edit-store-img-green3 img {
+  background-color: #a7b9b0;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  padding: 5px;
+}
+.edit-store-img-green3 p {
+  padding-top: 5px;
+  color: #a7b9b0;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.how-to-use-item-section-components {
+  width: 100%;
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+  .howtouse-next-button {
+    position: fixed;
+    bottom: 0;
+    width: 88%;
+  }
+  .how-to-use-item-section-components {
+    position: fixed;
+    bottom: 50px;
+    width: 75%;
+  }
+  .add-edit-how-to-use-form {
+    width: 100%;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .howtouse-next-button {
+    position: fixed;
+    bottom: 0;
+    width: 88%;
+    z-index: 100;
+  }
+  .edit-store-main {
+    padding-bottom: 30%;
+  }
+  /* .add-how-to-use-form {
+    width: 100%;
+  } */
+  .how-to-use-item-section-components {
+    position: fixed;
+    bottom: 50px;
+    width: 50%;
+  }
+  .add-edit-how-to-use-form > div {
+    width: 100%;
+  }
+}

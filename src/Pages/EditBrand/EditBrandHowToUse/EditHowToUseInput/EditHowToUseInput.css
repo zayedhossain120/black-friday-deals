@@ -1,0 +1,84 @@
+.add-edit-how-to-use-form > div {
+  width: 50%;
+  position: relative;
+}
+.add-edit-how-to-use-form div > .howtouse-input-close-button {
+  position: absolute;
+  top: -8px;
+  right: -12px;
+  background-color: white;
+  border: 0;
+  height: 20px;
+  width: 20px;
+  color: gainsboro;
+  border: 0.5px solid gainsboro;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.add-edit-how-to-use-form div > input[type="text"],
+.add-edit-how-to-use-form div > textarea {
+  border-radius: 8px;
+  border: 0;
+  padding: 10px;
+  padding-left: 10px;
+  width: 100%;
+}
+.add-edit-how-to-use-form div > input[type="file"] {
+  display: none;
+}
+.add-edit-how-to-use-form label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 50vw;
+  height: 20vw; */
+}
+.add-edit-how-to-use-form label > img {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.add-edit-how-to-use-form label > img.placeholder-for-howtouse {
+  width: 25%;
+  height: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.add-edit-how-to-use-form div > input.title {
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.add-how-to-use-form div > input.title {
+  font-weight: 900;
+  font-size: 18px;
+}
+.eidt-how-to-use-placeholders {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding-bottom: 100px; */
+}
+.uploadeds .eidt-how-to-use-placeholders img {
+  width: 30%;
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 990px) {
+  .add-edit-how-to-use-form > div {
+    width: clamp(60%, 5%, 90%);
+    /* padding: 0 20px; */
+    /* position: relative; */
+  }
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .add-edit-how-to-use-form > div {
+    width: clamp(90%, 10vh, 100%);
+    /* padding: 0 20px; */
+    /* position: relative; */
+  }
+}

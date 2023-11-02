@@ -1,18 +1,18 @@
-import "./ViewStore.css";
+import "./ViewBrand.css";
 import { Outlet } from "react-router-dom";
 import TopBar from "../../../Components/TopBar/TopBar";
-import ViewStoreDetails from "./ViewStoreDetails/ViewStoreDetails";
-import ViewStoreInnerNav from "./ViewStoreInnerNav/ViewStoreInnerNav";
+import ViewBrandDetails from "./ViewBrandDetails/ViewBrandDetails";
+import ViewBrandInnerNav from "./ViewBrandInnerNav/ViewBrandInnerNav";
 
-const ViewStore = () => {
+const ViewBrand = () => {
   return (
     <div className="view-store-main-container">
       <TopBar pageTitle={"View Brand"} />
 
       <div className="view-store-container">
-        <ViewStoreDetails />
+        <ViewBrandDetails />
         <section className="view-store-outlet-and-nav-container">
-          <ViewStoreInnerNav />
+          <ViewBrandInnerNav />
           <Outlet />
         </section>
       </div>
@@ -20,4 +20,4 @@ const ViewStore = () => {
   );
 };
 
-export default ViewStore;
+export default ViewBrand;
