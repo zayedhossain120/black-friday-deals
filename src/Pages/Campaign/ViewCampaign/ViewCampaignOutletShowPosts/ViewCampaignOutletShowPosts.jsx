@@ -15,6 +15,7 @@ import EditCampaignButton from '../../../../Components/EditCampaignButton/EditCa
 
 const ViewCampaignOutlet = ({query}) => {
     const post = useLoaderData();
+    const campaign = useLoaderData();
     const navigate = useNavigate();
 
   const countryContext = useContext(SelectedCountryContext);
@@ -24,7 +25,7 @@ const ViewCampaignOutlet = ({query}) => {
 
 
     const {
-        data: StorePages /** change */,
+        data: campaignPages /** change */,
         error,
         hasNextPage,
         fetchNextPage,
@@ -32,11 +33,11 @@ const ViewCampaignOutlet = ({query}) => {
         isFetchingNextPage,
         refetch,
       } = useFetchInfinite(
-        `post/all?storeName=${post?.data?.storeName}&${query}&country=${countryContext?.selectedCountry}&limit=10`,
+        `campaign/all?campaignName=${campaign?.data?.campaignName}&${query}&country=${countryContext?.selectedCountry}&limit=10`,
         "store-route",
         { query, countryContext }
       );
-
+        
       useEffect(() => {
         setSelectMultipleItem([]);
       }, [query]);
@@ -44,20 +45,20 @@ const ViewCampaignOutlet = ({query}) => {
       if (!isFetchingNextPage && isFetching) {
         return <MainLoading />;
       }
-      if (error || StorePages?.status === "failed") {
-        return <p>{error?.message || StorePages?.message}</p>;
+      if (error || campaignPages?.status === "failed") {
+        return <p>{error?.message || campaignPages?.message}</p>;
       }
-      if (!StorePages[0]?.data?.length) {
+      if (!campaignPages[0]?.data?.length) {
         return <EmptyData />;
       }
     return (
         <section className="campaign-outlet-container">
       <div className="campaign-table">
-        {StorePages?.map((page) =>
+        {campaignPages?.map((page) =>
           page?.data?.map((post) => (
             <ViewCampaignPostRow
-              key={post?._id}
-              post={post}
+              key={campaign?._id}
+              campaign={campaign}
               setOpenPostViewModal={setOpenPostViewModal}
               setOpenDeletePostModal={setOpenDeletePostModal}
               setSelectMultipleItem={setSelectMultipleItem}

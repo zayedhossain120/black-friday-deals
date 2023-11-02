@@ -16,7 +16,8 @@ import DeleteIcon from '../../../../../Components/IconsComponents/DeleteIcon';
 
 
 const ViewCampaignPostRow = ({
-    post,
+    
+    campaign,
     setOpenPostViewModal,
     setOpenDeletePostModal,
     setSelectMultipleItem,
@@ -24,7 +25,6 @@ const ViewCampaignPostRow = ({
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     const { fetchPostById } = usePostFetch();
-
     const handleOpenPostViewModalWithApiData = async (postId) => {
         const { data, isLoading, error } = await fetchPostById(postId);
         console.log(data);
@@ -34,10 +34,10 @@ const ViewCampaignPostRow = ({
           setOpenPostViewModal({ data, error });
         }
       };
-
+      
       const handleMultipleSelectItem = (e) => {
         e.stopPropagation();
-        const postId = post?._id;
+        const postId = campaign?._id;
         if (e.target.checked) {
           setSelectMultipleItem((prev) => [...prev, postId]);
         } else {
@@ -51,38 +51,38 @@ const ViewCampaignPostRow = ({
       if (isLoading) {
         return <p className="text-center">Loading...</p>;
       }
-    console.log(post);
+    
     return (
         <div
       className="view-campaign-table-row"
-      onClick={() => handleOpenPostViewModalWithApiData(post?._id)}
+      onClick={() => handleOpenPostViewModalWithApiData(campaign?._id)}
     >
       {/* title Store name and photo section */}
       <div className="table-data">
         <div className="post-title-photo-container">
           <input
             type="checkbox"
-            name={post?._id}
-            id={post?._id}
+            name={campaign?._id}
+            id={campaign?._id}
             onClick={(e) => handleMultipleSelectItem(e)}
           />
           <img
-            src={post?.store?.photoURL || placeholder}
-            alt={post?.postTitle?.slice(0, 5)}
+            src={campaign?.data?.campaignPhotoURL || placeholder}
+            alt={campaign?.postTitle?.slice(0, 5)}
             height={50}
             width={50}
             loading="lazy"
           />
           <div className="title-name-container">
             <h4>
-              {post?.postTitle}
-              {post?.isVerified && (
+              {campaign?.data?.campaignName}
+              {campaign?.isVerified && (
                 <img src={verifiedChecked} alt="verified icon" />
               )}
             </h4>
             <p>
-              {post?.store?.storeName}{" "}
-              {post?.postType === "deal" && (
+              {campaign?.data?.storeName}{" "}
+              {campaign?.postType === "deal" && (
                 <small className="tooltip">Deal</small>
               )}
             </p>
@@ -108,8 +108,8 @@ const ViewCampaignPostRow = ({
       <div className='store-logo'>
                 <p>Available on</p>
                 <p>
-              {post?.store?.storeName}{" "}
-              {post?.postType === "deal" && (
+              {campaign?.store?.storeName}{" "}
+              {campaign?.postType === "deal" && (
                 <small className="tooltip">Deal</small>
               )}
             </p>
@@ -139,13 +139,13 @@ const ViewCampaignPostRow = ({
       <Tooltip placement="bottom"  className=' available-countries' title={
       <div>
           {
-            post?.country?.map((country) => (
+            campaign?.data?.countries.map((country) => (
               <div style={{display: "flex", justifyContent: "space-between", gap: "5px"}}
               key={country}
               >
               <img src={flags.find((flag) => flag.countryName === country).flagUrl} alt="" />
               
-               <p>{ post?.country?.find((c) => c.countryName === country).shortForm}</p>
+               <p>{ campaign?.data?.country?.find((c) => c.countryName === country).shortForm}</p>
               
               </div>
             ))
@@ -153,34 +153,34 @@ const ViewCampaignPostRow = ({
         </div>
       } >
       <img src={flag} alt="flag" />
-            <p>{post?.country?.length} countries</p>
+            <p>{campaign?.data?.countries?.length} countries</p>
             <img src={appearance} alt='appearance' />
         </Tooltip>
         
       </div>
       {/* modifier buttons section */}
       <div className="table-data expire-time">
-      {getExpireInAtDays(post?.expireDate) < 1 ? (
+      {getExpireInAtDays(campaign?.expireDate) < 1 ? (
           "Expired"
         ) : (
           <span>
-            End in  <strong>{getExpireInAtDays(post?.expireDate)}</strong>  days
+            End in  <strong>{getExpireInAtDays(campaign?.data?.endPeriod)}</strong>  days
           </span>
         )}
-        {post?.postType === "deal" && (
+        {campaign?.postType === "deal" && (
           <small className="tooltip display-only-on-mobile">Deal</small>
         )}
 
       <div className='table-data modifiers-buttons-container'>
       <img src={viewEye} alt="view icon" />
-        <span>{post?.revealed}</span>
+        <span>{campaign?.data?.__v}</span>
       </div>
       </div>
 
        {/* flags section */}
        <div className="table-data">
         <div className="country-flags">
-          {post?.country?.map((country) => (
+          {campaign?.data?.countries?.map((country) => (
 
             <img
               key={country}

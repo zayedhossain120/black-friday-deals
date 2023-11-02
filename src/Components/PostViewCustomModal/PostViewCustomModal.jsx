@@ -14,12 +14,13 @@ import { getExpireInAtDays } from "../../Utils/variables/formattedDates";
 import { useNavigate } from "react-router-dom";
 
 const PostViewCustomModal = ({
-  post,
+  campaign,
   openPostViewModal,
   setOpenPostViewModal,
   setOpenDeletePostModal,
 }) => {
   console.log(openPostViewModal);
+  console.log(campaign);
   
   const handleCancel = () => {
     setOpenPostViewModal(false);
@@ -50,13 +51,13 @@ const PostViewCustomModal = ({
         ) : (
           <React.Fragment>
             <img
-              src={openPostViewModal?.data?.store?.photoURL || placeholder}
+              src={openPostViewModal?.data?.campaign?.campaignPhotoURL || placeholder}
               alt="Store photo"
               height={100}
               width={100}
               className="post-view-store-photo"
             />
-            <p>{openPostViewModal?.data?.store?.storeName}</p>
+            <p>{openPostViewModal?.data?.campaign?.campaignName}</p>
             <h1>{openPostViewModal?.data?.postTitle}</h1>
             <p>{openPostViewModal?.data?.postDescription}</p>
             <div className="view-icon-count-container">
@@ -65,7 +66,7 @@ const PostViewCustomModal = ({
             </div>
 
             <div className="country-flags">
-              {openPostViewModal?.data?.country?.map((country) => (
+              {openPostViewModal?.data?.countries?.map((country) => (
                 <img
                   key={country}
                   src={
