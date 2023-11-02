@@ -37,6 +37,7 @@ import ViewCampaign from "../Pages/Campaign/ViewCampaign/ViewCampaign";
 import CreateCampaign from "../Pages/CreateCampaign/CreateCampaign";
 import ViewCampaignOutlet from "../Pages/Campaign/ViewCampaign/ViewCampaignOutletShowPosts/ViewCampaignOutletShowPosts";
 import Brand from "../Pages/Store copy/Brand";
+import fetchCampaignDataAtRouterLevel from "../Utils/variables/fetchCampaignDataAtRouterLevel";
 
 const Routes = () => {
   const router = createBrowserRouter([
@@ -68,19 +69,20 @@ const Routes = () => {
         },
         {
           path: "/campaign/:id/",
-          loader: async ({ params }) => fetchStoreDataAtRouterLevel(params.id),
+          loader: async ({ params }) =>
+            fetchCampaignDataAtRouterLevel(params.id),
           element: <ViewCampaign />,
           children: [
             {
               path: "",
               loader: async ({ params }) =>
-                fetchStoreDataAtRouterLevel(params.id),
+                fetchCampaignDataAtRouterLevel(params.id),
               element: <ViewCampaignOutlet query={`${hasValidity()}`} />,
             },
             {
               path: "deals",
               loader: async ({ params }) =>
-                fetchStoreDataAtRouterLevel(params.id),
+                fetchCampaignDataAtRouterLevel(params.id),
               element: (
                 <ViewCampaignOutlet query={`${hasValidity()}&postType=deal`} />
               ),
@@ -88,7 +90,7 @@ const Routes = () => {
             {
               path: "coupon",
               loader: async ({ params }) =>
-                fetchStoreDataAtRouterLevel(params.id),
+                fetchCampaignDataAtRouterLevel(params.id),
               element: (
                 <ViewCampaignOutlet
                   query={`${hasValidity()}&postType=coupon`}
@@ -98,7 +100,7 @@ const Routes = () => {
             {
               path: "expired",
               loader: async ({ params }) =>
-                fetchStoreDataAtRouterLevel(params.id),
+                fetchCampaignDataAtRouterLevel(params.id),
               element: (
                 <ViewCampaignOutlet query={`expireDate[lt]=${new Date()}`} />
               ),
@@ -106,7 +108,7 @@ const Routes = () => {
             {
               path: "voucher",
               loader: async ({ params }) =>
-                fetchStoreDataAtRouterLevel(params.id),
+                fetchCampaignDataAtRouterLevel(params.id),
               element: (
                 <ViewCampaignOutlet query={`${new Date()}=&postType=voucher`} />
               ),
