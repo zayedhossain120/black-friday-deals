@@ -34,10 +34,10 @@ const WhatsappModal = ({ isVisible, onClose }) => {
           },
         }
       );
-      if (data?.status === "success") {
-        toast.success("Number is added successfully");
+      if (data?.success) {
+        toast.success("Number added successfully");
       } else {
-        toast.error("Number is not added");
+        toast.error("Number not added");
       }
       onClose();
     }

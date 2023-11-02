@@ -17,7 +17,6 @@ import { toast } from "react-toastify";
 const CreateStore = () => {
   const navigate = useNavigate();
   const [imageShow, setImageShow] = useState("");
-  const [selectedCountries, setSelectedCountries] = useState(false);
   const { postPhotoAtFirebase } = useSubmitPhotoAtFirebase();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -27,9 +26,6 @@ const CreateStore = () => {
     const name = e.target.name;
     const link = e.target.link;
     const description = e.target.description;
-    if (!file || !name.value || !link.value || !selectedCountries.length) {
-      return; // return error to show;
-    }
 
     setIsLoading(true);
 
@@ -37,12 +33,11 @@ const CreateStore = () => {
     postPhotoAtFirebase(file)
       .then((url) => {
         axios
-          .post(
+          .patch(
             `${apiUrl}/store/add`,
             {
               photoURL: url,
               storeName: name.value,
-              country: selectedCountries,
               storeExternalLink: link.value,
               description: description.value,
             },
@@ -116,28 +111,28 @@ const CreateStore = () => {
                   </div>
                   <div className="edit-store-form">
                     {/* <p>Progress {progress}%</p> */}
-                  <div className="store-name-link">
-                  <div className="store-name">
-                      <label htmlFor="name">Store Name</label>
-                      <Input
-                        required
-                        id="name"
-                        name="name"
-                        style={{ width: "100%" }}
-                      />
+                    <div className="store-name-link">
+                      <div className="store-name">
+                        <label htmlFor="name">Store Name</label>
+                        <Input
+                          required
+                          id="name"
+                          name="name"
+                          style={{ width: "100%" }}
+                        />
+                      </div>
+                      <div className="link-div">
+                        {" "}
+                        <label htmlFor="link">Link*</label>
+                        <Input
+                          required
+                          id="link"
+                          placeholder="https://"
+                          style={{ width: "100%" }}
+                          name="link"
+                        />
+                      </div>
                     </div>
-                    <div className="link-div">
-                      {" "}
-                      <label htmlFor="link">Link*</label>
-                      <Input
-                        required
-                        id="link"
-                        placeholder="https://"
-                        style={{ width: "100%" }}
-                        name="link"
-                      />
-                    </div>
-                  </div>
 
                     <div>
                       <label htmlFor="description">Description</label>

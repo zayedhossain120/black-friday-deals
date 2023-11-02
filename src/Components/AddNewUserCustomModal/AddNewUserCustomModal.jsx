@@ -43,12 +43,11 @@ const AddNewUserCustomModal = ({
       );
 
       // Check if the user was added successfully
-      if (data?.status === "success") {
+      if (data?.success) {
         toast.success("User successfully added");
       } else {
         toast.error("Failed to add user");
       }
-
     } catch (error) {
       console.error("Error:", error);
       toast.error("An error occurred while adding the user");

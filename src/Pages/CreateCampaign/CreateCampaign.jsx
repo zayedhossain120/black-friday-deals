@@ -1,32 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import "./CreateCampaign.css";
-import TopBar from '../../Components/TopBar/TopBar';
-import { DatePicker, Input, Select, Spin } from 'antd';
-import { useNavigate } from 'react-router-dom';
-import useSubmitPhotoAtFirebase from '../../Utils/useSubmitPhotoAtFirebase';
-import flags from '../../Utils/variables/flags';
+import TopBar from "../../Components/TopBar/TopBar";
+import { DatePicker, Input, Select, Spin } from "antd";
+import { useNavigate } from "react-router-dom";
+import useSubmitPhotoAtFirebase from "../../Utils/useSubmitPhotoAtFirebase";
+import flags from "../../Utils/variables/flags";
 import placeholder from "../../assets/Icons/uploadImgIcon.svg";
-import apiUrl from '../../Utils/variables/apiUrl';
-import getToken from '../../Utils/getToken';
-import axios from 'axios';
-
+import apiUrl from "../../Utils/variables/apiUrl";
+import getToken from "../../Utils/getToken";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const CreateCampaign = () => {
-    const navigate = useNavigate();
-    const [imageShow, setImageShow] = useState("");
-    const [selectedCountries, setSelectedCountries] = useState(false);
-    const { postPhotoAtFirebase } = useSubmitPhotoAtFirebase();
-    const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+  const [imageShow, setImageShow] = useState("");
+  const [selectedCountries, setSelectedCountries] = useState(false);
+  const { postPhotoAtFirebase } = useSubmitPhotoAtFirebase();
+  const [isLoading, setIsLoading] = useState(false);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const handleSubmit = async(e) => {
-        e.preventDefault();
-
-        const form = e.target;
-        const file = form.photoURL?.files[0];
-        const campaignName = form.campaignName.value;
-        
-    
+    const form = e.target;
+    const file = form.photoURL?.files[0];
+    const campaignName = form.campaignName.value;
 
     setIsLoading(true);
 
@@ -40,8 +37,6 @@ const CreateCampaign = () => {
               photoURL: url,
               storeName: name.value,
               country: selectedCountries,
-        
-             
             },
             {
               headers: {
@@ -63,20 +58,19 @@ const CreateCampaign = () => {
       .catch((e) => {
         console.log(e);
       });
+  };
 
-    };
-  
-    return (
-        <div>
-            <TopBar pageTitle='Create New Campaign' />
-            <main>
-            <section className="edit-campaign-main3">
+  return (
+    <div>
+      <TopBar pageTitle="Create New Campaign" />
+      <main>
+        <section className="edit-campaign-main3">
           <div className="edit-campaign-header">
             <h3>Create New Campaign</h3>
           </div>
           <div>
             <Spin spinning={isLoading}>
-              <form onSubmit={handleSubmit} >
+              <form onSubmit={handleSubmit}>
                 <section className="edit-campaign-details">
                   <div className="edit-campaign-logo">
                     <label htmlFor="photoURL" className="uploaded">
@@ -101,7 +95,7 @@ const CreateCampaign = () => {
                       }
                     />
                   </div>
-                  
+
                   <div className="edit-campaign-form">
                     {/* <p>Progress {progress}%</p> */}
                     <div>
@@ -114,17 +108,17 @@ const CreateCampaign = () => {
                       />
                     </div>
 
-                    <div className='datepicker-container' >
-                        <div className='start-period' >
-                        <label htmlFor='start-date'>Period Start Date</label>
-                    <DatePicker id='start-date' placeholder='Start Date' />
-                        </div>
-                   <div className='end-period' >
-                   <label htmlFor="end-date">Period End Date</label>
-                    <DatePicker id='end-date'  placeholder='End Date' />
-                   </div>
-                  </div>
-                   
+                    <div className="datepicker-container">
+                      <div className="start-period">
+                        <label htmlFor="start-date">Period Start Date</label>
+                        <DatePicker id="start-date" placeholder="Start Date" />
+                      </div>
+                      <div className="end-period">
+                        <label htmlFor="end-date">Period End Date</label>
+                        <DatePicker id="end-date" placeholder="End Date" />
+                      </div>
+                    </div>
+
                     <div className="">
                       <label htmlFor="country">Country</label>
                       <Select
@@ -142,7 +136,6 @@ const CreateCampaign = () => {
                         })}
                       />
                     </div>
-                   
                   </div>
                 </section>
                 <div className="form-submit-btn-main">
@@ -155,9 +148,9 @@ const CreateCampaign = () => {
             </Spin>
           </div>
         </section>
-            </main>
-        </div>
-    );
+      </main>
+    </div>
+  );
 };
 
 export default CreateCampaign;

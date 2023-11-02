@@ -105,7 +105,8 @@ const Routes = () => {
             },
             {
               path: "voucher",
-              loader: async ({params}) => fetchStoreDataAtRouterLevel(params.id),
+              loader: async ({ params }) =>
+                fetchStoreDataAtRouterLevel(params.id),
               element: (
                 <ViewCampaignOutlet query={`${new Date()}=&postType=voucher`} />
               ),
