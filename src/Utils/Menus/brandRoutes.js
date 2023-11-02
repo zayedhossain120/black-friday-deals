@@ -2,19 +2,19 @@ const brandRoutes = (id) => {
     return [
       {
         label: "Deal",
-        link: `/brand/${id}/deals`,
+        link: `/brands/${id}/deal`,
       },
       {
         label: "Coupon",
-        link: `/brand/${id}/coupons`,
+        link: `/brands/${id}/coupon`,
       },
       {
         label: "Voucher",
-        link: `/brand/${id}/voucher`,
+        link: `/brands/${id}/voucher`,
       },
       {
         label: "Expired",
-        link: `/brand/${id}/expired`,
+        link: `/brands/${id}/expired`,
       }
     ];
   };

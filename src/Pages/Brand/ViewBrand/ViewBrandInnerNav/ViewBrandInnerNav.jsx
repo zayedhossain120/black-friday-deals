@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import { NavLink, useLoaderData } from "react-router-dom";
-import viewStoreRoutes from "../../../../Utils/Menus/viewStoreRoutes";
+import brandRoutes from "../../../../Utils/Menus/brandRoutes";
 
-const ViewStoreInnerNav = () => {
-  const store = useLoaderData();
+const ViewBrandInnerNav = () => {
+  const brand = useLoaderData();
 
   return (
     <nav className="post-inner-nav">
-      {viewStoreRoutes(store?.data?._id).map((menu) => (
+      {brandRoutes(brand?.data?._id).map((menu) => (
         <NavLink
           key={menu.label}
           to={menu.link}
@@ -26,4 +26,4 @@ const ViewStoreInnerNav = () => {
   );
 };
 
-export default ViewStoreInnerNav;
+export default ViewBrandInnerNav;

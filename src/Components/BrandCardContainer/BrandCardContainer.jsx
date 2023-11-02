@@ -48,7 +48,7 @@ const BrandCardContainer = ({
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      navigate(`/store/edit/${brand?._id}`);
+                      navigate(`/brand/edit/${brand?._id}`);
                     }}
                   >
                     <EditIcon />
@@ -69,7 +69,7 @@ const BrandCardContainer = ({
                       <img
                         key={country}
                         src={
-                          flags.find((flag) => flag.countryName === country)
+                          flags.find((flag) => flag?.countryName === country)
                             .flagUrl
                         }
                         alt={country}

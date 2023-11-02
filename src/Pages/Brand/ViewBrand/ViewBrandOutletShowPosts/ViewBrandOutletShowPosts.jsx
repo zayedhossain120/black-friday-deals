@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import "./ViewStoreOutletShowPosts.css";
+import "";
 import { Button, Spin } from "antd";
 import { useContext, useEffect, useState } from "react";
 import { SelectedCountryContext } from "../../../../Contexts/CountryContext/CountryProviderContext";
@@ -8,10 +8,10 @@ import useFetchInfinite from "../../../../CustomHooks/useFetchInfinite";
 import MainLoading from "../../../../Components/MainLoading/MainLoading";
 import PostViewCustomModal from "../../../../Components/PostViewCustomModal/PostViewCustomModal";
 import PostDeleteModal from "../../../../Components/PostDeleteModal/PostDeleteModal";
-import ViewStorePostRow from "./ViewStorePostRow/ViewStorePostRow";
+import ViewStorePostRow from "./ViewBrandPostRow/ViewBrandPostRow";
 import { useLoaderData } from "react-router-dom";
 
-const ViewStoreOutlet = ({ query }) => {
+const ViewBrandOutletShowPosts = ({ query }) => {
   const store = useLoaderData();
   // console.log("this store modal data Nizam:", store);
   const countryContext = useContext(SelectedCountryContext);
@@ -108,4 +108,4 @@ const ViewStoreOutlet = ({ query }) => {
   );
 };
 
-export default ViewStoreOutlet;
+export default ViewBrandOutletShowPosts;
