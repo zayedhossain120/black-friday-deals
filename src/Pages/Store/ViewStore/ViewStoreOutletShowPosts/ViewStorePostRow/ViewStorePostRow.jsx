@@ -33,7 +33,7 @@ const ViewStorePostRow = ({
     }
   };
 
-
+  console.log(post)
   // select multiple items to delete
   const handleMultipleSelectItem = (e) => {
     e.stopPropagation();

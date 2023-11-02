@@ -1,12 +1,12 @@
 import React from 'react';
 import { NavLink, useLoaderData } from 'react-router-dom';
-import viewStoreRoutes from '../../../../Utils/Menus/viewStoreRoutes';
+import viewCampaignRoutes from '../../../../Utils/Menus/viewCampaignRoutes';
 
 const ViewCampaignInnerNav = () => {
-    const store = useLoaderData();
+    const campaign = useLoaderData();
     return (
         <nav className="post-inner-nav">
-      {viewStoreRoutes(store?.data?._id).map((menu) => (
+      {viewCampaignRoutes(campaign?.data?._id).map((menu) => (
         <NavLink
           key={menu.label}
           to={menu.link}

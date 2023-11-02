@@ -22,12 +22,12 @@ const ViewCampaignPostRow = ({
     setSelectMultipleItem,
 }) => {
     const [isLoading, setIsLoading] = useState(false);
-    const [countries, setCountries] = useState([]);
     const navigate = useNavigate();
     const { fetchPostById } = usePostFetch();
 
     const handleOpenPostViewModalWithApiData = async (postId) => {
         const { data, isLoading, error } = await fetchPostById(postId);
+        console.log(data);
         if (isLoading) {
           setIsLoading(true);
         } else {
@@ -51,7 +51,7 @@ const ViewCampaignPostRow = ({
       if (isLoading) {
         return <p className="text-center">Loading...</p>;
       }
-     
+    console.log(post);
     return (
         <div
       className="view-campaign-table-row"
@@ -145,7 +145,7 @@ const ViewCampaignPostRow = ({
               >
               <img src={flags.find((flag) => flag.countryName === country).flagUrl} alt="" />
               
-               <p>{ post?.country?.map(c => `${c}`)}</p>
+               <p>{ post?.country?.find((c) => c.countryName === country).shortForm}</p>
               
               </div>
             ))
