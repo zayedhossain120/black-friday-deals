@@ -12,13 +12,18 @@ const Network = () => {
   const [openEditNetworkModal, setOpenEditNetworkModal] = useState(false);
   const [addNewNetworkModal, setAddNewNetworkModal] = useState();
 
+  const openAddNewNetworkModal = () => {
+    setAddNewNetworkModal(true);
+  };
+
   return (
     <div className="category-main">
-      <TopBar pageTitle="All Network" />
+      <TopBar
+        openAddNewNetworkModal={openAddNewNetworkModal}
+        // onClick={() => setAddNewNetworkModal(true)}
+        pageTitle="All Network"
+      />
 
-      <button onClick={(e) => setAddNewNetworkModal(true)}>
-        Add new network
-      </button>
       <NetworkCard
         setOpenDeleteNetworkModal={setOpenDeleteNetworkModal}
         setOpenEditNetworkModal={setOpenEditNetworkModal}

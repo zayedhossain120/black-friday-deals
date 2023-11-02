@@ -12,13 +12,16 @@ const Category = () => {
   const [openEditCategoryModal, setOpenEditCategoryModal] = useState(false);
   const [openAddNewCategoryModal, setOpenAddNewCategoryModal] = useState(false);
 
+  const openAddNewCategorykModal = () => {
+    setOpenAddNewCategoryModal(true);
+  };
+
   return (
     <div className="category-main">
-      <TopBar pageTitle="All Categories" />
-
-      <button onClick={(e) => setOpenAddNewCategoryModal(true)}>
-        Add New Category
-      </button>
+      <TopBar
+        openAddNewCategorykModal={openAddNewCategorykModal}
+        pageTitle="All Categories"
+      />
 
       <CategoryCard
         setOpenDeleteCategoryModal={setOpenDeleteCategoryModal}

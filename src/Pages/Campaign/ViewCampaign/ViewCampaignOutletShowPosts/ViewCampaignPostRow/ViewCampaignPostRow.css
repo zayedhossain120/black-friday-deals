@@ -1,0 +1,232 @@
+/* antd's tooltip designs changed here */
+
+.ant-tooltip-inner {
+  color: rgba(0, 0, 0, 0.80) !important;
+  text-align: center !important;
+  font-size: 18px !important;
+  background-color: #FFFF !important;
+}
+.ant-tooltip-placement-bottom .ant-tooltip-arrow, .ant-tooltip-placement-bottomLeft .ant-tooltip-arrow, .ant-tooltip-placement-bottomRight .ant-tooltip-arrow {
+  border-bottom-color: green !important;
+}
+/* antd's tooltip designs changed here */
+
+.post-table {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .view-campaign-table-row {
+    /*  only change post table**/
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr ;
+    justify-content: start;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+  }
+ 
+  .view-campaign-table-row:hover {
+    background: rgba(98, 86, 233, 0.05);
+  }
+  .view-campaign-table-row input[type="checkbox"] {
+    width: clamp(14px, 2vw, 1.1rem);
+    height: clamp(14px, 2vw, 1.1rem);
+  }
+  .view-campaign-table-row .country-flags {
+    display: none;
+  }
+  .view-campaign-table-row .table-data h4 {
+    display: flex;
+    gap: 5px;
+  }
+  .view-campaign-table-row .table-data h4 > img {
+    width: clamp(12px, 2vw, 16px);
+  }
+  .view-campaign-table-row .table-data h4 ~ p {
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 400;
+  }
+  .view-campaign-table-row .table-data .tooltip {
+    color: black;
+    border: 0.5px solid #f1f1f1;
+    background-color: #f1f1f1;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-size: 12px;
+  }
+  .view-campaign-table-row .post-title-photo-container {
+    display: grid;
+    grid-template-columns: 30px 70px 1fr;
+    align-items: center;
+    gap: 20px;
+  }
+  .view-campaign-table-row .post-title-photo-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+    word-wrap: break-word;
+  }
+  .view-campaign-table-row .table-data.expire-time {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+  
+  .view-campaign-table-row .table-data.expire-time > .display-only-on-mobile {
+    position: absolute;
+    visibility: hidden;
+  }
+  .view-campaign-table-row .table-data:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s ease;
+  }
+  .modifiers-buttons-container{
+    position: absolute;
+    visibility: hidden ;
+    opacity: 0;
+  }
+  .modifiers-buttons-container button {
+    /** this post table*/
+    border: none;
+    background: transparent;
+    transition: all 0.5s ease;
+    opacity: 0;
+    width: 0;
+  }
+  
+ 
+  
+  .available-countries{
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    color: rgba(0, 0, 0, 0.50);
+    font-size: 16px;
+  }
+ 
+  .price-and-discount{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+ .basic-price-and-off{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+ }
+ .basic-price-and-off h1{
+  color: rgba(0, 0, 0, 0.80);
+font-size: 20px;
+font-weight: 700;
+ }
+ .basic-price-and-off p{
+  color: rgba(255, 0, 0, 0.40);
+font-size: 16px;
+text-decoration: line-through;
+
+ }
+ .discount  p>span{
+  color: #000;
+  font-size: 14px;
+ }
+ .discount p{
+  color: rgba(0, 0, 0, 0.50);
+font-size: 14px;
+
+ }
+ .store-logo p{
+color: rgba(0, 0, 0, 0.60);
+text-align: center;
+font-size: 14px;
+ }
+
+
+  
+  /* responsive========================= */
+  @media screen and (max-width: 780px) {
+    .view-campaign-table-row {
+      grid-template-columns: 3fr 2fr;
+      box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.09);
+      min-height: 150px;
+      position: relative;
+      margin-bottom: 20px;
+      align-items:first baseline;
+    }
+  
+    .view-campaign-table-row .post-title-photo-container {
+      grid-template-columns: 20px 50px 1fr;
+      gap: 10px;
+    }
+    .view-campaign-table-row .table-data h4 ~ p {
+      visibility: hidden;
+    }
+  
+    .view-campaign-table-row .table-data.expire-time > .display-only-on-mobile {
+      display: block;
+    }
+    .view-campaign-table-row .table-data:last-child {
+      justify-content: center;
+    }
+    .view-campaign-table-row .country-flags {
+  
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+      
+    }
+    .view-campaign-table-row .country-flags img {
+      margin-right: 5px;
+    }
+    .store-table .table-data:nth-child(2) {
+      order: 4;
+      grid-column: 1 / span 4;
+      border-top: 1px solid gainsboro;
+    }
+    .store-table .table-data:nth-child(3) {
+      position: absolute;
+      left: 110px;
+      top: 60px;
+    }
+    .available-countries{
+      position: absolute;
+      visibility: hidden;
+    }
+    .store-logo{
+      display: flex;
+      justify-content: flex-start;
+    }
+  
+    .modifiers-buttons-container button{
+      opacity: 1;
+      width: fit-content;
+      margin-right: 20px;
+    }
+    .view-campaign-table-row .modifiers-buttons-container  {
+      visibility: visible;
+      margin-left: clamp(5px, 1vw, 20px);
+      margin-right: clamp(5px, 1vw, 20px); 
+      opacity: 1;
+      width: fit-content;
+      right: 10%;
+      top: 10px;
+    }
+    .table-data .modifiers-buttons-container :is(img, span){
+      position: absolute;
+      visibility: hidden;
+    }
+    .view-campaign-table-row .table-data.expire-time{
+      justify-content: flex-start;
+    }
+
+    .view-campaign-table-row .table-data.expire-time > .display-only-on-mobile {
+      
+      visibility: visible;
+    }
+  }

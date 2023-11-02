@@ -33,6 +33,10 @@ import Category from "../Pages/Category/Category";
 import Network from "../Pages/Network/Network";
 import ProductCreate from "../Pages/ProductCreate/ProductCreate";
 import ProductDeal from "../Pages/Post/ProductDeal/ProductDeal";
+import Campaign from "../Pages/Campaign/Campaign";
+import ViewCampaign from "../Pages/Campaign/ViewCampaign/ViewCampaign";
+import CreateCampaign from "../Pages/CreateCampaign/CreateCampaign";
+import ViewCampaignOutlet from "../Pages/Campaign/ViewCampaign/ViewCampaignOutletShowPosts/ViewCampaignOutletShowPosts";
 
 const Routes = () => {
   const router = createBrowserRouter([
@@ -50,13 +54,67 @@ const Routes = () => {
           path: "/",
           element: <Dashboard />,
         },
-        {
-          path: "/onlinestore",
-          element: <OnlineStore />,
-        },
+        // {
+        //   path: "/onlinestore",
+        //   element: <OnlineStore />,
+        // },
         {
           path: "/brands",
           element: <Brand />,
+        },
+        {
+          path: "/campaign",
+          element: <Campaign />,
+        },
+        {
+          path: "/campaign/:id/",
+          loader: async ({ params }) => fetchStoreDataAtRouterLevel(params.id),
+          element: <ViewCampaign />,
+          children: [
+            {
+              path: "",
+              loader: async ({ params }) =>
+                fetchStoreDataAtRouterLevel(params.id),
+              element: <ViewCampaignOutlet query={`${hasValidity()}`} />,
+            },
+            {
+              path: "deals",
+              loader: async ({ params }) =>
+                fetchStoreDataAtRouterLevel(params.id),
+              element: (
+                <ViewCampaignOutlet query={`${hasValidity()}&postType=deal`} />
+              ),
+            },
+            {
+              path: "coupons",
+              loader: async ({ params }) =>
+                fetchStoreDataAtRouterLevel(params.id),
+              element: (
+                <ViewCampaignOutlet
+                  query={`${hasValidity()}&postType=coupon`}
+                />
+              ),
+            },
+            {
+              path: "expired",
+              loader: async ({ params }) =>
+                fetchStoreDataAtRouterLevel(params.id),
+              element: (
+                <ViewCampaignOutlet query={`expireDate[lt]=${new Date()}`} />
+              ),
+            },
+            {
+              path: "voucher",
+              loader: async () => fetchStoreDataAtRouterLevel(params.id),
+              element: (
+                <ViewCampaignOutlet query={`${new Date()}=&expireDate[lt]`} />
+              ),
+            },
+          ],
+        },
+        {
+          path: "/campaign/create",
+          element: <CreateCampaign />,
         },
         {
           path: "/store",

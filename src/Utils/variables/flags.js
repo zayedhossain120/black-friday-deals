@@ -1,46 +1,70 @@
-import bahrain from "../../assets/Flags/bahrain.svg";
-import egypt from "../../assets/Flags/egypt.svg";
-import kuwait from "../../assets/Flags/kuwait.svg";
-import oman from "../../assets/Flags/oman.svg";
-import qatar from "../../assets/Flags/qatar.svg";
-import ksa from "../../assets/Flags/saudiArabia.svg";
-import uae from "../../assets/Flags/unitedArabEmirate.svg";
+import US from "../../assets/Flags/UnitedState.png";
+import UK from "../../assets/Flags/UnitedKingdom.png";
+import Canada from "../../assets/Flags/Canada.png";
+import France from "../../assets/Flags/France.png";
+import Germany from "../../assets/Flags/Germany.png";
+import India from "../../assets/Flags/India.png";
+import Italy from "../../assets/Flags/Italy.png";
+import Netherlands from "../../assets/flags/Netherlands.png";
+import Poland from "../../assets/Flags/Poland.png";
+import Spain from "../../assets/Flags/Spain.png";
+import Sweden from "../../assets/Flags/Sweden.png";
 
 const flags = [
   {
-    countryName: "Bahrain",
-    flagUrl: bahrain,
-    shortForm: "Bahrain",
+    countryName: "United State",
+    flagUrl: US,
+    shortForm: "US",
   },
   {
-    countryName: "Egypt",
-    flagUrl: egypt,
-    shortForm: "Egypt",
+    countryName: "Canada",
+    flagUrl: Canada,
+    shortForm: "Canada",
   },
   {
-    countryName: "Kuwait",
-    flagUrl: kuwait,
-    shortForm: "Kuwait",
+    countryName: "France",
+    flagUrl: France,
+    shortForm: "France",
   },
   {
-    countryName: "Oman",
-    flagUrl: oman,
-    shortForm: "Oman",
+    countryName: "Netherlands",
+    flagUrl: Netherlands,
+    shortForm: "Netherlands",
   },
   {
-    countryName: "Qatar",
-    flagUrl: qatar,
-    shortForm: "Qatar",
+    countryName: "Germany",
+    flagUrl: Germany,
+    shortForm: "Germany",
   },
   {
-    countryName: "Saudi Arabia",
-    flagUrl: ksa,
-    shortForm: "KSA",
+    countryName: "India",
+    flagUrl: India,
+    shortForm: "India",
   },
   {
-    countryName: "United Arab Emirates",
-    flagUrl: uae,
-    shortForm: "UAE",
+    countryName: "Italy",
+    flagUrl: Italy,
+    shortForm: "Italy",
+  },
+  {
+    countryName: "Poland",
+    flagUrl: Poland,
+    shortForm: "Poland",
+  },
+  {
+    countryName: "Spain",
+    flagUrl: Spain,
+    shortForm: "Spain",
+  },
+  {
+    countryName: "Sweden",
+    flagUrl: Sweden,
+    shortForm: "Sweden",
+  },
+  {
+    countryName: "United Kingdom",
+    flagUrl: UK,
+    shortForm: "United Kingdom",
   },
 ];
 

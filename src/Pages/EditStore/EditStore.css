@@ -11,9 +11,10 @@
   padding-bottom: clamp(2%, 8vh, 40px);
   margin-top: 10px;
 }
-.create-store-ant-input {
+/* No country in store view page */
+/* .create-store-ant-input {
   width: clamp(388px, 5vh, 388px);
-}
+} */
 .edit-store-imgs {
   display: flex;
   gap: 50px;
@@ -135,9 +136,8 @@
 
 .edit-store-form {
   display: grid;
-  grid-template-columns: repeat(2, minmax(388px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 3.1rem;
-  /* position: relative; */
 }
 
 .edit-store-form > div {
@@ -229,7 +229,8 @@
     overflow-x: hidden;
   }
 
-  .create-store-ant-input {
+  /* No country in store view page */
+  /* .create-store-ant-input {
     width: 100% !important;
-  }
+  } */
 }

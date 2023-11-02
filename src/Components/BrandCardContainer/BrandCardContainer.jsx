@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import MainLoading from "../MainLoading/MainLoading";
 
 const BrandCardContainer = ({
-  storesData,
+  brandData,
   error,
   hasNextPage,
   fetchNextPage,
@@ -24,13 +24,13 @@ const BrandCardContainer = ({
     return <MainLoading />;
   }
 
-  if (error || storesData?.status === "failed") {
-    return <p>{error?.message || storesData?.message}</p>;
+  if (error || brandData?.status === "failed") {
+    return <p>{error?.message || brandData?.message}</p>;
   }
   return (
     <div className="stores-sub-main-container">
       <div className="store-cards-container">
-        {storesData?.map((page) =>
+        {brandData?.map((page) =>
           page?.data
             ?.sort((a, b) => (a?.totalPosts > b?.totalPosts ? -1 : 1))
             ?.map((store) => (

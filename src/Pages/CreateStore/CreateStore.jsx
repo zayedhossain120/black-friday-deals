@@ -116,7 +116,8 @@ const CreateStore = () => {
                   </div>
                   <div className="edit-store-form">
                     {/* <p>Progress {progress}%</p> */}
-                    <div>
+                  <div className="store-name-link">
+                  <div className="store-name">
                       <label htmlFor="name">Store Name</label>
                       <Input
                         required
@@ -125,7 +126,7 @@ const CreateStore = () => {
                         style={{ width: "100%" }}
                       />
                     </div>
-                    <div>
+                    <div className="link-div">
                       {" "}
                       <label htmlFor="link">Link*</label>
                       <Input
@@ -135,24 +136,9 @@ const CreateStore = () => {
                         style={{ width: "100%" }}
                         name="link"
                       />
-                    </div>{" "}
-                    <div className="">
-                      <label htmlFor="country">Country</label>
-                      <Select
-                        id="country"
-                        className="create-store-ant-input1"
-                        name="country"
-                        mode="multiple"
-                        placeholder="Select Country"
-                        onChange={(value) => setSelectedCountries(value)}
-                        options={flags.map((flag) => {
-                          return {
-                            label: flag.shortForm,
-                            value: flag.countryName,
-                          };
-                        })}
-                      />
                     </div>
+                  </div>
+
                     <div>
                       <label htmlFor="description">Description</label>
                       <TextArea
@@ -160,7 +146,7 @@ const CreateStore = () => {
                         name="description"
                         style={{
                           height: "138px",
-                          // resize: "none",
+                          resize: "none",
                         }}
                       />
                     </div>
