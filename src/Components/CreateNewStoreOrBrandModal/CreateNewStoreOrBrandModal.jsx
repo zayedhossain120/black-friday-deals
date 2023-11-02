@@ -28,8 +28,8 @@ const CreateNewStoreOrBrandModal = ({
         <p>Select Online Store or Brand what you want to create</p>
 
         <div className="modifier-buttons-container create-store-brand-button">
-          <button onClick={() => navigate("/store/create")}>Store</button>
-          <button onClick={() => navigate("/store/create")}>Brand</button>
+          <button className="store-modal-button" onClick={() => navigate("/store/create")}>Store</button>
+          <button className="brand-modal-button" onClick={() => navigate("/store/create")}>Brand</button>
         </div>
       </div>
     </Modal>
