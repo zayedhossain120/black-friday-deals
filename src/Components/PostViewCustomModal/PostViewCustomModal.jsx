@@ -14,10 +14,12 @@ import { getExpireInAtDays } from "../../Utils/variables/formattedDates";
 import { useNavigate } from "react-router-dom";
 
 const PostViewCustomModal = ({
+  post,
   openPostViewModal,
   setOpenPostViewModal,
   setOpenDeletePostModal,
 }) => {
+  console.log(openPostViewModal);
   
   const handleCancel = () => {
     setOpenPostViewModal(false);

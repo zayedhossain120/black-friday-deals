@@ -6,6 +6,7 @@ import EditIconView from '../../../../Components/IconsComponents/EditIconView';
 
 const ViewCampaignDetails = () => {
   const { id } = useParams();
+  console.log(id, "campaign page id");
   const store = useLoaderData();
   const navigate = useNavigate();
     return (
