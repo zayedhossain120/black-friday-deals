@@ -1,0 +1,27 @@
+/* .post-inner-menu {
+  border: 1px solid black;
+  overflow: hidden;
+  padding: 0;
+} */
+.post-inner-menu a {
+  font-size: 20px;
+}
+.active a {
+  font-size: 50px;
+}
+
+.view-store-inner-menu {
+  padding: clamp(5px, 3vh, 15px) clamp(15px, 3vw, 25px);
+  margin: 10px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.5);
+  padding-top: 0;
+  /* padding-left: 0;
+  margin-left: 0; */
+}
+.view-store-inner-menu.active {
+  color: #5a6acf;
+  font-weight: 500;
+  border-bottom: 1px solid #5a6acf;
+  overflow: hidden;
+}

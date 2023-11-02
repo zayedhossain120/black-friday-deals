@@ -27,8 +27,7 @@ import ViewStoreOutlet from "../Pages/Store/ViewStore/ViewStoreOutletShowPosts/V
 import ViewStoreOutletHowToUse from "../Pages/Store/ViewStore/ViewStoreOutletHowToUse/ViewStoreOutletHowToUse";
 import PostModalsProvider from "../Contexts/PostModalContext/PostModalContext";
 import OnlineStore from "../Pages/OnlineStore/OnlineStore";
-import Brand from "../Pages/Brand/Brand";
-
+// import Brand from "../Pages/Brand/Brand";
 import Category from "../Pages/Category/Category";
 import Network from "../Pages/Network/Network";
 import ProductCreate from "../Pages/ProductCreate/ProductCreate";
@@ -37,6 +36,7 @@ import Campaign from "../Pages/Campaign/Campaign";
 import ViewCampaign from "../Pages/Campaign/ViewCampaign/ViewCampaign";
 import CreateCampaign from "../Pages/CreateCampaign/CreateCampaign";
 import ViewCampaignOutlet from "../Pages/Campaign/ViewCampaign/ViewCampaignOutletShowPosts/ViewCampaignOutletShowPosts";
+import Brand from "../Pages/Store copy/Brand";
 
 const Routes = () => {
   const router = createBrowserRouter([

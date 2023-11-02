@@ -7,7 +7,7 @@ import ViewStoreInnerNav from "./ViewStoreInnerNav/ViewStoreInnerNav";
 const ViewStore = () => {
   return (
     <div className="view-store-main-container">
-      <TopBar pageTitle={"View Store"} />
+      <TopBar pageTitle={"View Brand"} />
 
       <div className="view-store-container">
         <ViewStoreDetails />

@@ -1,0 +1,15 @@
+.view-store-main-container {
+  height: 100dvh;
+}
+.view-store-outlet-and-nav-container {
+  background-color: white;
+  height: calc(100vh - 50px);
+  padding-bottom: 50px;
+  scroll-behavior: smooth;
+  /* height: 100vh; */
+}
+
+.view-store-container {
+  height: 100vh;
+  overflow: hidden;
+}

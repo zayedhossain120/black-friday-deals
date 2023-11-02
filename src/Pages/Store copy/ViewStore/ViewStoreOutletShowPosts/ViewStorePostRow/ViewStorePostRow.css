@@ -1,0 +1,248 @@
+.post-table {
+  width: 100%;
+  margin: 0 auto;
+}
+.view-store-table-row {
+  /*  only change post table**/
+  display: grid;
+  grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr 1fr;
+  justify-content: start;
+  align-items: center;
+  padding: 20px;
+  cursor: pointer;
+}
+/* .post-table .table-row {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr 1fr 1fr;
+  justify-content: start;
+  align-items: center;
+  padding: 20px;
+  cursor: pointer;
+} */
+.view-store-table-row:hover {
+  background: rgba(98, 86, 233, 0.05);
+}
+.view-store-table-row input[type="checkbox"] {
+  width: clamp(14px, 2vw, 1.1rem);
+  height: clamp(14px, 2vw, 1.1rem);
+}
+
+.view-store-table-row .table-data h4 {
+  display: flex;
+  gap: 5px;
+}
+.view-store-table-row .table-data h4 > img {
+  width: clamp(12px, 2vw, 16px);
+}
+.view-store-table-row .table-data h4 ~ p {
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 400;
+}
+.view-store-table-row .table-data .tooltip {
+  color: black;
+  border: 0.5px solid #f1f1f1;
+  background-color: #f1f1f1;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+.view-store-table-row .post-title-photo-container {
+  display: grid;
+  grid-template-columns: 30px 70px 1fr;
+  align-items: center;
+  gap: 20px;
+}
+.view-store-table-row .post-title-photo-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  word-wrap: break-word;
+}
+.view-store-table-row .table-data.expire-time {
+  justify-content: center;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 400;
+  display: flex;
+  gap: 5px;
+}
+
+.view-store-table-row .table-data.expire-time > .display-only-on-mobile {
+  display: none;
+}
+.view-store-table-row .table-data:last-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 1s ease;
+}
+
+.store-table .modifier-buttons-container button {
+  /** this post table*/
+  transition: all 0.5s ease;
+  opacity: 0;
+  width: 0;
+}
+.view-store-table-row:hover .modifier-buttons-container :is(img, span) {
+  display: none;
+}
+.view-store-table-row:hover .modifier-buttons-container button {
+  margin-left: clamp(5px, 1vw, 20px);
+  margin-right: clamp(5px, 1vw, 20px);
+  opacity: 1;
+  width: fit-content;
+}
+
+/* dynamic price and available store poran change */
+.dynamic-price-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.dynamic-price-div .dynamic-price-div-childOne {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dynamic-price-div .dynamic-price-div-childOne p {
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 20px;
+  font-weight: 700;
+}
+.dynamic-price-div .dynamic-price-div-childOne del {
+  color: rgba(255, 0, 0, 0.4);
+}
+.dynamic-price-div .percentage {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 1);
+}
+.available-online-store {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  /* padding-right: 36%; */
+}
+.available-online-store p {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 10px;
+  font-weight: 400;
+}
+.available-online-store img {
+  width: 70px;
+  height: 40px;
+  object-fit: contain;
+}
+.country-flags .view-store-flag-img {
+  width: 14px;
+  height: 16px;
+}
+.country-flags .country-flags-child-div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mobile-v-flag {
+  display: none;
+}
+.available-online-store .expired-item-copy {
+  display: none;
+}
+.ant-select-selector {
+  border: none;
+  padding: 0;
+}
+/* responsive========================= */
+@media screen and (max-width: 700px) {
+  .view-store-table-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.09);
+    min-height: 150px;
+    position: relative;
+    margin-bottom: 20px;
+    padding: 20px 20px 10px 20px;
+  }
+
+  .view-store-table-row .post-title-photo-container {
+    display: flex;
+  }
+  .view-store-table-row .table-data h4 ~ p {
+    visibility: hidden;
+  }
+
+  .view-store-table-row .table-data.expire-time > .display-only-on-mobile {
+    display: block;
+  }
+  .view-store-table-row .country-flags {
+    justify-content: center;
+    margin-left: 0;
+    padding-top: 18px;
+    display: none;
+  }
+  .store-table .table-data:nth-child(2) {
+    order: 4;
+    grid-column: 1 / span 4;
+    border-top: 1px solid gainsboro;
+  }
+  .store-table .table-data:nth-child(3) {
+    position: absolute;
+    left: 110px;
+    top: 60px;
+  }
+
+  /* //responsive by poran */
+  .view-store-table-row .post-title-photo-container img {
+    max-width: 200%;
+    max-height: 100%;
+  }
+  .mobile-v-flag {
+    display: block;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    gap: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding-top: 10px;
+  }
+  .view-store-table-row input[type="checkbox"] {
+    display: none;
+  }
+  .view-store-table-row .table-data h4 > img {
+    display: none;
+  }
+  .dynamic-price-div {
+    padding-left: 70px;
+  }
+  .modifier-buttons-container img,
+  span {
+    display: none;
+  }
+  .available-online-store {
+    width: 100%;
+    flex-direction: row;
+    padding-left: 70px;
+    gap: 10px;
+    padding-bottom: 10px;
+  }
+  .available-online-store .expired-item-copy {
+    display: block;
+  }
+  .available-online-store p {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+  .available-online-store img {
+    width: 50px;
+    height: 30px;
+  }
+  .modifier-buttons-container {
+    position: absolute;
+    right: 40px;
+    top: 50px;
+  }
+}
