@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // import React from "react";
 // import { Spin } from "antd";
 import "./ProductInformation.css";
@@ -8,19 +9,29 @@ import { Option } from "antd/es/mentions";
 import useFetch from "../../../../CustomHooks/useFetch";
 import flags from "../../../../Utils/variables/flags";
 import TextArea from "antd/es/input/TextArea";
+import apiUrl from "../../../../Utils/variables/apiUrl";
+import { toast } from "react-toastify";
+import getToken from "../../../../Utils/getToken";
+import useSubmitPhotoAtFirebase from "../../../../Utils/useSubmitPhotoAtFirebase";
 
-const ProductInformation = () => {
+const ProductInformation = ({
+  productlImage,
+  setProductImage,
+  formData,
+  setFormData,
+}) => {
   const { data: store } = useFetch("store/all?limit=1000");
   const { data: brand } = useFetch("brand/all?limit=1000");
   // const { data: category } = useFetch("category");
   const { data: category } = useFetch("category/?limit=1000");
   const { data: campaign } = useFetch("campaign/all?limit=1000");
-  const [productlImage, setProductImage] = useState(null);
-  const [formData, setFormData] = useState({});
+
+  const { postPhotoAtFirebase, progress } = useSubmitPhotoAtFirebase();
+  // const [error, setError] = useState(false);
 
   // console.log("this is store:", store);
-  console.log("this is campaign:", campaign);
-  console.log("this is category:", category);
+  // console.log("this is campaign:", campaign);
+  // console.log("this is category:", category);
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -29,17 +40,55 @@ const ProductInformation = () => {
       [id]: value,
     });
   };
-  console.log(formData);
+  // console.log(formData);
 
-  console.log(formData);
+  // console.log(formData);
   const handleImageInput = (e) => {
-    if (e.target.files && e.target.files[0])
-      setProductImage(URL.createObjectURL(e.target.files[0]));
+    if (e.target.files && e.target.files[0]) {
+      const img = {
+        url: URL.createObjectURL(e.target.files[0]),
+        file: e.target.files[0],
+      };
+      setProductImage(img);
+    }
   };
-
+  console.log(productlImage);
   // handleProductDeal
   const handleProductDeal = (event) => {
     event.preventDefault();
+    const accessToken = getToken();
+    if (!productlImage.file) {
+      return;
+    } else {
+      postPhotoAtFirebase(productlImage.file).then((url) => {
+        fetch(`${apiUrl}/post/add`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+          body: JSON.stringify({
+            postType: "Deal",
+            postPhotoURL: url,
+            ...formData,
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("product deal data is done", data);
+            if (data?.success) {
+              toast.success("New post added");
+              setFormData({});
+            } else {
+              toast.error("Failed to add new post");
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            toast.error("An error occurred while adding the new post");
+          });
+      });
+    }
   };
   return (
     <section className="product-deal-information-main-contaner">
@@ -52,11 +101,11 @@ const ProductInformation = () => {
               <div className="product-deal-information-img-upload-input">
                 <input
                   type="file"
-                  name="photoURL"
+                  // name="photoURL"
                   id="photoURL"
                   onChange={handleImageInput}
                   accept="image/*"
-                  value={formData.photoURL}
+                  // value={formData.photoURL}
                 />
                 <label
                   htmlFor="photoURL"
@@ -64,7 +113,7 @@ const ProductInformation = () => {
                 >
                   {productlImage ? (
                     <div className="product-deal-information-img-top">
-                      <img src={productlImage} alt="" />
+                      <img src={productlImage.url} alt="" />
                     </div>
                   ) : (
                     <div className="product-deal-information-img-button">
@@ -85,8 +134,7 @@ const ProductInformation = () => {
                 showSearch
                 required
                 placeholder="Select brand"
-                id="brand-name"
-                name:storeName
+                id="brandName"
                 value={formData.brandName}
                 onChange={(value) =>
                   setFormData({ ...formData, brandName: value })
@@ -106,10 +154,10 @@ const ProductInformation = () => {
               <Input
                 required={formData?.postType === "deal"}
                 type="url"
-                id="externalLink"
+                id="dealLink"
                 placeholder="https://"
                 style={{ height: "50px", width: "100%" }}
-                value={formData.externalLink}
+                value={formData.dealLink}
                 onChange={handleInputChange}
               />
             </label>
@@ -122,10 +170,10 @@ const ProductInformation = () => {
                 required
                 mode="multiple"
                 className="product-deal-information-country-input"
-                value={formData.country}
+                value={formData.countries}
                 placeholder={"Select One"}
                 onChange={(value) =>
-                  setFormData({ ...formData, country: value })
+                  setFormData({ ...formData, countries: value })
                 }
               >
                 {flags.map((flag) => (
@@ -147,25 +195,25 @@ const ProductInformation = () => {
           </div>
           <div className="product-deal-form-container-right">
             {/* Product title input */}
-            <label>
+            <div>
               <p>Product Title</p>
               <Input
                 required
-                id="Type product title"
+                id="postTitle"
                 type="text"
                 placeholder="Type product title"
                 style={{ height: "50px", width: "100%" }}
-                value={formData.productTitle}
+                value={formData.postTitle}
                 // onChange={(value) =>
                 //   setFormData({ ...formData, productTitle: value })
                 // }
                 onChange={handleInputChange}
               />
-            </label>
+            </div>
 
             {/* select store name  */}
 
-            <label>
+            <div>
               <p>Store Name</p>
 
               <Select
@@ -173,7 +221,7 @@ const ProductInformation = () => {
                 required
                 showSearch
                 placeholder="Select Store"
-                id="store-name"
+                id="storeName"
                 value={formData.storeName}
                 onChange={(value) =>
                   setFormData({ ...formData, storeName: value })
@@ -185,10 +233,10 @@ const ProductInformation = () => {
                   </Option>
                 ))}
               </Select>
-            </label>
+            </div>
             {/* select Category  */}
 
-            <label className="all-ant-design-hight-control">
+            <div className="all-ant-design-hight-control">
               <p>Category</p>
               <Select
                 required
@@ -208,7 +256,7 @@ const ProductInformation = () => {
                 {/* <Option value="coupon">Coupon</Option>
                 <Option value="deal">Deal</Option> */}
               </Select>
-            </label>
+            </div>
 
             {/* select date  */}
 
@@ -226,7 +274,7 @@ const ProductInformation = () => {
             </div>
             {/* select Campaingin name  */}
 
-            <span>
+            <div>
               <p>Campaign</p>
 
               <Select
@@ -251,10 +299,10 @@ const ProductInformation = () => {
                   </Option>
                 ))} */}
               </Select>
-            </span>
+            </div>
             <div className="product-deal-information-old-discount-input">
               {/* Old Price */}
-              <label>
+              <div>
                 <p>Old Price</p>
                 <Input
                   required
@@ -265,9 +313,9 @@ const ProductInformation = () => {
                   value={formData.oldPrice}
                   onChange={handleInputChange}
                 />
-              </label>
+              </div>
               {/* Discounted Price */}
-              <label>
+              <div>
                 <p>Discounted Price or (%)</p>
                 <Input
                   required
@@ -278,7 +326,7 @@ const ProductInformation = () => {
                   value={formData.discount}
                   onChange={handleInputChange}
                 />
-              </label>
+              </div>
             </div>
           </div>
         </section>
