@@ -26,7 +26,7 @@ const ProductDealAsidBar = ({ productlImage, formData }) => {
   return (
     <aside className="product-deal-aside-main-container">
       {/* <h1>this is Aside bar page:</h1> */}
-      {asidebar ? (
+      {/* {asidebar ? (
         <section className="product-deal-asidebar-data-available-container">
           <div className="product-deal-asidebar-carousel-div">
             <label htmlFor="">Preview</label>
@@ -118,7 +118,7 @@ const ProductDealAsidBar = ({ productlImage, formData }) => {
             <p>There is no data to show you right now</p>
           </div>
         </section>
-      )}
+      )} */}
     </aside>
   );
 };
