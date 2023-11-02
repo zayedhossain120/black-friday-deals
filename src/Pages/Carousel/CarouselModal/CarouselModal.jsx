@@ -20,10 +20,6 @@ const CarouselModal = ({ isVisible, onClose }) => {
 
   if (!isVisible) return null;
 
-  // const carouselAddButton = ()=>{
-
-  // }
-
   const handleImageInput = (e) => {
     console.log(e.target.files);
     if (e.target.files && e.target.files[0]) {
