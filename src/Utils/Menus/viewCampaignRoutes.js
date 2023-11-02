@@ -2,7 +2,7 @@ const viewCampaignRoutes = (id) => {
     return [
         {
             label: "Deal",
-            link: `/campaign/${id}/deals`
+            link: `/campaign/${id}/deal`
         },
         {
             label: "Coupon",

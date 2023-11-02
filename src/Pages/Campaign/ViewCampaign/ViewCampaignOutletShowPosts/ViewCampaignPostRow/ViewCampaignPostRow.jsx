@@ -16,7 +16,6 @@ import DeleteIcon from '../../../../../Components/IconsComponents/DeleteIcon';
 
 
 const ViewCampaignPostRow = ({
-    
     campaign,
     setOpenPostViewModal,
     setOpenDeletePostModal,
@@ -34,7 +33,7 @@ const ViewCampaignPostRow = ({
           setOpenPostViewModal({ data, error });
         }
       };
-      
+      console.log(campaign);
       const handleMultipleSelectItem = (e) => {
         e.stopPropagation();
         const postId = campaign?._id;

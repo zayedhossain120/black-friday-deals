@@ -25,7 +25,7 @@ const ViewCampaignOutlet = ({query}) => {
 
 
     const {
-        data: campaignPages /** change */,
+        // data: campaignPages /** change */,
         error,
         hasNextPage,
         fetchNextPage,
@@ -37,7 +37,7 @@ const ViewCampaignOutlet = ({query}) => {
         "store-route",
         { query, countryContext }
       );
-        
+        console.log(campaign, "campaign page data");
       useEffect(() => {
         setSelectMultipleItem([]);
       }, [query]);
@@ -45,16 +45,16 @@ const ViewCampaignOutlet = ({query}) => {
       if (!isFetchingNextPage && isFetching) {
         return <MainLoading />;
       }
-      if (error || campaignPages?.status === "failed") {
-        return <p>{error?.message || campaignPages?.message}</p>;
+      if (error || campaign?.status === "failed") {
+        return <p>{error?.message || campaign?.message}</p>;
       }
-      if (!campaignPages[0]?.data?.length) {
+      if (!campaign[0]?.data?.length) {
         return <EmptyData />;
       }
     return (
         <section className="campaign-outlet-container">
       <div className="campaign-table">
-        {campaignPages?.map((page) =>
+        {campaign?.map((page) =>
           page?.data?.map((post) => (
             <ViewCampaignPostRow
               key={campaign?._id}

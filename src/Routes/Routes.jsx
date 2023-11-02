@@ -80,7 +80,7 @@ const Routes = () => {
               element: <ViewCampaignOutlet query={`${hasValidity()}`} />,
             },
             {
-              path: "deals",
+              path: "deal",
               loader: async ({ params }) =>
                 fetchCampaignDataAtRouterLevel(params.id),
               element: (
