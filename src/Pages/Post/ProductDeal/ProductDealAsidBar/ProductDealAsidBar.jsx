@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 // import React from "react";
 import "./ProductDealAsidBar.css";
 import { useEffect, useState } from "react";
 import notAvailable from "../../../../assets/nodataAvailable.png";
-import motorcaicle from "../../../../assets/Icons/motorcaicle.jpg";
+import flags from "../../../../Utils/variables/flags";
 import googleicon from "../../../../assets/Icons/googleIcon.png";
 import bahrain from "../../../../assets/Flags/Canada.png";
 import egypt from "../../../../assets/Flags/France.png";
@@ -10,8 +11,9 @@ import kuwait from "../../../../assets/Flags/Germany.png";
 import oman from "../../../../assets/Flags/India.png";
 import qatar from "../../../../assets/Flags/Italy.png";
 import saudi from "../../../../assets/Flags/Netherlands.png";
+import { Option } from "antd/es/mentions";
 
-const ProductDealAsidBar = () => {
+const ProductDealAsidBar = ({ productlImage, formData }) => {
   const [asidebar, setAsidebar] = useState(null);
   useEffect(() => {
     fetch(`https://restcountries.com/v3.1/all`)
@@ -20,12 +22,7 @@ const ProductDealAsidBar = () => {
         setAsidebar(data);
       });
   }, []);
-  // console.log(thisis);
-  // const handleImageInput = (e) => {
-  //   if (e.target.files && e.target.files[0])
-  //     setAsidebar(URL.createObjectURL(e.target.files[0]));
-  // };
-
+  console.log(formData);
   return (
     <aside className="product-deal-aside-main-container">
       {/* <h1>this is Aside bar page:</h1> */}
@@ -34,7 +31,7 @@ const ProductDealAsidBar = () => {
           <div className="product-deal-asidebar-carousel-div">
             <label htmlFor="">Preview</label>
             <div>
-              <img src={motorcaicle} alt="" />
+              <img src={productlImage.url} alt="" />
             </div>
           </div>
           <div className="product-deal-asidebar-details-container">
@@ -65,12 +62,20 @@ const ProductDealAsidBar = () => {
               <p> Nike</p>
             </div>
             <div className="product-deal-asidebar-product-country-flags">
-              <img src={bahrain} alt="" />
-              <img src={egypt} alt="" />
-              <img src={qatar} alt="" />
-              <img src={oman} alt="" />
-              <img src={saudi} alt="" />
-              <img src={kuwait} alt="" />
+              {formData.countries.map((country) => {
+                return (
+                  <div key={country}>
+                    {" "}
+                    <img
+                      src={
+                        flags.find((flag) => flag.countryName === country)
+                          .flagUrl
+                      }
+                      alt=""
+                    />
+                  </div>
+                );
+              })}
             </div>
           </div>
           <hr />
