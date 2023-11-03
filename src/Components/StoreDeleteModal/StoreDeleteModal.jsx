@@ -29,7 +29,7 @@ const StoreDeleteModal = ({
           },
         }
       );
-      if (data?.status === "success") {
+      if (data?.success) {
         toast.success("Store Deleted");
       } else {
         toast.error("Store Not Deleted");

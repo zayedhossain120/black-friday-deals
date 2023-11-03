@@ -1,4 +1,4 @@
-import "./Brand.css"
+import "./Brand.css";
 import TopBar from "../../Components/TopBar/TopBar";
 import { SelectedCountryContext } from "../../Contexts/CountryContext/CountryProviderContext";
 import { useContext } from "react";
@@ -22,7 +22,7 @@ const Brand = () => {
   );
   return (
     <section className="store-main-container">
-      <TopBar navigateTo="/store/create" pageTitle="Brand" />
+      <TopBar navigateTo="/brands/create" pageTitle="Brand" />
 
       <BrandCardContainer
         brandData={brandData}

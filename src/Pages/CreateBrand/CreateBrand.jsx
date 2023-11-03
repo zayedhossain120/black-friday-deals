@@ -17,20 +17,15 @@ import { toast } from "react-toastify";
 const CreateBrand = () => {
   const navigate = useNavigate();
   const [imageShow, setImageShow] = useState("");
-  const [selectedCountries, setSelectedCountries] = useState(false);
   const { postPhotoAtFirebase } = useSubmitPhotoAtFirebase();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
-    console.log(e, 'Form are not submitting')
     e.preventDefault();
     const file = e.target.photoURL?.files[0];
     const name = e.target.name;
     const link = e.target.link;
     const description = e.target.description;
-    if (!file || !name.value || !link.value || !selectedCountries.length) {
-      return; // return error to show;
-    }
 
     setIsLoading(true);
 
@@ -39,12 +34,11 @@ const CreateBrand = () => {
       .then((url) => {
         axios
           .post(
-            `${apiUrl}/brand/add`,
+            `${apiUrl}/store/add`,
             {
-              photoURL: url,
-              storeName: name.value,
-              country: selectedCountries,
-              storeExternalLink: link.value,
+              brandPhotoURL: url,
+              brandName: name.value,
+              brandLink: link.value,
               description: description.value,
             },
             {
@@ -71,7 +65,7 @@ const CreateBrand = () => {
 
   return (
     <div>
-      <TopBar pageTitle={"Create New Post"} />
+      <TopBar pageTitle={"Create New Brand"} />
       <main>
         <section className="edit-store-main3">
           <div className="edit-store-header">
@@ -79,7 +73,7 @@ const CreateBrand = () => {
             <div className="edit-store-img">
               <div className="edit-store-img-green">
                 <img src={okIcon} alt="Edit store proccessing" />
-                <p>New Brand details</p>
+                <p>New brand details</p>
               </div>
               <div></div>
               <div className="edit-store-img-gray">
@@ -117,28 +111,28 @@ const CreateBrand = () => {
                   </div>
                   <div className="edit-store-form">
                     {/* <p>Progress {progress}%</p> */}
-                  <div className="store-name-link">
-                  <div className="store-name">
-                      <label htmlFor="name">Brand Name</label>
-                      <Input
-                        required
-                        id="name"
-                        name="name"
-                        style={{ width: "100%" }}
-                      />
+                    <div className="store-name-link">
+                      <div className="store-name">
+                        <label htmlFor="name">Brand Name</label>
+                        <Input
+                          required
+                          id="name"
+                          name="name"
+                          style={{ width: "100%" }}
+                        />
+                      </div>
+                      <div className="link-div">
+                        {" "}
+                        <label htmlFor="link">Link*</label>
+                        <Input
+                          required
+                          id="link"
+                          placeholder="https://"
+                          style={{ width: "100%" }}
+                          name="link"
+                        />
+                      </div>
                     </div>
-                    <div className="link-div">
-                      {" "}
-                      <label htmlFor="link">Link*</label>
-                      <Input
-                        required
-                        id="link"
-                        placeholder="https://"
-                        style={{ width: "100%" }}
-                        name="link"
-                      />
-                    </div>
-                  </div>
 
                     <div>
                       <label htmlFor="description">Description</label>

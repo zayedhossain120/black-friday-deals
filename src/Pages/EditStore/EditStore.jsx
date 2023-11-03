@@ -28,20 +28,20 @@ const EditStore = () => {
     const accessToken = getToken();
 
     axios
-      .get(`${apiUrl}/store/${id}`, {
+      .patch(`${apiUrl}/store/${id}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       })
       .then(({ data }) => {
         setStore(data);
+        console.log(formData, "formdata");
         setFormData({
           storeName: data?.data?.storeName || "",
-          storeExternalLink: data?.data?.storeExternalLink || "",
-          country: data?.data?.country || [],
+          storeLink: data?.data?.storeLink || "",
           description: data?.data?.description || "",
         });
-        setImageShow({ url: data?.data?.photoURL || "" });
+        setImageShow({ url: data?.data?.storePhotoURL || "" });
       })
       .catch((error) => {
         toast.error(`Error: ${error?.response?.data?.message}`);
@@ -58,7 +58,7 @@ const EditStore = () => {
 
   const submitUpdatedData = (payload) => {
     axios
-      .put(`${apiUrl}/store/${store?.data?._id}`, payload, {
+      .patch(`${apiUrl}/store/${store?.data?._id}`, payload, {
         headers: { Authorization: `Bearer ${getToken()}` },
       })
       .then(({ data }) => {
@@ -79,9 +79,9 @@ const EditStore = () => {
     if (imageShow?.files) {
       postPhotoAtFirebase(imageShow.files)
         .then((url) => {
-          const { photoURL, ...rest } = formData;
+          const { storePhotoURL, ...rest } = formData;
           submitUpdatedData({
-            photoURL: url,
+            storePhotoURL: url,
             ...rest,
           });
         })
@@ -117,7 +117,7 @@ const EditStore = () => {
             <form onSubmit={handleSubmit}>
               <section className="edit-store-details2">
                 <div className="edit-store-logo">
-                  <label htmlFor="photoURL" className="uploaded">
+                  <label htmlFor="storePhotoURL" className="uploaded">
                     {imageShow.url ? (
                       <img src={imageShow.url} alt="" />
                     ) : (
@@ -130,10 +130,10 @@ const EditStore = () => {
                   </label>
                   <input
                     accept="image/*"
-                    value={formData.photoURL}
+                    value={formData.storePhotoURL}
                     type="file"
-                    id="photoURL"
-                    name="photoURL"
+                    id="storePhotoURL"
+                    name="storePhotoURL"
                     onChange={(e) =>
                       setImageShow({
                         files: e.target.files[0],
@@ -143,9 +143,9 @@ const EditStore = () => {
                   />
                 </div>
                 <div className="edit-store-form">
-                    {/* <p>Progress {progress}%</p> */}
+                  {/* <p>Progress {progress}%</p> */}
                   <div className="store-name-link">
-                  <div className="store-name">
+                    <div className="store-name">
                       <label htmlFor="name">Store Name</label>
                       <Input
                         required
@@ -167,18 +167,18 @@ const EditStore = () => {
                     </div>
                   </div>
 
-                    <div>
-                      <label htmlFor="description">Description</label>
-                      <TextArea
-                        id="description"
-                        name="description"
-                        style={{
-                          height: "138px",
-                          resize: "none",
-                        }}
-                      />
-                    </div>
+                  <div>
+                    <label htmlFor="description">Description</label>
+                    <TextArea
+                      id="description"
+                      name="description"
+                      style={{
+                        height: "138px",
+                        resize: "none",
+                      }}
+                    />
                   </div>
+                </div>
               </section>
               <div className="form-submit-btn-main3">
                 {" "}

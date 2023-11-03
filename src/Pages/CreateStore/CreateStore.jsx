@@ -21,7 +21,6 @@ const CreateStore = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
-    console.log(e, 'Form are not submitting')
     e.preventDefault();
     const file = e.target.photoURL?.files[0];
     const name = e.target.name;
@@ -34,12 +33,12 @@ const CreateStore = () => {
     postPhotoAtFirebase(file)
       .then((url) => {
         axios
-          .patch(
+          .post(
             `${apiUrl}/store/add`,
             {
-              photoURL: url,
+              storePhotoURL: url,
               storeName: name.value,
-              storeExternalLink: link.value,
+              storeLink: link.value,
               description: description.value,
             },
             {
