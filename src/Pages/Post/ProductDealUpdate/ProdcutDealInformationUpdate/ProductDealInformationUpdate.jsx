@@ -1,7 +1,9 @@
+// import React from 'react';
+import "./ProductDealInformationUpdate.css";
 /* eslint-disable react/prop-types */
 // import React from "react";
 // import { Spin } from "antd";
-import "./ProductInformation.css";
+
 import uploadImages from "../../../../assets/Icons/uploadedImages2.svg";
 import { DatePicker, Input, Select } from "antd";
 import { Option } from "antd/es/mentions";
@@ -13,7 +15,7 @@ import { toast } from "react-toastify";
 import getToken from "../../../../Utils/getToken";
 import useSubmitPhotoAtFirebase from "../../../../Utils/useSubmitPhotoAtFirebase";
 
-const ProductInformation = ({
+const ProductDealInformationUpdate = ({
   productlImage,
   setProductImage,
   formData,
@@ -90,14 +92,14 @@ const ProductInformation = ({
     }
   };
   return (
-    <section className="product-deal-information-main-contaner">
+    <section className="product-deal-information-update-main-contaner">
       <h1>Product deal information</h1>
       <form onSubmit={handleProductDeal}>
-        <section className="product-deal-form-container">
-          <div className="product-deal-form-container-left">
-            <div className="produt-deal-information-img-upload-input-container">
+        <section className="product-deal-form-udpate-container">
+          <div className="product-deal-form-update-container-left">
+            <div className="produt-deal-information-img-upload-input-update-container">
               <p>Cover Image</p>
-              <div className="product-deal-information-img-upload-input">
+              <div className="product-deal-update-information-img-upload-input">
                 <input
                   type="file"
                   // name="photoURL"
@@ -108,14 +110,14 @@ const ProductInformation = ({
                 />
                 <label
                   htmlFor="photoURL"
-                  className="product-deal-img-upload-lable "
+                  className="product-deal-update-img-upload-lable "
                 >
                   {productlImage ? (
-                    <div className="product-deal-information-img-top">
+                    <div className="product-deal-update-information-img-top">
                       <img src={productlImage.url} alt="" />
                     </div>
                   ) : (
-                    <div className="product-deal-information-img-button">
+                    <div className="product-deal-update-information-img-button">
                       <img src={uploadImages} alt="" />
                       <p>upload File</p>
                     </div>
@@ -129,7 +131,7 @@ const ProductInformation = ({
               <p>Brand Name</p>
 
               <Select
-                className="product-deal-information-brand-input"
+                className="product-deal-update-information-brand-input"
                 showSearch
                 required
                 placeholder="Select brand"
@@ -149,7 +151,9 @@ const ProductInformation = ({
             {/* Affiliate  link */}
 
             <label>
-              <p className="all-ant-design-hight-control">Affillate Link</p>
+              <p className="all-ant-design-hight-update-control">
+                Affillate Link
+              </p>
               <Input
                 required={formData?.postType === "deal"}
                 type="url"
@@ -168,7 +172,7 @@ const ProductInformation = ({
               <Select
                 required
                 mode="multiple"
-                className="product-deal-information-country-input"
+                className="product-deal-information-update-country-input"
                 value={formData.countries}
                 placeholder={"Select One"}
                 onChange={(value) =>
@@ -179,7 +183,7 @@ const ProductInformation = ({
                   <>
                     (
                     <Option
-                      className="product-deal-information-country-input"
+                      className="product-deal-information-update-country-input"
                       key={flag.countryName}
                       value={flag.countryName}
                     >
@@ -192,7 +196,7 @@ const ProductInformation = ({
               </Select>
             </div>
           </div>
-          <div className="product-deal-form-container-right">
+          <div className="product-deal-form-update-container-right">
             {/* Product title input */}
             <div>
               <p>Product Title</p>
@@ -216,7 +220,7 @@ const ProductInformation = ({
               <p>Store Name</p>
 
               <Select
-                className="product-deal-information-store-input"
+                className="product-deal-information-update-store-input"
                 required
                 showSearch
                 placeholder="Select Store"
@@ -235,11 +239,11 @@ const ProductInformation = ({
             </div>
             {/* select Category  */}
 
-            <div className="all-ant-design-hight-control">
+            <div className="all-ant-design-hight-update-control">
               <p>Category</p>
               <Select
                 required
-                className="product-deal-information-category-input"
+                className="product-deal-information-update-category-input"
                 id="post-type"
                 defaultValue="Coupon"
                 value={formData.categoryName}
@@ -253,13 +257,13 @@ const ProductInformation = ({
                   </Option>
                 ))}
                 {/* <Option value="coupon">Coupon</Option>
-                <Option value="deal">Deal</Option> */}
+            <Option value="deal">Deal</Option> */}
               </Select>
             </div>
 
             {/* select date  */}
 
-            <div className="date-picker all-ant-design-hight-control">
+            <div className="date-picker all-ant-design-hight-update-control">
               <p>Expire Date</p>
               <DatePicker
                 required
@@ -277,7 +281,7 @@ const ProductInformation = ({
               <p>Campaign</p>
 
               <Select
-                className="product-deal-information-campaingn-input"
+                className="product-deal-information-update-campaingn-input"
                 required
                 showSearch
                 placeholder="Select One"
@@ -293,13 +297,13 @@ const ProductInformation = ({
                   </Option>
                 ))}
                 {/* {campaign?.data?.map((item) => (
-                  <Option key={item?.campaignName} value={item?.campaignName}>
-                    {item?.campaignName}
-                  </Option>
-                ))} */}
+              <Option key={item?.campaignName} value={item?.campaignName}>
+                {item?.campaignName}
+              </Option>
+            ))} */}
               </Select>
             </div>
-            <div className="product-deal-information-old-discount-input">
+            <div className="product-deal-information-update-old-discount-input">
               {/* Old Price */}
               <div>
                 <p>Old Price</p>
@@ -331,7 +335,7 @@ const ProductInformation = ({
         </section>
         {/* post description */}
 
-        <div className="product-deal-information-post-description">
+        <div className="product-deal-information-update-post-description">
           <p>Post Description</p>
           <TextArea
             id="postDescription"
@@ -344,8 +348,8 @@ const ProductInformation = ({
             onChange={handleInputChange}
           />
         </div>
-        <div className="product-deal-information-add-button">
-          <button className="Add-product-deal-btn" type="submit">
+        <div className="product-deal-information-update-add-button">
+          <button className="Add-product-deal-update-btn" type="submit">
             Add Product Deal
           </button>
         </div>
@@ -354,4 +358,4 @@ const ProductInformation = ({
   );
 };
 
-export default ProductInformation;
+export default ProductDealInformationUpdate;

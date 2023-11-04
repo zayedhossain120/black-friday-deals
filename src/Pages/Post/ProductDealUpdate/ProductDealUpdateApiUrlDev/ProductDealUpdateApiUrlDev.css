@@ -1,0 +1,58 @@
+.product-deal-update-api-url-dev-main-container {
+  width: 100%;
+  height: 9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 1.2rem;
+  gap: 1.2rem;
+  background: #fefffe;
+  border-radius: 0.8rem;
+  margin-top: 1.2rem;
+}
+.product-deal-update-api-url-dev-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  color: rgba(0, 0, 0, 0.7);
+}
+.product-deal-update-api-url-input-lable {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.7rem;
+  width: 90%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  height: 3.5rem;
+  border-radius: 0.8rem;
+  padding-left: 1.2rem;
+}
+.product-deal-update-api-url-input-lable:hover {
+  border: 1px solid rgb(180, 180, 180);
+  box-shadow: 0 0 0.3rem 0.1rem rgba(17, 17, 17, 0.1);
+  transition: all 0.2s;
+}
+.product-deal-update-api-url-input-lable input {
+  width: 83%;
+  height: 3rem;
+  border: 0;
+  outline: none;
+}
+.product-deal-update-api-url-input-lable input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 0.9rem;
+}
+.product-deal-update-api-url-input-lable button {
+  color: #fefffe;
+  height: 2.7rem;
+  border: 0;
+  width: 17%;
+  background: #24323d;
+  margin-right: 0.3rem;
+  border-radius: 0.7rem;
+  color: #fff;
+  white-space: nowrap;
+  cursor: pointer;
+}

@@ -37,6 +37,8 @@ import Campaign from "../Pages/Campaign/Campaign";
 import ViewCampaign from "../Pages/Campaign/ViewCampaign/ViewCampaign";
 import CreateCampaign from "../Pages/CreateCampaign/CreateCampaign";
 import ViewCampaignOutlet from "../Pages/Campaign/ViewCampaign/ViewCampaignOutletShowPosts/ViewCampaignOutletShowPosts";
+import AddNewPostUpdate from "../Pages/Post/AddNewPostUpdate/AddNewPostUpdate";
+import ProductDealUpdate from "../Pages/Post/ProductDealUpdate/ProductDealUpdate";
 
 const Routes = () => {
   const router = createBrowserRouter([
@@ -254,6 +256,16 @@ const Routes = () => {
         {
           path: "/productdeal",
           element: <ProductDeal />,
+        },
+        // ----------------addNewPostUPdate-----------
+        {
+          path: "/addnewpostupdate",
+          element: <AddNewPostUpdate />,
+        },
+        // ----------------addNewPostUPdate-----------
+        {
+          path: "/productDealUpdate",
+          element: <ProductDealUpdate />,
         },
       ],
     },

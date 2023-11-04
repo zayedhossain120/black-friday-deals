@@ -1,4 +1,6 @@
-import "./AddNewPost.css";
+// import React from 'react';
+// import "./AddNewPost.css";
+import "./AddNewPostUpdate.css";
 import { useState } from "react";
 import { Checkbox, DatePicker, Input, Select, Spin } from "antd";
 
@@ -12,7 +14,7 @@ import apiUrl from "../../../Utils/variables/apiUrl";
 import { toast } from "react-toastify";
 import TopBar from "../../../Components/TopBar/TopBar";
 
-const AddNewPost = () => {
+const AddNewPostUpdate = () => {
   const { data: store } = useFetch("store/all?limit=1000");
   const [formData, setFormData] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -51,18 +53,17 @@ const AddNewPost = () => {
       setIsSubmitting(false);
     }
   };
-
   return (
-    <div className="create-new-post-main-container">
+    <div className="add-new-post-update-main-container">
       <TopBar pageTitle={"Create New Post"} />
-      <div className="create-new-post-container">
+      <div className="add-new-post-update-container">
         <h1>Create New Coupon</h1>
 
-        <div className="create-posts-items-container">
+        <div className="add-posts-items-update-container">
           <Spin spinning={isSubmitting}>
             <form onSubmit={handleAddNewPost}>
-              <div className="create-new-post-items-container">
-                <div className="create-new-post-items-container-left">
+              <div className="add-post-update-items-form-container">
+                <div className="add-post-update-form-items-container-left">
                   {/* Post title input */}
                   <span>
                     <p>Post Title</p>
@@ -151,7 +152,7 @@ const AddNewPost = () => {
                     </Select>
                   </span>
                 </div>
-                <div className="create-new-post-items-container-right">
+                <div className="add-post-update-form-items-container-right">
                   {/* select store name  */}
 
                   <span>
@@ -315,4 +316,4 @@ const AddNewPost = () => {
   );
 };
 
-export default AddNewPost;
+export default AddNewPostUpdate;

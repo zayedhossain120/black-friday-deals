@@ -11,7 +11,7 @@ const ProductDeal = () => {
   const [formData, setFormData] = useState({});
   return (
     <main className="product-deal-page-main-container">
-      <TopBar pageTitle={"Add new product dea"} />
+      <TopBar pageTitle={"Add new product deal"} />
       <section className="product-deal-information-container">
         <div className="product-deal-information-container-grid">
           <ProductDealApiUrl />
