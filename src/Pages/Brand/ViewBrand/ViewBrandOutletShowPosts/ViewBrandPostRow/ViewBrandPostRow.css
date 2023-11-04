@@ -218,10 +218,7 @@
   .dynamic-price-div {
     padding-left: 70px;
   }
-  .modifier-buttons-container img,
-  span {
-    display: none;
-  }
+
   .available-online-store {
     width: 100%;
     flex-direction: row;
@@ -239,10 +236,5 @@
   .available-online-store img {
     width: 50px;
     height: 30px;
-  }
-  .modifier-buttons-container {
-    position: absolute;
-    right: 40px;
-    top: 50px;
   }
 }
