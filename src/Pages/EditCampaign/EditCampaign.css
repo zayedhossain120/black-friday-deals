@@ -1,0 +1,266 @@
+.edit-campaign-main3 {
+    background: white;
+    height: calc(100vh - 30px);
+    padding-bottom: clamp(2%, 8vh, 40px);
+    overflow: auto;
+    scroll-behavior: smooth;
+    margin-top: 10px;
+  }
+  .create-campaign-ant-input1 {
+    width: clamp(388px, 5vh, 388px);
+  }
+  .edit-campaign-img {
+    display: flex;
+    gap: 50px;
+  }
+  
+  .edit-campaign-header {
+    margin-top: 15px;
+  }
+  .edit-campaign-header h3 {
+    padding: 0 0 0 50px;
+    padding-left: 50px;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 20px;
+    font-weight: 500;
+  }
+  
+  .edit-campaign-img {
+    gap: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .edit-campaign-img-green {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .edit-campaign-img-gray {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .edit-campaign-img-green p {
+    padding-top: 5px;
+    color: #20c275;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  
+  .edit-campaign-img-green img {
+    background-color: #20c275;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    padding: 5px;
+  }
+  
+  .edit-campaign-img-gray p {
+    padding-top: 5px;
+    color: #a7b9b0;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  
+  .edit-campaign-img-gray img {
+    background-color: #a7b9b0;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    padding: 5px;
+  }
+  
+  /* dash animation */
+  
+  .edit-campaign-dash-green {
+    width: 100px;
+    height: 2px;
+    background-color: transparent;
+    position: relative;
+  }
+  
+  .edit-campaign-dash-green.animated {
+    background-image: linear-gradient(to right, #d7c010 50%, transparent 50%);
+    background-size: 20px 2px;
+    animation: dash 1s linear infinite;
+  }
+  
+  /* edit store details section */
+
+  .datepicker-container{
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row !important;
+    gap: 20px;
+}
+.start-period{
+    display: flex;
+    flex-basis: 50%;
+    flex-direction: column;
+
+}
+.end-period{
+    display: flex;
+    flex-basis: 50%;
+    flex-direction: column;
+}
+  
+
+/* .ant-picker{
+    width: 100% !important;
+} */
+  .edit-campaign-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+  
+  .edit-campaign-logo {
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    position: relative;
+    height: 100px;
+    width: 100px;
+    padding: 90px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  .edit-campaign-logo:hover {
+    background: rgba(0, 0, 0, 0.6);
+    transition: ease-out;
+    
+  }
+  
+  .edit-campaign-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+  }
+  
+  .placeholder-for-howtouse {
+    padding: 50px;
+  }
+  
+  .edit-campaign-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .edit-campaign-form > div {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .edit-campaign-form div > label {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 16px;
+    font-weight: 400;
+    padding-bottom: 10px;
+  }
+  
+  .edit-campaign-form div > input {
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    height: 50px;
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .edit-campaign-form div > select {
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    height: 50px;
+    width: 100%;
+    padding: 10px 20px 10px 10px;
+  }
+  
+  .edit-campaign-form div > textarea {
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    height: 320px;
+  }
+  
+  .form-submit-btn {
+    outline: none;
+    border: 1px solid rgb(218, 216, 216);
+    color: black;
+    width: 306px;
+    padding: 14px 60px;
+    border-radius: 50px;
+    background: #fff;
+    font-size: 17px;
+    cursor: pointer;
+    /* margin-top: clamp(10px, 10vh, 100%); */
+    
+  }
+  .form-submit-btn:hover {
+    background: #24323D;   
+    color: white;
+    transition: all 0.4s;
+  }
+  .form-submit-btn-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 2%;
+   
+  }
+  
+  @media (max-width: 950px) {
+   
+    .edit-campaign-main3 {
+      padding: 20px;
+    }
+    .form-submit-btn-main {
+      margin-top: 62px;
+      margin-left: 0px;
+      
+    }
+    .edit-campaign-form {
+      grid-template-columns: repeat(1, minmax(300px, 1fr));
+    }
+    .form-submit-btn {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: normal;
+    }
+  
+    .edit-campaign-header h3 {
+      padding: 15px 0 40px 0;
+      text-align: center;
+    }
+    .edit-campaign-details {
+      width: 100%;
+    }
+    /* .edit-store-form > div {
+      width: 100%;
+    } */
+    .edit-campaign-form {
+      width: 100%;
+    }
+    .edit-campaign-form div > select {
+      width: 100%;
+    }
+    .create-campaign-ant-input1 {
+      width: 100%;
+    }
+    .datepicker-container{
+        flex-direction: column !important;
+    }
+  }

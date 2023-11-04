@@ -49,7 +49,7 @@ console.log(campaignData);
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                navigate(`/store/edit/${campaign?._id}`);
+                navigate(`/campaign/edit/${campaign?._id}`);
               }}
             >
               <EditIcon />

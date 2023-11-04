@@ -38,6 +38,9 @@ import CreateCampaign from "../Pages/CreateCampaign/CreateCampaign";
 import ViewCampaignOutlet from "../Pages/Campaign/ViewCampaign/ViewCampaignOutletShowPosts/ViewCampaignOutletShowPosts";
 import Brand from "../Pages/Store copy/Brand";
 import fetchCampaignDataAtRouterLevel from "../Utils/variables/fetchCampaignDataAtRouterLevel";
+import fetchPostDataAtRouterLevel from "../Utils/variables/fetchPostDataAtRouterLevel";
+import EditCampaign from "../Pages/EditCampaign/EditCampaign";
+import apiUrl from "../Utils/variables/apiUrl";
 
 const Routes = () => {
   const router = createBrowserRouter([
@@ -76,7 +79,8 @@ const Routes = () => {
             {
               path: "",
               loader: async ({ params }) =>
-                fetchCampaignDataAtRouterLevel(params.id),
+              // fetchCampaignDataAtRouterLevel(params.id),
+              fetch(`${apiUrl}/post/${params.id}`),
               element: <ViewCampaignOutlet query={`${hasValidity()}`} />,
             },
             {
@@ -118,6 +122,10 @@ const Routes = () => {
         {
           path: "/campaign/create",
           element: <CreateCampaign />,
+        },
+        {
+         path: "/campaign/edit/:id",
+         element: <EditCampaign />
         },
         {
           path: "/store",
