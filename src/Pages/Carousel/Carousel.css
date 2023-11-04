@@ -3,63 +3,44 @@
   width: 100%;
   z-index: 10;
 }
+
 .carousel-container {
-  background-color: #ffffff;
+  background-color: #fff;
   height: 100vh;
   overflow: auto;
 }
+.carousel-country-section {
+  padding: 30px 50px 30px 50px;
+}
+.carousel-country-section h3 {
+  padding-bottom: 25px;
+}
 
 .carousel-card {
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 1);
-  padding-top: 10px;
-  padding-bottom: 15px;
-  overflow: hidden;
-}
-.carousel-upload {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: clamp(450px, 10vh, 460px);
-  height: 320px;
-  border-radius: 10px;
-  background: #fff;
-  box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
-  border: none;
-  cursor: pointer;
-}
-.carousel-upload p {
-  margin-top: 10px;
-  color: rgba(0, 0, 0, 0.7);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
 }
 .carouselDiv {
-  margin-right: 16px;
-  display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
+  gap: 15px;
   border-radius: 10px;
-  width: 450px;
-  height: 320px;
-  box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   position: relative;
 }
 .carouselDiv img {
-  width: 350px;
-  height: 200px;
-  border-radius: 10px;
+  object-fit: cover;
+  border-radius: 10px 10px 0px 0px;
 }
 .carouselDiv h2 {
   text-align: center;
-  font-size: 26px;
-  font-weight: 500;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 .carouselDiv span {
   color: rgba(0, 0, 0, 0.5);
   font-size: 18px;
-  font-weight: 500;
-  line-height: normal;
 }
 .carousel-card .carousel-delete-btn button img {
   width: 25px;
@@ -67,62 +48,21 @@
   background: none;
   cursor: pointer;
 }
-.carousel-card .carousel-delete-btn button {
-  border: 0;
-  background: none;
-}
 
 .carousel-delete-btn {
+  background-color: #fff;
   width: 40px;
   height: 40px;
-  padding: 7px 8px 8px 7px;
+  padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  background: #fff;
   border-radius: 100%;
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 10px;
+  right: 10px;
   cursor: pointer;
 }
 .carousel-delete-btn:hover {
   border: 1px solid red;
   transition: all 0.4s;
-}
-.carousel-upload-container {
-  padding-bottom: 100px;
-  /* margin: 0 auto !important; */
-}
-
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 990px) {
-  .carousel-card {
-    display: grid !important;
-    grid-template-columns: repeat(1, 1fr) !important ;
-  }
-  .carousel-upload-container {
-    margin: 0 auto;
-  }
-  .carouselDiv {
-    margin: 0 auto !important;
-    padding: 30px 50px 30px 50px;
-  }
-  .carousel-card {
-    background-color: #ffffff;
-  }
-  .carousel-upload {
-    margin-top: 0;
-  }
-  .carouselDiv img {
-    width: clamp(90%, 8vh, 100%);
-  }
-}
-
-@media only screen and (max-width: 484px) {
-  .carouselDiv {
-    width: 90vw;
-    padding: 10px 0 10px 20px;
-  }
-  .carousel-upload {
-    width: 90vw;
-  }
+  padding: 5px;
 }

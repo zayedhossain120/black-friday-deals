@@ -19,6 +19,8 @@ const Carousel = () => {
 
   const { data: allCarousel, isLoading, error } = useFetch("carousel");
 
+  console.log(allCarousel);
+
   if (isLoading) {
     return <MainLoading />;
   }
@@ -27,70 +29,47 @@ const Carousel = () => {
     return <p>{error?.message || allCarousel?.message}</p>;
   }
 
-  const groupedData = {};
-
-  // Check if allCarousel.data is available before iterating
-  if (allCarousel?.data) {
-    allCarousel?.data?.forEach((item) => {
-      const country = item.country;
-      if (!groupedData[country]) {
-        groupedData[country] = [];
-      }
-      groupedData[country].push(item);
-    });
-  }
-
-  // console.log(groupedData);
-
   return (
     <div>
       <TopBar
         openAddNewCarouselModal={openAddNewCarouselModal}
         pageTitle="Carousel"
       />
-      <main>
-        <CarouselNavFilter />
-        <div className="carousel-container">
-          {Object.keys(groupedData).map((country) => (
-            <div key={country}>
-              <p>{country}</p>
-              <Row gutter={[16, 16]} className="carousel-card">
-                {groupedData?.country?.items?.map(
-                  (item) => (
-                    console.log(item, "here is the item"),
-                    (
-                      <div className="carouselDiv" key={item?._id}>
-                        <div>
-                          <img src={item?.photoURL} alt="" />
-                          <h2>
-                            560 <span>clicked</span>
-                          </h2>
-                        </div>
-                        <div className="carousel-delete-btn">
-                          <button
-                            onClick={() => setShowCarouselDelete(item._id)}
-                          >
-                            <img src={carouselDelete} alt="" />
-                          </button>
-                        </div>
-                      </div>
-                    )
-                  )
-                )}
-              </Row>
+      <CarouselNavFilter />
+
+      <div className="carousel-container">
+        {allCarousel?.data?.map((countryData) => (
+          <div className="carousel-country-section" key={countryData?._id}>
+            <h3>{countryData?.country}</h3>
+            <div className="carousel-card">
+              {countryData?.items?.map((item) => (
+                <div className="carouselDiv" key={item?._id}>
+                  <div>
+                    <img src={item?.photoURL} alt="" />
+                    <h2>
+                      560 <span>clicked</span>
+                    </h2>
+                  </div>
+                  <div className="carousel-delete-btn modifier-buttons-container">
+                    <button onClick={() => setShowCarouselDelete(item._id)}>
+                      <img src={carouselDelete} alt="" />
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-          <CarouselModal
-            isVisible={showCarouselModal}
-            onClose={() => setShowCarouselModal(false)}
-          />
-        </div>
-        <CarouselDeletebtn
-          isVisible={showCarouselDelete}
-          onClose={() => setShowCarouselDelete(false)}
-          allCarousel={allCarousel}
+          </div>
+        ))}
+        <CarouselModal
+          isVisible={showCarouselModal}
+          onClose={() => setShowCarouselModal(false)}
         />
-      </main>
+      </div>
+      <CarouselDeletebtn
+        isVisible={showCarouselDelete}
+        onClose={() => setShowCarouselDelete(false)}
+        allCarousel={allCarousel}
+      />
     </div>
   );
 };
