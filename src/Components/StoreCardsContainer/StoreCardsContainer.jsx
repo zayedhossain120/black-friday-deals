@@ -19,8 +19,7 @@ const StoreCardsContainer = ({
 }) => {
   const navigate = useNavigate();
   const [openDeleteUserModal, setOpenStoreDeleteModal] = useState(false);
-  console.log(storesData)
-
+  
   if (!isFetchingNextPage && isFetching) {
     return <MainLoading />;
   }
@@ -69,7 +68,7 @@ const StoreCardsContainer = ({
                       <img
                         key={country}
                         src={
-                          flags.find((flag) => flag?.countryName === country)
+                          flags?.find((flag) => flag?.countryName === country)
                             .flagUrl
                         }
                         alt={country}

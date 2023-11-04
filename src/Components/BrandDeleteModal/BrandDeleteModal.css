@@ -1,0 +1,56 @@
+.store-delete-modal-container {
+  padding: 60px;
+}
+
+.ant-modal-footer {
+  display: none !important;
+}
+
+.ant-modal-mask {
+  background: rgba(0, 0, 0, 0.1) !important;
+}
+
+.ant-modal-content {
+  box-shadow: none !important;
+}
+
+.store-delete-modal-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.store-delete-modal-container>p {
+  padding-top: 40px;
+  padding-bottom: 20px;
+  max-width: 80%;
+  text-align: center;
+  font-size: clamp(16px, 2vw, 20px);
+}
+
+.store-delete-modal-container div {
+  display: flex;
+  gap: 20px;
+}
+
+.store-delete-modal-container div button {
+  border: 0.5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  width: clamp(130px, 14vw, 150px);
+  height: clamp(50px, 3vw, 50px);
+  font-size: clamp(16px, 1.5vw, 20px);
+  gap: clamp(7px, 1vw, 14px);
+  cursor: pointer;
+}
+
+.store-delete-modal-container>div button:last-child {
+  border: 0.5px solid rgba(0, 0, 0, 0.1);
+  background: #5a6acf;
+  color: white;
+}
+
+.store-delete-modal-container>form button:first-child {
+  background: transparent;
+  color: rgba(0, 0, 0, 0.5);
+}

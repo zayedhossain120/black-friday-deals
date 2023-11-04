@@ -51,16 +51,14 @@
   padding-left: 20px;
 }
 .menu:hover {
-  font-weight: 600;
-  background-color: #f1f2fc;
-  color: #5a67ba;
-  fill: #5a67ba;
+  font-weight: 400;
+  color: #000;
 }
 
 .menu.active {
   background-color: #f1f2fc;
   font-weight: 600;
-  color: #5a67ba;
+  color: #1677ff;
 }
 
 .menu.active svg path {

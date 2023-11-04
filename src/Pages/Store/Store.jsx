@@ -23,7 +23,7 @@ const Store = () => {
  
   return (
     <section className="store-main-container">
-      <TopBar navigateTo="/store/create" pageTitle="Retailer" />
+      <TopBar navigateTo="/store/create" pageTitle="Store" />
 
       <StoreCardsContainer
         storesData={storesData}

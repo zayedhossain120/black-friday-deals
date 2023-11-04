@@ -47,8 +47,8 @@ const CreateBrandHowToUse = () => {
     // filtering to remove empty arrays
     setElements(elements.filter((group) => group.length));
 
-    updateData(`store/${id}`, { howToUse: elements });
-    navigate("/store");
+    updateData(`brands/${id}`, { howToUse: elements });
+    navigate("/brands");
     setSubmitting(false);
   };
 
@@ -62,7 +62,7 @@ const CreateBrandHowToUse = () => {
             <div className="edit-store-img">
               <div className="edit-store-img-green1">
                 <img src={okIcon} alt="Edit store processing" />
-                <p>New store details</p>
+                <p>New Brand details</p>
               </div>
 
               <div className="edit-store-img-gray2">

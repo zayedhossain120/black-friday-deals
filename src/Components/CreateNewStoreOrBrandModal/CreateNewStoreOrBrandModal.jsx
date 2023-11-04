@@ -22,17 +22,17 @@ const CreateNewStoreOrBrandModal = ({
     >
       <div className="create-store-brand-modal-container">
         <div className="create-modal-title">
-          <h2>Create new Stores or Brand    </h2>
-          <p>Select Online Store or Brand what you want to create</p>
+          <h2>Create new Stores or Brand</h2>
+          <p>Select Store or Brand what you want to create</p>
         </div>
 
-        <div className="modifier-buttons-container create-store-brand-button">
+        <div className="create-store-brand-button">
           <button
             className="store-modal-button"
             onClick={() => navigate("/store/create")}
           >
             <HomeOutlined />
-            Store
+           Store
           </button>
           <button
             className="brand-modal-button"

@@ -22,9 +22,9 @@ const CreateBrand = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const file = e.target.photoURL?.files[0];
-    const name = e.target.name;
-    const link = e.target.link;
+    const file = e.target.brandPhotoURL?.files[0];
+    const name = e.target.brandName;
+    const link = e.target.brandLink;
     const description = e.target.description;
 
     setIsLoading(true);
@@ -34,7 +34,7 @@ const CreateBrand = () => {
       .then((url) => {
         axios
           .post(
-            `${apiUrl}/store/add`,
+            `${apiUrl}/brands/add`,
             {
               brandPhotoURL: url,
               brandName: name.value,
@@ -72,12 +72,12 @@ const CreateBrand = () => {
             <h3>Add New Brand</h3>
             <div className="edit-store-img">
               <div className="edit-store-img-green">
-                <img src={okIcon} alt="Edit store proccessing" />
+                <img src={okIcon} alt="Edit store processing" />
                 <p>New brand details</p>
               </div>
               <div></div>
               <div className="edit-store-img-gray">
-                <img src={okIcon} alt="Edit store proccessing" />
+                <img src={okIcon} alt="Edit store processing" />
                 <p>How to use</p>
               </div>
             </div>
@@ -87,7 +87,7 @@ const CreateBrand = () => {
               <form onSubmit={handleSubmit}>
                 <section className="edit-store-details">
                   <div className="edit-store-logo">
-                    <label htmlFor="photoURL" className="uploaded">
+                    <label htmlFor="brandPhotoURL" className="uploaded">
                       {imageShow ? (
                         <img src={imageShow} alt="" />
                       ) : (
@@ -102,8 +102,8 @@ const CreateBrand = () => {
                       required
                       style={{ width: "100%" }}
                       type="file"
-                      id="photoURL"
-                      name="photoURL"
+                      id="brandPhotoURL"
+                      name="brandPhotoURL"
                       onChange={(e) =>
                         setImageShow(URL.createObjectURL(e.target.files[0]))
                       }
@@ -113,23 +113,23 @@ const CreateBrand = () => {
                     {/* <p>Progress {progress}%</p> */}
                     <div className="store-name-link">
                       <div className="store-name">
-                        <label htmlFor="name">Brand Name</label>
+                        <label htmlFor="brandName">Brand Name</label>
                         <Input
                           required
-                          id="name"
-                          name="name"
+                          id="brandName"
+                          name="brandName"
                           style={{ width: "100%" }}
                         />
                       </div>
                       <div className="link-div">
                         {" "}
-                        <label htmlFor="link">Link*</label>
+                        <label htmlFor="brandLink">Link*</label>
                         <Input
                           required
-                          id="link"
+                          id="brandLink"
                           placeholder="https://"
                           style={{ width: "100%" }}
-                          name="link"
+                          name="brandLink"
                         />
                       </div>
                     </div>
