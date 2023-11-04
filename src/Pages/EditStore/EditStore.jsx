@@ -24,18 +24,19 @@ const EditStore = () => {
   const { postPhotoAtFirebase } = useSubmitPhotoAtFirebase();
   const [submitting, setSubmitting] = useState(false);
 
+  console.log(store);
+
   useEffect(() => {
     const accessToken = getToken();
 
     axios
-      .patch(`${apiUrl}/store/${id}`, {
+      .get(`${apiUrl}/store/${id}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       })
       .then(({ data }) => {
         setStore(data);
-        console.log(formData, "formdata");
         setFormData({
           storeName: data?.data?.storeName || "",
           storeLink: data?.data?.storeLink || "",
@@ -148,6 +149,7 @@ const EditStore = () => {
                     <div className="store-name">
                       <label htmlFor="name">Store Name</label>
                       <Input
+                        value={formData?.storeName}
                         required
                         id="name"
                         name="name"
@@ -160,6 +162,7 @@ const EditStore = () => {
                       <Input
                         required
                         id="link"
+                        value={formData?.storeLink}
                         placeholder="https://"
                         style={{ width: "100%" }}
                         name="link"
@@ -172,6 +175,7 @@ const EditStore = () => {
                     <TextArea
                       id="description"
                       name="description"
+                      value={formData?.description}
                       style={{
                         height: "138px",
                         resize: "none",

@@ -103,7 +103,7 @@
 .carousel-coupon {
   padding: 4% 6.1%;
 }
-.carousel-coupon1 input {
+.carousel-coupon1 Input {
   height: 50px;
   margin: 12px 0 12px 0;
   border-radius: 10px;
@@ -111,10 +111,6 @@
   border: 1px solid rgba(0, 0, 0, 0.1);
   outline: none;
   /* margin-bottom: 30px; */
-}
-.carousel-coupon1 input[type="text"] {
-  font-size: 17px;
-  padding-left: 20px;
 }
 
 .carousel-add-coursel-btn #input-submit {
