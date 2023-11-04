@@ -14,7 +14,7 @@ const ViewStoreDetails = () => {
     <div className="view-store-detail-container">
       <section className="view-store-section-container">
         <div className="view-store-left-container">
-          <img src={store?.data?.photoURL} alt="" />
+          <img src={store?.data?.storePhotoURL} alt="" />
           <div className="view-store-name-country-flags">
             <div className="h1Container">
               <h1>{store?.data?.storeName}</h1>
@@ -42,7 +42,7 @@ const ViewStoreDetails = () => {
           <div className="set-two-button">
             <button className="view-store-first-button">
               <Link
-                to={store?.data?.storeExternalLink?.toString()}
+                to={store?.data?.storeLink?.toString()}
                 target="_blank"
                 className="view-store-button-link"
                 rel="noopener noreferrer"

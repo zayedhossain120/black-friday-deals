@@ -8,11 +8,11 @@
 }
 .create-store-brand-modal-container .create-modal-title h2 {
   font-size: 24px;
-  color: (0, 0, 0, 1);
+  color: rgba(0, 0, 0, 1);
   text-align: center;
 }
 .create-store-brand-modal-container .create-modal-title p {
-  color: (0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.5);
   margin-bottom: 30px;
   font-size: 18px;
   text-align: center;
@@ -32,8 +32,29 @@
   gap: 7px;
   padding: 20px 100px;
   border-radius: 50px;
+  border: 1px solid green
+}
+.create-store-brand-button button:hover{
+  background: green;
+  color: white;
+  transition: 0.7s;
 }
 
-@media  screen and (max-width: 700px) {
-  
+@media screen and (max-width: 700px) {
+  .create-store-brand-modal-container{
+    padding: 10px 0;
+  }
+  .create-store-brand-modal-container .create-modal-title h2{
+    font-size: 18px;
+  }
+  .create-store-brand-modal-container .create-modal-title p{
+    font-size:15px;
+  }
+  .create-store-brand-button{
+width: 100%;
+  }
+  .create-store-brand-button button{
+font-size: 16px;
+padding: 10px 50px;
+  }
 }

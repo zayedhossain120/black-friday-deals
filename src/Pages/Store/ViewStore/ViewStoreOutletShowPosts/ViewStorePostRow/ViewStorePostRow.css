@@ -78,16 +78,16 @@
   transition: all 1s ease;
 }
 
-.store-table .modifier-buttons-container button {
+.store-table .span-img-container button {
   /** this post table*/
   transition: all 0.5s ease;
   opacity: 0;
   width: 0;
 }
-.view-store-table-row:hover .modifier-buttons-container :is(img, span) {
+.view-store-table-row:hover .span-img-container :is(img, span) {
   display: none;
 }
-.view-store-table-row:hover .modifier-buttons-container button {
+.view-store-table-row:hover .span-img-container button {
   margin-left: clamp(5px, 1vw, 20px);
   margin-right: clamp(5px, 1vw, 20px);
   opacity: 1;
@@ -218,8 +218,10 @@
   .dynamic-price-div {
     padding-left: 70px;
   }
-  .modifier-buttons-container img,
-  span {
+  .table-data .span-img-container img{
+    display: none;
+  }
+  .table-data .span-img-container span {
     display: none;
   }
   .available-online-store {
@@ -240,7 +242,7 @@
     width: 50px;
     height: 30px;
   }
-  .modifier-buttons-container {
+  .span-img-container {
     position: absolute;
     right: 40px;
     top: 50px;

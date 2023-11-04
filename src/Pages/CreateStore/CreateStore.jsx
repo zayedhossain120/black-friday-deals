@@ -65,7 +65,7 @@ const CreateStore = () => {
 
   return (
     <div>
-      <TopBar pageTitle={"Create New Post"} />
+      <TopBar pageTitle={"Create New Store"} />
       <main>
         <section className="edit-store-main3">
           <div className="edit-store-header">

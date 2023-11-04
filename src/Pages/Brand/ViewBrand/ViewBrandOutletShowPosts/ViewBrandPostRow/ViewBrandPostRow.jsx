@@ -192,7 +192,7 @@ const ViewBrandPostRow = ({
         )}
       </div>
       {/* modifier buttons section */}
-      <div className="table-data modifier-buttons-container">
+      <div className="table-data span-img-container">
         <img src={viewEye} alt="view icon" />
         <span>{post?.revealed}</span>
         <button

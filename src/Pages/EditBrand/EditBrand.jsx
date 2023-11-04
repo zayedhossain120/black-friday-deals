@@ -37,11 +37,12 @@ const EditBrand = () => {
         setStore(data);
         setFormData({
           brandName: data?.data?.brandName || "",
-          storeExternalLink: data?.data?.storeExternalLink || "",
+          brandLink: data?.data?.brandLink || "",
           country: data?.data?.country || [],
           description: data?.data?.description || "",
         });
-        setImageShow({ url: data?.data?.photoURL || "" });
+        console.log(data);
+        setImageShow({ url: data?.data?.brandPhotoURL || "" });
       })
       .catch((error) => {
         toast.error(`Error: ${error?.response?.data?.message}`);
@@ -77,11 +78,11 @@ const EditBrand = () => {
     setSubmitting(true);
 
     if (imageShow?.files) {
-      postPhotoAtFirebase(imageShow.files)
+      postPhotoAtFirebase(imageShow?.files)
         .then((url) => {
           const { brandPhotoURL, ...rest } = formData;
           submitUpdatedData({
-            photoURL: url,
+            brandPhotoURL: url,
             ...rest,
           });
         })
@@ -130,14 +131,14 @@ const EditBrand = () => {
                   </label>
                   <input
                     accept="image/*"
-                    value={formData.brandPhotoURL}
+                    value={formData?.brandPhotoURL}
                     type="file"
-                    id="photoURL"
-                    name="photoURL"
+                    id="brandPhotoURL"
+                    name="brandPhotoURL"
                     onChange={(e) =>
                       setImageShow({
-                        files: e.target.files[0],
-                        url: URL.createObjectURL(e.target.files[0]),
+                        files: e?.target?.files[0],
+                        url: URL?.createObjectURL(e?.target?.files[0]),
                       })
                     }
                   />
@@ -149,8 +150,8 @@ const EditBrand = () => {
                       <label htmlFor="name">Brand Name</label>
                       <Input
                         required
-                        id="name"
-                        name="name"
+                        id="brandName"
+                        name="brandName"
                         style={{ width: "100%" }}
                       />
                     </div>
@@ -159,10 +160,10 @@ const EditBrand = () => {
                       <label htmlFor="link">Link*</label>
                       <Input
                         required
-                        id="link"
+                        id="brandLink"
                         placeholder="https://"
                         style={{ width: "100%" }}
-                        name="link"
+                        name="brandLink"
                       />
                     </div>
                   </div>

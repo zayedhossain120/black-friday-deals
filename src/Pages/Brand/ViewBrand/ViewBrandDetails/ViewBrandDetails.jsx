@@ -54,7 +54,7 @@ const ViewBrandDetails = () => {
             </button>
             <button
               className="view-store-second-button"
-              onClick={() => navigate(`/brand/edit/${id}`)}
+              onClick={() => navigate(`/brands/edit/${id}`)}
             >
               {" "}
               <span className="button-text">Edit</span>

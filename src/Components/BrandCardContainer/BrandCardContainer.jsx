@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import flags from "../../Utils/variables/flags";
+import flags from "../../Utils/variables/flags"
 import { useState } from "react";
 import EditIcon from "../IconsComponents/EditIcon";
 import DeleteIcon from "../IconsComponents/DeleteIcon";
@@ -17,7 +17,6 @@ const BrandCardContainer = ({
   isFetchingNextPage,
   refetch,
 }) => {
-  console.log(brandData, 'get brandData')
   const navigate = useNavigate();
   const [openDeleteUserModal, setOpenStoreDeleteModal] = useState(false);
 
@@ -48,7 +47,7 @@ const BrandCardContainer = ({
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      navigate(`/brand/edit/${brand?._id}`);
+                      navigate(`/brands/edit/${brand?._id}`);
                     }}
                   >
                     <EditIcon />
@@ -65,7 +64,7 @@ const BrandCardContainer = ({
                 <div className="store-info">
                   <h1>{brand?.brandName}</h1>
                   <div className="country-flags">
-                    {brand?.country?.map((country) => (
+                    {brand?.countries?.map((country) => (
                       <img
                         key={country}
                         src={

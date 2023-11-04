@@ -42,6 +42,7 @@ import ViewBrand from "../Pages/Brand/ViewBrand/ViewBrand";
 import EditBrand from "../Pages/EditBrand/EditBrand";
 import EditBrandHowToUse from "../Pages/EditBrand/EditBrandHowToUse/EditBrandHowToUse";
 import CreateBrand from "../Pages/CreateBrand/CreateBrand";
+import CreateBrandHowToUse from "../Pages/CreateBrand/CreateBrandHowToUse/CreateBrandHowToUse";
 
 const Routes = () => {
   const router = createBrowserRouter([
@@ -115,7 +116,7 @@ const Routes = () => {
         },
         {
           path: "/brands/edit/howtouse/:id",
-          loader: async ({ params }) => fetchStoreDataAtRouterLevel(params.id),
+          loader: async ({ params }) => fetchBrandDataAtRouterLevel(params.id),
           element: <EditBrandHowToUse />,
         },
         {
@@ -124,7 +125,7 @@ const Routes = () => {
         },
         {
           path: "/brands/create/howtouse/:id",
-          element: <CreateStoreHowToUse />,
+          element: <CreateBrandHowToUse />,
         },
         {
           path: "/campaign",
