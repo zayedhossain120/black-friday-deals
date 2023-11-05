@@ -5,8 +5,10 @@ import { useEffect, useState } from "react";
 import notAvailable from "../../../../assets/nodataAvailable.png";
 import flags from "../../../../Utils/variables/flags";
 import googleicon from "../../../../assets/Icons/googleIcon.png";
+import useFetch from "../../../../CustomHooks/useFetch";
 
 const ProductDealAsidBar = ({ productlImage, formData }) => {
+  const { data: brand } = useFetch("brand/?limit=1000");
   const [asidebar, setAsidebar] = useState(null);
   useEffect(() => {
     fetch(`https://restcountries.com/v3.1/all`)
@@ -15,6 +17,7 @@ const ProductDealAsidBar = ({ productlImage, formData }) => {
         setAsidebar(data);
       });
   }, []);
+  console.log("this is Brand Name", brand);
   // console.log("this is formData", formData);
   // const dataTag = () => {
   //   const oldprice = formData.oldprice;
@@ -34,14 +37,14 @@ const ProductDealAsidBar = ({ productlImage, formData }) => {
             </div>
           </div>
           <div className="product-deal-asidebar-details-container">
-            <h1>Nike Pink color Shoes</h1>
+            <h1>{formData.postTitle}</h1>
             <div className="product-deal-asidebar-details-product-price">
               <div className="product-deal-asidebar-product-price-dev">
                 <h2>
-                  $200{" "}
+                  $ {formData.discountprice}{" "}
                   <span className="prduct-deal-asidebar-product-price-delete-span">
                     {" "}
-                    - <s>$700</s>
+                    - <s>$ {formData.oldprice}</s>
                   </span>{" "}
                 </h2>
                 <p> 75% OFF</p>
@@ -61,7 +64,7 @@ const ProductDealAsidBar = ({ productlImage, formData }) => {
               <div>
                 <img src={googleicon} alt="" />
               </div>
-              <p> Nike</p>
+              <p> {formData.brandName}</p>
             </div>
             <div className="product-deal-asidebar-product-country-flags">
               {formData.countries?.map((country) => {

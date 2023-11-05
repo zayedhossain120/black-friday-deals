@@ -4,18 +4,23 @@ import { Checkbox, DatePicker, Input, Select, Spin } from "antd";
 
 import TextArea from "antd/es/input/TextArea";
 import flags from "../../../Utils/variables/flags";
-import axios from "axios";
 import useFetch from "../../../CustomHooks/useFetch";
 import { Option } from "antd/es/mentions";
 import getToken from "../../../Utils/getToken";
 import apiUrl from "../../../Utils/variables/apiUrl";
 import { toast } from "react-toastify";
 import TopBar from "../../../Components/TopBar/TopBar";
+import axios from "axios";
 
 const AddNewPost = () => {
   const { data: store } = useFetch("store/all?limit=1000");
+  // const { data: brand } = useFetch("brand/?limit=1000");
+  const { data: category } = useFetch("category/?limit=1000");
+  const { data: campaign } = useFetch("campaign/all?limit=1000");
+  const { data: network } = useFetch("network/?limit=1000");
   const [formData, setFormData] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  // console.log("campaign", campaign);
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -34,17 +39,26 @@ const AddNewPost = () => {
       setIsSubmitting(true);
       const { data } = await axios.post(`${apiUrl}/post/add`, formData, {
         headers: {
+          "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
         },
       });
+      // const {data} = await Axios.po
+      // setIsSubmitting(true);
+      // const { data } = await axios.post(${apiUrl}/post/add, formData, {
+      //   headers: {
+      //     Authorization:` Bearer ${accessToken}`,
+      //   },
+      // });
 
-      if (data?.status === "success") {
+      if (data?.success) {
         toast.success("New post added");
         setFormData({});
       } else {
         toast.error("Failed to add new post");
       }
     } catch (error) {
+      // console.error("Error:", error);
       console.error("Error:", error);
       toast.error("An error occurred while adding the new post");
     } finally {
@@ -92,8 +106,8 @@ const AddNewPost = () => {
                         setFormData({ ...formData, postType: value })
                       }
                     >
-                      <Option value="coupon">Coupon</Option>
-                      <Option value="deal">Deal</Option>
+                      <Option value="Voucher">Voucher</Option>
+                      <Option value="Coupon">Coupon</Option>
                     </Select>
                   </span>
                   {/* coupon input */}
@@ -138,14 +152,17 @@ const AddNewPost = () => {
                       showSearch
                       placeholder="Select Store"
                       id="store-name"
-                      value={formData.storeName}
+                      value={formData.networkName}
                       onChange={(value) =>
-                        setFormData({ ...formData, storeName: value })
+                        setFormData({ ...formData, networkName: value })
                       }
                     >
-                      {store?.data?.map((item) => (
-                        <Option key={item?.storeName} value={item?.storeName}>
-                          {item?.storeName}
+                      {network.data?.map((item) => (
+                        <Option
+                          key={item?.networkName}
+                          value={item?.networkName}
+                        >
+                          {item?.networkName}
                         </Option>
                       ))}
                     </Select>
@@ -190,14 +207,17 @@ const AddNewPost = () => {
                       showSearch
                       placeholder="Select Store"
                       id="store-name"
-                      value={formData.storeName}
+                      value={formData.categoryName}
                       onChange={(value) =>
-                        setFormData({ ...formData, storeName: value })
+                        setFormData({ ...formData, categoryName: value })
                       }
                     >
-                      {store?.data?.map((item) => (
-                        <Option key={item?.storeName} value={item?.storeName}>
-                          {item?.storeName}
+                      {category?.data?.map((item) => (
+                        <Option
+                          key={item?.categoryName}
+                          value={item?.categoryName}
+                        >
+                          {item?.categoryName}
                         </Option>
                       ))}
                     </Select>
@@ -229,14 +249,17 @@ const AddNewPost = () => {
                       showSearch
                       placeholder="Select Store"
                       id="store-name"
-                      value={formData.storeName}
+                      value={formData.campaignName}
                       onChange={(value) =>
-                        setFormData({ ...formData, storeName: value })
+                        setFormData({ ...formData, campaignName: value })
                       }
                     >
-                      {store?.data?.map((item) => (
-                        <Option key={item?.storeName} value={item?.storeName}>
-                          {item?.storeName}
+                      {campaign?.data?.map((item) => (
+                        <Option
+                          key={item?.campaignName}
+                          value={item?.campaignName}
+                        >
+                          {item?.campaignName}
                         </Option>
                       ))}
                     </Select>
@@ -252,10 +275,10 @@ const AddNewPost = () => {
                       mode="multiple"
                       className="add-new-post-country-input"
                       // style={{ width: "388px", height: "20%" }}
-                      value={formData.country}
-                      placeholder={"country"}
+                      value={formData.countries}
+                      placeholder={"countries"}
                       onChange={(value) =>
-                        setFormData({ ...formData, country: value })
+                        setFormData({ ...formData, countries: value })
                       }
                     >
                       {flags.map((flag) => (
