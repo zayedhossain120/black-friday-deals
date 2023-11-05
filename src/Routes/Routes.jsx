@@ -77,19 +77,19 @@ const Routes = () => {
               element: <ViewStoreOutlet query={`${hasValidity()}`} />,
             },
             {
-              path: "coupon",
+              path: "coupons",
               loader: async ({ params }) =>
                 fetchBrandDataAtRouterLevel(params.id),
               element: (
-                <ViewStoreOutlet query={`${hasValidity()}&postType=coupon`} />
+                <ViewStoreOutlet query={`${hasValidity()}&postType=Coupon`} />
               ),
             },
             {
-              path: "deal",
+              path: "deals",
               loader: async ({ params }) =>
                 fetchBrandDataAtRouterLevel(params.id),
               element: (
-                <ViewStoreOutlet query={`${hasValidity()}&postType=deal`} />
+                <ViewStoreOutlet query={`${hasValidity()}&postType=Deal`} />
               ),
             },
             {
@@ -97,7 +97,7 @@ const Routes = () => {
               loader: async ({ params }) =>
                 fetchBrandDataAtRouterLevel(params.id),
               element: (
-                <ViewStoreOutlet query={`${hasValidity()}&postType=voucher`} />
+                <ViewStoreOutlet query={`${hasValidity()}&postType=Voucher`} />
               ),
             },
             {
@@ -203,7 +203,7 @@ const Routes = () => {
               loader: async ({ params }) =>
                 fetchStoreDataAtRouterLevel(params.id),
               element: (
-                <ViewStoreOutlet query={`${hasValidity()}&postType=coupon`} />
+                <ViewStoreOutlet query={`${hasValidity()}&postType=Coupon`} />
               ),
             },
             {
@@ -211,7 +211,7 @@ const Routes = () => {
               loader: async ({ params }) =>
                 fetchStoreDataAtRouterLevel(params.id),
               element: (
-                <ViewStoreOutlet query={`${hasValidity()}&postType=deal`} />
+                <ViewStoreOutlet query={`${hasValidity()}&postType=Deal`} />
               ),
             },
             {
@@ -219,7 +219,7 @@ const Routes = () => {
               loader: async ({ params }) =>
                 fetchStoreDataAtRouterLevel(params.id),
               element: (
-                <ViewStoreOutlet query={`${hasValidity()}&postType=voucher`} />
+                <ViewStoreOutlet query={`${hasValidity()}&postType=Voucher`} />
               ),
             },
             {

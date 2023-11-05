@@ -22,9 +22,9 @@ const CreateBrand = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const file = e.target.brandPhotoURL?.files[0];
-    const name = e.target.brandName;
-    const link = e.target.brandLink;
+    const file = e.target?.brandPhotoURL?.files[0];
+    const name = e.target?.brandName;
+    const link = e.target?.brandLink;
     const description = e.target.description;
 
     setIsLoading(true);
@@ -34,12 +34,12 @@ const CreateBrand = () => {
       .then((url) => {
         axios
           .post(
-            `${apiUrl}/brands/add`,
+            `${apiUrl}/brand/add`,
             {
               brandPhotoURL: url,
-              brandName: name.value,
-              brandLink: link.value,
-              description: description.value,
+              brandName: name?.value,
+              brandLink: link?.value,
+              description: description?.value,
             },
             {
               headers: {
@@ -48,7 +48,10 @@ const CreateBrand = () => {
             }
           )
           .then(({ data }) => {
+            console.log(data, 'data data');
             navigate(`howtouse/${data?.data?._id}`);
+            console.log(data?.data?._id, 'console logging data');
+            console.log(data, 'data log');
           })
           .catch((e) => {
             console.log(e);
@@ -105,7 +108,7 @@ const CreateBrand = () => {
                       id="brandPhotoURL"
                       name="brandPhotoURL"
                       onChange={(e) =>
-                        setImageShow(URL.createObjectURL(e.target.files[0]))
+                        setImageShow(URL.createObjectURL(e?.target?.files[0]))
                       }
                     />
                   </div>

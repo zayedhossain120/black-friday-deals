@@ -19,7 +19,8 @@ const StoreCardsContainer = ({
 }) => {
   const navigate = useNavigate();
   const [openDeleteUserModal, setOpenStoreDeleteModal] = useState(false);
-  
+  console.log(storesData);
+
   if (!isFetchingNextPage && isFetching) {
     return <MainLoading />;
   }
