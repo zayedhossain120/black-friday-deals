@@ -30,7 +30,7 @@ const EditStore = () => {
     const accessToken = getToken();
 
     axios
-      .get(`${apiUrl}/brands/${id}`, {
+      .get(`${apiUrl}/brand/${id}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
@@ -50,7 +50,6 @@ const EditStore = () => {
       });
   }, [id]);
 
-  console.log(store, 'from data');
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -61,7 +60,7 @@ const EditStore = () => {
 
   const submitUpdatedData = (payload) => {
     axios
-      .patch(`${apiUrl}/brands/${store?.data?._id}`, payload, {
+      .patch(`${apiUrl}/brand/${store?.data?._id}`, payload, {
         headers: { Authorization: `Bearer ${getToken()}` },
       })
       .then(({ data }) => {
