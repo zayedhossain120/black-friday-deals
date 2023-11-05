@@ -29,15 +29,16 @@ const BrandDeleteModal = ({
           },
         }
       );
+      console.log(data, 'delete data');
       if (data?.success) {
-        toast.success("Store Deleted");
+        toast.success("Brand Deleted");
       } else {
-        toast.error("Store Not Deleted");
+        toast.error("Brand Not Deleted");
       }
 
       setOpenStoreDeleteModal(false);
     } catch (error) {
-      console.error("Error deleting store:", error);
+      console.error("Error deleting brand:", error);
       toast.error("Bhai atar bitor data ace delete hobena");
     }
     refetch();
@@ -50,7 +51,7 @@ const BrandDeleteModal = ({
         <img src={modalDelete} alt="delete icon" />
         <p>
           Are you sure you want to delete{" "}
-          <strong>{openDeleteUserModal?.storeName}</strong>
+          <strong>{openDeleteUserModal?.brandName}</strong>
         </p>
         <div className="store-delete-modal-btn">
           <button onClick={handleCancel}>Cancel</button>

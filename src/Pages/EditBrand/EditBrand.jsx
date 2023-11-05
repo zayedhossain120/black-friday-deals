@@ -19,12 +19,10 @@ const EditStore = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [imageShow, setImageShow] = useState({});
-  const [store, setStore] = useState({});
+  const [brand, setBrand] = useState({});
   const [formData, setFormData] = useState({});
   const { postPhotoAtFirebase } = useSubmitPhotoAtFirebase();
   const [submitting, setSubmitting] = useState(false);
-
-  console.log(store);
 
   useEffect(() => {
     const accessToken = getToken();
@@ -36,12 +34,12 @@ const EditStore = () => {
         },
       })
       .then(({ data }) => {
-        setStore(data);
+        setBrand(data);
         setFormData({
           brandName: data?.data?.brandName || "",
           // brandPhotoURL: data?.data?.brandPhotoURL || "",
           brandLink: data?.data?.brandLink || "",
-          description: data?.data?.description || "",
+          brandDescription: data?.data?.brandDescription || "",
         });
         setImageShow({ url: data?.data?.brandPhotoURL || "" });
       })
@@ -60,7 +58,7 @@ const EditStore = () => {
 
   const submitUpdatedData = (payload) => {
     axios
-      .patch(`${apiUrl}/brand/${store?.data?._id}`, payload, {
+      .patch(`${apiUrl}/brand/${brand?.data?._id}`, payload, {
         headers: { Authorization: `Bearer ${getToken()}` },
       })
       .then(({ data }) => {
@@ -174,9 +172,9 @@ const EditStore = () => {
                   <div>
                     <label htmlFor="description">Description</label>
                     <TextArea
-                      id="description"
-                      name="description"
-                      value={formData?.description}
+                      id="brandDescription"
+                      name="brandDescription"
+                      value={formData?.brandDescription}
                       style={{
                         height: "138px",
                         resize: "none",
