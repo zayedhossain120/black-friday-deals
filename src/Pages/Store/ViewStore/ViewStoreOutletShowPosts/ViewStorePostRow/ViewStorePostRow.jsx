@@ -84,7 +84,7 @@ const ViewStorePostRow = ({
             onClick={(e) => handleMultipleSelectItem(e)}
           />
           <img
-            src={post?.store?.photoURL || placeholder}
+            src={post?.store?.storePhotoURL || placeholder}
             alt={post?.postTitle?.slice(0, 5)}
             height={50}
             width={50}
@@ -117,7 +117,7 @@ const ViewStorePostRow = ({
       <div className="available-online-store">
         <p className="">Available On</p>
         <img
-          src={post?.store?.photoURL || placeholder}
+          src={post?.store?.storePhotoURL || placeholder}
           alt={post?.postTitle?.slice(0, 5)}
           height={50}
           width={50}

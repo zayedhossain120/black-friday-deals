@@ -19,7 +19,7 @@ const StoreCardsContainer = ({
 }) => {
   const navigate = useNavigate();
   const [openDeleteUserModal, setOpenStoreDeleteModal] = useState(false);
-
+console.log(storesData, 'check');
   if (!isFetchingNextPage && isFetching) {
     return <MainLoading />;
   }
@@ -34,6 +34,7 @@ const StoreCardsContainer = ({
           page?.data
             ?.sort((a, b) => (a?.totalPosts > b?.totalPosts ? -1 : 1))
             ?.map((store) => (
+              console.log(store, 'country check'),
               <div
                 key={store?._id}
                 className="individual-store-container"
@@ -64,7 +65,7 @@ const StoreCardsContainer = ({
                 <div className="store-info">
                   <h1>{store?.storeName}</h1>
                   <div className="country-flags">
-                    {store?.country?.map((country) => (
+                    {store?.countries?.map((country) => (
                       <img
                         key={country}
                         src={

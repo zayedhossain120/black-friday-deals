@@ -3,11 +3,11 @@ import { NavLink, useLoaderData } from "react-router-dom";
 import brandRoutes from "../../../../Utils/Menus/brandRoutes";
 
 const ViewBrandInnerNav = () => {
-  const brand = useLoaderData();
+  const brands = useLoaderData();
 
   return (
     <nav className="post-inner-nav">
-      {brandRoutes(brand?.data?._id).map((menu) => (
+      {brandRoutes(brands?.data?._id).map((menu) => (
         <NavLink
           key={menu.label}
           to={menu.link}
