@@ -51,38 +51,6 @@ const ViewStorePostRow = ({
     return <p className="text-center">Loading...</p>;
   }
 
-  // const items = post?.country?.map(item => ({
-  //   key: item.key,
-  //   label: (
-  //     <img
-  //     src={item.flagUrl}
-  //     title={item.countryName}
-  //     width={250}
-  //     >
-  //       {console.log(item)}
-  //     </img>
-  //   ),
-  // }));
-
-
-  // const items =   post?.country?.map((country) => ({
-  //   key: country.key,
-  //   label: (
-  //        <div key={country}>
-  //          {post?.country?.map((country) => (
-  //         <img
-  //           key={country}
-  //           src={flags.find((flag) => flag.countryName === country).flagUrl}
-  //           alt={country}
-  //           title={country}
-  //         />
-  //         <p></p>
-  //       ))}
-  //        </div>
-  //   )
-  // }))
-
-
   const selectStyle = {
     display: 'flex',
     gap: '5px'

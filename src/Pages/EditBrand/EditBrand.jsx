@@ -1,4 +1,4 @@
-import './EditBrand.css'
+import "./EditBrand.css";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -9,17 +9,17 @@ import axios from "axios";
 import apiUrl from "../../Utils/variables/apiUrl";
 import getToken from "../../Utils/getToken";
 import TextArea from "antd/es/input/TextArea";
-import "../CreateStore/CreateStore";
+import "../../Pages/CreateStore/CreateStore";
 import { Input, Select, Spin } from "antd";
 import useSubmitPhotoAtFirebase from "../../Utils/useSubmitPhotoAtFirebase";
 import placeholder from "../../assets/placeholder.webp";
 import TopBar from "../../Components/TopBar/TopBar";
 
-const EditBrand = () => {
+const EditStore = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [imageShow, setImageShow] = useState({});
-  const [store, setStore] = useState({});
+  const [brand, setBrand] = useState({});
   const [formData, setFormData] = useState({});
   const { postPhotoAtFirebase } = useSubmitPhotoAtFirebase();
   const [submitting, setSubmitting] = useState(false);
@@ -28,20 +28,19 @@ const EditBrand = () => {
     const accessToken = getToken();
 
     axios
-      .get(`${apiUrl}/brands/${id}`, {
+      .get(`${apiUrl}/brand/${id}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       })
       .then(({ data }) => {
-        setStore(data);
+        setBrand(data);
         setFormData({
           brandName: data?.data?.brandName || "",
+          // brandPhotoURL: data?.data?.brandPhotoURL || "",
           brandLink: data?.data?.brandLink || "",
-          country: data?.data?.country || [],
-          description: data?.data?.description || "",
+          brandDescription: data?.data?.brandDescription || "",
         });
-        console.log(data);
         setImageShow({ url: data?.data?.brandPhotoURL || "" });
       })
       .catch((error) => {
@@ -59,7 +58,7 @@ const EditBrand = () => {
 
   const submitUpdatedData = (payload) => {
     axios
-      .put(`${apiUrl}/brands/${store?.data?._id}`, payload, {
+      .patch(`${apiUrl}/brand/${brand?.data?._id}`, payload, {
         headers: { Authorization: `Bearer ${getToken()}` },
       })
       .then(({ data }) => {
@@ -78,11 +77,11 @@ const EditBrand = () => {
     setSubmitting(true);
 
     if (imageShow?.files) {
-      postPhotoAtFirebase(imageShow?.files)
+      postPhotoAtFirebase(imageShow.files)
         .then((url) => {
           const { brandPhotoURL, ...rest } = formData;
           submitUpdatedData({
-            brandPhotoURL: url,
+            storePhotoURL: url,
             ...rest,
           });
         })
@@ -105,7 +104,7 @@ const EditBrand = () => {
             <div className="edit-store-imgs">
               <div className="edit-store-img-green5">
                 <img src={okIcon} alt="Edit store processing" />
-                <p>New Brand details</p>
+                <p>New brand details</p>
               </div>
               <div className="edit-store-img-gray">
                 <img src={okIcon} alt="Edit store processing" />
@@ -118,7 +117,7 @@ const EditBrand = () => {
             <form onSubmit={handleSubmit}>
               <section className="edit-store-details2">
                 <div className="edit-store-logo">
-                  <label htmlFor="photoURL" className="uploaded">
+                  <label htmlFor="brandPhotoURL" className="uploaded">
                     {imageShow.url ? (
                       <img src={imageShow.url} alt="" />
                     ) : (
@@ -131,24 +130,25 @@ const EditBrand = () => {
                   </label>
                   <input
                     accept="image/*"
-                    value={formData?.brandPhotoURL}
+                    value={formData.brandPhotoURL}
                     type="file"
                     id="brandPhotoURL"
                     name="brandPhotoURL"
                     onChange={(e) =>
                       setImageShow({
-                        files: e?.target?.files[0],
-                        url: URL?.createObjectURL(e?.target?.files[0]),
+                        files: e.target.files[0],
+                        url: URL.createObjectURL(e.target.files[0]),
                       })
                     }
                   />
                 </div>
                 <div className="edit-store-form">
-                    {/* <p>Progress {progress}%</p> */}
+                  {/* <p>Progress {progress}%</p> */}
                   <div className="store-name-link">
-                  <div className="store-name">
-                      <label htmlFor="name">Brand Name</label>
+                    <div className="store-name">
+                      <label htmlFor="brandName">Brand Name</label>
                       <Input
+                        value={formData?.brandName}
                         required
                         id="brandName"
                         name="brandName"
@@ -157,10 +157,11 @@ const EditBrand = () => {
                     </div>
                     <div className="link-div">
                       {" "}
-                      <label htmlFor="link">Link*</label>
+                      <label htmlFor="brandLink">Link*</label>
                       <Input
                         required
                         id="brandLink"
+                        value={formData?.brandLink}
                         placeholder="https://"
                         style={{ width: "100%" }}
                         name="brandLink"
@@ -168,18 +169,19 @@ const EditBrand = () => {
                     </div>
                   </div>
 
-                    <div>
-                      <label htmlFor="description">Description</label>
-                      <TextArea
-                        id="description"
-                        name="description"
-                        style={{
-                          height: "138px",
-                          resize: "none",
-                        }}
-                      />
-                    </div>
+                  <div>
+                    <label htmlFor="description">Description</label>
+                    <TextArea
+                      id="brandDescription"
+                      name="brandDescription"
+                      value={formData?.brandDescription}
+                      style={{
+                        height: "138px",
+                        resize: "none",
+                      }}
+                    />
                   </div>
+                </div>
               </section>
               <div className="form-submit-btn-main3">
                 {" "}
@@ -195,4 +197,4 @@ const EditBrand = () => {
   );
 };
 
-export default EditBrand;
+export default EditStore;
