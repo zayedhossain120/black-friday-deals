@@ -43,6 +43,8 @@ import EditBrand from "../Pages/EditBrand/EditBrand";
 import EditBrandHowToUse from "../Pages/EditBrand/EditBrandHowToUse/EditBrandHowToUse";
 import CreateBrand from "../Pages/CreateBrand/CreateBrand";
 import CreateBrandHowToUse from "../Pages/CreateBrand/CreateBrandHowToUse/CreateBrandHowToUse";
+import AddNewPostUpdate from "../Pages/Post/AddNewPostUpdate/AddNewPostUpdate";
+import ProductDealUpdate from "../Pages/Post/ProductDealUpdate/ProductDealUpdate";
 
 const Routes = () => {
   const router = createBrowserRouter([
@@ -335,6 +337,16 @@ const Routes = () => {
         {
           path: "/productdeal",
           element: <ProductDeal />,
+        },
+        // ----------------addNewPostUPdate-----------
+        {
+          path: "/addnewpostupdate",
+          element: <AddNewPostUpdate />,
+        },
+        // ----------------addNewPostUPdate-----------
+        {
+          path: "/productDealUpdate",
+          element: <ProductDealUpdate />,
         },
       ],
     },

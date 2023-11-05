@@ -1,14 +1,14 @@
+// import React from 'react';
+import "./ProductDealUpdateAsideBar.css";
 /* eslint-disable react/prop-types */
 // import React from "react";
-import "./ProductDealAsidBar.css";
+// import "./ProductDealAsidBar.css";
 import { useEffect, useState } from "react";
 import notAvailable from "../../../../assets/nodataAvailable.png";
 import flags from "../../../../Utils/variables/flags";
 import googleicon from "../../../../assets/Icons/googleIcon.png";
-import useFetch from "../../../../CustomHooks/useFetch";
 
-const ProductDealAsidBar = ({ productlImage, formData }) => {
-  const { data: brand } = useFetch("brand/?limit=1000");
+const ProductDealUpdateAsideBar = ({ productlImage, formData }) => {
   const [asidebar, setAsidebar] = useState(null);
   useEffect(() => {
     fetch(`https://restcountries.com/v3.1/all`)
@@ -17,7 +17,6 @@ const ProductDealAsidBar = ({ productlImage, formData }) => {
         setAsidebar(data);
       });
   }, []);
-  console.log("this is Brand Name", brand);
   // console.log("this is formData", formData);
   // const dataTag = () => {
   //   const oldprice = formData.oldprice;
@@ -26,48 +25,48 @@ const ProductDealAsidBar = ({ productlImage, formData }) => {
   //   return total;
   // };
   return (
-    <aside className="product-deal-aside-main-container">
+    <aside className="product-deal-update-aside-main-container">
       {/* <h1>this is Aside bar page:</h1> */}
-      {/* {asidebar ? (
-        <section className="product-deal-asidebar-data-available-container">
-          <div className="product-deal-asidebar-carousel-div">
+      {asidebar ? (
+        <section className="product-deal-asidebar-update-data-available-container">
+          <div className="product-deal-asidebar-update-carousel-div">
             <label htmlFor="">Preview</label>
             <div>
-              <img src={productlImage.url} alt="" />
+              <img src={productlImage?.url} alt="" />
             </div>
           </div>
-          <div className="product-deal-asidebar-details-container">
-            <h1>{formData.postTitle}</h1>
-            <div className="product-deal-asidebar-details-product-price">
-              <div className="product-deal-asidebar-product-price-dev">
+          <div className="product-deal-asidebar-update-details-container">
+            <h1>Nike Pink color Shoes</h1>
+            <div className="product-deal-asidebar-update-details-product-price">
+              <div className="product-deal-asidebar-update-product-price-dev">
                 <h2>
-                  $ {formData.discountprice}{" "}
-                  <span className="prduct-deal-asidebar-product-price-delete-span">
+                  $200{" "}
+                  <span className="prduct-deal-asidebar-update-product-price-delete-span">
                     {" "}
-                    - <s>$ {formData.oldprice}</s>
+                    - <s>$700</s>
                   </span>{" "}
                 </h2>
                 <p> 75% OFF</p>
               </div>
               <p>
                 Expire in{" "}
-                <span className="product-deal-aside-details-product-price-expire-day">
+                <span className="product-deal-aside-update-details-product-price-expire-day">
                   {/* {formData?.expireDate?.map((date) => {
-                    <p>{date.expireDate}</p>;
-                  })} */}
+                <p>{date.expireDate}</p>;
+              })} */}
                   14
                 </span>{" "}
                 days
               </p>
             </div>
-            <div className="product-deal-asidebar-product-company-name">
+            <div className="product-deal-asidebar-update-product-company-name">
               <div>
                 <img src={googleicon} alt="" />
               </div>
-              <p> {formData.brandName}</p>
+              <p> Nike</p>
             </div>
-            <div className="product-deal-asidebar-product-country-flags">
-              {formData.countries?.map((country) => {
+            <div className="product-deal-asidebar-update-product-country-flags">
+              {formData?.countries?.map((country) => {
                 return (
                   <div key={country}>
                     {" "}
@@ -84,11 +83,11 @@ const ProductDealAsidBar = ({ productlImage, formData }) => {
             </div>
           </div>
           <hr />
-          <div className="product-deal-asidebar-discraption">
+          <div className="product-deal-asidebar-update-discraption">
             <h1>Discription</h1>
-            <p>{formData.postDescription}</p>
+            <p>{formData?.postDescription}</p>
           </div>
-          <div className="product-deal-asidebar-footer">
+          <div className="product-deal-asidebar-update-footer">
             <div>
               <p>Available on</p>
               <img src={googleicon} alt="" />
@@ -96,16 +95,16 @@ const ProductDealAsidBar = ({ productlImage, formData }) => {
           </div>
         </section>
       ) : (
-        <section className="product-deal-asidebar-no-data-available-container">
-          <div className="product-deal-asidebar-no-data-available-child">
+        <section className="product-deal-asidebar-update-no-data-available-container">
+          <div className="product-deal-asidebar-update-no-data-available-child">
             <img src={notAvailable} alt="" />
             <h2>No Data Available</h2>
             <p>There is no data to show you right now</p>
           </div>
         </section>
-      )} */}
+      )}
     </aside>
   );
 };
 
-export default ProductDealAsidBar;
+export default ProductDealUpdateAsideBar;

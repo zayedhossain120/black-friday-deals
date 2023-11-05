@@ -1,0 +1,192 @@
+.product-deal-information-update-main-contaner {
+  padding: 1.8rem 1.4rem 10rem 1.4rem;
+  background: #fff;
+  height: 100dvh;
+  border-radius: 0.3rem;
+  overflow: auto;
+  scroll-behavior: smooth;
+}
+.product-deal-information-update-main-contaner > h1 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.7);
+}
+.product-deal-form-udpate-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.8rem;
+  padding-top: 1.5rem;
+}
+.product-deal-update-img-upload-lable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product-deal-information-update-country-input img {
+  width: 1.5rem;
+  margin-right: 0.7rem;
+}
+
+.ant-select-selection-item .ant-select-selection-item-content {
+  display: flex !important;
+}
+.ant-select-selection-item .ant-select-selection-item-content img {
+  width: 1.5rem !important;
+  aspect-ratio: 2 !important;
+  margin-right: 0.8rem !important;
+}
+.product-deal-information-update-old-discount-input {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.4rem;
+  white-space: nowrap;
+  margin-top: 1rem;
+}
+.product-deal-form-update-container-left {
+  display: grid;
+  gap: 1.4rem;
+}
+.produt-deal-information-img-upload-input-update-container p {
+  padding-bottom: 0.9rem;
+  color: rgba(0, 0, 0, 0.7);
+}
+.product-deal-form-update-container-right {
+  display: grid;
+  gap: 1.4rem;
+}
+.product-deal-form-update-container-right p {
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 500;
+  padding-bottom: 0.8rem;
+}
+.product-deal-form-update-container-left p {
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 500;
+  padding-bottom: 0.8rem;
+}
+.product-deal-update-information-img-upload-input input {
+  display: none;
+}
+.product-deal-update-information-img-upload-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.7rem;
+  width: 100%;
+  height: 230px;
+  /* border: 0.1rem dashed rgba(0, 0, 0, 0.2); */
+  cursor: pointer;
+}
+.product-deal-update-information-img-upload-input
+  .product-deal-update-img-upload-lable {
+  height: 100%;
+  background: #fff;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 10px;
+  border: 0.1rem dashed rgba(0, 0, 0, 0.2);
+  padding: 0 2rem;
+}
+/* .this-is-product-deal-information-border {
+    border: 0.1rem dashed rgba(0, 0, 0, 0.2);
+  }
+  .this-is-product-deal-information-border2 {
+    border: 0.1rem solid rgba(0, 0, 0, 0.2);
+  } */
+
+.product-deal-update-information-img-top img {
+  width: 100%;
+  height: clamp(227px, 10vh, 300px);
+  object-fit: contain;
+  padding: 0.9rem 0 0.5rem 0;
+}
+.product-deal-update-information-img-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.product-deal-update-information-img-upload-input
+  .product-deal-update-information-img-button
+  img {
+  padding: 1.3rem;
+  margin-bottom: 0.9rem;
+}
+.product-deal-update-information-img-upload-input
+  .product-deal-update-information-img-button {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 5rem;
+  height: 5rem;
+  box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.06);
+  border-radius: 50%;
+  color: rgba(0, 0, 0, 0.6);
+}
+.product-deal-information-update-post-description {
+  padding-top: 2rem;
+  display: grid;
+  gap: 0.9rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+}
+.product-deal-information-update-add-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1.9rem;
+  padding-bottom: 5rem;
+}
+.product-deal-information-update-add-button .Add-product-deal-update-btn {
+  border-radius: 0.7rem;
+  background: #ffff;
+  font-weight: 700;
+  padding: 1.3rem 4.2rem;
+  border: 1px solid rgb(219, 219, 219);
+  cursor: pointer;
+}
+.product-deal-information-update-add-button .Add-product-deal-update-btn:hover {
+  background: #24323d;
+  transition: all 0.5s;
+  color: #fff;
+}
+.product-deal-information-update-country-input {
+  width: 100% !important;
+  height: 70% !important;
+}
+.product-deal-update-information-brand-input {
+  width: 100% !important;
+  height: 70% !important;
+}
+.product-deal-information-update-store-input {
+  width: 100%;
+  height: 75% !important;
+}
+.product-deal-information-update-category-input {
+  width: 100% !important;
+  height: 75% !important;
+}
+.product-deal-information-update-campaingn-input {
+  width: 100% !important;
+  height: 75% !important;
+}
+.all-ant-design-hight-update-control {
+  padding-top: 0.5rem;
+}
+@media only screen and (max-width: 993px) {
+  .product-deal-form-udpate-container {
+    display: block;
+  }
+  .product-deal-form-update-container-left {
+    padding-bottom: 1.5rem;
+  }
+  .product-deal-information-update-main-contaner {
+    padding-bottom: 13rem;
+  }
+  /* .product-deal-information-update-add-button{
+      padding-bottom: 30px;
+    } */
+  .product-deal-information-update-add-button .Add-product-deal-update-btn {
+    width: 100%;
+  }
+}

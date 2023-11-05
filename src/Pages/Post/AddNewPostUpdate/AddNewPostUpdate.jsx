@@ -1,32 +1,23 @@
-<<<<<<< HEAD
-import React from "react";
-
-const AddNewPost = () => {
-  return <div></div>;
-=======
-import "./AddNewPost.css";
+// import React from 'react';
+// import "./AddNewPost.css";
+import "./AddNewPostUpdate.css";
 import { useState } from "react";
 import { Checkbox, DatePicker, Input, Select, Spin } from "antd";
 
 import TextArea from "antd/es/input/TextArea";
 import flags from "../../../Utils/variables/flags";
+import axios from "axios";
 import useFetch from "../../../CustomHooks/useFetch";
 import { Option } from "antd/es/mentions";
 import getToken from "../../../Utils/getToken";
 import apiUrl from "../../../Utils/variables/apiUrl";
 import { toast } from "react-toastify";
 import TopBar from "../../../Components/TopBar/TopBar";
-import axios from "axios";
 
-const AddNewPost = () => {
+const AddNewPostUpdate = () => {
   const { data: store } = useFetch("store/all?limit=1000");
-  // const { data: brand } = useFetch("brand/?limit=1000");
-  const { data: category } = useFetch("category/?limit=1000");
-  const { data: campaign } = useFetch("campaign/all?limit=1000");
-  const { data: network } = useFetch("network/?limit=1000");
   const [formData, setFormData] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  // console.log("campaign", campaign);
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -45,44 +36,34 @@ const AddNewPost = () => {
       setIsSubmitting(true);
       const { data } = await axios.post(`${apiUrl}/post/add`, formData, {
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
         },
       });
-      // const {data} = await Axios.po
-      // setIsSubmitting(true);
-      // const { data } = await axios.post(${apiUrl}/post/add, formData, {
-      //   headers: {
-      //     Authorization:` Bearer ${accessToken}`,
-      //   },
-      // });
 
-      if (data?.success) {
+      if (data?.status === "success") {
         toast.success("New post added");
         setFormData({});
       } else {
         toast.error("Failed to add new post");
       }
     } catch (error) {
-      // console.error("Error:", error);
       console.error("Error:", error);
       toast.error("An error occurred while adding the new post");
     } finally {
       setIsSubmitting(false);
     }
   };
-
   return (
-    <div className="create-new-post-main-container">
+    <div className="add-new-post-update-main-container">
       <TopBar pageTitle={"Create New Post"} />
-      <div className="create-new-post-container">
+      <div className="add-new-post-update-container">
         <h1>Create New Coupon</h1>
 
-        <div className="create-posts-items-container">
+        <div className="add-posts-items-update-container">
           <Spin spinning={isSubmitting}>
             <form onSubmit={handleAddNewPost}>
-              <div className="create-new-post-items-container">
-                <div className="create-new-post-items-container-left">
+              <div className="add-post-update-items-form-container">
+                <div className="add-post-update-form-items-container-left">
                   {/* Post title input */}
                   <span>
                     <p>Post Title</p>
@@ -112,8 +93,8 @@ const AddNewPost = () => {
                         setFormData({ ...formData, postType: value })
                       }
                     >
-                      <Option value="Voucher">Voucher</Option>
-                      <Option value="Coupon">Coupon</Option>
+                      <Option value="coupon">Coupon</Option>
+                      <Option value="deal">Deal</Option>
                     </Select>
                   </span>
                   {/* coupon input */}
@@ -158,23 +139,20 @@ const AddNewPost = () => {
                       showSearch
                       placeholder="Select Store"
                       id="store-name"
-                      value={formData.networkName}
+                      value={formData.storeName}
                       onChange={(value) =>
-                        setFormData({ ...formData, networkName: value })
+                        setFormData({ ...formData, storeName: value })
                       }
                     >
-                      {network.data?.map((item) => (
-                        <Option
-                          key={item?.networkName}
-                          value={item?.networkName}
-                        >
-                          {item?.networkName}
+                      {store?.data?.map((item) => (
+                        <Option key={item?.storeName} value={item?.storeName}>
+                          {item?.storeName}
                         </Option>
                       ))}
                     </Select>
                   </span>
                 </div>
-                <div className="create-new-post-items-container-right">
+                <div className="add-post-update-form-items-container-right">
                   {/* select store name  */}
 
                   <span>
@@ -213,17 +191,14 @@ const AddNewPost = () => {
                       showSearch
                       placeholder="Select Store"
                       id="store-name"
-                      value={formData.categoryName}
+                      value={formData.storeName}
                       onChange={(value) =>
-                        setFormData({ ...formData, categoryName: value })
+                        setFormData({ ...formData, storeName: value })
                       }
                     >
-                      {category?.data?.map((item) => (
-                        <Option
-                          key={item?.categoryName}
-                          value={item?.categoryName}
-                        >
-                          {item?.categoryName}
+                      {store?.data?.map((item) => (
+                        <Option key={item?.storeName} value={item?.storeName}>
+                          {item?.storeName}
                         </Option>
                       ))}
                     </Select>
@@ -255,17 +230,14 @@ const AddNewPost = () => {
                       showSearch
                       placeholder="Select Store"
                       id="store-name"
-                      value={formData.campaignName}
+                      value={formData.storeName}
                       onChange={(value) =>
-                        setFormData({ ...formData, campaignName: value })
+                        setFormData({ ...formData, storeName: value })
                       }
                     >
-                      {campaign?.data?.map((item) => (
-                        <Option
-                          key={item?.campaignName}
-                          value={item?.campaignName}
-                        >
-                          {item?.campaignName}
+                      {store?.data?.map((item) => (
+                        <Option key={item?.storeName} value={item?.storeName}>
+                          {item?.storeName}
                         </Option>
                       ))}
                     </Select>
@@ -281,10 +253,10 @@ const AddNewPost = () => {
                       mode="multiple"
                       className="add-new-post-country-input"
                       // style={{ width: "388px", height: "20%" }}
-                      value={formData.countries}
-                      placeholder={"countries"}
+                      value={formData.country}
+                      placeholder={"country"}
                       onChange={(value) =>
-                        setFormData({ ...formData, countries: value })
+                        setFormData({ ...formData, country: value })
                       }
                     >
                       {flags.map((flag) => (
@@ -342,7 +314,6 @@ const AddNewPost = () => {
       </div>
     </div>
   );
->>>>>>> 38cd10c726ebbb3d3bcd00fca382a541cab27876
 };
 
-export default AddNewPost;
+export default AddNewPostUpdate;
