@@ -3,7 +3,6 @@
 // import { Spin } from "antd";
 import "./ProductInformation.css";
 import uploadImages from "../../../../assets/Icons/uploadedImages2.svg";
-import { useState } from "react";
 import { DatePicker, Input, Select } from "antd";
 import { Option } from "antd/es/mentions";
 import useFetch from "../../../../CustomHooks/useFetch";
@@ -163,7 +162,7 @@ const ProductInformation = ({
             </label>
             {/* select country */}
 
-            <label>
+            <div>
               <p>Country</p>
 
               <Select
@@ -191,7 +190,7 @@ const ProductInformation = ({
                   </>
                 ))}
               </Select>
-            </label>
+            </div>
           </div>
           <div className="product-deal-form-container-right">
             {/* Product title input */}

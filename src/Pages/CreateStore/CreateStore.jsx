@@ -33,12 +33,12 @@ const CreateStore = () => {
     postPhotoAtFirebase(file)
       .then((url) => {
         axios
-          .patch(
+          .post(
             `${apiUrl}/store/add`,
             {
-              photoURL: url,
+              storePhotoURL: url,
               storeName: name.value,
-              storeExternalLink: link.value,
+              storeLink: link.value,
               description: description.value,
             },
             {
@@ -65,7 +65,7 @@ const CreateStore = () => {
 
   return (
     <div>
-      <TopBar pageTitle={"Create New Post"} />
+      <TopBar pageTitle={"Create New Store"} />
       <main>
         <section className="edit-store-main3">
           <div className="edit-store-header">

@@ -1,26 +1,27 @@
 import flags from "../../../../Utils/variables/flags";
-import "./ViewStoreMenu.css";
+import "./ViewBrandDetails.css";
 import { Link, useLoaderData, useNavigate, useParams } from "react-router-dom";
 
-import editIcon from "../../../../assets/Icons/edit.svg";
+// import editIcon from "../../../../assets/Icons/edit.svg";
 import StoreLink from "../../../../Components/IconsComponents/StoreLink/StoreLink";
 import EditIconView from "../../../../Components/IconsComponents/EditIconView";
 
-const ViewStoreDetails = () => {
+const ViewBrandDetails = () => {
   const { id } = useParams();
-  const store = useLoaderData();
+  const brand = useLoaderData();
+  console.log(brand);
   const navigate = useNavigate();
   return (
     <div className="view-store-detail-container">
       <section className="view-store-section-container">
         <div className="view-store-left-container">
-          <img src={store?.data?.photoURL} alt="" />
+          <img src={brand?.data?.brandPhotoURL} alt="" />
           <div className="view-store-name-country-flags">
             <div className="h1Container">
-              <h1>{store?.data?.storeName}</h1>
+              <h1>{brand?.data?.brandName}</h1>
             </div>
             <div className="view-store-country-flags">
-              {store?.data?.country?.map((country) => (
+              {brand?.data?.country?.map((country) => (
                 <img
                   className="store-country-flags-image"
                   key={country}
@@ -37,12 +38,12 @@ const ViewStoreDetails = () => {
         {/* <hr className="view-store-hr" /> */}
         <div className="view-store-button">
           <p className="shipping-cost-text">
-            {store?.data?.description ? store.data.description : ""}
+            {brand?.data?.description ? brand.data.description : "No descriptions"}
           </p>
           <div className="set-two-button">
             <button className="view-store-first-button">
               <Link
-                to={store?.data?.storeExternalLink?.toString()}
+                to={brand?.data?.storeExternalLink?.toString()}
                 target="_blank"
                 className="view-store-button-link"
                 rel="noopener noreferrer"
@@ -53,7 +54,7 @@ const ViewStoreDetails = () => {
             </button>
             <button
               className="view-store-second-button"
-              onClick={() => navigate(`/store/edit/${id}`)}
+              onClick={() => navigate(`/brands/edit/${id}`)}
             >
               {" "}
               <span className="button-text">Edit</span>
@@ -66,4 +67,4 @@ const ViewStoreDetails = () => {
   );
 };
 
-export default ViewStoreDetails;
+export default ViewBrandDetails;

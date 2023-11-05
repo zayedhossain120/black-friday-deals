@@ -1,0 +1,205 @@
+.product-deal-update-aside-main-container {
+  width: 100%;
+  height: 100vh;
+  background: #fff;
+  position: relative;
+  margin-top: 1.2rem;
+  padding-bottom: 7rem;
+}
+.product-deal-asidebar-update-no-data-available-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100dvb;
+  overflow: auto;
+}
+.product-deal-asidebar-update-no-data-available-container
+  .product-deal-asidebar-update-no-data-available-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.product-deal-asidebar-update-no-data-available-container
+  .product-deal-asidebar-update-no-data-available-child
+  h2 {
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.7);
+}
+.product-deal-asidebar-update-no-data-available-container
+  .product-deal-asidebar-update-no-data-available-child
+  p {
+  font-size: 1.1rem;
+  padding-top: 1.2rem;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* product deal-available-container */
+.product-deal-asidebar-update-data-available-container {
+  height: 100%;
+  overflow: auto;
+  padding: 20px;
+}
+.product-deal-asidebar-update-data-available-container
+  .product-deal-asidebar-update-details-container {
+  padding: 2.1rem 0 1.2rem 0;
+}
+.product-deal-asidebar-update-data-available-container
+  .product-deal-asidebar-update-details-container
+  h1 {
+  font-size: 1.1rem;
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 700;
+}
+.product-deal-asidebar-update-details-product-price
+  .product-deal-asidebar-update-product-price-dev {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 72%;
+}
+
+.product-deal-asidebar-update-data-available-container
+  .product-deal-asidebar-update-carousel-div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1.2rem;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 1.1rem;
+}
+.product-deal-asidebar-update-data-available-container
+  .product-deal-asidebar-update-carousel-div
+  > div {
+  width: 17.6rem;
+  aspect-ratio: 2/1;
+  /* background-color: #c0c0c0; */
+  border-radius: 0.7rem;
+}
+.product-deal-asidebar-update-details-container
+  .product-deal-asidebar-update-details-product-price {
+  padding: 1.3rem 0 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.product-deal-asidebar-update-details-container
+  .product-deal-asidebar-update-details-product-price
+  p {
+  color: rgba(0, 0, 0, 0.5);
+}
+.product-deal-asidebar-update-details-product-price
+  .product-deal-aside-update-details-product-price-expire-day {
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 700;
+}
+.product-deal-asidebar-update-details-product-price
+  .product-deal-asidebar-update-product-price-dev
+  .prduct-deal-asidebar-update-product-price-delete-span {
+  color: rgba(0, 0, 0, 0.3);
+  font-weight: 400;
+}
+.product-deal-asidebar-update-details-product-price
+  .product-deal-asidebar-update-product-price-dev
+  p {
+  color: rgba(255, 0, 0, 0.7);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.product-deal-asidebar-update-data-available-container
+  .product-deal-asidebar-update-carousel-div
+  img {
+  width: 100%;
+  border-radius: 0.9rem;
+}
+.product-deal-asidebar-update-data-available-container
+  .product-deal-asidebar-update-product-company-name {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: rgba(0, 0, 0, 0.7);
+  padding-bottom: 1.3rem;
+  gap: 0.8rem;
+}
+.product-deal-asidebar-update-data-available-container
+  .product-deal-asidebar-update-product-company-name
+  > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: #fff;
+}
+.product-deal-asidebar-update-data-available-container
+  .product-deal-asidebar-update-product-company-name
+  img {
+  width: 1.3rem;
+  height: 1.2rem;
+}
+
+/*------------ product-deal-asidebar-update-product-country-flags -------------*/
+.product-deal-asidebar-update-details-container
+  .product-deal-asidebar-update-product-country-flags {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.7rem;
+}
+.product-deal-asidebar-update-details-container
+  .product-deal-asidebar-update-product-country-flags
+  img {
+  width: 1.3rem;
+  height: 1rem;
+}
+/*------------ product-deal-asidebar-update-product-country-flags -----------------*/
+
+/* -----------product-deal-asidebar-update-discraption------------ */
+.product-deal-asidebar-update-data-available-container
+  .product-deal-asidebar-update-discraption
+  h1 {
+  padding: 1.1rem 0 0.7rem 0;
+  font-size: 1.1rem;
+  color: #000;
+}
+.product-deal-asidebar-update-data-available-container
+  .product-deal-asidebar-update-discraption {
+  padding: 1.1rem 0 3rem 0;
+  color: rgba(0, 0, 0, 0.6);
+  text-align: justify;
+  font-size: 0.9rem;
+}
+/* -----------product-deal-asidebar-update-discraption------------ */
+
+/*------product-deal-asidebar-update-footer-----------  */
+.product-deal-asidebar-update-data-available-container
+  .product-deal-asidebar-update-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  box-shadow: 0px -1px 24px 0px rgba(0, 0, 0, 0.1);
+  padding: 1.3rem 0 3rem 0;
+}
+
+.product-deal-asidebar-update-data-available-container
+  .product-deal-asidebar-update-footer
+  > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  padding-bottom: 2.4rem;
+}
+.product-deal-update-aside-main-container
+  .product-deal-asidebar-update-data-available-container
+  .product-deal-asidebar-update-footer
+  img {
+  width: 1.3rem;
+}
+/*------product-deal-asidebar-update-footer-----------  */

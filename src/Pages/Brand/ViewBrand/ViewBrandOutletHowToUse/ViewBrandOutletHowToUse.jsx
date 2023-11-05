@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
-import "./ViewStoreOutletHowToUse.css";
+import "./ViewBrandOutletHowToUse.css";
 
-const ViewStoreOutletHowToUse = () => {
+const ViewBrandOutletHowToUse = () => {
   const store = useLoaderData();
   {
     if (!store?.data?.howToUse?.length) {
@@ -34,4 +34,4 @@ const ViewStoreOutletHowToUse = () => {
   }
 };
 
-export default ViewStoreOutletHowToUse;
+export default ViewBrandOutletHowToUse;

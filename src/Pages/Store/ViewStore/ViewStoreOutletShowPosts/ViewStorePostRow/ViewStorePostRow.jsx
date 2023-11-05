@@ -23,7 +23,6 @@ const ViewStorePostRow = ({
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { fetchPostById } = usePostFetch();
-  console.log(post, 'get post')
   // open a post information on modal
   const handleOpenPostViewModalWithApiData = async (postId) => {
     const { data, isLoading, error } = await fetchPostById(postId);
@@ -34,7 +33,6 @@ const ViewStorePostRow = ({
     }
   };
 
-  console.log(post)
   // select multiple items to delete
   const handleMultipleSelectItem = (e) => {
     e.stopPropagation();
@@ -171,6 +169,9 @@ const ViewStorePostRow = ({
           <div className="country-flags-child-div">
             <img src={viewStoreFlagIcon} alt="view-store-flag-img" />
             <Select
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
               className="country-flags-dropdown"
               defaultValue={`${post?.country?.length} Countries`}
               // style={selectStyle}
@@ -193,7 +194,7 @@ const ViewStorePostRow = ({
         )}
       </div>
       {/* modifier buttons section */}
-      <div className="table-data modifier-buttons-container">
+      <div className="table-data span-img-container">
         <img src={viewEye} alt="view icon" />
         <span>{post?.revealed}</span>
         <button

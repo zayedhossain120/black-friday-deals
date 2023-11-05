@@ -5,15 +5,10 @@ import { useEffect, useState } from "react";
 import notAvailable from "../../../../assets/nodataAvailable.png";
 import flags from "../../../../Utils/variables/flags";
 import googleicon from "../../../../assets/Icons/googleIcon.png";
-import bahrain from "../../../../assets/Flags/Canada.png";
-import egypt from "../../../../assets/Flags/France.png";
-import kuwait from "../../../../assets/Flags/Germany.png";
-import oman from "../../../../assets/Flags/India.png";
-import qatar from "../../../../assets/Flags/Italy.png";
-import saudi from "../../../../assets/Flags/Netherlands.png";
-import { Option } from "antd/es/mentions";
+import useFetch from "../../../../CustomHooks/useFetch";
 
 const ProductDealAsidBar = ({ productlImage, formData }) => {
+  const { data: brand } = useFetch("brand/?limit=1000");
   const [asidebar, setAsidebar] = useState(null);
   useEffect(() => {
     fetch(`https://restcountries.com/v3.1/all`)
@@ -22,103 +17,92 @@ const ProductDealAsidBar = ({ productlImage, formData }) => {
         setAsidebar(data);
       });
   }, []);
-  console.log(formData);
+  console.log("this is Brand Name", brand);
+  // console.log("this is formData", formData);
+  // const dataTag = () => {
+  //   const oldprice = formData.oldprice;
+  //   const discountprice = formData.discountprice;
+  //   const total = oldprice - discountprice;
+  //   return total;
+  // };
   return (
     <aside className="product-deal-aside-main-container">
-      {/* <h1>this is Aside bar page:</h1> */}
-      {/* {asidebar ? (
-        <section className="product-deal-asidebar-data-available-container">
-          <div className="product-deal-asidebar-carousel-div">
-            <label htmlFor="">Preview</label>
-            <div>
-              <img src={productlImage.url} alt="" />
-            </div>
+      <h1>this is Aside bar page:</h1>
+      {/* {/* {asidebar ? ( */}
+      <section className="product-deal-asidebar-data-available-container">
+        <div className="product-deal-asidebar-carousel-div">
+          <label htmlFor="">Preview</label>
+          <div>
+            <img src={productlImage.url} alt="" />
           </div>
-          <div className="product-deal-asidebar-details-container">
-            <h1>Nike Pink color Shoes</h1>
-            <div className="product-deal-asidebar-details-product-price">
-              <div className="product-deal-asidebar-product-price-dev">
-                <h2>
-                  $200{" "}
-                  <span className="prduct-deal-asidebar-product-price-delete-span">
-                    {" "}
-                    - <s>$700</s>
-                  </span>{" "}
-                </h2>
-                <p> 75% OFF</p>
-              </div>
-              <p>
-                Expire in{" "}
-                <span className="product-deal-aside-details-product-price-expire-day">
-                  14
+        </div>
+        <div className="product-deal-asidebar-details-container">
+          <h1>{formData.postTitle}</h1>
+          <div className="product-deal-asidebar-details-product-price">
+            <div className="product-deal-asidebar-product-price-dev">
+              <h2>
+                $ {formData.discountprice}{" "}
+                <span className="prduct-deal-asidebar-product-price-delete-span">
+                  {" "}
+                  - <s>$ {formData.oldprice}</s>
                 </span>{" "}
-                days
-              </p>
+              </h2>
+              <p> 75% OFF</p>
             </div>
-            <div className="product-deal-asidebar-product-company-name">
-              <div>
-                <img src={googleicon} alt="" />
-              </div>
-              <p> Nike</p>
-            </div>
-            <div className="product-deal-asidebar-product-country-flags">
-              {formData.countries.map((country) => {
-                return (
-                  <div key={country}>
-                    {" "}
-                    <img
-                      src={
-                        flags.find((flag) => flag.countryName === country)
-                          .flagUrl
-                      }
-                      alt=""
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-          <hr />
-          <div className="product-deal-asidebar-discraption">
-            <h1>Discription</h1>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
-              et dolorum dolor consectetur sequi magni delectus incidunt
-              distinctio, totam quo soluta provident eligendi reprehenderit in
-              maxime at illum fugit accusantium quos architecto, nisi, ipsum eos
-              consequatur? Consequuntur voluptate labore nobis repellat. Sunt,
-              provident dolore in perspiciatis sequi sapiente porro dignissimos.
-              Ex voluptates praesentium eius accusantium excepturi nobis
-              cupiditate minus ducimus, rem dolore sint sunt saepe amet
-              temporibus? Fugiat maiores numquam fugit officia totam, neque
-              praesentium corporis ipsum obcaecati debitis tempora qui
-              asperiores ut itaque laborum, aspernatur necessitatibus eos magni
-              consequatur quae amet cum eius sapiente? Nemo obcaecati corporis
-              numquam laboriosam. Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Aut inventore culpa ducimus, eum recusandae
-              consequatur magnam laborum corporis veniam tenetur? Lorem, ipsum
-              dolor sit amet consectetur adipisicing elit. Quo itaque quisquam
-              possimus, hic corrupti nam assumenda, iure natus ullam perferendis
-              saepe quam dolor reprehenderit voluptas molestiae aperiam iusto,
-              beatae ducimus.
+              Expire in{" "}
+              <span className="product-deal-aside-details-product-price-expire-day">
+                {/* {formData?.expireDate?.map((date) => {
+                    <p>{date.expireDate}</p>;
+                  })} */}
+                14
+              </span>{" "}
+              days
             </p>
           </div>
-          <div className="product-deal-asidebar-footer">
+          <div className="product-deal-asidebar-product-company-name">
             <div>
-              <p>Available on</p>
               <img src={googleicon} alt="" />
             </div>
+            <p> {formData.brandName}</p>
           </div>
-        </section>
+          <div className="product-deal-asidebar-product-country-flags">
+            {formData.countries?.map((country) => {
+              return (
+                <div key={country}>
+                  {" "}
+                  <img
+                    src={
+                      flags.find((flag) => flag.countryName === country).flagUrl
+                    }
+                    alt=""
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <hr />
+        <div className="product-deal-asidebar-discraption">
+          <h1>Discription</h1>
+          <p>{formData.postDescription}</p>
+        </div>
+        <div className="product-deal-asidebar-footer">
+          <div>
+            <p>Available on</p>
+            <img src={googleicon} alt="" />
+          </div>
+        </div>
+      </section>
       ) : (
-        <section className="product-deal-asidebar-no-data-available-container">
-          <div className="product-deal-asidebar-no-data-available-child">
-            <img src={notAvailable} alt="" />
-            <h2>No Data Available</h2>
-            <p>There is no data to show you right now</p>
-          </div>
-        </section>
-      )} */}
+      <section className="product-deal-asidebar-no-data-available-container">
+        <div className="product-deal-asidebar-no-data-available-child">
+          <img src={notAvailable} alt="" />
+          <h2>No Data Available</h2>
+          <p>There is no data to show you right now</p>
+        </div>
+      </section>
+      )
     </aside>
   );
 };

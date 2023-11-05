@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import flags from "../../Utils/variables/flags";
 import { useState } from "react";
 import EditIcon from "../IconsComponents/EditIcon";
 import DeleteIcon from "../IconsComponents/DeleteIcon";
@@ -7,6 +6,7 @@ import StoreDeleteModal from "../StoreDeleteModal/StoreDeleteModal";
 import { Button, Spin } from "antd";
 import { useNavigate } from "react-router-dom";
 import MainLoading from "../MainLoading/MainLoading";
+import flags from "../../Utils/variables/flags";
 
 const StoreCardsContainer = ({
   storesData,
@@ -19,7 +19,7 @@ const StoreCardsContainer = ({
 }) => {
   const navigate = useNavigate();
   const [openDeleteUserModal, setOpenStoreDeleteModal] = useState(false);
-
+  
   if (!isFetchingNextPage && isFetching) {
     return <MainLoading />;
   }
@@ -38,8 +38,6 @@ const StoreCardsContainer = ({
                 key={store?._id}
                 className="individual-store-container"
                 onClick={() => navigate(`${store?._id}`)}
-
-                // onClick={() => navigate('carousel')}
               >
                 <div className="store-image-container">
                   <img src={store.storePhotoURL} alt="" />
@@ -70,7 +68,7 @@ const StoreCardsContainer = ({
                       <img
                         key={country}
                         src={
-                          flags.find((flag) => flag.countryName === country)
+                          flags?.find((flag) => flag?.countryName === country)
                             .flagUrl
                         }
                         alt={country}

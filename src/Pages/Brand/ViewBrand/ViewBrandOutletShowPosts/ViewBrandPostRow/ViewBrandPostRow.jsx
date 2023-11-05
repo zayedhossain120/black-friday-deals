@@ -1,20 +1,20 @@
 /* eslint-disable react/prop-types */
-import "./ViewStorePostRow.css";
-import usePostFetch from "../../../../../CustomHooks/usePostFetch";
-import flags from "../../../../../Utils/variables/flags";
+import "./ViewBrandPostRow.css";
+import usePostFetch from "../../../../../CustomHooks/usePostFetch.js";
+import flags from "../../../../../Utils/variables/flags.js";
 import DeleteIcon from "../../../../../Components/IconsComponents/DeleteIcon.jsx";
-import EditIcon from "../../../../../Components/IconsComponents/EditIcon";
+import EditIcon from "../../../../../Components/IconsComponents/EditIcon.jsx";
 import viewEye from "../../../../../assets/Icons/viewEye.svg";
 import verifiedChecked from "../../../../../assets/Icons/verifiedChecked.svg";
 import placeholder from "../../../../../assets/placeholder.svg";
 import viewStoreFlagIcon from "../../../../../assets/Icons/view-store-flag-icon.svg";
 import { useState } from "react";
-import { getExpireInAtDays } from "../../../../../Utils/variables/formattedDates";
+import { getExpireInAtDays } from "../../../../../Utils/variables/formattedDates.js";
 import { useNavigate } from "react-router-dom";
 import { Select } from "antd";
 
 
-const ViewStorePostRow = ({
+const ViewBrandPostRow = ({
   post,
   setOpenPostViewModal,
   setOpenDeletePostModal,
@@ -23,7 +23,6 @@ const ViewStorePostRow = ({
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { fetchPostById } = usePostFetch();
-  console.log(post, 'get post')
   // open a post information on modal
   const handleOpenPostViewModalWithApiData = async (postId) => {
     const { data, isLoading, error } = await fetchPostById(postId);
@@ -193,7 +192,7 @@ const ViewStorePostRow = ({
         )}
       </div>
       {/* modifier buttons section */}
-      <div className="table-data modifier-buttons-container">
+      <div className="table-data span-img-container">
         <img src={viewEye} alt="view icon" />
         <span>{post?.revealed}</span>
         <button
@@ -227,4 +226,4 @@ const ViewStorePostRow = ({
   );
 };
 
-export default ViewStorePostRow;
+export default ViewBrandPostRow;

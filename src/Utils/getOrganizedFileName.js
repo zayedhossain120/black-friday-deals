@@ -1,5 +1,5 @@
 const getOrganizedFileName = (file) => {
-  const fileName = file.name.split(".");
+  const fileName = file?.name?.split(".");
   const ext = fileName.pop();
   const fileNewName = fileName
     ?.join("-")

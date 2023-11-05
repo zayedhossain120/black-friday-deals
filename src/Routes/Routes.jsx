@@ -27,7 +27,6 @@ import ViewStoreOutlet from "../Pages/Store/ViewStore/ViewStoreOutletShowPosts/V
 import ViewStoreOutletHowToUse from "../Pages/Store/ViewStore/ViewStoreOutletHowToUse/ViewStoreOutletHowToUse";
 import PostModalsProvider from "../Contexts/PostModalContext/PostModalContext";
 import OnlineStore from "../Pages/OnlineStore/OnlineStore";
-// import Brand from "../Pages/Brand/Brand";
 import Category from "../Pages/Category/Category";
 import Network from "../Pages/Network/Network";
 import ProductCreate from "../Pages/ProductCreate/ProductCreate";
@@ -36,11 +35,16 @@ import Campaign from "../Pages/Campaign/Campaign";
 import ViewCampaign from "../Pages/Campaign/ViewCampaign/ViewCampaign";
 import CreateCampaign from "../Pages/CreateCampaign/CreateCampaign";
 import ViewCampaignOutlet from "../Pages/Campaign/ViewCampaign/ViewCampaignOutletShowPosts/ViewCampaignOutletShowPosts";
-import Brand from "../Pages/Store copy/Brand";
+import fetchBrandDataAtRouterLevel from "../Utils/variables/fetchBrandDataAtRouterLevel";
+import Brand from "../Pages/Brand/Brand";
 import fetchCampaignDataAtRouterLevel from "../Utils/variables/fetchCampaignDataAtRouterLevel";
-import fetchPostDataAtRouterLevel from "../Utils/variables/fetchPostDataAtRouterLevel";
-import EditCampaign from "../Pages/EditCampaign/EditCampaign";
-import apiUrl from "../Utils/variables/apiUrl";
+import ViewBrand from "../Pages/Brand/ViewBrand/ViewBrand";
+import EditBrand from "../Pages/EditBrand/EditBrand";
+import EditBrandHowToUse from "../Pages/EditBrand/EditBrandHowToUse/EditBrandHowToUse";
+import CreateBrand from "../Pages/CreateBrand/CreateBrand";
+import CreateBrandHowToUse from "../Pages/CreateBrand/CreateBrandHowToUse/CreateBrandHowToUse";
+import AddNewPostUpdate from "../Pages/Post/AddNewPostUpdate/AddNewPostUpdate";
+import ProductDealUpdate from "../Pages/Post/ProductDealUpdate/ProductDealUpdate";
 
 const Routes = () => {
   const router = createBrowserRouter([
@@ -58,13 +62,72 @@ const Routes = () => {
           path: "/",
           element: <Dashboard />,
         },
-        // {
-        //   path: "/onlinestore",
-        //   element: <OnlineStore />,
-        // },
+
         {
           path: "/brands",
           element: <Brand />,
+        },
+        {
+          path: "/brands/:id/",
+          loader: async ({ params }) => fetchBrandDataAtRouterLevel(params.id),
+          element: <ViewBrand />,
+          children: [
+            {
+              path: "",
+              loader: async ({ params }) =>
+                fetchBrandDataAtRouterLevel(params.id),
+              element: <ViewStoreOutlet query={`${hasValidity()}`} />,
+            },
+            {
+              path: "coupon",
+              loader: async ({ params }) =>
+                fetchBrandDataAtRouterLevel(params.id),
+              element: (
+                <ViewStoreOutlet query={`${hasValidity()}&postType=coupon`} />
+              ),
+            },
+            {
+              path: "deal",
+              loader: async ({ params }) =>
+                fetchBrandDataAtRouterLevel(params.id),
+              element: (
+                <ViewStoreOutlet query={`${hasValidity()}&postType=deal`} />
+              ),
+            },
+            {
+              path: "voucher",
+              loader: async ({ params }) =>
+                fetchBrandDataAtRouterLevel(params.id),
+              element: (
+                <ViewStoreOutlet query={`${hasValidity()}&postType=voucher`} />
+              ),
+            },
+            {
+              path: "expired",
+              loader: async ({ params }) =>
+                fetchBrandDataAtRouterLevel(params.id),
+              element: (
+                <ViewStoreOutlet query={`expireDate[lt]=${new Date()}`} />
+              ),
+            },
+          ],
+        },
+        {
+          path: "/brands/edit/:id",
+          element: <EditBrand />,
+        },
+        {
+          path: "/brands/edit/howtouse/:id",
+          loader: async ({ params }) => fetchBrandDataAtRouterLevel(params.id),
+          element: <EditBrandHowToUse />,
+        },
+        {
+          path: "/brands/create",
+          element: <CreateBrand />,
+        },
+        {
+          path: "/brands/create/howtouse/:id",
+          element: <CreateBrandHowToUse />,
         },
         {
           path: "/campaign",
@@ -278,6 +341,16 @@ const Routes = () => {
         {
           path: "/productdeal",
           element: <ProductDeal />,
+        },
+        // ----------------addNewPostUPdate-----------
+        {
+          path: "/addnewpostupdate",
+          element: <AddNewPostUpdate />,
+        },
+        // ----------------addNewPostUPdate-----------
+        {
+          path: "/productDealUpdate",
+          element: <ProductDealUpdate />,
         },
       ],
     },

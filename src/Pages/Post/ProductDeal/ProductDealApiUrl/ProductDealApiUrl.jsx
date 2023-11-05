@@ -17,7 +17,7 @@ const ProductDealApiUrl = () => {
         <img src={linkCopy} alt="This is Link icon" />
         <p>Enter your API URL</p>
       </div>
-      <label className="product-deal-api-url-input-lable">
+      <label className="product-deal-update-api-url-input-lable">
         <img src={linkCopy} alt="This is Link icon" />
         <input
           // ref={inputRaf}

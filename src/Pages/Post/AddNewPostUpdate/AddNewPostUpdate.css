@@ -1,0 +1,210 @@
+/* .create-new-post-items-container-right span {
+  outline: 1px solid red;
+} */
+.add-new-post-update-container {
+  padding: 0 18px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: calc(100vh - 50px);
+  background-color: #fff;
+  padding-top: 30px;
+  scroll-behavior: smooth;
+  margin-top: 10px;
+}
+
+.add-new-post-update-container h1 {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.add-posts-items-update-container {
+  display: flex;
+  margin-top: 50px;
+}
+
+/* .create-posts-items-container label {
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 16px;
+    opacity: 0.7;
+  } */
+
+.add-post-update-items-form-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  /* gap: 15px; */
+}
+
+.add-post-update-items-form-container p {
+  color: rgba(80, 79, 79, 0.7);
+  font-size: 16px;
+  padding-bottom: 15px;
+  font-weight: 500;
+}
+
+/* .create-new-post-items-container div > input {
+    width: 388px;
+    height: 50px;
+    padding: 17px 0px 16px 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+  } */
+
+.add-post-update-items-form-container {
+  display: grid;
+  /* grid-column-gap: 7rem; */
+  /* grid-row-gap: 30px; */
+  gap: 3.1rem;
+  /* overflow-y: auto; */
+  grid-template-columns: repeat(2, 1fr);
+  /* grid-template-columns: repeat(2, minmax(388px, 1fr)); */
+}
+.add-post-update-form-items-container-left {
+  display: grid;
+  gap: 1.2rem;
+}
+/* .create-new-post-items-container-left span {
+    height: 100px;
+  } */
+.add-post-update-form-items-container-right {
+  display: grid;
+  gap: 1.4rem;
+}
+.add-post-update-form-items-container-right span {
+  padding: none;
+}
+
+.ant-picker-input {
+  flex-direction: row !important;
+  padding: 10px 0px !important;
+}
+
+.post-description {
+  padding-top: 2rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.5);
+}
+.post-description p {
+  padding-bottom: 1rem;
+}
+.code-verify-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 29px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.add-new-btn {
+  border-radius: 50px;
+
+  padding: 13px 70px;
+  outline: none;
+  border: 1px solid rgb(219, 219, 219);
+  color: black;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  background: #fff;
+}
+
+.add-new-btn:hover {
+  background: #5a6acf;
+  color: #ffff;
+  transition: all 0.4s;
+}
+
+.create-new-coupon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px;
+  padding-bottom: 40px;
+}
+/* -------------------flags class --------------- */
+.ant-select-selection-item .ant-select-selection-item-content img {
+  width: 1.3rem !important;
+  height: 1.3rem !important;
+  margin-right: 0.8rem !important;
+}
+.ant-select-item .ant-select-item-option-content img {
+  margin-right: 1rem;
+}
+/* -------------------flags class --------------- */
+
+/* ------------ant design input control -------------*/
+.add-new-post-country-input {
+  width: 388px;
+  height: 40%;
+}
+.add-new-post-country-stores-input {
+  width: 100%;
+  height: 73%;
+}
+.create-new-coupn-post-type-input {
+  width: 100%;
+  height: 75%;
+}
+.add-new-post-country-category-input {
+  width: 100%;
+  height: 58%;
+}
+.add-new-post-country-Campaign-input {
+  width: 100%;
+  height: 73%;
+}
+.add-new-post-country-network-input {
+  width: 100%;
+  height: 75%;
+}
+.ant-design-input-height-control-create-new-post {
+  padding-top: 1rem;
+}
+/* ------------ant design input control -------------*/
+
+@media (max-width: 989px) {
+  .add-post-update-items-form-container {
+    display: block;
+  }
+  .add-posts-items-update-container {
+    display: block;
+  }
+  /* .add-post-update-items-form-container {
+    display: block;
+  } */
+  /* .add-post-update-items-form-container {
+    display: block;
+  } */
+  /* .add-post-update-items-form-container {
+    display: block;
+    width: 100%;
+  } */
+  .create-post-items {
+    grid-template-columns: repeat(1, minmax(250px, 1fr));
+  }
+
+  /* .add-posts-items-update-container {
+    display: block;
+  } */
+
+  .add-new-post-update-container h1 {
+    text-align: center;
+  }
+  .add-new-post-country-input {
+    width: 100% !important;
+  }
+
+  .create-post-items {
+    width: 100%;
+  }
+  .add-new-btn {
+    width: 100%;
+    text-wrap: nowrap;
+  }
+  .code-verify-container {
+    justify-content: space-between;
+  }
+}
