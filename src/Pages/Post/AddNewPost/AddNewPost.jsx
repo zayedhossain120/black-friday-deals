@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-
-const AddNewPost = () => {
-  return <div></div>;
-=======
 import "./AddNewPost.css";
 import { useState } from "react";
 import { Checkbox, DatePicker, Input, Select, Spin } from "antd";
@@ -342,7 +336,6 @@ const AddNewPost = () => {
       </div>
     </div>
   );
->>>>>>> 38cd10c726ebbb3d3bcd00fca382a541cab27876
 };
 
 export default AddNewPost;
