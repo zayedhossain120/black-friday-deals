@@ -117,7 +117,7 @@ const PostRow = ({
         <button
           onClick={(e) => {
             e.stopPropagation();
-            navigate(`/post/editpost/${post?._id}`);
+            navigate(`/post/addnewpostupdate/${post?._id}`);
           }}
         >
           <EditIcon />

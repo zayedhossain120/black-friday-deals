@@ -4,6 +4,7 @@ import { Checkbox, DatePicker, Input, Select, Spin } from "antd";
 
 import TextArea from "antd/es/input/TextArea";
 import flags from "../../../Utils/variables/flags";
+// import axios, { Axios, } from "axios";
 import useFetch from "../../../CustomHooks/useFetch";
 import { Option } from "antd/es/mentions";
 import getToken from "../../../Utils/getToken";
@@ -229,12 +230,12 @@ const AddNewPost = () => {
                       Link
                     </p>
                     <Input
-                      required={formData?.postType === "Voucher"}
+                      required={formData?.postType === "dealLink"}
                       type="url"
                       id="dealLink"
                       placeholder="https://"
                       style={{ height: "50px", width: "100%" }}
-                      value={formData.dealLink}
+                      value={formData?.dealLink}
                       onChange={handleInputChange}
                     />
                   </span>

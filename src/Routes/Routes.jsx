@@ -307,9 +307,13 @@ const Routes = () => {
           path: "/product/create",
           element: <ProductCreate />,
         },
+        // {
+        //   path: "/post/editpost/:id",
+        //   element: <EditPost />,
+        // },
         {
-          path: "/post/editpost/:id",
-          element: <EditPost />,
+          path: "/post/addnewpostupdate/:id",
+          element: <AddNewPostUpdate />,
         },
 
         {
@@ -338,12 +342,12 @@ const Routes = () => {
           path: "/productdeal",
           element: <ProductDeal />,
         },
-        // ----------------addNewPostUPdate-----------
-        {
-          path: "/addnewpostupdate",
-          element: <AddNewPostUpdate />,
-        },
-        // ----------------addNewPostUPdate-----------
+        // // ----------------addNewPostUPdate-----------
+        // {
+        //   path: "/addnewpostupdate",
+        //   element: <AddNewPostUpdate />,
+        // },
+        // // ----------------addNewPostUPdate-----------
         {
           path: "/productDealUpdate",
           element: <ProductDealUpdate />,
