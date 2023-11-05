@@ -20,8 +20,8 @@ const AddNewPost = () => {
   const { data: network } = useFetch("network/?limit=1000");
   const [formData, setFormData] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  // console.log("campaign", campaign);
 
+  console.log(formData);
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     setFormData({
@@ -229,12 +229,12 @@ const AddNewPost = () => {
                       Link
                     </p>
                     <Input
-                      required={formData?.postType === "deal"}
+                      required={formData?.postType === "Voucher"}
                       type="url"
-                      id="externalLink"
+                      id="dealLink"
                       placeholder="https://"
                       style={{ height: "50px", width: "100%" }}
-                      value={formData.externalLink}
+                      value={formData.dealLink}
                       onChange={handleInputChange}
                     />
                   </span>

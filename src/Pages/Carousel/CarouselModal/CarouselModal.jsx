@@ -7,6 +7,7 @@ import apiUrl from "../../../Utils/variables/apiUrl";
 import axios from "axios";
 import useSubmitPhotoAtFirebase from "../../../Utils/useSubmitPhotoAtFirebase";
 import getToken from "../../../Utils/getToken";
+import useFetch from "../../../CustomHooks/useFetch";
 import { toast } from "react-toastify";
 import { Input, Select, Spin } from "antd";
 import flags from "../../../Utils/variables/flags";
@@ -17,8 +18,7 @@ const CarouselModal = ({ isVisible, onClose }) => {
   const { postPhotoAtFirebase, progress } = useSubmitPhotoAtFirebase();
   const [isSubmiting, setIsSubmiting] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [countryData, setCountryData] = useState([]);
-
+  const [countryData, setCountryData] = useState({});
   console.log(countryData);
 
   if (!isVisible) return null;
@@ -35,9 +35,8 @@ const CarouselModal = ({ isVisible, onClose }) => {
     const form = e.target;
     const couponCode = e.target.couponCode.value;
     const file = e.target.photoURL.files[0];
-    const accessToken = getToken();
 
-    console.log(couponCode);
+    const accessToken = getToken();
 
     try {
       setIsSubmitting(true);
@@ -47,11 +46,11 @@ const CarouselModal = ({ isVisible, onClose }) => {
       await axios.post(
         `${apiUrl}/carousel/add`,
         {
-          setCountryData,
+          country: countryData,
           items: [
             {
-              couponCode: couponCode,
               photoURL: url,
+              couponCode: couponCode,
             },
           ],
         },
@@ -114,19 +113,16 @@ const CarouselModal = ({ isVisible, onClose }) => {
                 </div>
                 <div className="carousel-coupon">
                   <div className="carousel-coupon1">
-                    <label htmlFor="">Coupon Code ( If Any )</label>
+                    <div htmlFor="">Coupon Code ( If Any )</div>
                     <Input name="couponCode" id="couponCode" type="text" />
                   </div>
                   <div className="carousel-coupon1">
-                    <label htmlFor="">Select Country</label>
+                    <div htmlFor="">Select Country</div>
                     <Select
                       required
-                      mode="multiple"
-                      value={countryData.countryName}
+                      value={countryData}
                       placeholder={"country"}
-                      onChange={(value) =>
-                        setCountryData({ ...setCountryData, country: value })
-                      }
+                      onChange={(value) => setCountryData(value)}
                     >
                       {flags.map((flag) => (
                         <Option key={flag.countryName} value={flag.countryName}>
@@ -138,7 +134,7 @@ const CarouselModal = ({ isVisible, onClose }) => {
                     </Select>
                   </div>
                   <div className=" carousel-coupon1">
-                    <label htmlFor="">External Link *</label>
+                    <div>External Link *</div>
                     <Input required name="link" id="link" type="text" />
                   </div>
                   <div

@@ -1,30 +1,24 @@
-import "./EditStore.css";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import okIcon from "../../assets/Icons/okIcon.svg";
-import flags from "../../Utils/variables/flags";
-import { useNavigate, useParams } from "react-router-dom";
+import placeholder from "../../assets/placeholder.webp";
+import TopBar from "../../Components/TopBar/TopBar";
 import axios from "axios";
 import apiUrl from "../../Utils/variables/apiUrl";
 import getToken from "../../Utils/getToken";
-import TextArea from "antd/es/input/TextArea";
-import "../../Pages/CreateStore/CreateStore";
-import { Input, Select, Spin } from "antd";
 import useSubmitPhotoAtFirebase from "../../Utils/useSubmitPhotoAtFirebase";
-import placeholder from "../../assets/placeholder.webp";
-import TopBar from "../../Components/TopBar/TopBar";
+import { Input, Spin } from "antd";
+import TextArea from "antd/es/input/TextArea";
+import { useNavigate, useParams } from "react-router-dom";
 
 const EditStore = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [imageShow, setImageShow] = useState({});
-  const [store, setStore] = useState({});
   const [formData, setFormData] = useState({});
   const { postPhotoAtFirebase } = useSubmitPhotoAtFirebase();
   const [submitting, setSubmitting] = useState(false);
-
-  console.log(store);
 
   useEffect(() => {
     const accessToken = getToken();
@@ -36,13 +30,14 @@ const EditStore = () => {
         },
       })
       .then(({ data }) => {
-        setStore(data);
+        const { storeName, storeLink, storeDescription, storePhotoURL } =
+          data?.data || {};
         setFormData({
-          storeName: data?.data?.storeName || "",
-          storeLink: data?.data?.storeLink || "",
-          description: data?.data?.description || "",
+          storeName: storeName || "",
+          storeLink: storeLink || "",
+          storeDescription: storeDescription || "",
         });
-        setImageShow({ url: data?.data?.storePhotoURL || "" });
+        setImageShow({ url: storePhotoURL || "" });
       })
       .catch((error) => {
         toast.error(`Error: ${error?.response?.data?.message}`);
@@ -59,7 +54,7 @@ const EditStore = () => {
 
   const submitUpdatedData = (payload) => {
     axios
-      .patch(`${apiUrl}/store/${store?.data?._id}`, payload, {
+      .patch(`${apiUrl}/store/${id}`, payload, {
         headers: { Authorization: `Bearer ${getToken()}` },
       })
       .then(({ data }) => {
@@ -144,48 +139,48 @@ const EditStore = () => {
                   />
                 </div>
                 <div className="edit-store-form">
-                  {/* <p>Progress {progress}%</p> */}
                   <div className="store-name-link">
                     <div className="store-name">
-                      <label htmlFor="name">Store Name</label>
+                      <label htmlFor="storeName">Store Name</label>
                       <Input
-                        value={formData?.storeName}
+                        value={formData.storeName}
                         required
-                        id="name"
-                        name="name"
+                        id="storeName"
+                        name="storeName"
                         style={{ width: "100%" }}
+                        onChange={handleChange}
                       />
                     </div>
                     <div className="link-div">
-                      {" "}
-                      <label htmlFor="link">Link*</label>
+                      <label htmlFor="storeLink">Link*</label>
                       <Input
                         required
-                        id="link"
-                        value={formData?.storeLink}
+                        id="storeLink"
+                        value={formData.storeLink}
                         placeholder="https://"
                         style={{ width: "100%" }}
-                        name="link"
+                        name="storeLink"
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="description">Description</label>
+                    <label htmlFor="storeDescription">Description</label>
                     <TextArea
-                      id="description"
-                      name="description"
-                      value={formData?.description}
+                      id="storeDescription"
+                      name="storeDescription"
+                      value={formData.storeDescription}
                       style={{
                         height: "138px",
                         resize: "none",
                       }}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
               </section>
               <div className="form-submit-btn-main3">
-                {" "}
                 <button className="form-submit-btn3" type="submit">
                   Update & Next
                 </button>

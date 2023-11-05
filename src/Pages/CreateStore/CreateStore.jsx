@@ -25,7 +25,7 @@ const CreateStore = () => {
     const file = e.target.photoURL?.files[0];
     const name = e.target.name;
     const link = e.target.link;
-    const description = e.target.description;
+    const storeDescription = e.target.storeDescription;
 
     setIsLoading(true);
 
@@ -39,7 +39,7 @@ const CreateStore = () => {
               storePhotoURL: url,
               storeName: name.value,
               storeLink: link.value,
-              description: description.value,
+              storeDescription: storeDescription.value,
             },
             {
               headers: {
@@ -135,10 +135,10 @@ const CreateStore = () => {
                     </div>
 
                     <div>
-                      <label htmlFor="description">Description</label>
+                      <label htmlFor="storeDescription">Description</label>
                       <TextArea
-                        id="description"
-                        name="description"
+                        id="storeDescription"
+                        name="storeDescription"
                         style={{
                           height: "138px",
                           resize: "none",
