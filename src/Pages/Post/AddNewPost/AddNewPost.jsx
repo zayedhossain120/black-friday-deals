@@ -101,7 +101,7 @@ const AddNewPost = () => {
                       className="create-new-coupn-post-type-input"
                       id="post-type"
                       showSearch
-                      defaultValue="Coupon"
+                      placeholder="Select Type"
                       value={formData.postType}
                       onChange={(value) =>
                         setFormData({ ...formData, postType: value })
@@ -230,12 +230,12 @@ const AddNewPost = () => {
                       Link
                     </p>
                     <Input
-                      required={formData?.postType === "dealLink"}
+                      required={formData?.postType === "Voucher"}
                       type="url"
                       id="dealLink"
                       placeholder="https://"
                       style={{ height: "50px", width: "100%" }}
-                      value={formData?.dealLink}
+                      value={formData.dealLink}
                       onChange={handleInputChange}
                     />
                   </span>
