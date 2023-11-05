@@ -25,7 +25,7 @@ const CreateBrand = () => {
     const file = e.target?.brandPhotoURL?.files[0];
     const name = e.target?.brandName;
     const link = e.target?.brandLink;
-    const description = e.target.description;
+    const brandDescription = e.target.brandDescription;
 
     setIsLoading(true);
 
@@ -39,7 +39,7 @@ const CreateBrand = () => {
               brandPhotoURL: url,
               brandName: name?.value,
               brandLink: link?.value,
-              description: description?.value,
+              brandDescription: brandDescription?.value,
             },
             {
               headers: {
@@ -48,10 +48,10 @@ const CreateBrand = () => {
             }
           )
           .then(({ data }) => {
-            console.log(data, 'data data');
+            console.log(data, "data data");
             navigate(`howtouse/${data?.data?._id}`);
-            console.log(data?.data?._id, 'console logging data');
-            console.log(data, 'data log');
+            console.log(data?.data?._id, "console logging data");
+            console.log(data, "data log");
           })
           .catch((e) => {
             console.log(e);
@@ -138,10 +138,10 @@ const CreateBrand = () => {
                     </div>
 
                     <div>
-                      <label htmlFor="description">Description</label>
+                      <label htmlFor="brandDescription">Description</label>
                       <TextArea
-                        id="description"
-                        name="description"
+                        id="brandDescription"
+                        name="brandDescription"
                         style={{
                           height: "138px",
                           resize: "none",
