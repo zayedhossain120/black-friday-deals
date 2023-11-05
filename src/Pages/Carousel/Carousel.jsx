@@ -19,8 +19,6 @@ const Carousel = () => {
 
   const { data: allCarousel, isLoading, error } = useFetch("carousel");
 
-  console.log(allCarousel);
-
   if (isLoading) {
     return <MainLoading />;
   }
