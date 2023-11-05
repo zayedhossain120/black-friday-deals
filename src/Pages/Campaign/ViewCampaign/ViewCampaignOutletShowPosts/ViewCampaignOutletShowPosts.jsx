@@ -16,7 +16,7 @@ import apiUrl from '../../../../Utils/variables/apiUrl';
 
 const ViewCampaignOutlet = ({query}) => {
  
-   const post = useLoaderData();
+  //  const post = useLoaderData();
   const countryContext = useContext(SelectedCountryContext);
   // const [post, setPost] = useState(null)
   const [openPostViewModal, setOpenPostViewModal] = useState(null);

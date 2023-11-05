@@ -79,8 +79,7 @@ const Routes = () => {
             {
               path: "",
               loader: async ({ params }) =>
-              // fetchCampaignDataAtRouterLevel(params.id),
-              fetch(`${apiUrl}/post/${params.id}`),
+              fetchCampaignDataAtRouterLevel(params.id),
               element: <ViewCampaignOutlet query={`${hasValidity()}`} />,
             },
             {
