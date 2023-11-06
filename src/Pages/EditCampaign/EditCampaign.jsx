@@ -31,7 +31,7 @@ const EditCampaign = () => {
           Authorization: `Bearer ${accessToken}`,
         },
       })
-      .then(({data}) => {
+      .then(({ data }) => {
         setStore(data);
         setFormData({
           campaignName: data?.data?.campaignName || "",
@@ -45,29 +45,20 @@ const EditCampaign = () => {
       .catch((error) => {
         toast.error(`Error: ${error?.response?.data?.message}`);
       });
-      
   }, [id]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-     ...formData,
-      [name]: value,
-    });
-  };
 
   const submitUpdatedData = (payload) => {
     axios
-    .put(`${apiUrl}/campaign/${store?.data?._id}`, formData, {
+      .put(`${apiUrl}/campaign/${store?.data?._id}`, formData, {
         headers: { Authorization: `Bearer ${getToken()}` },
       })
-    .then(({ data }) => {
+      .then(({ data }) => {
         console.log(data);
       })
-    .catch((error) => {
+      .catch((error) => {
         toast.error(error.response.data.message);
       })
-    .finally(() => {
+      .finally(() => {
         setSubmitting(false);
       });
   };
@@ -75,24 +66,23 @@ const EditCampaign = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
-    if(imageShow?.files) {
+    if (imageShow?.files) {
       postPhotoAtFirebase(imageShow.files)
-       .then((url) => {
-          const { photoURL,...rest } = formData;
+        .then((url) => {
+          const { photoURL, ...rest } = formData;
           submitUpdatedData({
             photoURL: url,
-           ...rest,
+            ...rest,
           });
         })
-       .catch((error) => {
+        .catch((error) => {
           toast.error(`Error uploading image: ${error.message}`);
           setSubmitting(false);
         });
-    } else{
+    } else {
       submitUpdatedData(formData);
     }
   };
-  
 
   return (
     <div>
@@ -150,11 +140,19 @@ const EditCampaign = () => {
                     <div className="datepicker-container">
                       <div className="start-period">
                         <label htmlFor="start-date">Period Start Date</label>
-                        <DatePicker name="startDate" id="start-date" placeholder="Start Date" />
+                        <DatePicker
+                          name="startDate"
+                          id="start-date"
+                          placeholder="Start Date"
+                        />
                       </div>
                       <div className="end-period">
                         <label htmlFor="end-date">Period End Date</label>
-                        <DatePicker name="endDate" id="end-date" placeholder="End Date" />
+                        <DatePicker
+                          name="endDate"
+                          id="end-date"
+                          placeholder="End Date"
+                        />
                       </div>
                     </div>
 

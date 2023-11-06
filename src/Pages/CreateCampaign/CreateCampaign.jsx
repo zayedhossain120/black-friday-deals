@@ -59,8 +59,8 @@ const CreateCampaign = () => {
           )
           .then(({ data }) => {
             console.log(data);
-            toast.success("New campaign dded");
             form.reset();
+            toast.success("New campaign dded");
           })
           .catch((e) => {
             console.log(e);
