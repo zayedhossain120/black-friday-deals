@@ -3,7 +3,7 @@ import "./ViewCampaignDetails.css";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import flags from "../../../../Utils/variables/flags";
 import EditIconView from "../../../../Components/IconsComponents/EditIconView";
-import { getExpireInAtDays } from "../../../../Utils/variables/formattedDates";
+
 
 const ViewCampaignDetails = () => {
   const { id } = useParams();
@@ -46,7 +46,7 @@ const ViewCampaignDetails = () => {
           <div className="set-two-button">
             <button
               className="view-campaign-second-button"
-              onClick={() => navigate(`/store/edit/${id}`)}
+              onClick={() => navigate(`/campaign/edit/${id}`)}
             >
               {" "}
               <span className="button-text">Edit</span>

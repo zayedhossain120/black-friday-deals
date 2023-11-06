@@ -24,7 +24,7 @@ const CampaignDeleteModal = ({
 
         try{
             const {data} = await axios.delete(
-                `${apiUrl}/store/${openCampaignDeleteModal._id}`,
+                `${apiUrl}/campaign/${openCampaignDeleteModal._id}`,
                 {
                     headers: {
                         Authorization: `bearer ${accessToken}`,
@@ -36,7 +36,7 @@ const CampaignDeleteModal = ({
                 toast.success("Campaign Deleted Successfully")
             }
             else{
-                toast.error("Store Not Deleted");
+                toast.error("Campaign Not Deleted");
 
             }
             setOpenCampaignDeleteModal(false);
@@ -44,7 +44,7 @@ const CampaignDeleteModal = ({
         
         catch(error) {
             console.error("Error! Deleting Store", error)
-            toast.error("Why are you deleting This store? There are lot of offer here.")
+            toast.error("Why are you deleting This Campaign? There are lot of offer here.")
         }
 
         refetch();
@@ -58,7 +58,7 @@ const CampaignDeleteModal = ({
         <img src={modalDelete} alt="delete icon" />
         <p>
           Are you sure you want to delete{" "}
-          <strong>{openCampaignDeleteModal?.storeName}</strong>
+          <strong>{openCampaignDeleteModal?.campaignName}</strong>
         </p>
         <div className="campaign-delete-modal-btn">
           <button onClick={handleCancel}>Cancel</button>

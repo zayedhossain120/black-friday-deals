@@ -20,7 +20,6 @@ const Campaign = () => {
     "store-page-stores",
     { country: country.selectedCountry }
   );
-
   return (
     <section className="campaign-main-container">
       <TopBar navigateTo="create" pageTitle=" Campaigns" />

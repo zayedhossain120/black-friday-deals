@@ -38,6 +38,9 @@ import ViewCampaignOutlet from "../Pages/Campaign/ViewCampaign/ViewCampaignOutle
 import fetchBrandDataAtRouterLevel from "../Utils/variables/fetchBrandDataAtRouterLevel";
 import Brand from "../Pages/Brand/Brand";
 import fetchCampaignDataAtRouterLevel from "../Utils/variables/fetchCampaignDataAtRouterLevel";
+import fetchPostDataAtRouterLevel from "../Utils/variables/fetchPostDataAtRouterLevel";
+import EditCampaign from "../Pages/EditCampaign/EditCampaign";
+import apiUrl from "../Utils/variables/apiUrl";
 import ViewBrand from "../Pages/Brand/ViewBrand/ViewBrand";
 import EditBrand from "../Pages/EditBrand/EditBrand";
 import EditBrandHowToUse from "../Pages/EditBrand/EditBrandHowToUse/EditBrandHowToUse";
@@ -84,7 +87,9 @@ const Routes = () => {
               loader: async ({ params }) =>
                 fetchBrandDataAtRouterLevel(params.id),
               element: (
-                <ViewBrandOutletShowPosts query={`${hasValidity()}&postType=Coupon`} />
+                <ViewBrandOutletShowPosts
+                  query={`${hasValidity()}&postType=Coupon`}
+                />
               ),
             },
             {
@@ -92,7 +97,9 @@ const Routes = () => {
               loader: async ({ params }) =>
                 fetchBrandDataAtRouterLevel(params.id),
               element: (
-                <ViewBrandOutletShowPosts query={`${hasValidity()}&postType=Deal`} />
+                <ViewBrandOutletShowPosts
+                  query={`${hasValidity()}&postType=Deal`}
+                />
               ),
             },
             {
@@ -100,7 +107,9 @@ const Routes = () => {
               loader: async ({ params }) =>
                 fetchBrandDataAtRouterLevel(params.id),
               element: (
-                <ViewBrandOutletShowPosts query={`${hasValidity()}&postType=Voucher`} />
+                <ViewBrandOutletShowPosts
+                  query={`${hasValidity()}&postType=Voucher`}
+                />
               ),
             },
             {
@@ -108,7 +117,9 @@ const Routes = () => {
               loader: async ({ params }) =>
                 fetchBrandDataAtRouterLevel(params.id),
               element: (
-                <ViewBrandOutletShowPosts query={`expireDate[lt]=${new Date()}`} />
+                <ViewBrandOutletShowPosts
+                  query={`expireDate[lt]=${new Date()}`}
+                />
               ),
             },
           ],
@@ -143,7 +154,8 @@ const Routes = () => {
             {
               path: "",
               loader: async ({ params }) =>
-                fetchCampaignDataAtRouterLevel(params.id),
+                // fetchCampaignDataAtRouterLevel(params.id),
+                fetch(`${apiUrl}/post/${params.id}`),
               element: <ViewCampaignOutlet query={`${hasValidity()}`} />,
             },
             {
@@ -185,6 +197,10 @@ const Routes = () => {
         {
           path: "/campaign/create",
           element: <CreateCampaign />,
+        },
+        {
+          path: "/campaign/edit/:id",
+          element: <EditCampaign />,
         },
         {
           path: "/store",
