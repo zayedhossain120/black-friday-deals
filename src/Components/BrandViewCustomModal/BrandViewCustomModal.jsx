@@ -48,13 +48,13 @@ const BrandViewCustomModal = ({
         ) : (
           <React.Fragment>
             <img
-              src={openBrandViewModal?.data?.store?.photoURL || placeholder}
+              src={openBrandViewModal?.data?.brand?.brandPhotoURL || placeholder}
               alt="Store photo"
               height={100}
               width={100}
               className="post-view-store-photo"
             />
-            <p>{openBrandViewModal?.data?.store?.storeName}</p>
+            <p>{openBrandViewModal?.data?.brand?.brandName}</p>
             <h1>{openBrandViewModal?.data?.postTitle}</h1>
             <p>{openBrandViewModal?.data?.postDescription}</p>
             <div className="view-icon-count-container">
@@ -63,7 +63,7 @@ const BrandViewCustomModal = ({
             </div>
 
             <div className="country-flags">
-              {openBrandViewModal?.data?.country?.map((country) => (
+              {openBrandViewModal?.data?.countries?.map((country) => (
                 <img
                   key={country}
                   src={
@@ -123,7 +123,7 @@ const BrandViewCustomModal = ({
                 }
               >
                 <EditIcon />
-                Edit poran change
+               Edit
               </button>
             </div>
           </React.Fragment>

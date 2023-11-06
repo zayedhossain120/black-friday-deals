@@ -185,7 +185,7 @@ justify-content: center;
     visibility: hidden;
   }
 
-  .expire-time{
+  .expire-time span{
     display: none;
   }
   .view-store-table-row .country-flags {
