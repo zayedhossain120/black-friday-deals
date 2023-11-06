@@ -8,7 +8,9 @@ import EditIconView from "../../../../Components/IconsComponents/EditIconView";
 const ViewCampaignDetails = () => {
   const { id } = useParams();
   const campaign = useLoaderData();
+  const post = useLoaderData();
   const navigate = useNavigate();
+  console.log(post);
   return (
     <div className="view-campaign-detail-container">
       <section className="view-campaign-section-container">

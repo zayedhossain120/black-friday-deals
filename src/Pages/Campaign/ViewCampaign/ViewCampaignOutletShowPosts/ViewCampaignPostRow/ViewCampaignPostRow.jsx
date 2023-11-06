@@ -3,7 +3,7 @@ import "./ViewCampaignPostRow.css";
 import viewEye from "../../../../../assets/Icons/viewEye.svg";
 import verifiedChecked from "../../../../../assets/Icons/verifiedChecked.svg";
 import placeholder from "../../../../../assets/placeholder.svg";
-import viewStoreFlagIcon from "../../../../../assets/Icons/view-store-flag-icon.svg";
+import FlagIconIndicateAllFlag from "../../../../../assets/Icons/FlagIconIndicateAllFlag.svg";
 import flag from '../../../../../assets/Icons/flag.svg';
 import appearance from '../../../../../assets/Icons/appearance.svg';
 import flags from '../../../../../Utils/variables/flags';
@@ -27,7 +27,7 @@ const ViewCampaignPostRow = ({
     const { fetchPostById } = usePostFetch();
     const handleOpenPostViewModalWithApiData = async (postId) => {
         const { data, isLoading, error } = await fetchPostById(postId);
-        console.log(data);
+    
         if (isLoading) {
           setIsLoading(true);
         } else {
@@ -68,7 +68,7 @@ const ViewCampaignPostRow = ({
           </div>
         ),
       }));
-    
+     
       return (
         <div
           className="view-campaign-table-row"
@@ -84,7 +84,7 @@ const ViewCampaignPostRow = ({
                 onClick={(e) => handleMultipleSelectItem(e)}
               />
               <img
-                src={post?.store?.photoURL || placeholder}
+                src={post?.postPhotoURL || placeholder}
                 alt={post?.postTitle?.slice(0, 5)}
                 height={50}
                 width={50}
@@ -117,7 +117,7 @@ const ViewCampaignPostRow = ({
           <div className="available-online-store">
             <p className="">Available On</p>
             <img
-              src={post?.store?.photoURL || placeholder}
+              src={post?.store?.storePhotoURL || placeholder}
               alt={post?.postTitle?.slice(0, 5)}
               height={50}
               width={50}
@@ -133,18 +133,33 @@ const ViewCampaignPostRow = ({
           </div>
           {/* flags section */}
           <div className="table-data">
-            <div className="country-flags">
-              <div className="country-flags-child-div">
-                <img src={viewStoreFlagIcon} alt="view-store-flag-img" />
+            <div className="available-country-container-parent">
+              <div className="available-country-container">
+                <img src={FlagIconIndicateAllFlag} alt="view-store-flag-img" />
                 <Select
+                  aria-readonly
                   onClick={(e) => {
                     e.stopPropagation();
                   }}
-                  className="country-flags-dropdown"
-                  defaultValue="see available countries"
-                  // style={selectStyle}
-                  options={items}
-                ></Select>
+                  className="view-campaign-available-flags"
+                  defaultValue={`${post.countries.length} Countries`}
+                >
+                    {post?.countries?.map((country) => (
+                      <Option >
+                        <div className="country-option" >
+                        <img
+                      key={country}
+                      src={flags.find((flag) => flag.countryName === country).flagUrl}
+                      alt={country}
+                      title={country}
+                      height={16}
+                
+                    />
+                         {flags.find((flag) => flag.countryName === country).shortForm}
+                        </div>
+                    </Option>
+                    ))}
+                </Select>
               </div>
             </div>
           </div>
@@ -182,7 +197,7 @@ const ViewCampaignPostRow = ({
             </button>
           </div>
           <div className="mobile-v-flag">
-            {post?.country?.map((country) => (
+            {post?.countries?.map((country) => (
               <img
                 key={country}
                 src={flags.find((flag) => flag.countryName === country).flagUrl}
