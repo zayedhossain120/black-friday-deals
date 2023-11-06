@@ -69,6 +69,18 @@ const ViewStorePostRow = ({
     ),
   }));
 
+
+  // for country
+  // {openPostViewModal?.data?.countries?.map((country) => (
+  //   <img
+  //     key={country}
+  //     src={
+  //       flags.find((flag) => country === flag.countryName).flagUrl
+  //     }
+  //     alt="country-flag"
+  //   />
+  // ))}
+
   return (
     <div
       className="view-store-table-row"
@@ -141,7 +153,7 @@ const ViewStorePostRow = ({
                 e.stopPropagation();
               }}
               className="country-flags-dropdown"
-              defaultValue={`${post?.country?.length} Countries`}
+              defaultValue={`${post?.countries?.length} Countries`}
               // style={selectStyle}
               options={items}
             ></Select>
@@ -183,7 +195,7 @@ const ViewStorePostRow = ({
         </button>
       </div>
       <div className="mobile-v-flag">
-        {post?.country?.map((country) => (
+        {post?.data?.country?.map((country) => (
           <img
             key={country}
             src={flags.find((flag) => flag.countryName === country).flagUrl}

@@ -115,7 +115,7 @@ const ViewBrandPostRow = ({
       <div className="available-online-store">
         <p className="">Available On</p>
         <img
-          src={post?.store?.photoURL || placeholder}
+          src={post?.store?.storePhotoURL || placeholder}
           alt={post?.postTitle?.slice(0, 5)}
           height={50}
           width={50}
@@ -131,13 +131,16 @@ const ViewBrandPostRow = ({
       </div>
       {/* flags section */}
       <div className="table-data">
-        <div className="country-flags">
+        <div
+        onClick={(e) => e.stopPropagation()}
+        className="country-flags">
           <div className="country-flags-child-div">
             <img src={viewStoreFlagIcon} alt="view-store-flag-img" />
             <Select
               className="country-flags-dropdown"
+              // style={{dropdownSelectStyle}}
               defaultValue={`${post?.countries?.length} Countries`}
-              // style={selectStyle}
+              style={selectStyle}
               options={items}
             ></Select>
           </div>

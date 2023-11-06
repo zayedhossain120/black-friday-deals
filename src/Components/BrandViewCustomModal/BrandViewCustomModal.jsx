@@ -123,7 +123,7 @@ const BrandViewCustomModal = ({
                 }
               >
                 <EditIcon />
-                Edit poran change
+               Edit
               </button>
             </div>
           </React.Fragment>
