@@ -72,7 +72,7 @@ const AddNewPostUpdate = () => {
       toast.error("An error occurred while adding the new post");
     } finally {
       setIsSubmitting(false);
-      // navigate("/post/");
+      navigate("/post/");
     }
   };
   // for date initial value

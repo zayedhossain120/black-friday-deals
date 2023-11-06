@@ -6,6 +6,7 @@ import notAvailable from "../../../../assets/nodataAvailable.png";
 import flags from "../../../../Utils/variables/flags";
 import googleicon from "../../../../assets/Icons/googleIcon.png";
 import useFetch from "../../../../CustomHooks/useFetch";
+import { getExpireInAtDays } from "../../../../Utils/variables/formattedDates";
 
 const ProductDealAsidBar = ({ productlImage, formData }) => {
   const { data: brand } = useFetch("brand/?limit=1000");
@@ -49,16 +50,30 @@ const ProductDealAsidBar = ({ productlImage, formData }) => {
               </h2>
               <p> 75% OFF</p>
             </div>
-            <p>
+            {/* validity section */}
+            <div className="product-deal-aside-details-product-price-expire-day">
+              {getExpireInAtDays(formData?.expireDate) < 1 ? (
+                <p>
+                  Expire in <strong>0</strong> days
+                </p>
+              ) : (
+                <p>
+                  Expire in{" "}
+                  <strong>{getExpireInAtDays(formData?.expireDate)}</strong>{" "}
+                  days
+                </p>
+              )}
+              {/* {formData?.postType === "deal" && (
+          <small className="tooltip display-only-on-mobile">Deal</small>
+        )} */}
+            </div>
+            {/* <p>
               Expire in{" "}
               <span className="product-deal-aside-details-product-price-expire-day">
-                {/* {formData?.expireDate?.map((date) => {
-                    <p>{date.expireDate}</p>;
-                  })} */}
                 14
               </span>{" "}
               days
-            </p>
+            </p> */}
           </div>
           <div className="product-deal-asidebar-product-company-name">
             <div>
@@ -82,7 +97,6 @@ const ProductDealAsidBar = ({ productlImage, formData }) => {
             })}
           </div>
         </div>
-        <hr />
         <div className="product-deal-asidebar-discraption">
           <h1>Discription</h1>
           <p>{formData.postDescription}</p>
