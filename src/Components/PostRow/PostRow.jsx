@@ -64,7 +64,7 @@ const PostRow = ({
             onClick={(e) => handleMultipleSelectItem(e)}
           />
           <img
-            src={post?.store?.photoURL || placeholder}
+            src={post?.store?.storePhotoURL || placeholder}
             alt={post?.postTitle?.slice(0, 5)}
             loading="lazy"
           />

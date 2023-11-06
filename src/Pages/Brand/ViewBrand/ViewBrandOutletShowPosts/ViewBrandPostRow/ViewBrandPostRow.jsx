@@ -13,7 +13,6 @@ import { getExpireInAtDays } from "../../../../../Utils/variables/formattedDates
 import { useNavigate } from "react-router-dom";
 import { Select } from "antd";
 
-
 const ViewBrandPostRow = ({
   post,
   setOpenPostViewModal,
@@ -33,7 +32,6 @@ const ViewBrandPostRow = ({
     }
   };
 
-
   // select multiple items to delete
   const handleMultipleSelectItem = (e) => {
     e.stopPropagation();
@@ -52,11 +50,10 @@ const ViewBrandPostRow = ({
     return <p className="text-center">Loading...</p>;
   }
 
-
   const selectStyle = {
-    display: 'flex',
-    gap: '5px'
-  }
+    display: "flex",
+    gap: "5px",
+  };
 
   const dynamicData = flags;
 
@@ -64,9 +61,8 @@ const ViewBrandPostRow = ({
     key: item.key,
     label: (
       <div className="" style={selectStyle}>
-        <img src={item.flagUrl} title={item.countryName} width={20}>
-      </img>
-      <p>{item.shortForm}</p>
+        <img src={item.flagUrl} title={item.countryName} width={20}></img>
+        <p>{item.shortForm}</p>
       </div>
     ),
   }));
@@ -101,7 +97,7 @@ const ViewBrandPostRow = ({
             </h4>
             <p>
               {post?.brand?.brandName}{" "}
-              {post?.postType === "deal" && (
+              {post?.postType === "Deal" && (
                 <small className="tooltip">Deal</small>
               )}
             </p>
@@ -140,7 +136,7 @@ const ViewBrandPostRow = ({
             <img src={viewStoreFlagIcon} alt="view-store-flag-img" />
             <Select
               className="country-flags-dropdown"
-              defaultValue={`${post?.country?.length} Countries`}
+              defaultValue={`${post?.countries?.length} Countries`}
               // style={selectStyle}
               options={items}
             ></Select>
@@ -156,7 +152,7 @@ const ViewBrandPostRow = ({
             End in <strong>{getExpireInAtDays(post?.expireDate)}</strong> days
           </span>
         )}
-        {post?.postType === "deal" && (
+        {post?.postType === "Deal" && (
           <small className="tooltip display-only-on-mobile">Deal</small>
         )}
       </div>

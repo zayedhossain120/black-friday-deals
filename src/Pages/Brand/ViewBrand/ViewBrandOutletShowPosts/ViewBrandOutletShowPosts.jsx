@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import "";
+import "./ViewBrandOutletShowPosts.css"
 import { Button, Spin } from "antd";
 import { useContext, useEffect, useState } from "react";
 import { SelectedCountryContext } from "../../../../Contexts/CountryContext/CountryProviderContext";
@@ -27,7 +27,7 @@ const ViewBrandOutletShowPosts = ({ query }) => {
     isFetchingNextPage,
     refetch,
   } = useFetchInfinite(
-    `post/all?storeName=${store?.data?.storeName}&${query}&country=${countryContext?.selectedCountry}&limit=10`,
+    `post/all?brandName=${store?.data?.brandName}&${query}&country=${countryContext?.selectedCountry}&limit=10`,
     "store-route",
     { query, countryContext }
   );

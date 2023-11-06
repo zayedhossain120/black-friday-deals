@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { NavLink, useLoaderData } from "react-router-dom";
-import brandRoutes from "../../../../Utils/Menus/brandRoutes";
+import brandRoutes from "../../../../Utils/Menus/brandRoutes"
 
-const ViewBrandInnerNav = () => {
+const ViewStoreInnerNav = () => {
   const brand = useLoaderData();
 
   return (
@@ -26,4 +26,4 @@ const ViewBrandInnerNav = () => {
   );
 };
 
-export default ViewBrandInnerNav;
+export default ViewStoreInnerNav;

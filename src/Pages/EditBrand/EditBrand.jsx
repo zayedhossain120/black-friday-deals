@@ -153,6 +153,7 @@ const EditStore = () => {
                         id="brandName"
                         name="brandName"
                         style={{ width: "100%" }}
+                        onChange={handleChange}
                       />
                     </div>
                     <div className="link-div">
@@ -165,6 +166,7 @@ const EditStore = () => {
                         placeholder="https://"
                         style={{ width: "100%" }}
                         name="brandLink"
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -179,6 +181,7 @@ const EditStore = () => {
                         height: "138px",
                         resize: "none",
                       }}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
