@@ -99,7 +99,7 @@ const ViewStorePostRow = ({
             </h4>
             <p>
               {post?.store?.storeName}{" "}
-              {post?.postType === "deal" && (
+              {post?.postType === "Deal" && (
                 <small className="tooltip">Deal</small>
               )}
             </p>
