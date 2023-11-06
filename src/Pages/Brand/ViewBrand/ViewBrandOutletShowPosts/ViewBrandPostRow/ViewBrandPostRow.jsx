@@ -13,7 +13,6 @@ import { getExpireInAtDays } from "../../../../../Utils/variables/formattedDates
 import { useNavigate } from "react-router-dom";
 import { Select } from "antd";
 
-
 const ViewBrandPostRow = ({
   post,
   setOpenPostViewModal,
@@ -33,7 +32,6 @@ const ViewBrandPostRow = ({
     }
   };
 
-
   // select multiple items to delete
   const handleMultipleSelectItem = (e) => {
     e.stopPropagation();
@@ -52,11 +50,10 @@ const ViewBrandPostRow = ({
     return <p className="text-center">Loading...</p>;
   }
 
-
   const selectStyle = {
-    display: 'flex',
-    gap: '5px'
-  }
+    display: "flex",
+    gap: "5px",
+  };
 
   const dynamicData = flags;
 
@@ -64,9 +61,8 @@ const ViewBrandPostRow = ({
     key: item.key,
     label: (
       <div className="" style={selectStyle}>
-        <img src={item.flagUrl} title={item.countryName} width={20}>
-      </img>
-      <p>{item.shortForm}</p>
+        <img src={item.flagUrl} title={item.countryName} width={20}></img>
+        <p>{item.shortForm}</p>
       </div>
     ),
   }));

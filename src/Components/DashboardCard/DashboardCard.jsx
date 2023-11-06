@@ -54,6 +54,9 @@ const DashboardCard = ({
   if (error || allPost?.status === "failed") {
     return <p>{error?.message || allPost?.message}</p>;
   }
+
+  console.log(allPost);
+
   return (
     <div className="dashboard-main-container">
       <Row gutter={[16, 16]} className="card-row">
@@ -61,7 +64,11 @@ const DashboardCard = ({
           page?.data?.map((item) => (
             <div key={item?._id} className="card">
               <div className="card-head">
-                <img className="card-img" src={item?.store?.photoURL} alt="" />
+                <img
+                  className="card-img"
+                  src={item?.store?.storePhotoURL}
+                  alt=""
+                />
 
                 <div className="card-title">
                   <h3>{item?.postTitle}</h3>
