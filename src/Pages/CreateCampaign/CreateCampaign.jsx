@@ -12,21 +12,30 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const CreateCampaign = () => {
-  const navigate = useNavigate();
   const [imageShow, setImageShow] = useState("");
-  const [selectedCountries, setSelectedCountries] = useState(false);
+  const [selectedCountries, setSelectedCountries] = useState([]);
   const { postPhotoAtFirebase } = useSubmitPhotoAtFirebase();
   const [isLoading, setIsLoading] = useState(false);
+
+  console.log(selectedCountries);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const form = e.target;
     const file = form.photoURL?.files[0];
-    const startPeriod = form.startPeriod.value;
-    const endPeriod = form.endPeriod.value;
+    const startPeriodString = form.startPeriod.value;
+    const endPeriodString = form.endPeriod.value;
     const campaignName = form.campaignName.value;
-    
+
+    const startPeriod = parseInt(startPeriodString);
+    const endPeriod = parseInt(endPeriodString);
+
+    if (isNaN(startPeriod) || isNaN(endPeriod)) {
+      console.log("Invalid date format");
+      return;
+    }
+
     setIsLoading(true);
 
     const accessToken = getToken();
@@ -37,10 +46,10 @@ const CreateCampaign = () => {
             `${apiUrl}/campaign/add`,
             {
               campaignPhotoURL: url,
-              campaignName: campaignName.value,
+              campaignName: campaignName,
               country: selectedCountries,
-              endPeriod: endPeriod.value,
-
+              endPeriod: endPeriod,
+              startPeriod: startPeriod,
             },
             {
               headers: {
@@ -49,7 +58,9 @@ const CreateCampaign = () => {
             }
           )
           .then(({ data }) => {
-            navigate(`howtouse/${data?.data?._id}`);
+            console.log(data);
+            toast.success("New campaign dded");
+            form.reset();
           })
           .catch((e) => {
             console.log(e);
@@ -115,11 +126,19 @@ const CreateCampaign = () => {
                     <div className="datepicker-container">
                       <div className="start-period">
                         <label htmlFor="startPeriod">Period Start Date</label>
-                        <DatePicker format="DD/MM/YYYY" name="startPeriod" placeholder="Start Date" />
+                        <DatePicker
+                          format="DD/MM/YYYY"
+                          name="startPeriod"
+                          placeholder="Start Date"
+                        />
                       </div>
                       <div className="end-period">
                         <label htmlFor="endPeriod">Period End Date</label>
-                        <DatePicker format="DD/MM/YYYY" name="endPeriod"  placeholder="End Date" />
+                        <DatePicker
+                          format="DD/MM/YYYY"
+                          name="endPeriod"
+                          placeholder="End Date"
+                        />
                       </div>
                     </div>
 
