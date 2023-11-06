@@ -64,7 +64,7 @@ const PostRow = ({
             onClick={(e) => handleMultipleSelectItem(e)}
           />
           <img
-            src={post?.store?.photoURL || placeholder}
+            src={post?.store?.storePhotoURL || placeholder}
             alt={post?.postTitle?.slice(0, 5)}
             loading="lazy"
           />
@@ -117,7 +117,7 @@ const PostRow = ({
         <button
           onClick={(e) => {
             e.stopPropagation();
-            navigate(`/post/editpost/${post?._id}`);
+            navigate(`/post/addnewpostupdate/${post?._id}`);
           }}
         >
           <EditIcon />

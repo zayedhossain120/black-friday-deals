@@ -1,23 +1,44 @@
 // import React from 'react';
 // import "./AddNewPost.css";
 import "./AddNewPostUpdate.css";
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { Checkbox, DatePicker, Input, Select, Spin } from "antd";
 
 import TextArea from "antd/es/input/TextArea";
 import flags from "../../../Utils/variables/flags";
 import axios from "axios";
 import useFetch from "../../../CustomHooks/useFetch";
-import { Option } from "antd/es/mentions";
+// import { Option } from "antd/es/mentions";
 import getToken from "../../../Utils/getToken";
 import apiUrl from "../../../Utils/variables/apiUrl";
 import { toast } from "react-toastify";
 import TopBar from "../../../Components/TopBar/TopBar";
+import usePostFetch from "../../../CustomHooks/usePostFetch";
+import { useNavigate, useParams } from "react-router-dom";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 
 const AddNewPostUpdate = () => {
-  const { data: store } = useFetch("store/all?limit=1000");
+  const { data: category } = useFetch("category/?limit=1000");
+  const { data: network } = useFetch("network/?limit=1000");
+  const { data: campaign } = useFetch("campaign/all?limit=1000");
+  const { Option } = Select;
+  const navigate = useNavigate();
+  const { id } = useParams();
   const [formData, setFormData] = useState({});
+  const { fetchPostById } = usePostFetch();
+  const { data: store } = useFetch("store/all?limit=1000");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  console.log("this is form data", formData);
+
+  useLayoutEffect(() => {
+    const handlePromise = async () => {
+      const storePreviousData = await fetchPostById(id);
+      setFormData(storePreviousData?.data);
+    };
+    handlePromise();
+  }, [id]);
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -26,33 +47,37 @@ const AddNewPostUpdate = () => {
       [id]: value,
     });
   };
-  // console.log(formData);
-  const handleAddNewPost = async (e) => {
+  console.log("this is form data", formData);
+  const handleUpdatePost = async (e) => {
     e.preventDefault();
 
     const accessToken = getToken();
 
     try {
       setIsSubmitting(true);
-      const { data } = await axios.post(`${apiUrl}/post/add`, formData, {
+      const { data } = await axios.patch(`${apiUrl}/post/${id}`, formData, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       });
 
-      if (data?.status === "success") {
-        toast.success("New post added");
+      if (data?.success) {
+        toast.success("New post Update");
         setFormData({});
       } else {
-        toast.error("Failed to add new post");
+        toast.error("Failed to update the post");
       }
     } catch (error) {
       console.error("Error:", error);
       toast.error("An error occurred while adding the new post");
     } finally {
       setIsSubmitting(false);
+      // navigate("/post/");
     }
   };
+  // for date initial value
+  dayjs.extend(customParseFormat);
+  const dateFormat = "YYYY/MM/DD";
   return (
     <div className="add-new-post-update-main-container">
       <TopBar pageTitle={"Create New Post"} />
@@ -61,7 +86,7 @@ const AddNewPostUpdate = () => {
 
         <div className="add-posts-items-update-container">
           <Spin spinning={isSubmitting}>
-            <form onSubmit={handleAddNewPost}>
+            <form onSubmit={handleUpdatePost}>
               <div className="add-post-update-items-form-container">
                 <div className="add-post-update-form-items-container-left">
                   {/* Post title input */}
@@ -73,7 +98,7 @@ const AddNewPostUpdate = () => {
                       type="text"
                       placeholder="Type post title"
                       style={{ height: "50px", width: "100%" }}
-                      value={formData.postTitle}
+                      value={formData?.postTitle}
                       onChange={handleInputChange}
                     />
                   </span>
@@ -88,13 +113,13 @@ const AddNewPostUpdate = () => {
                       id="post-type"
                       showSearch
                       defaultValue="Coupon"
-                      value={formData.postType}
+                      value={formData?.postType}
                       onChange={(value) =>
                         setFormData({ ...formData, postType: value })
                       }
                     >
-                      <Option value="coupon">Coupon</Option>
-                      <Option value="deal">Deal</Option>
+                      <Option value="Voucher">Voucher</Option>
+                      <Option value="Coupon">Coupon</Option>
                     </Select>
                   </span>
                   {/* coupon input */}
@@ -109,7 +134,7 @@ const AddNewPostUpdate = () => {
                       placeholder="Input the coupon code"
                       style={{ height: "50px", width: "100%" }}
                       id="couponCode"
-                      value={formData.couponCode}
+                      value={formData?.couponCode}
                       onChange={handleInputChange}
                     />
                   </span>
@@ -118,13 +143,15 @@ const AddNewPostUpdate = () => {
                   <div className="date-picker">
                     <p>Expire Date</p>
                     <DatePicker
+                      value={dayjs(formData?.expireDate, dateFormat)}
                       required
                       id="expireDate"
                       style={{ width: "100%" }}
-                      value={formData.expireDate}
-                      onChange={(value) =>
-                        setFormData({ ...formData, expireDate: value })
-                      }
+                      // value={formData.expireDate}
+                      onChange={(value) => {
+                        const formattedDate = dayjs(value).format(dateFormat);
+                        setFormData({ ...formData, expireDate: formattedDate });
+                      }}
                     ></DatePicker>
                   </div>
                   {/* select Network */}
@@ -138,15 +165,19 @@ const AddNewPostUpdate = () => {
                       required
                       showSearch
                       placeholder="Select Store"
-                      id="store-name"
-                      value={formData.storeName}
+                      id="networkName"
+                      value={formData?.network?.networkName}
+                      // defaultValue={formData.network?.networkName}
                       onChange={(value) =>
-                        setFormData({ ...formData, storeName: value })
+                        setFormData({ ...formData, networkName: value })
                       }
                     >
-                      {store?.data?.map((item) => (
-                        <Option key={item?.storeName} value={item?.storeName}>
-                          {item?.storeName}
+                      {network?.data?.map((item) => (
+                        <Option
+                          key={item?.networkName}
+                          value={item?.networkName}
+                        >
+                          {item?.networkName}
                         </Option>
                       ))}
                     </Select>
@@ -162,13 +193,17 @@ const AddNewPostUpdate = () => {
                       // style={{ width: "100%" }}
                       className="add-new-post-country-stores-input"
                       required
-                      showSearch
+                      showSearcha
                       placeholder="Select Store"
-                      id="store-name"
-                      value={formData.storeName}
-                      onChange={(value) =>
-                        setFormData({ ...formData, storeName: value })
-                      }
+                      id="storeName"
+                      value={formData?.store?.storeName}
+                      onChange={(value) => {
+                        const { store, ...reset } = formData;
+                        setFormData({
+                          storeName: value,
+                          ...reset,
+                        });
+                      }}
                     >
                       {store?.data?.map((item) => (
                         <Option key={item?.storeName} value={item?.storeName}>
@@ -191,14 +226,17 @@ const AddNewPostUpdate = () => {
                       showSearch
                       placeholder="Select Store"
                       id="store-name"
-                      value={formData.storeName}
+                      value={formData?.category?.categoryName}
                       onChange={(value) =>
-                        setFormData({ ...formData, storeName: value })
+                        setFormData({ ...formData, categoryName: value })
                       }
                     >
-                      {store?.data?.map((item) => (
-                        <Option key={item?.storeName} value={item?.storeName}>
-                          {item?.storeName}
+                      {category?.data?.map((item) => (
+                        <Option
+                          key={item?.categoryName}
+                          value={item?.categoryName}
+                        >
+                          {item?.categoryName}
                         </Option>
                       ))}
                     </Select>
@@ -210,12 +248,12 @@ const AddNewPostUpdate = () => {
                       Link
                     </p>
                     <Input
-                      required={formData?.postType === "deal"}
+                      required={formData?.postType === "dealLink"}
                       type="url"
-                      id="externalLink"
+                      id="dealLink"
                       placeholder="https://"
                       style={{ height: "50px", width: "100%" }}
-                      value={formData.externalLink}
+                      value={formData?.dealLink}
                       onChange={handleInputChange}
                     />
                   </span>
@@ -230,14 +268,17 @@ const AddNewPostUpdate = () => {
                       showSearch
                       placeholder="Select Store"
                       id="store-name"
-                      value={formData.storeName}
+                      value={formData?.campaign?.campaignName}
                       onChange={(value) =>
-                        setFormData({ ...formData, storeName: value })
+                        setFormData({ ...formData, campaignName: value })
                       }
                     >
-                      {store?.data?.map((item) => (
-                        <Option key={item?.storeName} value={item?.storeName}>
-                          {item?.storeName}
+                      {campaign?.data?.map((item) => (
+                        <Option
+                          key={item?.campaignName}
+                          value={item?.campaignName}
+                        >
+                          {item?.campaignName}
                         </Option>
                       ))}
                     </Select>
@@ -253,10 +294,10 @@ const AddNewPostUpdate = () => {
                       mode="multiple"
                       className="add-new-post-country-input"
                       // style={{ width: "388px", height: "20%" }}
-                      value={formData.country}
-                      placeholder={"country"}
+                      value={formData?.countries}
+                      placeholder={"countries"}
                       onChange={(value) =>
-                        setFormData({ ...formData, country: value })
+                        setFormData({ ...formData, countries: value })
                       }
                     >
                       {flags.map((flag) => (
@@ -276,7 +317,7 @@ const AddNewPostUpdate = () => {
                       </label>
                       <Checkbox
                         id="isVerified"
-                        checked={formData.isVerified}
+                        checked={formData?.isVerified}
                         onChange={(e) =>
                           setFormData({
                             ...formData,
@@ -299,7 +340,7 @@ const AddNewPostUpdate = () => {
                     resize: "none",
                   }}
                   placeholder="Type Here...."
-                  value={formData.postDescription}
+                  value={formData?.postDescription}
                   onChange={handleInputChange}
                 />
               </div>

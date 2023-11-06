@@ -4,6 +4,7 @@ import { Checkbox, DatePicker, Input, Select, Spin } from "antd";
 
 import TextArea from "antd/es/input/TextArea";
 import flags from "../../../Utils/variables/flags";
+// import axios, { Axios, } from "axios";
 import useFetch from "../../../CustomHooks/useFetch";
 import { Option } from "antd/es/mentions";
 import getToken from "../../../Utils/getToken";
@@ -100,7 +101,7 @@ const AddNewPost = () => {
                       className="create-new-coupn-post-type-input"
                       id="post-type"
                       showSearch
-                      defaultValue="Coupon"
+                      placeholder="Select Type"
                       value={formData.postType}
                       onChange={(value) =>
                         setFormData({ ...formData, postType: value })
