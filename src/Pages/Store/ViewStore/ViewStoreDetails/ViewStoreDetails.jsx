@@ -9,7 +9,6 @@ import EditIconView from "../../../../Components/IconsComponents/EditIconView";
 const ViewStoreDetails = () => {
   const { id } = useParams();
   const store = useLoaderData();
-  console.log(store, 'store');
   const navigate = useNavigate();
   return (
     <div className="view-store-detail-container">

@@ -97,7 +97,7 @@ const ViewBrandPostRow = ({
             </h4>
             <p>
               {post?.brand?.brandName}{" "}
-              {post?.postType === "deal" && (
+              {post?.postType === "Deal" && (
                 <small className="tooltip">Deal</small>
               )}
             </p>
@@ -136,7 +136,7 @@ const ViewBrandPostRow = ({
             <img src={viewStoreFlagIcon} alt="view-store-flag-img" />
             <Select
               className="country-flags-dropdown"
-              defaultValue={`${post?.country?.length} Countries`}
+              defaultValue={`${post?.countries?.length} Countries`}
               // style={selectStyle}
               options={items}
             ></Select>
@@ -152,7 +152,7 @@ const ViewBrandPostRow = ({
             End in <strong>{getExpireInAtDays(post?.expireDate)}</strong> days
           </span>
         )}
-        {post?.postType === "deal" && (
+        {post?.postType === "Deal" && (
           <small className="tooltip display-only-on-mobile">Deal</small>
         )}
       </div>

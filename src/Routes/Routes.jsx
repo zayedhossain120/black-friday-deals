@@ -45,6 +45,7 @@ import CreateBrand from "../Pages/CreateBrand/CreateBrand";
 import CreateBrandHowToUse from "../Pages/CreateBrand/CreateBrandHowToUse/CreateBrandHowToUse";
 import AddNewPostUpdate from "../Pages/Post/AddNewPostUpdate/AddNewPostUpdate";
 import ProductDealUpdate from "../Pages/Post/ProductDealUpdate/ProductDealUpdate";
+import ViewBrandOutletShowPosts from "../Pages/Brand/ViewBrand/ViewBrandOutletShowPosts/ViewBrandOutletShowPosts";
 
 const Routes = () => {
   const router = createBrowserRouter([
@@ -76,14 +77,14 @@ const Routes = () => {
               path: "",
               loader: async ({ params }) =>
                 fetchBrandDataAtRouterLevel(params.id),
-              element: <ViewStoreOutlet query={`${hasValidity()}`} />,
+              element: <ViewBrandOutletShowPosts query={`${hasValidity()}`} />,
             },
             {
               path: "coupons",
               loader: async ({ params }) =>
                 fetchBrandDataAtRouterLevel(params.id),
               element: (
-                <ViewStoreOutlet query={`${hasValidity()}&postType=Coupon`} />
+                <ViewBrandOutletShowPosts query={`${hasValidity()}&postType=Coupon`} />
               ),
             },
             {
@@ -91,7 +92,7 @@ const Routes = () => {
               loader: async ({ params }) =>
                 fetchBrandDataAtRouterLevel(params.id),
               element: (
-                <ViewStoreOutlet query={`${hasValidity()}&postType=Deal`} />
+                <ViewBrandOutletShowPosts query={`${hasValidity()}&postType=Deal`} />
               ),
             },
             {
@@ -99,7 +100,7 @@ const Routes = () => {
               loader: async ({ params }) =>
                 fetchBrandDataAtRouterLevel(params.id),
               element: (
-                <ViewStoreOutlet query={`${hasValidity()}&postType=Voucher`} />
+                <ViewBrandOutletShowPosts query={`${hasValidity()}&postType=Voucher`} />
               ),
             },
             {
@@ -107,7 +108,7 @@ const Routes = () => {
               loader: async ({ params }) =>
                 fetchBrandDataAtRouterLevel(params.id),
               element: (
-                <ViewStoreOutlet query={`expireDate[lt]=${new Date()}`} />
+                <ViewBrandOutletShowPosts query={`expireDate[lt]=${new Date()}`} />
               ),
             },
           ],

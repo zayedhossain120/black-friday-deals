@@ -9,7 +9,6 @@ import EditIconView from "../../../../Components/IconsComponents/EditIconView";
 const ViewBrandDetails = () => {
   const { id } = useParams();
   const brand = useLoaderData();
-  console.log(brand, 'brand');
   const navigate = useNavigate();
   return (
     <div className="view-store-detail-container">
@@ -38,12 +37,12 @@ const ViewBrandDetails = () => {
         {/* <hr className="view-store-hr" /> */}
         <div className="view-store-button">
           <p className="shipping-cost-text">
-            {brand?.data?.description ? brand.data.description : "No descriptions"}
+            {brand?.data?.brandDescription ? brand?.data?.brandDescription : "No descriptions"}
           </p>
           <div className="set-two-button">
             <button className="view-store-first-button">
               <Link
-                to={brand?.data?.storeExternalLink?.toString()}
+                to={brand?.data?.brandLink?.toString()}
                 target="_blank"
                 className="view-store-button-link"
                 rel="noopener noreferrer"
