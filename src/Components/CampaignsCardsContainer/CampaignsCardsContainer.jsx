@@ -28,7 +28,6 @@ const CampaignsCardsContainer = ({
         return <p>{error.message || campaignData?.message} Check your Router Modem or Mobile Data</p>;
     }
 
-console.log(campaignData);
     return (
 <div className="campaigns-sub-main-container">
 <div className="campaign-cards-container">

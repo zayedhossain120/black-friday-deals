@@ -38,9 +38,6 @@ import ViewCampaignOutlet from "../Pages/Campaign/ViewCampaign/ViewCampaignOutle
 import fetchBrandDataAtRouterLevel from "../Utils/variables/fetchBrandDataAtRouterLevel";
 import Brand from "../Pages/Brand/Brand";
 import fetchCampaignDataAtRouterLevel from "../Utils/variables/fetchCampaignDataAtRouterLevel";
-import fetchPostDataAtRouterLevel from "../Utils/variables/fetchPostDataAtRouterLevel";
-import EditCampaign from "../Pages/EditCampaign/EditCampaign";
-import apiUrl from "../Utils/variables/apiUrl";
 import ViewBrand from "../Pages/Brand/ViewBrand/ViewBrand";
 import EditBrand from "../Pages/EditBrand/EditBrand";
 import EditBrandHowToUse from "../Pages/EditBrand/EditBrandHowToUse/EditBrandHowToUse";
@@ -49,6 +46,7 @@ import CreateBrandHowToUse from "../Pages/CreateBrand/CreateBrandHowToUse/Create
 import AddNewPostUpdate from "../Pages/Post/AddNewPostUpdate/AddNewPostUpdate";
 import ProductDealUpdate from "../Pages/Post/ProductDealUpdate/ProductDealUpdate";
 import ViewBrandOutletShowPosts from "../Pages/Brand/ViewBrand/ViewBrandOutletShowPosts/ViewBrandOutletShowPosts";
+import EditCampaign from "../Pages/EditCampaign/EditCampaign";
 
 const Routes = () => {
   const router = createBrowserRouter([
@@ -154,8 +152,7 @@ const Routes = () => {
             {
               path: "",
               loader: async ({ params }) =>
-                // fetchCampaignDataAtRouterLevel(params.id),
-                fetch(`${apiUrl}/post/${params.id}`),
+                fetchCampaignDataAtRouterLevel(params.id),
               element: <ViewCampaignOutlet query={`${hasValidity()}`} />,
             },
             {

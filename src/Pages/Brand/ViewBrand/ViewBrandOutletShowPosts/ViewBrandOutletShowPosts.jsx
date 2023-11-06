@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import "./ViewBrandOutletShowPosts.css"
+import "./ViewBrandOutletShowPosts.css";
 import { Button, Spin } from "antd";
 import { useContext, useEffect, useState } from "react";
 import { SelectedCountryContext } from "../../../../Contexts/CountryContext/CountryProviderContext";

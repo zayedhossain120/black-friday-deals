@@ -23,8 +23,10 @@ const CreateCampaign = () => {
 
     const form = e.target;
     const file = form.photoURL?.files[0];
+    const startPeriod = form.startPeriod.value;
+    const endPeriod = form.endPeriod.value;
     const campaignName = form.campaignName.value;
-
+    
     setIsLoading(true);
 
     const accessToken = getToken();
@@ -32,11 +34,13 @@ const CreateCampaign = () => {
       .then((url) => {
         axios
           .post(
-            `${apiUrl}/store/add`,
+            `${apiUrl}/campaign/add`,
             {
-              photoURL: url,
-              storeName: name.value,
+              campaignPhotoURL: url,
+              campaignName: campaignName.value,
               country: selectedCountries,
+              endPeriod: endPeriod.value,
+
             },
             {
               headers: {
@@ -110,12 +114,12 @@ const CreateCampaign = () => {
 
                     <div className="datepicker-container">
                       <div className="start-period">
-                        <label htmlFor="start-date">Period Start Date</label>
-                        <DatePicker id="start-date" placeholder="Start Date" />
+                        <label htmlFor="startPeriod">Period Start Date</label>
+                        <DatePicker format="DD/MM/YYYY" name="startPeriod" placeholder="Start Date" />
                       </div>
                       <div className="end-period">
-                        <label htmlFor="end-date">Period End Date</label>
-                        <DatePicker id="end-date" placeholder="End Date" />
+                        <label htmlFor="endPeriod">Period End Date</label>
+                        <DatePicker format="DD/MM/YYYY" name="endPeriod"  placeholder="End Date" />
                       </div>
                     </div>
 

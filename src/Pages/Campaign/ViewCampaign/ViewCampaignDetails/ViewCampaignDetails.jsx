@@ -38,7 +38,7 @@ const ViewCampaignDetails = () => {
           <p className="shipping-cost-text">
             Period: {" "}
             {campaign?.data?.startPeriod.slice(0, 10)}
-            {" to "}
+            {" - "}
           
             {campaign?.data?.endPeriod.slice(0, 10) }
             {/* {getExpireInAtDays(campaign?.data?.endPeriod)} */}

@@ -16,7 +16,7 @@ import apiUrl from '../../../../Utils/variables/apiUrl';
 
 const ViewCampaignOutlet = ({query}) => {
  
-   const post = useLoaderData();
+   const store = useLoaderData();
   const countryContext = useContext(SelectedCountryContext);
   // const [post, setPost] = useState(null)
   const [openPostViewModal, setOpenPostViewModal] = useState(null);
@@ -25,7 +25,7 @@ const ViewCampaignOutlet = ({query}) => {
 
 
     const {
-        data: CampaignPages /** change */,
+        data: StorePages /** change */,
         error,
         hasNextPage,
         fetchNextPage,
@@ -33,8 +33,8 @@ const ViewCampaignOutlet = ({query}) => {
         isFetchingNextPage,
         refetch,
       } = useFetchInfinite(
-        `post/all?CampaignPages=${post?.data?.campaignName}&${query}&country=${countryContext?.selectedCountry}&limit=10`,
-        "campaign-route",
+        `post/all?StorePages=${store?.data?.storeName}&${query}&country=${countryContext?.selectedCountry}&limit=10`,
+        "store-route",
         { query, countryContext }
       );
       useEffect(() => {
@@ -44,16 +44,16 @@ const ViewCampaignOutlet = ({query}) => {
       if (!isFetchingNextPage && isFetching) {
         return <MainLoading />;
       }
-      if (error || CampaignPages?.status === "failed") {
-        return <p>{error?.message || CampaignPages?.message}</p>;
+      if (error || StorePages?.status === "failed") {
+        return <p>{error?.message || StorePages?.message}</p>;
       }
-      if (!CampaignPages[0]?.data?.length) {
+      if (!StorePages[0]?.data?.length) {
         return <EmptyData />;
       }
     return (
         <section className="campaign-outlet-container">
           <div className="campaign-table">
-          {CampaignPages?.map((page) =>
+          {StorePages?.map((page) =>
             page?.data?.map((post) => (
             <ViewCampaignPostRow
               key={post?._id}
@@ -96,8 +96,7 @@ const ViewCampaignOutlet = ({query}) => {
       {openPostViewModal && (
         <PostViewCustomModal
           setOpenPostViewModal={
-            setOpenPostViewModal
-          } /** change in setOpenStoreViewModal */
+setOpenPostViewModal} 
           setOpenDeletePostModal={setOpenDeletePostModal}
           openPostViewModal={openPostViewModal}
         />
