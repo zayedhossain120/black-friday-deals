@@ -45,6 +45,7 @@ import CreateBrand from "../Pages/CreateBrand/CreateBrand";
 import CreateBrandHowToUse from "../Pages/CreateBrand/CreateBrandHowToUse/CreateBrandHowToUse";
 import AddNewPostUpdate from "../Pages/Post/AddNewPostUpdate/AddNewPostUpdate";
 import ProductDealUpdate from "../Pages/Post/ProductDealUpdate/ProductDealUpdate";
+import EditCampaign from "../Pages/EditCampaign/EditCampaign";
 
 const Routes = () => {
   const router = createBrowserRouter([
