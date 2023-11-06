@@ -9,8 +9,13 @@ import useFetch from "../../../../CustomHooks/useFetch";
 import { getExpireInAtDays } from "../../../../Utils/variables/formattedDates";
 
 const ProductDealAsidBar = ({ productlImage, formData }) => {
-  const { data: brand } = useFetch("brand/?limit=1000");
   const [asidebar, setAsidebar] = useState(null);
+  const [discount, setDiscount] = useState(0);
+  // const discountedMoney = (oldPrice, discountedPrice) => {
+  //   const oldPrices = formData.oldPrice;
+  //   console.log("Wowo", oldPrices);
+  //   return oldPrices;
+  // };
   useEffect(() => {
     fetch(`https://restcountries.com/v3.1/all`)
       .then((res) => res.json())
@@ -18,7 +23,7 @@ const ProductDealAsidBar = ({ productlImage, formData }) => {
         setAsidebar(data);
       });
   }, []);
-  console.log("this is Brand Name", brand);
+  console.log("this is formDtata Name", formData);
   // console.log("this is formData", formData);
   // const dataTag = () => {
   //   const oldprice = formData.oldprice;
@@ -26,9 +31,14 @@ const ProductDealAsidBar = ({ productlImage, formData }) => {
   //   const total = oldprice - discountprice;
   //   return total;
   // };
+  const discountedMoney = () => {
+    const oldData = formData.oldprice;
+    const disCountDate = formData.discountprice;
+    const todayPrice = oldData / disCountDate;
+    setDiscount(todayPrice);
+  };
   return (
     <aside className="product-deal-aside-main-container">
-      <h1>this is Aside bar page:</h1>
       {/* {/* {asidebar ? ( */}
       <section className="product-deal-asidebar-data-available-container">
         <div className="product-deal-asidebar-carousel-div">
@@ -48,7 +58,8 @@ const ProductDealAsidBar = ({ productlImage, formData }) => {
                   - <s>$ {formData.oldprice}</s>
                 </span>{" "}
               </h2>
-              <p> 75% OFF</p>
+              <p> {discount} OFF</p>
+              {/* <button onClick={discountedMoney()}>event</button> */}
             </div>
             {/* validity section */}
             <div className="product-deal-aside-details-product-price-expire-day">
@@ -77,9 +88,9 @@ const ProductDealAsidBar = ({ productlImage, formData }) => {
           </div>
           <div className="product-deal-asidebar-product-company-name">
             <div>
-              <img src={googleicon} alt="" />
+              <img src={formData?.brand?.brandPhotoURL} alt="" />
             </div>
-            <p> {formData.brandName}</p>
+            <p> {formData?.brand?.brandName}</p>
           </div>
           <div className="product-deal-asidebar-product-country-flags">
             {formData.countries?.map((country) => {
@@ -103,8 +114,8 @@ const ProductDealAsidBar = ({ productlImage, formData }) => {
         </div>
         <div className="product-deal-asidebar-footer">
           <div>
-            <p>Available on</p>
-            <img src={googleicon} alt="" />
+            <p>Available </p>
+            <img src={formData?.store?.storePhotoURL} alt="" />
           </div>
         </div>
       </section>
