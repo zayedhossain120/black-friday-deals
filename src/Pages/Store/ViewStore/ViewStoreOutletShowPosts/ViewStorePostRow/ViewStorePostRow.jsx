@@ -53,33 +53,22 @@ const ViewStorePostRow = ({
 
   const selectStyle = {
     display: 'flex',
-    gap: '5px'
+    gap: '0px'
   }
 
-  const dynamicData = flags;
-
-  const items = dynamicData?.map((item) => ({
-    key: item.key,
+  const items = post?.countries?.map((country) => ({
+    key: country.key,
     label: (
       <div className="" style={selectStyle}>
-        <img src={item.flagUrl} title={item.countryName} width={20}>
-      </img>
-      <p>{item.shortForm}</p>
+        <img
+        src={flags.find((flag) => flag.countryName === country).flagUrl}
+        title={flags.shortForm}
+        alt="" 
+        />
+        <p>{flags.find((flag) => flag.countryName === country).shortFormToo}</p>
       </div>
     ),
   }));
-
-
-  // for country
-  // {openPostViewModal?.data?.countries?.map((country) => (
-  //   <img
-  //     key={country}
-  //     src={
-  //       flags.find((flag) => country === flag.countryName).flagUrl
-  //     }
-  //     alt="country-flag"
-  //   />
-  // ))}
 
   return (
     <div
@@ -195,7 +184,7 @@ const ViewStorePostRow = ({
         </button>
       </div>
       <div className="mobile-v-flag">
-        {post?.data?.country?.map((country) => (
+        {post?.countries?.map((country) => (
           <img
             key={country}
             src={flags.find((flag) => flag.countryName === country).flagUrl}

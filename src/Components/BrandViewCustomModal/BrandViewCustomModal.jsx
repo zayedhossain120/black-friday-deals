@@ -48,7 +48,7 @@ const BrandViewCustomModal = ({
         ) : (
           <React.Fragment>
             <img
-              src={openBrandViewModal?.data?.store?.photoURL || placeholder}
+              src={openBrandViewModal?.data?.store?.brandPhotoURL || placeholder}
               alt="Store photo"
               height={100}
               width={100}
