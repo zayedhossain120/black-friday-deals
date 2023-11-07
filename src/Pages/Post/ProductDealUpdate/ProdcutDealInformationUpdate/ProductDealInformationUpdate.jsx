@@ -77,11 +77,11 @@ const ProductDealInformationUpdate = ({
   const handleProductDeal = (event) => {
     event.preventDefault();
     const accessToken = getToken();
+    setIsSubmitting(true);
     if (!productlImage.file) {
       return;
     } else {
       postPhotoAtFirebase(productlImage.file).then((url) => {
-        setIsSubmitting(true);
         fetch(`${apiUrl}/post/${id}`, {
           method: "PATCH",
           headers: {
