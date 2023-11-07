@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import './BrandViewCustomModal.css'
+import "./BrandViewCustomModal.css";
 import viewIcon from "../../assets/Icons/viewEye.svg";
 import placeholder from "../../assets/placeholder.webp";
 import verifiedCodeChecked from "../../assets/Icons/verifiedChecked.svg";
@@ -13,14 +13,16 @@ import React from "react";
 import { getExpireInAtDays } from "../../Utils/variables/formattedDates";
 import { useNavigate } from "react-router-dom";
 
-const BrandViewCustomModal = ({
-  openBrandViewModal,
-  setOpenBrandViewModal,
-  setOpenDeleteBrandModal,
+const PostViewCustomModal = ({
+  post,
+  openPostViewModal,
+  setOpenPostViewModal,
+  setOpenDeletePostModal,
 }) => {
-  console.log(openBrandViewModal);
+  console.log(openPostViewModal, "check desc");
+
   const handleCancel = () => {
-    setOpenBrandViewModal(false);
+    setOpenPostViewModal(false);
   };
   const navigate = useNavigate();
   const clipboard = useClipboard({ timeout: 2000 });
@@ -28,14 +30,17 @@ const BrandViewCustomModal = ({
   // close modal when Escape button clicked
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
-        setOpenBrandViewModal(false);
+      setOpenPostViewModal(false);
     }
   });
   return (
-    <div onClick={handleCancel} className="modal-main-container-with-mask">
+    <div
+      onClick={handleCancel}
+      className="brand-view-modal-main-container-with-mask"
+    >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`modal-content-container`}
+        className={`brand-view-modal-content-container`}
       >
         <img
           src={removeIcon}
@@ -43,73 +48,82 @@ const BrandViewCustomModal = ({
           className="user-edit-remove-icon"
           onClick={handleCancel}
         />
-        {openBrandViewModal?.error ? (
-          <p>{openBrandViewModal?.error?.message}</p>
+        {openPostViewModal?.error ? (
+          <p>{openPostViewModal?.error?.message}</p>
         ) : (
           <React.Fragment>
-            <img
-              src={openBrandViewModal?.data?.brand?.brandPhotoURL || placeholder}
-              alt="Store photo"
-              height={100}
-              width={100}
-              className="post-view-store-photo"
-            />
-            <p>{openBrandViewModal?.data?.brand?.brandName}</p>
-            <h1>{openBrandViewModal?.data?.postTitle}</h1>
-            <p>{openBrandViewModal?.data?.postDescription}</p>
-            <div className="view-icon-count-container">
-              <img src={viewIcon} alt="view icon" />
-              <p>{openBrandViewModal?.data?.revealed}</p>
-            </div>
-
-            <div className="country-flags">
-              {openBrandViewModal?.data?.countries?.map((country) => (
+            <div className="brand-view-modal-container-reedit">
+              <div className="image-container">
                 <img
-                  key={country}
-                  src={
-                    flags.find((flag) => country === flag.countryName).flagUrl
-                  }
-                  alt="country-flag"
+                  src={openPostViewModal?.data?.postPhotoURL || placeholder}
+                  alt="campaign-photo"
+                  height={100}
+                  width={100}
+                  className="post-view-store-photo"
                 />
-              ))}
-            </div>
-            <fieldset>
-              <legend className={clipboard.copied ? "code-copied" : ""}>
-                {clipboard.copied ? "Code Copied" : "Click to Copy"}
-              </legend>
-              <div>
-                {openBrandViewModal?.data?.isVerified && (
-                  <img src={verifiedCodeChecked} alt="verified code" />
-                )}
-                <span>{openBrandViewModal?.data?.couponCode}</span>
               </div>
-              <button
-                onClick={() =>
-                  clipboard.copy(openBrandViewModal?.data?.couponCode)
-                }
-              >
-                <img src={copyIcon} alt="copy icon" />
-              </button>
-            </fieldset>
-            <p>
-              {" "}
-              {getExpireInAtDays(openBrandViewModal?.data?.expireDate) < 1 ? (
-                "Expired"
-              ) : (
-                <span>
-                  End in{" "}
-                  <strong>
-                    {getExpireInAtDays(openBrandViewModal?.data?.expireDate)}
-                  </strong>{" "}
-                  days
-                </span>
-              )}
-            </p>
-            <div>
+              <div className="duo-container">
+                <div className="price-title-country-etc-container">
+                  <h1>{openPostViewModal?.data?.postTitle}</h1>
+                  <div className="brand-modal-price">
+                    <p>$20</p>
+                    <del>$70</del>
+                    <p className="">75% OFF</p>
+                  </div>
+                  <p>
+                    {" "}
+                    {getExpireInAtDays(openPostViewModal?.data?.expireDate) <
+                    1 ? (
+                      "Expired"
+                    ) : (
+                      <span>
+                        End in{" "}
+                        <strong>
+                          {getExpireInAtDays(
+                            openPostViewModal?.data?.expireDate
+                          )}
+                        </strong>{" "}
+                        days
+                      </span>
+                    )}
+                  </p>
+                  <div className="brand-modal-country-flags">
+                    {openPostViewModal?.data?.countries?.map((country) => (
+                      <img
+                        key={country}
+                        src={
+                          flags.find((flag) => country === flag.countryName)
+                            .flagUrl
+                        }
+                        alt="country-flag"
+                      />
+                    ))}
+                  </div>
+                </div>
+                <div className="availablestore-view-container">
+                  <p>Available On</p>
+                  <img
+                    src={openPostViewModal?.data?.store?.storePhotoURL}
+                    style={{
+                      width: "45px",
+                      height: "45px",
+                    }}
+                  />
+                  <div className="view-icon-count-container">
+                    <img src={viewIcon} alt="view icon" />
+                    <p>{openPostViewModal?.data?.revealed}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="description-container">
+              <p>{openPostViewModal?.data?.postDescription}</p>
+            </div>
+            <div className="delete-edit-duo">
               <button
                 onClick={() => {
-                    setOpenDeleteBrandModal(openBrandViewModal.data);
-                  setOpenBrandViewModal(false);
+                  setOpenDeletePostModal(openPostViewModal.data);
+                  setOpenPostViewModal(false);
                 }}
                 className="delete-button"
               >
@@ -118,12 +132,16 @@ const BrandViewCustomModal = ({
               </button>
               <button
                 className="edit-button"
-                onClick={() =>
-                  navigate(`/post/editpost/${openBrandViewModal?.data?._id}`)
-                }
+                onClick={(e) => {
+                  e.stopPropagation();
+                  console.log(post, "here or not");
+                  openPostViewModal?.data?.postType === "Deal"
+                    ? navigate(`/post/productDealUpdate/${post?._id}`)
+                    : navigate(`/post/addnewpostupdate/${post?._id}`);
+                }}
               >
                 <EditIcon />
-               Edit
+                Edit
               </button>
             </div>
           </React.Fragment>
@@ -132,4 +150,4 @@ const BrandViewCustomModal = ({
     </div>
   );
 };
-export default BrandViewCustomModal;
+export default PostViewCustomModal;
