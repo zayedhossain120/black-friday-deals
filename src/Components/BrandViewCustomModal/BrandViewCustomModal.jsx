@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import './BrandViewCustomModal.css'
+import "./BrandViewCustomModal.css";
 import viewIcon from "../../assets/Icons/viewEye.svg";
 import placeholder from "../../assets/placeholder.webp";
 import verifiedCodeChecked from "../../assets/Icons/verifiedChecked.svg";
@@ -13,14 +13,17 @@ import React from "react";
 import { getExpireInAtDays } from "../../Utils/variables/formattedDates";
 import { useNavigate } from "react-router-dom";
 
-const BrandViewCustomModal = ({
-  openBrandViewModal,
-  setOpenBrandViewModal,
-  setOpenDeleteBrandModal,
+const PostViewCustomModal = ({
+  post,
+  openPostViewModal,
+  setOpenPostViewModal,
+  setOpenDeletePostModal,
 }) => {
-  console.log(openBrandViewModal);
+  console.log(openPostViewModal);
+  
+  
   const handleCancel = () => {
-    setOpenBrandViewModal(false);
+    setOpenPostViewModal(false);
   };
   const navigate = useNavigate();
   const clipboard = useClipboard({ timeout: 2000 });
@@ -28,7 +31,7 @@ const BrandViewCustomModal = ({
   // close modal when Escape button clicked
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
-        setOpenBrandViewModal(false);
+      setOpenPostViewModal(false);
     }
   });
   return (
@@ -43,27 +46,27 @@ const BrandViewCustomModal = ({
           className="user-edit-remove-icon"
           onClick={handleCancel}
         />
-        {openBrandViewModal?.error ? (
-          <p>{openBrandViewModal?.error?.message}</p>
+        {openPostViewModal?.error ? (
+          <p>{openPostViewModal?.error?.message}</p>
         ) : (
           <React.Fragment>
             <img
-              src={openBrandViewModal?.data?.brand?.brandPhotoURL || placeholder}
-              alt="Store photo"
+              src={openPostViewModal?.data?.postPhotoURL || placeholder}
+              alt="campaign-photo"
               height={100}
               width={100}
               className="post-view-store-photo"
             />
-            <p>{openBrandViewModal?.data?.brand?.brandName}</p>
-            <h1>{openBrandViewModal?.data?.postTitle}</h1>
-            <p>{openBrandViewModal?.data?.postDescription}</p>
+            <p>{openPostViewModal?.data?.post?.campaignName}</p>
+            <h1>{openPostViewModal?.data?.postTitle}</h1>
+            <p>{openPostViewModal?.data?.postDescription}</p>
             <div className="view-icon-count-container">
               <img src={viewIcon} alt="view icon" />
-              <p>{openBrandViewModal?.data?.revealed}</p>
+              <p>{openPostViewModal?.data?.revealed}</p>
             </div>
 
             <div className="country-flags">
-              {openBrandViewModal?.data?.countries?.map((country) => (
+              {openPostViewModal?.data?.countries?.map((country) => (
                 <img
                   key={country}
                   src={
@@ -78,14 +81,14 @@ const BrandViewCustomModal = ({
                 {clipboard.copied ? "Code Copied" : "Click to Copy"}
               </legend>
               <div>
-                {openBrandViewModal?.data?.isVerified && (
+                {openPostViewModal?.data?.isVerified && (
                   <img src={verifiedCodeChecked} alt="verified code" />
                 )}
-                <span>{openBrandViewModal?.data?.couponCode}</span>
+                <span>{openPostViewModal?.data?.couponCode}</span>
               </div>
               <button
                 onClick={() =>
-                  clipboard.copy(openBrandViewModal?.data?.couponCode)
+                  clipboard.copy(openPostViewModal?.data?.couponCode)
                 }
               >
                 <img src={copyIcon} alt="copy icon" />
@@ -93,13 +96,13 @@ const BrandViewCustomModal = ({
             </fieldset>
             <p>
               {" "}
-              {getExpireInAtDays(openBrandViewModal?.data?.expireDate) < 1 ? (
+              {getExpireInAtDays(openPostViewModal?.data?.expireDate) < 1 ? (
                 "Expired"
               ) : (
                 <span>
                   End in{" "}
                   <strong>
-                    {getExpireInAtDays(openBrandViewModal?.data?.expireDate)}
+                    {getExpireInAtDays(openPostViewModal?.data?.expireDate)}
                   </strong>{" "}
                   days
                 </span>
@@ -108,8 +111,8 @@ const BrandViewCustomModal = ({
             <div>
               <button
                 onClick={() => {
-                    setOpenDeleteBrandModal(openBrandViewModal.data);
-                  setOpenBrandViewModal(false);
+                  setOpenDeletePostModal(openPostViewModal.data);
+                  setOpenPostViewModal(false);
                 }}
                 className="delete-button"
               >
@@ -119,11 +122,11 @@ const BrandViewCustomModal = ({
               <button
                 className="edit-button"
                 onClick={() =>
-                  navigate(`/post/editpost/${openBrandViewModal?.data?._id}`)
+                  navigate(`/post/editpost/${openPostViewModal?.data?._id}`)
                 }
               >
                 <EditIcon />
-               Edit
+                Edit
               </button>
             </div>
           </React.Fragment>
@@ -132,4 +135,4 @@ const BrandViewCustomModal = ({
     </div>
   );
 };
-export default BrandViewCustomModal;
+export default PostViewCustomModal;

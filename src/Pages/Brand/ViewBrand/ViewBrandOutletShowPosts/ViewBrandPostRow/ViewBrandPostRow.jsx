@@ -177,7 +177,9 @@ const countryFlagStyle = {
         <button
           onClick={(e) => {
             e.stopPropagation();
-            navigate(`/post/addnewpostupdate/${post?._id}`);
+            post?.postType === "Deal"
+            ? navigate(`/post/productDealUpdate/${post?._id}`)
+            : navigate(`/post/addnewpostupdate/${post?._id}`);
           }}
         >
           <EditIcon />
