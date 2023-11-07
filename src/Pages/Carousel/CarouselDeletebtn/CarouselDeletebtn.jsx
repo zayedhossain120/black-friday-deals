@@ -24,7 +24,7 @@ const CarouselDeletebtn = ({ isVisible, onClose, allCarousel }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data?.status === "success") {
+        if (data?.success) {
           toast.warning("Carousel deleted successfully");
         } else {
           toast.error("Failed to delete carousel");
