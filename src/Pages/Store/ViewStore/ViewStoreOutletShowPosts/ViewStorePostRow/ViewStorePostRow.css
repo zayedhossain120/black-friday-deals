@@ -69,10 +69,10 @@
   gap: 5px;
   background: firebrick;
 } */
-.expire-time{
-display: flex;
-align-items: center;
-justify-content: center;
+.expire-time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .view-store-table-row .table-data:last-child {
@@ -81,7 +81,7 @@ justify-content: center;
   align-items: center;
   transition: all 1s ease;
 }
-.span-img-container{
+.span-img-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -160,10 +160,7 @@ justify-content: center;
 .available-online-store .expired-item-copy {
   display: none;
 }
-.ant-select-selector {
-  border: none;
-  padding: 0;
-}
+
 /* responsive========================= */
 @media screen and (max-width: 700px) {
   .view-store-table-row {
@@ -185,7 +182,7 @@ justify-content: center;
     visibility: hidden;
   }
 
-  .expire-time span{
+  .expire-time span {
     display: none;
   }
   .view-store-table-row .country-flags {
