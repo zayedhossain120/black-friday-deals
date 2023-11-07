@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./EditCampaign.css";
 import TopBar from "../../Components/TopBar/TopBar";
 import { DatePicker, Input, Select, Spin } from "antd";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useSubmitPhotoAtFirebase from "../../Utils/useSubmitPhotoAtFirebase";
 import flags from "../../Utils/variables/flags";
 import placeholder from "../../assets/Icons/uploadImgIcon.svg";
@@ -12,7 +12,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const EditCampaign = () => {
-  const navigate = useNavigate();
   const { id } = useParams();
   const [imageShow, setImageShow] = useState("");
   const [store, setStore] = useState({});
@@ -20,7 +19,6 @@ const EditCampaign = () => {
   const [submitting, setSubmitting] = useState(false);
   const [selectedCountries, setSelectedCountries] = useState(false);
   const { postPhotoAtFirebase } = useSubmitPhotoAtFirebase();
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const accessToken = getToken();

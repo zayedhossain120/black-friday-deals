@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./CreateCampaign.css";
 import TopBar from "../../Components/TopBar/TopBar";
 import { DatePicker, Input, Select, Spin } from "antd";

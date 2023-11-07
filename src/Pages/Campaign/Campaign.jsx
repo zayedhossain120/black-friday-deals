@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import "./Campaign.css";
 import { SelectedCountryContext } from "../../Contexts/CountryContext/CountryProviderContext";
 import useFetchInfinite from "../../CustomHooks/useFetchInfinite";

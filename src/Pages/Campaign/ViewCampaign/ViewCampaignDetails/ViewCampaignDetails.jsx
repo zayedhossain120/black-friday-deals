@@ -1,16 +1,14 @@
-import React from "react";
 import "./ViewCampaignDetails.css";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import flags from "../../../../Utils/variables/flags";
 import EditIconView from "../../../../Components/IconsComponents/EditIconView";
 
-
 const ViewCampaignDetails = () => {
   const { id } = useParams();
   const campaign = useLoaderData();
-  const post = useLoaderData();
+
   const navigate = useNavigate();
-  console.log(post);
+  console.log(campaign);
   return (
     <div className="view-campaign-detail-container">
       <section className="view-campaign-section-container">
@@ -38,11 +36,9 @@ const ViewCampaignDetails = () => {
         <hr className="view-campaign-hr" />
         <div className="view-campaign-button">
           <p className="shipping-cost-text">
-            Period: {" "}
-            {campaign?.data?.startPeriod.slice(0, 10)}
+            Period: {campaign?.data?.startPeriod.slice(0, 10)}
             {" - "}
-          
-            {campaign?.data?.endPeriod.slice(0, 10) }
+            {campaign?.data?.endPeriod.slice(0, 10)}
             {/* {getExpireInAtDays(campaign?.data?.endPeriod)} */}
           </p>
           <div className="set-two-button">
