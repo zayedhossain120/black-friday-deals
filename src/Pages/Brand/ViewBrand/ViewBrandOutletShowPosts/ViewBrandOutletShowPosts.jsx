@@ -14,7 +14,7 @@ import BrandViewCustomModal from "../../../../Components/BrandViewCustomModal/Br
 import ViewBrandPostRow from "./ViewBrandPostRow/ViewBrandPostRow";
 import BrandDeleteModal from "../../../../Components/BrandDeleteModal/BrandDeleteModal";
 
-const ViewBrandOutletShowPosts = ({ query }) => {
+const ViewBrandOutlet = ({ query }) => {
   const brand = useLoaderData();
   // console.log("this store modal data Nizam:", store);
   const countryContext = useContext(SelectedCountryContext);
@@ -111,4 +111,4 @@ const ViewBrandOutletShowPosts = ({ query }) => {
   );
 };
 
-export default ViewBrandOutletShowPosts;
+export default ViewBrandOutlet;

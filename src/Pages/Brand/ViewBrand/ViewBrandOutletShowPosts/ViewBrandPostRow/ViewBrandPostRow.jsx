@@ -15,7 +15,6 @@ import { Select } from "antd";
 
 const ViewBrandPostRow = ({
   post,
-  // openPostViewModal,
   setOpenPostViewModal,
   setOpenDeletePostModal,
   setSelectMultipleItem,
@@ -24,7 +23,6 @@ const ViewBrandPostRow = ({
   const navigate = useNavigate();
   const { fetchPostById } = usePostFetch();
   // open a post information on modal
-  console.log(post, 'hello');
 
   const handleOpenPostViewModalWithApiData = async (postId) => {
     const { data, isLoading, error } = await fetchPostById(postId);
@@ -179,7 +177,7 @@ const countryFlagStyle = {
         <button
           onClick={(e) => {
             e.stopPropagation();
-            navigate(`/post/editpost/${post?._id}`);
+            navigate(`/post/addnewpostupdate/${post?._id}`);
           }}
         >
           <EditIcon />
