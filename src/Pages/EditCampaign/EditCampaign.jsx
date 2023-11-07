@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./EditCampaign.css";
 import TopBar from "../../Components/TopBar/TopBar";
-import { DatePicker, Input, Select, Spin } from "antd";
+import { DatePicker, Input, Spin } from "antd";
 import { useParams } from "react-router-dom";
 import useSubmitPhotoAtFirebase from "../../Utils/useSubmitPhotoAtFirebase";
 import placeholder from "../../assets/Icons/uploadImgIcon.svg";
@@ -19,77 +19,83 @@ const EditCampaign = () => {
   const [formData, setFormData] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const { postPhotoAtFirebase } = useSubmitPhotoAtFirebase();
+  console.log(campaign, "here comes the campaign");
 
+  useEffect(() => {
+    const accessToken = getToken();
+
+    axios
+      .get(`${apiUrl}/campaign/${id}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      .then(({ data }) => {
+        setCampaign(data);
+        const { campaignName, startPeriod, endPeriod, campaignPhotoURL } =
+          data?.data || {};
+        setFormData({
+          campaignName: campaignName || "",
+          startPeriod: startPeriod || "",
+          endPeriod: endPeriod || "",
+        });
+        setImageShow({ url: campaignPhotoURL || "" });
+      })
+      .catch((error) => {
+        toast.error(`Error: ${error?.response?.data?.message}`);
+      });
+  }, [id]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const submitUpdatedData = (payload) => {
+    axios
+      .patch(`${apiUrl}/campaign/${id}`, payload, {
+        headers: { Authorization: `Bearer ${getToken()}` },
+      })
+      .then(({ data }) => {
+        console.log(data);
+        toast.success("Campaign is successfully updated");
+      })
+      .catch((error) => {
+        toast.error(error.response.data.message);
+      })
+      .finally(() => {
+        setSubmitting(false);
+      });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
+
+    if (imageShow?.files) {
+      postPhotoAtFirebase(imageShow.files)
+        .then((url) => {
+          const { campaignPhotoURL, ...rest } = formData;
+          submitUpdatedData({
+            campaignPhotoURL: url,
+            ...rest,
+          });
+        })
+        .catch((error) => {
+          toast.error(`Error uploading image: ${error.message}`);
+          setSubmitting(false);
+        });
+    } else {
+      submitUpdatedData(formData);
+    }
+  };
+
+  // for date initial value
   dayjs.extend(customParseFormat);
   const dateFormat = "YYYY/MM/DD";
-
-  console.log(formData);
-
-  // useEffect(() => {
-  //   const accessToken = getToken();
-
-  //   axios
-  //     .get(`${apiUrl}/campaign/${id}`, {
-  //       headersA: {
-  //         Authorization: `Bearer ${accessToken}`,
-  //       },
-  //     })
-  //     .then(({ data }) => {
-  //       setCampaign(data);
-  //       setFormData();
-  //       setImageShow(data?.data?.campaignPhotoURL || "");
-  //     })
-  //     .catch((error) => {
-  //       toast.error(`Error: ${error?.response?.data?.message}`);
-  //     });
-  // }, [id]);
-
-  // const submitUpdatedData = (e) => {
-  //   e.preventDefault();
-
-  //   axios
-  //     .patch(`${apiUrl}/campaign/${campaign?.campaignName}`, formData, {
-  //       headers: { Authorization: `Bearer ${getToken()}` },
-  //     })
-  //     .then(({ data }) => {
-  //       console.log(data);
-  //     })
-  //     .catch((error) => {
-  //       toast.error(error.response.data.message);
-  //     })
-  //     .finally(() => {
-  //       setSubmitting(false);
-  //     });
-  // };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setSubmitting(true);
-  //   if (imageShow?.files) {
-  //     postPhotoAtFirebase(imageShow.files)
-  //       .then((url) => {
-  //         const { photoURL, ...rest } = formData;
-  //         submitUpdatedData({
-  //           photoURL: url,
-  //           ...rest,
-  //         });
-  //       })
-  //       .catch((error) => {
-  //         toast.error(`Error uploading image: ${error.message}`);
-  //         setSubmitting(false);
-  //       });
-  //   } else {
-  //     submitUpdatedData(formData);
-  //   }
-  // };
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData({
-  //     ...formData,
-  //     [name]: value,
-  //   });
-  // };
 
   return (
     <div>
@@ -101,10 +107,10 @@ const EditCampaign = () => {
           </div>
           <div>
             <Spin spinning={submitting}>
-              <form onSubmit="">
+              <form onSubmit={handleSubmit}>
                 <section className="edit-campaign-details">
-                  <div className="edit-campaign-logo">
-                    <label htmlFor="photoURL" className="uploaded">
+                  <div className="edit-store-logo">
+                    <label htmlFor="campaignPhotoURL" className="uploaded">
                       {imageShow.url ? (
                         <img src={imageShow.url} alt="" />
                       ) : (
@@ -118,8 +124,6 @@ const EditCampaign = () => {
                     <input
                       accept="image/*"
                       value={formData.campaignPhotoURL}
-                      required
-                      style={{ width: "100%" }}
                       type="file"
                       id="campaignPhotoURL"
                       name="campaignPhotoURL"
@@ -150,7 +154,7 @@ const EditCampaign = () => {
                       <div className="start-period">
                         <label htmlFor="start-date">Period Start Date</label>
                         <DatePicker
-                          value={(formData?.startPeriod, dateFormat)}
+                          value={dayjs(formData?.startPeriod, dateFormat)}
                           name="startPeriod"
                           id="startPeriod"
                           placeholder="Start Date"
@@ -159,7 +163,7 @@ const EditCampaign = () => {
                               dayjs(value).format(dateFormat);
                             setFormData({
                               ...formData,
-                              startPeriod: formattedDate,
+                              expireDate: formattedDate,
                             });
                           }}
                         />
@@ -167,7 +171,7 @@ const EditCampaign = () => {
                       <div className="end-period">
                         <label htmlFor="end-date">Period End Date</label>
                         <DatePicker
-                          value={(formData?.endPeriod, dateFormat)}
+                          value={dayjs(formData?.endPeriod, dateFormat)}
                           name="endPeriod"
                           id="endPeriod"
                           placeholder="End Date"
@@ -176,7 +180,7 @@ const EditCampaign = () => {
                               dayjs(value).format(dateFormat);
                             setFormData({
                               ...formData,
-                              endPeriod: formattedDate,
+                              expireDate: formattedDate,
                             });
                           }}
                         />
