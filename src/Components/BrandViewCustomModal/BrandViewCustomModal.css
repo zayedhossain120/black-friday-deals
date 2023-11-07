@@ -1,206 +1,160 @@
-.brand-view-modal-main-container-with-mask {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.493);
-    z-index: 1000;
-    transition: all 0.5s ease;
-  }
-  .brand-view-modal-content-container {
-    background-color: white;
-    width: 540px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    border-radius: 10px;
-    gap: 10px;
-    position: relative;
-  }
-  .brand-view-modal-main-container-with-mask .brand-view-modal-content-container > img {
-    box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-  }
-  .post-view-store-photo{
-    padding: 20px;
-  }
-  .brand-view-modal-content-container > h1 {
-    text-align: center;
-    margin: 10px;
-  
-    font-size: clamp(18px, 4vw, 20px);
-    font-weight: 600;
-  }
-  .brand-view-modal-main-container-with-mask .brand-view-modal-content-container > p {
-    color: rgba(0, 0, 0, 0.5);
-    font-size: 16px;
-  }
-  .view-icon-count-container {
-    display: flex;
-    align-items: center;
-    font-size: 20px;
-    gap: 8px;
-  }
-  .brand-view-modal-content-container .country-flags {
-    margin: 10px 0;
-  }
-  .brand-view-modal-content-container fieldset {
-    width: 75%;
-    padding: 0 20px 10px 10%;
-    border: 1px dashed #283d27;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .brand-view-modal-content-container fieldset .code-copied {
-    color: green;
-  }
-  .brand-view-modal-content-container fieldset button {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    cursor: copy;
-  }
-  /* .modal-content-container fieldset > div {
-    display: flex;
-    align-items: center;
-  }
-  .modal-content-container fieldset span {
-    padding: 0 20px;
-    font-size: 18px;
-  }
-  
-  .modal-content-container div:last-child {
-    display: flex;
-    gap: 20px;
-  } */
-  /* buttons design with psodu class */
-  .brand-view-modal-content-container div:last-child button {
-    font-size: 18px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    height: clamp(40px, 7vw, 50px);
-    width: clamp(110px, 30vw, 180px);
-    border-radius: 15px;
-    cursor: pointer;
-  }
-  .brand-view-modal-content-container .delete-button {
-    border: 1px solid rgba(255, 0, 0, 0.3);
-    color: rgba(255, 0, 0, 0.7);
-  }
-  .brand-view-modal-content-container .delete-button:hover {
-    border: 1px solid rgba(255, 0, 0, 1);
-    color: rgba(255, 0, 0, 1);
-  }
-  .brand-view-modal-content-container .delete-icon path {
-    stroke: red;
-  }
-  .brand-view-modal-content-container .delete-button:hover .delete-icon path {
-    stroke-opacity: 1;
-  }
-  .brand-view-modal-content-container .edit-button {
-    border: 1px solid rgba(90, 106, 207, 0.5);
-    color: rgba(90, 106, 207, 0.9);
-  }
-  .brand-view-modal-content-container .edit-button .edit-icon path {
-    stroke: rgba(90, 106, 207, 1);
-    stroke-opacity: 0.7;
-  }
-  
-  .brand-view-modal-content-container .edit-button:hover {
-    border: 1px solid rgba(90, 106, 207, 1);
-    color: rgb(32, 51, 174);
-  }
-  .brand-view-modal-content-container .delete-button:hover .edit-icon path {
-    stroke-opacity: 1;
-    stroke-width: 1.2px;
-  }
-
-  /* //poran change */
-.brand-view-modal-container-reedit{
-  display: grid;
-  grid-template-columns: 0.8fr 2.5fr;
-  grid-gap: 25px;
-}
-.brand-view-modal-container-reedit .image-container{
-  background: rgb(230, 210, 210);
+.modal-main-container-with-mask {
+  position: fixed;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgba(0, 0, 0, 0.493);
+  z-index: 1000;
+  transition: all 0.5s ease;
 }
-.brand-view-modal-container-reedit .image-container img{
-  width: 120px;
-  height: 120px;
-  object-fit:contain;
-}
-.duo-container .price-title-country-etc-container h1{
-  font-size: 20px;
-  font-weight: 700;
-  color: rgba(0, 0, 0, 0.9);
-  text-wrap: wrap;
-}
-.price-title-country-etc-container .brand-modal-price{
+
+.modal-content-container {
+  background-color: white;
+  width: 540px;
   display: flex;
-  gap: 5px;
-  align-items: last baseline;
-  margin-bottom: 10px;
-}
-.price-title-country-etc-container .brand-modal-price :nth-child(1){
-font-weight: 700;
-background-color: antiquewhite;
-font-size: 20px;
-}
-.price-title-country-etc-container .brand-modal-price :nth-child(2){
-color: red;
-font-size: 14px;
-}
-.price-title-country-etc-container .brand-modal-price :nth-child(3){
-color: rgba(0, 0, 0, 0.7);
-font-size: 16px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 10px;
+  gap: 10px;
+  position: relative;
 }
 
-
-
-
-
-
-.brand-view-modal-container-reedit .duo-container{
-  display: grid;
-  grid-template-columns: 2.5fr 1fr;
-  grid-gap: 25px;
+.modal-main-container-with-mask .modal-content-container > img {
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
-.delete-edit-duo{
+
+.post-view-store-photo {
+  padding: 20px;
+}
+
+.modal-content-container > h1 {
+  text-align: center;
+  margin: 10px;
+
+  font-size: clamp(18px, 4vw, 20px);
+  font-weight: 600;
+}
+
+.modal-main-container-with-mask .modal-content-container > p {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 16px;
+}
+
+.view-icon-count-container {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  gap: 8px;
+}
+
+.modal-content-container .country-flags {
+  margin: 10px 0;
+}
+
+.modal-content-container fieldset {
+  width: 75%;
+  padding: 0 20px 10px 10%;
+  border: 1px dashed #283d27;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-content-container fieldset .code-copied {
+  color: green;
+}
+
+.modal-content-container fieldset button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: copy;
+}
+
+.modal-content-container fieldset > div {
+  display: flex;
+  align-items: center;
+}
+
+.modal-content-container fieldset span {
+  padding: 0 20px;
+  font-size: 18px;
+}
+
+.modal-content-container div:last-child {
   display: flex;
   gap: 20px;
 }
-.description-container{
-  width: 100%;
-  border-top: 1px solid rgb(228, 226, 226);
+
+/* buttons design with psodu class */
+.modal-content-container div:last-child button {
+  background: transparent;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: clamp(40px, 7vw, 50px);
+  width: clamp(110px, 30vw, 180px);
+  border-radius: 10px;
+  cursor: pointer;
 }
 
+.modal-content-container .delete-button {
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  color: rgba(255, 0, 0, 0.7);
+}
 
+.modal-content-container .delete-button:hover {
+  border: 1px solid rgba(255, 0, 0, 1);
+  color: rgba(255, 0, 0, 1);
+}
 
+.modal-content-container .delete-icon path {
+  stroke: red;
+}
 
+.modal-content-container .delete-button:hover .delete-icon path {
+  stroke-opacity: 1;
+}
 
-  @media screen and (max-width: 580px) {
-    .brand-view-modal-main-container-with-mask {
-      align-items: end;
-    }
-  
-    .brand-view-modal-main-container-with-mask .brand-view-modal-content-container {
-      background-color: white;
-      width: 100%;
-      max-height: 80%;
-      padding: 20px;
-      border-radius: 0;
-      border-top-left-radius: 30px;
-      border-top-right-radius: 30px;
-    }
+.modal-content-container .edit-button {
+  border: 1px solid rgba(90, 106, 207, 0.5);
+  color: rgba(90, 106, 207, 0.9);
+}
+
+.modal-content-container .edit-button .edit-icon path {
+  stroke: rgba(90, 106, 207, 1);
+  stroke-opacity: 0.7;
+}
+
+.modal-content-container .edit-button:hover {
+  border: 1px solid rgba(90, 106, 207, 1);
+  color: rgb(32, 51, 174);
+}
+
+.modal-content-container .delete-button:hover .edit-icon path {
+  stroke-opacity: 1;
+  stroke-width: 1.2px;
+}
+
+@media screen and (max-width: 580px) {
+  .modal-main-container-with-mask {
+    align-items: end;
   }
-  
+
+  .modal-main-container-with-mask .modal-content-container {
+    background-color: white;
+    width: 100%;
+    max-height: 80%;
+    padding: 20px;
+    border-radius: 0;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+  }
+}
