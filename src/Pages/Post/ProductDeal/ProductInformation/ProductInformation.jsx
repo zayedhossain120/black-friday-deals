@@ -62,6 +62,7 @@ const ProductInformation = ({
     if (!productlImage.file) {
       return;
     } else {
+      setIsSubmitting(true);
       postPhotoAtFirebase(productlImage.file).then((url) => {
         fetch(`${apiUrl}/post/add`, {
           method: "POST",
@@ -83,6 +84,7 @@ const ProductInformation = ({
             if (data?.success) {
               toast.success("New post added");
               setFormData({});
+              setIsSubmitting(false);
             } else {
               toast.error("Failed to add new post");
             }

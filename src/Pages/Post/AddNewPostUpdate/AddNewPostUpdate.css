@@ -147,6 +147,7 @@
 .create-new-coupn-post-type-input {
   width: 100%;
   height: 55%;
+  /* border: 1px solid red; */
 }
 .add-new-post-country-category-input {
   width: 100%;
