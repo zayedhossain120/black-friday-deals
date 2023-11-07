@@ -357,7 +357,7 @@ const Routes = () => {
           element: <CreateStoreHowToUse />,
         },
         {
-          path: "/productdeal",
+          path: "/brands/create/productdeal",
           element: <ProductDeal />,
         },
         // // ----------------addNewPostUPdate-----------

@@ -10,14 +10,14 @@ import googleicon from "../../../../assets/Icons/googleIcon.png";
 import { getExpireInAtDays } from "../../../../Utils/variables/formattedDates";
 
 const ProductDealUpdateAsideBar = ({ productlImage, formData }) => {
-  const [asidebar, setAsidebar] = useState(null);
-  useEffect(() => {
-    fetch(`https://restcountries.com/v3.1/all`)
-      .then((res) => res.json())
-      .then((data) => {
-        setAsidebar(data);
-      });
-  }, []);
+  // const [asidebar, setAsidebar] = useState(null);
+  // useEffect(() => {
+  //   fetch(`https://restcountries.com/v3.1/all`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setAsidebar(data);
+  //     });
+  // }, []);
   // console.log("this is formData", formData);
   // const dataTag = () => {
   //   const oldprice = formData.oldprice;
@@ -25,15 +25,16 @@ const ProductDealUpdateAsideBar = ({ productlImage, formData }) => {
   //   const total = oldprice - discountprice;
   //   return total;
   // };
+  console.log("this is formData", formData);
   return (
     <aside className="product-deal-update-aside-main-container">
       {/* <h1>this is Aside bar page:</h1> */}
-      {asidebar ? (
+      {formData ? (
         <section className="product-deal-asidebar-update-data-available-container">
           <div className="product-deal-asidebar-update-carousel-div">
             <label htmlFor="">Preview</label>
             <div>
-              <img src={productlImage?.url} alt="" />
+              <img src={formData.postPhotoURL} alt="" />
             </div>
           </div>
           <div className="product-deal-asidebar-update-details-container">
@@ -69,7 +70,9 @@ const ProductDealUpdateAsideBar = ({ productlImage, formData }) => {
             </div>
             <div className="product-deal-asidebar-update-product-company-name">
               <div>
-                <img src={formData?.brand?.brandPhotoURL} alt="" />
+                {formData?.brand?.brandPhotoURL && (
+                  <img src={formData?.brand?.brandPhotoURL} alt="" />
+                )}
               </div>
               <p> {formData?.brand?.brandName}</p>
             </div>
