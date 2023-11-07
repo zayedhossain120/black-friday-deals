@@ -88,7 +88,9 @@ const ProductDealAsidBar = ({ productlImage, formData }) => {
           </div>
           <div className="product-deal-asidebar-product-company-name">
             <div>
-              <img src={formData?.brand?.brandPhotoURL} alt="" />
+              {formData?.brand?.brandPhotoURL && (
+                <img src={formData?.brand?.brandPhotoURL} alt="" />
+              )}
             </div>
             <p> {formData?.brand?.brandName}</p>
           </div>

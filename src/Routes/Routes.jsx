@@ -1,7 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainLayout from "../Layout/MainLayout";
 import Dashboard from "../Pages/Dashboard/Dashboard";
-import Store from "../Pages/Store/Store";
+// import Store from "../Pages/Store/Store";
 import Post from "../Pages/Post/Post";
 import Carousel from "../Pages/Carousel/Carousel";
 import Members from "../Pages/Members/Members";
@@ -18,7 +18,7 @@ import AddNewPost from "../Pages/Post/AddNewPost/AddNewPost";
 import InActiveUser from "../Pages/Login/InActiveUser/InActiveUser";
 import Secured from "../Pages/Login/Secured/Secured";
 import CreateStore from "../Pages/CreateStore/CreateStore";
-import EditPost from "../Pages/Post/EditPost/EditPost";
+// import EditPost from "../Pages/Post/EditPost/EditPost";
 import ViewStore from "../Pages/Store/ViewStore/ViewStore";
 import EditStoreHowToUse from "../Pages/EditStore/EditStoreHowToUse/EditStoreHowToUse";
 import CreateStoreHowToUse from "../Pages/CreateStore/CreateStoreHowToUse/CreateStoreHowToUse";
@@ -84,7 +84,9 @@ const Routes = () => {
               loader: async ({ params }) =>
                 fetchBrandDataAtRouterLevel(params.id),
               element: (
-                <ViewBrandOutletShowPosts query={`${hasValidity()}&postType=Coupon`} />
+                <ViewBrandOutletShowPosts
+                  query={`${hasValidity()}&postType=Coupon`}
+                />
               ),
             },
             {
@@ -92,7 +94,9 @@ const Routes = () => {
               loader: async ({ params }) =>
                 fetchBrandDataAtRouterLevel(params.id),
               element: (
-                <ViewBrandOutletShowPosts query={`${hasValidity()}&postType=Deal`} />
+                <ViewBrandOutletShowPosts
+                  query={`${hasValidity()}&postType=Deal`}
+                />
               ),
             },
             {
@@ -100,7 +104,9 @@ const Routes = () => {
               loader: async ({ params }) =>
                 fetchBrandDataAtRouterLevel(params.id),
               element: (
-                <ViewBrandOutletShowPosts query={`${hasValidity()}&postType=Voucher`} />
+                <ViewBrandOutletShowPosts
+                  query={`${hasValidity()}&postType=Voucher`}
+                />
               ),
             },
             {
@@ -108,7 +114,9 @@ const Routes = () => {
               loader: async ({ params }) =>
                 fetchBrandDataAtRouterLevel(params.id),
               element: (
-                <ViewBrandOutletShowPosts query={`expireDate[lt]=${new Date()}`} />
+                <ViewBrandOutletShowPosts
+                  query={`expireDate[lt]=${new Date()}`}
+                />
               ),
             },
           ],

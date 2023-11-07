@@ -9,6 +9,7 @@ import ProductInformation from "./ProductInformation/ProductInformation";
 const ProductDeal = () => {
   const [productlImage, setProductImage] = useState({});
   const [formData, setFormData] = useState({});
+  // const [isSubmitting, setIsSubmitting] = useState(false);
   return (
     <main className="product-deal-page-main-container">
       <TopBar pageTitle={"Add new product deal"} />

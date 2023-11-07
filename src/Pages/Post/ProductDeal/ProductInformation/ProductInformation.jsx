@@ -27,6 +27,7 @@ const ProductInformation = ({
   const { data: campaign } = useFetch("campaign/all?limit=1000");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { postPhotoAtFirebase, progress } = useSubmitPhotoAtFirebase();
+  // const [productlImage2] = useState(null);
   // const [error, setError] = useState(false);
 
   console.log("this is store:", store);
