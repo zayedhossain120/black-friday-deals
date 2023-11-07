@@ -19,9 +19,8 @@ const PostViewCustomModal = ({
   setOpenPostViewModal,
   setOpenDeletePostModal,
 }) => {
-  console.log(openPostViewModal);
-  
-  
+  console.log(openPostViewModal, "check desc");
+
   const handleCancel = () => {
     setOpenPostViewModal(false);
   };
@@ -35,10 +34,13 @@ const PostViewCustomModal = ({
     }
   });
   return (
-    <div onClick={handleCancel} className="modal-main-container-with-mask">
+    <div
+      onClick={handleCancel}
+      className="brand-view-modal-main-container-with-mask"
+    >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`modal-content-container`}
+        className={`brand-view-modal-content-container`}
       >
         <img
           src={removeIcon}
@@ -50,65 +52,74 @@ const PostViewCustomModal = ({
           <p>{openPostViewModal?.error?.message}</p>
         ) : (
           <React.Fragment>
-            <img
-              src={openPostViewModal?.data?.postPhotoURL || placeholder}
-              alt="campaign-photo"
-              height={100}
-              width={100}
-              className="post-view-store-photo"
-            />
-            <p>{openPostViewModal?.data?.post?.campaignName}</p>
-            <h1>{openPostViewModal?.data?.postTitle}</h1>
-            <p>{openPostViewModal?.data?.postDescription}</p>
-            <div className="view-icon-count-container">
-              <img src={viewIcon} alt="view icon" />
-              <p>{openPostViewModal?.data?.revealed}</p>
-            </div>
-
-            <div className="country-flags">
-              {openPostViewModal?.data?.countries?.map((country) => (
+            <div className="brand-view-modal-container-reedit">
+              <div className="image-container">
                 <img
-                  key={country}
-                  src={
-                    flags.find((flag) => country === flag.countryName).flagUrl
-                  }
-                  alt="country-flag"
+                  src={openPostViewModal?.data?.postPhotoURL || placeholder}
+                  alt="campaign-photo"
+                  height={100}
+                  width={100}
+                  className="post-view-store-photo"
                 />
-              ))}
-            </div>
-            <fieldset>
-              <legend className={clipboard.copied ? "code-copied" : ""}>
-                {clipboard.copied ? "Code Copied" : "Click to Copy"}
-              </legend>
-              <div>
-                {openPostViewModal?.data?.isVerified && (
-                  <img src={verifiedCodeChecked} alt="verified code" />
-                )}
-                <span>{openPostViewModal?.data?.couponCode}</span>
               </div>
-              <button
-                onClick={() =>
-                  clipboard.copy(openPostViewModal?.data?.couponCode)
-                }
-              >
-                <img src={copyIcon} alt="copy icon" />
-              </button>
-            </fieldset>
-            <p>
-              {" "}
-              {getExpireInAtDays(openPostViewModal?.data?.expireDate) < 1 ? (
-                "Expired"
-              ) : (
-                <span>
-                  End in{" "}
-                  <strong>
-                    {getExpireInAtDays(openPostViewModal?.data?.expireDate)}
-                  </strong>{" "}
-                  days
-                </span>
-              )}
-            </p>
-            <div>
+              <div className="duo-container">
+                <div className="price-title-country-etc-container">
+                  <h1>{openPostViewModal?.data?.postTitle}</h1>
+                  <div className="brand-modal-price">
+                    <p>$20</p>
+                    <del>$70</del>
+                    <p className="">75% OFF</p>
+                  </div>
+                  <p>
+                    {" "}
+                    {getExpireInAtDays(openPostViewModal?.data?.expireDate) <
+                    1 ? (
+                      "Expired"
+                    ) : (
+                      <span>
+                        End in{" "}
+                        <strong>
+                          {getExpireInAtDays(
+                            openPostViewModal?.data?.expireDate
+                          )}
+                        </strong>{" "}
+                        days
+                      </span>
+                    )}
+                  </p>
+                  <div className="brand-modal-country-flags">
+                    {openPostViewModal?.data?.countries?.map((country) => (
+                      <img
+                        key={country}
+                        src={
+                          flags.find((flag) => country === flag.countryName)
+                            .flagUrl
+                        }
+                        alt="country-flag"
+                      />
+                    ))}
+                  </div>
+                </div>
+                <div className="availablestore-view-container">
+                  <p>Available On</p>
+                  <img
+                    src={openPostViewModal?.data?.store?.storePhotoURL}
+                    style={{
+                      width: "45px",
+                      height: "45px",
+                    }}
+                  />
+                  <div className="view-icon-count-container">
+                    <img src={viewIcon} alt="view icon" />
+                    <p>{openPostViewModal?.data?.revealed}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="description-container">
+              <p>{openPostViewModal?.data?.postDescription}</p>
+            </div>
+            <div className="delete-edit-duo">
               <button
                 onClick={() => {
                   setOpenDeletePostModal(openPostViewModal.data);
@@ -121,9 +132,13 @@ const PostViewCustomModal = ({
               </button>
               <button
                 className="edit-button"
-                onClick={() =>
-                  navigate(`/post/editpost/${openPostViewModal?.data?._id}`)
-                }
+                onClick={(e) => {
+                  e.stopPropagation();
+                  console.log(post, "here or not");
+                  openPostViewModal?.data?.postType === "Deal"
+                    ? navigate(`/post/productDealUpdate/${post?._id}`)
+                    : navigate(`/post/addnewpostupdate/${post?._id}`);
+                }}
               >
                 <EditIcon />
                 Edit

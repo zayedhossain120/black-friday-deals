@@ -1,4 +1,4 @@
-.modal-main-container-with-mask {
+.brand-view-modal-main-container-with-mask {
     position: fixed;
     inset: 0;
     display: flex;
@@ -8,7 +8,7 @@
     z-index: 1000;
     transition: all 0.5s ease;
   }
-  .modal-content-container {
+  .brand-view-modal-content-container {
     background-color: white;
     width: 540px;
     display: flex;
@@ -20,21 +20,21 @@
     gap: 10px;
     position: relative;
   }
-  .modal-main-container-with-mask .modal-content-container > img {
+  .brand-view-modal-main-container-with-mask .brand-view-modal-content-container > img {
     box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
   }
   .post-view-store-photo{
     padding: 20px;
   }
-  .modal-content-container > h1 {
+  .brand-view-modal-content-container > h1 {
     text-align: center;
     margin: 10px;
   
     font-size: clamp(18px, 4vw, 20px);
     font-weight: 600;
   }
-  .modal-main-container-with-mask .modal-content-container > p {
+  .brand-view-modal-main-container-with-mask .brand-view-modal-content-container > p {
     color: rgba(0, 0, 0, 0.5);
     font-size: 16px;
   }
@@ -44,10 +44,10 @@
     font-size: 20px;
     gap: 8px;
   }
-  .modal-content-container .country-flags {
+  .brand-view-modal-content-container .country-flags {
     margin: 10px 0;
   }
-  .modal-content-container fieldset {
+  .brand-view-modal-content-container fieldset {
     width: 75%;
     padding: 0 20px 10px 10%;
     border: 1px dashed #283d27;
@@ -56,16 +56,16 @@
     align-items: center;
     justify-content: space-between;
   }
-  .modal-content-container fieldset .code-copied {
+  .brand-view-modal-content-container fieldset .code-copied {
     color: green;
   }
-  .modal-content-container fieldset button {
+  .brand-view-modal-content-container fieldset button {
     background-color: transparent;
     border: none;
     outline: none;
     cursor: copy;
   }
-  .modal-content-container fieldset > div {
+  /* .modal-content-container fieldset > div {
     display: flex;
     align-items: center;
   }
@@ -77,9 +77,9 @@
   .modal-content-container div:last-child {
     display: flex;
     gap: 20px;
-  }
+  } */
   /* buttons design with psodu class */
-  .modal-content-container div:last-child button {
+  .brand-view-modal-content-container div:last-child button {
     font-size: 18px;
     display: flex;
     justify-content: center;
@@ -90,43 +90,110 @@
     border-radius: 15px;
     cursor: pointer;
   }
-  .modal-content-container .delete-button {
+  .brand-view-modal-content-container .delete-button {
     border: 1px solid rgba(255, 0, 0, 0.3);
     color: rgba(255, 0, 0, 0.7);
   }
-  .modal-content-container .delete-button:hover {
+  .brand-view-modal-content-container .delete-button:hover {
     border: 1px solid rgba(255, 0, 0, 1);
     color: rgba(255, 0, 0, 1);
   }
-  .modal-content-container .delete-icon path {
+  .brand-view-modal-content-container .delete-icon path {
     stroke: red;
   }
-  .modal-content-container .delete-button:hover .delete-icon path {
+  .brand-view-modal-content-container .delete-button:hover .delete-icon path {
     stroke-opacity: 1;
   }
-  .modal-content-container .edit-button {
+  .brand-view-modal-content-container .edit-button {
     border: 1px solid rgba(90, 106, 207, 0.5);
     color: rgba(90, 106, 207, 0.9);
   }
-  .modal-content-container .edit-button .edit-icon path {
+  .brand-view-modal-content-container .edit-button .edit-icon path {
     stroke: rgba(90, 106, 207, 1);
     stroke-opacity: 0.7;
   }
   
-  .modal-content-container .edit-button:hover {
+  .brand-view-modal-content-container .edit-button:hover {
     border: 1px solid rgba(90, 106, 207, 1);
     color: rgb(32, 51, 174);
   }
-  .modal-content-container .delete-button:hover .edit-icon path {
+  .brand-view-modal-content-container .delete-button:hover .edit-icon path {
     stroke-opacity: 1;
     stroke-width: 1.2px;
   }
+
+  /* //poran change */
+.brand-view-modal-container-reedit{
+  display: grid;
+  grid-template-columns: 0.8fr 2.5fr;
+  grid-gap: 25px;
+}
+.brand-view-modal-container-reedit .image-container{
+  background: rgb(230, 210, 210);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.brand-view-modal-container-reedit .image-container img{
+  width: 120px;
+  height: 120px;
+  object-fit:contain;
+}
+.duo-container .price-title-country-etc-container h1{
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.9);
+  text-wrap: wrap;
+}
+.price-title-country-etc-container .brand-modal-price{
+  display: flex;
+  gap: 5px;
+  align-items: last baseline;
+  margin-bottom: 10px;
+}
+.price-title-country-etc-container .brand-modal-price :nth-child(1){
+font-weight: 700;
+background-color: antiquewhite;
+font-size: 20px;
+}
+.price-title-country-etc-container .brand-modal-price :nth-child(2){
+color: red;
+font-size: 14px;
+}
+.price-title-country-etc-container .brand-modal-price :nth-child(3){
+color: rgba(0, 0, 0, 0.7);
+font-size: 16px;
+}
+
+
+
+
+
+
+.brand-view-modal-container-reedit .duo-container{
+  display: grid;
+  grid-template-columns: 2.5fr 1fr;
+  grid-gap: 25px;
+}
+.delete-edit-duo{
+  display: flex;
+  gap: 20px;
+}
+.description-container{
+  width: 100%;
+  border-top: 1px solid rgb(228, 226, 226);
+}
+
+
+
+
+
   @media screen and (max-width: 580px) {
-    .modal-main-container-with-mask {
+    .brand-view-modal-main-container-with-mask {
       align-items: end;
     }
   
-    .modal-main-container-with-mask .modal-content-container {
+    .brand-view-modal-main-container-with-mask .brand-view-modal-content-container {
       background-color: white;
       width: 100%;
       max-height: 80%;
