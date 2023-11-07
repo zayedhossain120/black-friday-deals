@@ -30,6 +30,8 @@ const PostRow = ({
     }
   };
 
+  console.log(post, "Here is post");
+
   // select multiple items to delete
   const handleMultipleSelectItem = (e) => {
     e.stopPropagation();
@@ -87,7 +89,7 @@ const PostRow = ({
       {/* flags section */}
       <div className="table-data">
         <div className="country-flags">
-          {post?.country?.map((country) => (
+          {post?.countries?.map((country) => (
             <img
               key={country}
               src={flags.find((flag) => flag.countryName === country).flagUrl}
@@ -117,7 +119,10 @@ const PostRow = ({
         <button
           onClick={(e) => {
             e.stopPropagation();
-            navigate(`/post/addnewpostupdate/${post?._id}`);
+
+            post?.postType === "Deal"
+              ? navigate(`/post/productDealUpdate/${post?._id}`)
+              : navigate(`/post/addnewpostupdate/${post?._id}`);
           }}
         >
           <EditIcon />

@@ -294,18 +294,18 @@ const Routes = () => {
             {
               path: "voucher",
               element: (
-                <PostOutlet query={`${hasValidity()}&postType=voucher`} />
+                <PostOutlet query={`${hasValidity()}&postType=Voucher`} />
               ),
             },
             {
               path: "coupons",
               element: (
-                <PostOutlet query={`${hasValidity()}&postType=coupon`} />
+                <PostOutlet query={`${hasValidity()}&postType=Coupon`} />
               ),
             },
             {
               path: "deals",
-              element: <PostOutlet query={`${hasValidity()}&postType=deal`} />,
+              element: <PostOutlet query={`${hasValidity()}&postType=Deal`} />,
             },
             {
               path: "expired",
@@ -328,6 +328,10 @@ const Routes = () => {
         {
           path: "/post/addnewpostupdate/:id",
           element: <AddNewPostUpdate />,
+        },
+        {
+          path: "/post/productDealUpdate/:id",
+          element: <ProductDealUpdate />,
         },
 
         {
@@ -362,10 +366,6 @@ const Routes = () => {
         //   element: <AddNewPostUpdate />,
         // },
         // // ----------------addNewPostUPdate-----------
-        {
-          path: "/productDealUpdate",
-          element: <ProductDealUpdate />,
-        },
       ],
     },
     {

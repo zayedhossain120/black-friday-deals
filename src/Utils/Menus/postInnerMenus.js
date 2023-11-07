@@ -1,8 +1,8 @@
 const postInnerMenus = [
-{
-  label: "Deals",
-  link: "/post/deals"
-},
+  {
+    label: "Deals",
+    link: "/post/deals",
+  },
   {
     label: "Coupons",
     link: "/post/coupons",
