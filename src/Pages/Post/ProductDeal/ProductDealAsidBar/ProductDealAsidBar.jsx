@@ -16,17 +16,17 @@ const ProductDealAsidBar = ({ productlImage, formData }) => {
   //   console.log("Wowo", oldPrices);
   //   return oldPrices;
   // };
-  useEffect(() => {
-    fetch(`${apiUrl}/post/add`)
-      .then((res) => res.json())
-      .then((data) => {
-        setAsidebar(data);
-      })
-      .catch((error) => {
-        console.error(error);
-        setAsidebar(null);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch()
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setAsidebar(data);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //       // setAsidebar(error);
+  //     });
+  // }, []);
   console.log("this is formDtata Name", formData);
   // console.log("this is formData", formData);
   // const dataTag = () => {
@@ -37,7 +37,7 @@ const ProductDealAsidBar = ({ productlImage, formData }) => {
   // };
   return (
     <aside className="product-deal-aside-main-container">
-      {asidebar ? (
+      {Object.keys(formData).length || productlImage.url ? (
         <section className="product-deal-asidebar-data-available-container">
           <div className="product-deal-asidebar-carousel-div">
             <label htmlFor="">Preview</label>

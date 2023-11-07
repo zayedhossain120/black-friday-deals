@@ -72,7 +72,7 @@ const ProductDealInformationUpdate = ({
       setProductImage(img);
     }
   };
-  console.log(productlImage);
+  // console.log("this is productImage", productlImage);
   // handleProductDeal
   const handleProductDeal = (event) => {
     event.preventDefault();
@@ -99,7 +99,7 @@ const ProductDealInformationUpdate = ({
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log("product deal data is done", data);
+            // console.log("product deal data is done", data);
             if (data?.success) {
               toast.success(" product deal update success");
               setFormData({});
@@ -142,9 +142,10 @@ const ProductDealInformationUpdate = ({
                     htmlFor="photoURL"
                     className="product-deal-update-img-upload-lable "
                   >
-                    {productlImage ? (
+                    {Object.keys(productlImage).length ||
+                    formData?.postPhotoURL ? (
                       <div className="product-deal-update-information-img-top">
-                        <img src={productlImage.url} alt="" />
+                        <img src={formData?.postPhotoURL} alt="" />
                       </div>
                     ) : (
                       <div className="product-deal-update-information-img-button">

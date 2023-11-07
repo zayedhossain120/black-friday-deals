@@ -30,8 +30,8 @@ const ProductInformation = ({
   // const [productlImage2] = useState(null);
   // const [error, setError] = useState(false);
 
-  console.log("this is store:", store);
-  console.log("this is brand:", brand);
+  // console.log("this is store:", store);
+  // console.log("this is brand:", brand);
   // console.log("this is campaign:", campaign);
   // console.log("this is category:", category);
 
@@ -54,7 +54,7 @@ const ProductInformation = ({
       setProductImage(img);
     }
   };
-  console.log(productlImage);
+  // console.log(productlImage);
   // handleProductDeal
   const handleProductDeal = (event) => {
     event.preventDefault();
@@ -80,7 +80,7 @@ const ProductInformation = ({
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log("product deal data is done", data);
+            // console.log("product deal data is done", data);
             if (data?.success) {
               toast.success("New post added");
               setFormData({});
@@ -92,10 +92,12 @@ const ProductInformation = ({
           .catch((error) => {
             console.error("Error:", error);
             toast.error("An error occurred while adding the new post");
-          });
+          })
+          .finally(setProductImage({}));
       });
     }
   };
+  console.log("this is product img", productlImage);
   return (
     <section className="product-deal-information-main-contaner">
       <Spin spinning={isSubmitting}>
@@ -118,7 +120,7 @@ const ProductInformation = ({
                     htmlFor="photoURL"
                     className="product-deal-img-upload-lable "
                   >
-                    {productlImage ? (
+                    {Object.keys(productlImage).length ? (
                       <div className="product-deal-information-img-top">
                         <img src={productlImage.url} alt="" />
                       </div>

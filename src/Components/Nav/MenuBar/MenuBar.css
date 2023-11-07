@@ -9,7 +9,22 @@
 }
 
 .menu-bar .logo {
+  /* display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: center; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
   padding: 20px;
+}
+.menu-bar .logo h1 {
+  /* padding: 20px; */
+  color: #fff;
+  font-size: 1rem;
+  margin-top: 1rem;
+  font-weight: 400;
 }
 
 .menu-bar .logo span {
@@ -68,7 +83,6 @@
   fill: #5a67ba;
 }
 
-
-.custom-menu-item:last-child{
+.custom-menu-item:last-child {
   background-color: red;
 }

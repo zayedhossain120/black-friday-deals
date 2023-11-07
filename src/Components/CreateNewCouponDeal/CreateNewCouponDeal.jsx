@@ -29,14 +29,14 @@ const CreateNewCouponDeal = ({
         <div className="create-store-brand-button">
           <button
             className="store-modal-button"
-            onClick={() => navigate("/store/create")}
+            onClick={() => navigate("/post/create")}
           >
             <HomeOutlined />
             Coupon
           </button>
           <button
             className="brand-modal-button"
-            onClick={() => navigate("/brands/create")}
+            onClick={() => navigate("/brands/create/productdeal")}
           >
             <TrademarkOutlined />
             Deal
