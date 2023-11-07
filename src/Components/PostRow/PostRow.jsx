@@ -21,7 +21,7 @@ const PostRow = ({
   const navigate = useNavigate();
   const { fetchPostById } = usePostFetch();
 
-console.log(post, 'check');
+  console.log(post, "check");
 
   // open a post information on modal
   const handleOpenPostViewModalWithApiData = async (postId) => {

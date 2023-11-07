@@ -4,7 +4,8 @@ import { signOut } from "firebase/auth";
 import auth from "../../../../firebase.init";
 import { useState } from "react";
 import WhatsappModal from "../../../Pages/Whatsapp/WhatsppModal/WhatsappModal";
-import logoIcon from "../../../assets/Icons/logoIcon.svg";
+// import logoIcon from "../../../assets/Icons/logoIcon.svg";
+import blackfriday from "../../../assets/Icons/blackfriday.png";
 import { Menu } from "antd";
 import {
   DashboardOutlined,
@@ -19,9 +20,8 @@ import {
   SlidersOutlined,
   NotificationOutlined,
   UsergroupAddOutlined,
-  UserOutlined
+  UserOutlined,
 } from "@ant-design/icons";
-
 
 const MenuBar = () => {
   const [showWhatsapp, setShowWhatsapp] = useState(false);
@@ -40,13 +40,14 @@ const MenuBar = () => {
     fontSize: "14px",
     fontWeight: 400,
     color: "#a6abc8",
-    gap: '12px'
+    gap: "12px",
   };
   return (
     <div className="menu-bar-container">
       <div className="menu-bar">
         <div className="logo">
-          <img src={logoIcon} alt="" />
+          <img src={blackfriday} alt="" />
+          <h1>Dashboard</h1>
         </div>
         <div className="all-menu-container">
           <div className="main-menu-container">
@@ -119,37 +120,35 @@ const MenuBar = () => {
                   label: "Post",
                   icon: <MailOutlined />,
                   link: "/post",
-                  key: "/post"
+                  key: "/post",
                 },
-                
+
                 {
                   label: "Carousel",
                   icon: <SlidersOutlined />,
                   link: "/carousel",
-                  key: "/carousel"
+                  key: "/carousel",
                 },
-                
+
                 {
                   label: "Campaign",
                   icon: <NotificationOutlined />,
                   link: "/campaign",
-                  key: "/campaign"
+                  key: "/campaign",
                 },
-                
+
                 {
                   label: "Members",
                   icon: <UsergroupAddOutlined />,
                   link: "/members",
-                  key: "/members"
+                  key: "/members",
                 },
                 {
                   label: "Administrators",
                   icon: <UserOutlined />,
                   link: "/administrators",
-                  key: "/administrators"
+                  key: "/administrators",
                 },
-              
-                
               ]}
             ></Menu>
             {/* Whatsapp button */}

@@ -15,7 +15,7 @@ const CreateNewStoreOrBrandModal = ({
 
   return (
     <Modal
-    className="antd-modal-of-brand-store"
+      className="antd-modal-of-brand-store"
       centered
       open={openCreateNewStoreOrBrandModal}
       onCancel={handleCancel}
@@ -32,7 +32,7 @@ const CreateNewStoreOrBrandModal = ({
             onClick={() => navigate("/store/create")}
           >
             <HomeOutlined />
-           Store
+            Store
           </button>
           <button
             className="brand-modal-button"
