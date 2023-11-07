@@ -146,7 +146,7 @@
 }
 .create-new-coupn-post-type-input {
   width: 100%;
-  height: 75%;
+  height: 55%;
 }
 .add-new-post-country-category-input {
   width: 100%;
@@ -158,7 +158,7 @@
 }
 .add-new-post-country-network-input {
   width: 100%;
-  height: 75%;
+  height: 55%;
 }
 .ant-design-input-height-control-create-new-post {
   padding-top: 1rem;
