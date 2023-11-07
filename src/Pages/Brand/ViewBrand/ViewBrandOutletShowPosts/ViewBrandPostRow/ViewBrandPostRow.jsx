@@ -15,6 +15,7 @@ import { Select } from "antd";
 
 const ViewBrandPostRow = ({
   post,
+  // openPostViewModal,
   setOpenPostViewModal,
   setOpenDeletePostModal,
   setSelectMultipleItem,
@@ -23,6 +24,8 @@ const ViewBrandPostRow = ({
   const navigate = useNavigate();
   const { fetchPostById } = usePostFetch();
   // open a post information on modal
+  console.log(post, 'hello');
+
   const handleOpenPostViewModalWithApiData = async (postId) => {
     const { data, isLoading, error } = await fetchPostById(postId);
     if (isLoading) {
@@ -52,17 +55,27 @@ const ViewBrandPostRow = ({
 
   const selectStyle = {
     display: "flex",
-    gap: "5px",
+    gap: "0",
+    border: "none",
+    outline: "none"
   };
 
-  const dynamicData = flags;
+const countryFlagStyle = {
+  width: "20px",
+  // height: "100%"
+  height: "20px"
+}
 
-  const items = dynamicData?.map((item) => ({
-    key: item.key,
+  const items = post?.countries?.map((country) => ({
+    key: country.key,
     label: (
       <div className="" style={selectStyle}>
-        <img src={item.flagUrl} title={item.countryName} width={20}></img>
-        <p>{item.shortForm}</p>
+        <img
+        style={{countryFlagStyle}}
+        src={flags.find((flag) => flag.countryName === country)?.flagUrl}
+        alt="Country Flag" 
+        />
+       <p>{flags.find((flag) => flag.countryName === country)?.shortFormToo}</p>
       </div>
     ),
   }));
@@ -115,7 +128,7 @@ const ViewBrandPostRow = ({
       <div className="available-online-store">
         <p className="">Available On</p>
         <img
-          src={post?.store?.photoURL || placeholder}
+          src={post?.store?.storePhotoURL || placeholder}
           alt={post?.postTitle?.slice(0, 5)}
           height={50}
           width={50}
@@ -131,13 +144,16 @@ const ViewBrandPostRow = ({
       </div>
       {/* flags section */}
       <div className="table-data">
-        <div className="country-flags">
+        <div
+        onClick={(e) => e.stopPropagation()}
+        className="country-flags">
           <div className="country-flags-child-div">
             <img src={viewStoreFlagIcon} alt="view-store-flag-img" />
             <Select
               className="country-flags-dropdown"
+              // style={{dropdownSelectStyle}}
               defaultValue={`${post?.countries?.length} Countries`}
-              // style={selectStyle}
+              style={selectStyle}
               options={items}
             ></Select>
           </div>
@@ -178,7 +194,7 @@ const ViewBrandPostRow = ({
         </button>
       </div>
       <div className="mobile-v-flag">
-        {post?.country?.map((country) => (
+        {post?.countries?.map((country) => (
           <img
             key={country}
             src={flags.find((flag) => flag.countryName === country).flagUrl}

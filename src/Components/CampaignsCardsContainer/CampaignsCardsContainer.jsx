@@ -27,8 +27,7 @@ const CampaignsCardsContainer = ({
     if(error || campaignData.status === "failed") {
         return <p>{error.message || campaignData?.message} Check your Router Modem or Mobile Data</p>;
     }
-
-console.log(campaignData);
+    console.log(campaignData);
     return (
 <div className="campaigns-sub-main-container">
 <div className="campaign-cards-container">
@@ -49,7 +48,7 @@ console.log(campaignData);
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                navigate(`/store/edit/${campaign?._id}`);
+                navigate(`/campaign/edit/${campaign?._id}`);
               }}
             >
               <EditIcon />

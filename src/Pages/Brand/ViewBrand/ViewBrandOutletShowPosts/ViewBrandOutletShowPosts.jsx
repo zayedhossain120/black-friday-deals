@@ -1,18 +1,21 @@
 /* eslint-disable react/prop-types */
-import "./ViewBrandOutletShowPosts.css"
+import "./ViewBrandOutletShowPosts.css";
 import { Button, Spin } from "antd";
 import { useContext, useEffect, useState } from "react";
 import { SelectedCountryContext } from "../../../../Contexts/CountryContext/CountryProviderContext";
 import EmptyData from "../../../../Components/EmptyData/EmptyData";
 import useFetchInfinite from "../../../../CustomHooks/useFetchInfinite";
 import MainLoading from "../../../../Components/MainLoading/MainLoading";
-import PostViewCustomModal from "../../../../Components/PostViewCustomModal/PostViewCustomModal";
-import PostDeleteModal from "../../../../Components/PostDeleteModal/PostDeleteModal";
-import ViewStorePostRow from "./ViewBrandPostRow/ViewBrandPostRow";
+// import PostViewCustomModal from "../../../../Components/PostViewCustomModal/PostViewCustomModal";
+// import PostDeleteModal from "../../../../Components/PostDeleteModal/PostDeleteModal";
+// import ViewStorePostRow from "./ViewBrandPostRow/ViewBrandPostRow";
 import { useLoaderData } from "react-router-dom";
+import BrandViewCustomModal from "../../../../Components/BrandViewCustomModal/BrandViewCustomModal";
+import ViewBrandPostRow from "./ViewBrandPostRow/ViewBrandPostRow";
+import BrandDeleteModal from "../../../../Components/BrandDeleteModal/BrandDeleteModal";
 
 const ViewBrandOutletShowPosts = ({ query }) => {
-  const store = useLoaderData();
+  const brand = useLoaderData();
   // console.log("this store modal data Nizam:", store);
   const countryContext = useContext(SelectedCountryContext);
   const [openPostViewModal, setOpenPostViewModal] = useState(null);
@@ -27,7 +30,7 @@ const ViewBrandOutletShowPosts = ({ query }) => {
     isFetchingNextPage,
     refetch,
   } = useFetchInfinite(
-    `post/all?brandName=${store?.data?.brandName}&${query}&country=${countryContext?.selectedCountry}&limit=10`,
+    `post/all?brandName=${brand?.data?.brandName}&${query}&country=${countryContext?.selectedCountry}&limit=10`,
     "store-route",
     { query, countryContext }
   );
@@ -51,7 +54,7 @@ const ViewBrandOutletShowPosts = ({ query }) => {
       <div className="store-table">
         {StorePages?.map((page) =>
           page?.data?.map((post) => (
-            <ViewStorePostRow
+            <ViewBrandPostRow
               key={post?._id}
               post={post}
               setOpenPostViewModal={setOpenPostViewModal}
@@ -89,7 +92,7 @@ const ViewBrandOutletShowPosts = ({ query }) => {
         </Button>
       )}
       {openPostViewModal && (
-        <PostViewCustomModal
+        <BrandViewCustomModal
           setOpenPostViewModal={
             setOpenPostViewModal
           } /** change in setOpenStoreViewModal */
@@ -98,7 +101,7 @@ const ViewBrandOutletShowPosts = ({ query }) => {
         />
       )}
       {openDeletePostModal && (
-        <PostDeleteModal
+        <BrandDeleteModal
           openDeletePostModal={openDeletePostModal}
           setOpenDeletePostModal={setOpenDeletePostModal}
           refetch={refetch}

@@ -3,12 +3,14 @@ import "./ViewCampaignDetails.css";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import flags from "../../../../Utils/variables/flags";
 import EditIconView from "../../../../Components/IconsComponents/EditIconView";
-import { getExpireInAtDays } from "../../../../Utils/variables/formattedDates";
+
 
 const ViewCampaignDetails = () => {
   const { id } = useParams();
   const campaign = useLoaderData();
+  const post = useLoaderData();
   const navigate = useNavigate();
+  console.log(post);
   return (
     <div className="view-campaign-detail-container">
       <section className="view-campaign-section-container">
@@ -38,7 +40,7 @@ const ViewCampaignDetails = () => {
           <p className="shipping-cost-text">
             Period: {" "}
             {campaign?.data?.startPeriod.slice(0, 10)}
-            {" to "}
+            {" - "}
           
             {campaign?.data?.endPeriod.slice(0, 10) }
             {/* {getExpireInAtDays(campaign?.data?.endPeriod)} */}
@@ -46,7 +48,7 @@ const ViewCampaignDetails = () => {
           <div className="set-two-button">
             <button
               className="view-campaign-second-button"
-              onClick={() => navigate(`/store/edit/${id}`)}
+              onClick={() => navigate(`/campaign/edit/${id}`)}
             >
               {" "}
               <span className="button-text">Edit</span>

@@ -46,6 +46,7 @@ import CreateBrandHowToUse from "../Pages/CreateBrand/CreateBrandHowToUse/Create
 import AddNewPostUpdate from "../Pages/Post/AddNewPostUpdate/AddNewPostUpdate";
 import ProductDealUpdate from "../Pages/Post/ProductDealUpdate/ProductDealUpdate";
 import ViewBrandOutletShowPosts from "../Pages/Brand/ViewBrand/ViewBrandOutletShowPosts/ViewBrandOutletShowPosts";
+import EditCampaign from "../Pages/EditCampaign/EditCampaign";
 
 const Routes = () => {
   const router = createBrowserRouter([
@@ -195,6 +196,10 @@ const Routes = () => {
           element: <CreateCampaign />,
         },
         {
+          path: "/campaign/edit/:id",
+          element: <EditCampaign />,
+        },
+        {
           path: "/store",
           element: <OnlineStore />,
         },
@@ -289,18 +294,18 @@ const Routes = () => {
             {
               path: "voucher",
               element: (
-                <PostOutlet query={`${hasValidity()}&postType=voucher`} />
+                <PostOutlet query={`${hasValidity()}&postType=Voucher`} />
               ),
             },
             {
               path: "coupons",
               element: (
-                <PostOutlet query={`${hasValidity()}&postType=coupon`} />
+                <PostOutlet query={`${hasValidity()}&postType=Coupon`} />
               ),
             },
             {
               path: "deals",
-              element: <PostOutlet query={`${hasValidity()}&postType=deal`} />,
+              element: <PostOutlet query={`${hasValidity()}&postType=Deal`} />,
             },
             {
               path: "expired",
@@ -323,6 +328,10 @@ const Routes = () => {
         {
           path: "/post/addnewpostupdate/:id",
           element: <AddNewPostUpdate />,
+        },
+        {
+          path: "/post/productDealUpdate/:id",
+          element: <ProductDealUpdate />,
         },
 
         {
@@ -357,10 +366,6 @@ const Routes = () => {
         //   element: <AddNewPostUpdate />,
         // },
         // // ----------------addNewPostUPdate-----------
-        {
-          path: "/productDealUpdate",
-          element: <ProductDealUpdate />,
-        },
       ],
     },
     {

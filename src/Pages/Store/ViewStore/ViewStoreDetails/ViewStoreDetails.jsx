@@ -10,6 +10,8 @@ const ViewStoreDetails = () => {
   const { id } = useParams();
   const store = useLoaderData();
   const navigate = useNavigate();
+
+  
   return (
     <div className="view-store-detail-container">
       <section className="view-store-section-container">
@@ -20,7 +22,7 @@ const ViewStoreDetails = () => {
               <h1>{store?.data?.storeName}</h1>
             </div>
             <div className="view-store-country-flags">
-              {store?.data?.country?.map((country) => (
+              {store?.data?.countries?.map((country) => (
                 <img
                   className="store-country-flags-image"
                   key={country}

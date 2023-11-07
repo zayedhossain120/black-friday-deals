@@ -150,10 +150,13 @@
 .available-online-store .expired-item-copy {
   display: none;
 }
-.ant-select-selector {
-  border: none;
-  padding: 0;
-}
+
+/* .country-flags-child-div .ant-select-selector{
+} */
+
+
+
+
 /* responsive========================= */
 @media screen and (max-width: 700px) {
   .view-store-table-row {
@@ -218,8 +221,10 @@
   .dynamic-price-div {
     padding-left: 70px;
   }
-  .span-img-container img,
-  span {
+  .table-data .span-img-container img {
+    display: none;
+  }
+  .table-data .span-img-container span {
     display: none;
   }
   .available-online-store {

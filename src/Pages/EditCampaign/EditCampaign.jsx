@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import "./CreateCampaign.css";
+import React, { useEffect, useState } from "react";
+import "./EditCampaign.css";
 import TopBar from "../../Components/TopBar/TopBar";
 import { DatePicker, Input, Select, Spin } from "antd";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useSubmitPhotoAtFirebase from "../../Utils/useSubmitPhotoAtFirebase";
 import flags from "../../Utils/variables/flags";
 import placeholder from "../../assets/Icons/uploadImgIcon.svg";
@@ -11,86 +11,95 @@ import getToken from "../../Utils/getToken";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const CreateCampaign = () => {
+const EditCampaign = () => {
+  const navigate = useNavigate();
+  const { id } = useParams();
   const [imageShow, setImageShow] = useState("");
-  const [selectedCountries, setSelectedCountries] = useState([]);
+  const [store, setStore] = useState({});
+  const [formData, setFormData] = useState({});
+  const [submitting, setSubmitting] = useState(false);
+  const [selectedCountries, setSelectedCountries] = useState(false);
   const { postPhotoAtFirebase } = useSubmitPhotoAtFirebase();
   const [isLoading, setIsLoading] = useState(false);
 
-  console.log(selectedCountries);
+  useEffect(() => {
+    const accessToken = getToken();
+
+    axios
+      .get(`${apiUrl}/campaign/${id}`, {
+        headersA: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      .then(({ data }) => {
+        setStore(data);
+        setFormData({
+          campaignName: data?.data?.campaignName || "",
+          startDate: data?.data?.startDate || "",
+          endDate: data?.data?.endDate || "",
+          country: data?.data?.country || [],
+          description: data?.data?.description || "",
+        });
+        setImageShow(data?.data?.photoURL || "");
+      })
+      .catch((error) => {
+        toast.error(`Error: ${error?.response?.data?.message}`);
+      });
+  }, [id]);
+
+  const submitUpdatedData = (payload) => {
+    axios
+      .put(`${apiUrl}/campaign/${store?.data?._id}`, formData, {
+        headers: { Authorization: `Bearer ${getToken()}` },
+      })
+      .then(({ data }) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        toast.error(error.response.data.message);
+      })
+      .finally(() => {
+        setSubmitting(false);
+      });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const form = e.target;
-    const file = form.photoURL?.files[0];
-    const startPeriodString = form.startPeriod.value;
-    const endPeriodString = form.endPeriod.value;
-    const campaignName = form.campaignName.value;
-
-    const startPeriod = parseInt(startPeriodString);
-    const endPeriod = parseInt(endPeriodString);
-
-    if (isNaN(startPeriod) || isNaN(endPeriod)) {
-      console.log("Invalid date format");
-      return;
-    }
-
-    setIsLoading(true);
-
-    const accessToken = getToken();
-    postPhotoAtFirebase(file)
-      .then((url) => {
-        axios
-          .post(
-            `${apiUrl}/campaign/add`,
-            {
-              campaignPhotoURL: url,
-              campaignName: campaignName,
-              country: selectedCountries,
-              endPeriod: endPeriod,
-              startPeriod: startPeriod,
-            },
-            {
-              headers: {
-                Authorization: `bearer ${accessToken}`,
-              },
-            }
-          )
-          .then(({ data }) => {
-            console.log(data);
-            form.reset();
-            toast.success("New campaign dded");
-          })
-          .catch((e) => {
-            console.log(e);
-            toast.error(e.response.data.message);
-          })
-          .finally(() => {
-            setIsLoading(false);
+    setSubmitting(true);
+    if (imageShow?.files) {
+      postPhotoAtFirebase(imageShow.files)
+        .then((url) => {
+          const { photoURL, ...rest } = formData;
+          submitUpdatedData({
+            photoURL: url,
+            ...rest,
           });
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+        })
+        .catch((error) => {
+          toast.error(`Error uploading image: ${error.message}`);
+          setSubmitting(false);
+        });
+    } else {
+      submitUpdatedData(formData);
+    }
   };
 
   return (
     <div>
-      <TopBar pageTitle="Create New Campaign" />
+      <TopBar pageTitle="Edit Campaign" />
       <main>
         <section className="edit-campaign-main3">
           <div className="edit-campaign-header">
-            <h3>Create New Campaign</h3>
+            <h3>Edit Campaign</h3>
           </div>
           <div>
-            <Spin spinning={isLoading}>
+            <Spin spinning={submitting}>
               <form onSubmit={handleSubmit}>
                 <section className="edit-campaign-details">
                   <div className="edit-campaign-logo">
                     <label htmlFor="photoURL" className="uploaded">
-                      {imageShow ? (
-                        <img src={imageShow} alt="" />
+                      {imageShow.url ? (
+                        <img src={imageShow.url} alt="" />
                       ) : (
                         <img
                           className="placeholder-for-howtouse"
@@ -100,13 +109,18 @@ const CreateCampaign = () => {
                       )}
                     </label>
                     <input
+                      accept="image/*"
+                      value={formData.photoURL}
                       required
                       style={{ width: "100%" }}
                       type="file"
                       id="photoURL"
                       name="photoURL"
                       onChange={(e) =>
-                        setImageShow(URL.createObjectURL(e.target.files[0]))
+                        setImageShow({
+                          files: e.target.files[0],
+                          url: URL.createObjectURL(e.target.files[0]),
+                        })
                       }
                     />
                   </div>
@@ -125,18 +139,18 @@ const CreateCampaign = () => {
 
                     <div className="datepicker-container">
                       <div className="start-period">
-                        <label htmlFor="startPeriod">Period Start Date</label>
+                        <label htmlFor="start-date">Period Start Date</label>
                         <DatePicker
-                          format="DD/MM/YYYY"
-                          name="startPeriod"
+                          name="startDate"
+                          id="start-date"
                           placeholder="Start Date"
                         />
                       </div>
                       <div className="end-period">
-                        <label htmlFor="endPeriod">Period End Date</label>
+                        <label htmlFor="end-date">Period End Date</label>
                         <DatePicker
-                          format="DD/MM/YYYY"
-                          name="endPeriod"
+                          name="endDate"
+                          id="end-date"
                           placeholder="End Date"
                         />
                       </div>
@@ -164,7 +178,7 @@ const CreateCampaign = () => {
                 <div className="form-submit-btn-main">
                   {" "}
                   <button className="form-submit-btn" type="submit">
-                    Create new campaign
+                    Update Campaign
                   </button>
                 </div>
               </form>
@@ -176,4 +190,4 @@ const CreateCampaign = () => {
   );
 };
 
-export default CreateCampaign;
+export default EditCampaign;

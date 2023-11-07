@@ -42,7 +42,7 @@ const PostDeleteModal = ({
         },
       });
 
-      if (data?.status === "success") {
+      if (data?.success) {
         if (Array.isArray(openDeletePostModal)) {
           toast.warning("Post(s) are deleted");
         } else {
