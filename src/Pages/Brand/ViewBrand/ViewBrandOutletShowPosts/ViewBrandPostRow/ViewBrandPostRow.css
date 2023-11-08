@@ -178,9 +178,9 @@
     visibility: hidden;
   }
 
-  .view-store-table-row .table-data.expire-time > .display-only-on-mobile {
+  /* .view-store-table-row .table-data.expire-time > .display-only-on-mobile {
     display: block;
-  }
+  } */
   .view-store-table-row .country-flags {
     justify-content: center;
     margin-left: 0;
