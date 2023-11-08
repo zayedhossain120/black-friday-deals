@@ -121,7 +121,7 @@ const PostViewCustomModal = ({
               <p>{openPostViewModal?.data?.postDescription}</p>
             </div>
             <div className="delete-edit-duo">
-              <button
+            <button
                 onClick={() => {
                   setOpenDeletePostModal(openPostViewModal.data);
                   setOpenPostViewModal(false);
