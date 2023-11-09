@@ -11,7 +11,7 @@ const CategoryCard = ({
   setOpenEditCategoryModal,
 }) => {
   const { data: category } = useFetch("category");
-  // console.log("here come the category", category);
+  console.log("here come the category", category);
 
   return (
     <section className="category-card-main-section">

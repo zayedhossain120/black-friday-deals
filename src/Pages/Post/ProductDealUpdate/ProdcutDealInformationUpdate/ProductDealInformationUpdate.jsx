@@ -93,7 +93,6 @@ const ProductDealInformationUpdate = ({
             postPhotoURL: url,
             storeName: formData?.store?.storeName,
             brandeName: formData?.brand?.brandName,
-            campaignName: formData?.campaign?.campaignName,
             ...formData,
           }),
         })
@@ -112,7 +111,8 @@ const ProductDealInformationUpdate = ({
           .catch((error) => {
             console.error("Error:", error);
             toast.error("An error occurred while adding the new post");
-          });
+          })
+          .finally();
       });
     }
   };
@@ -142,8 +142,7 @@ const ProductDealInformationUpdate = ({
                     htmlFor="photoURL"
                     className="product-deal-update-img-upload-lable "
                   >
-                    {Object.keys(productlImage).length ||
-                    formData?.postPhotoURL ? (
+                    {productlImage || formData?.postPhotoURL ? (
                       <div className="product-deal-update-information-img-top">
                         <img src={formData?.postPhotoURL} alt="" />
                       </div>
@@ -172,7 +171,7 @@ const ProductDealInformationUpdate = ({
                     setFormData({
                       ...formData,
                       brand: brand?.data?.find(
-                        (brandData) => brandData.brandName === value
+                        (brandData) => brandData?.brandName === value
                       ),
                     })
                   }
@@ -196,7 +195,7 @@ const ProductDealInformationUpdate = ({
                   id="dealLink"
                   placeholder="https://"
                   style={{ height: "50px", width: "100%" }}
-                  value={formData.dealLink}
+                  value={formData?.dealLink}
                   onChange={handleInputChange}
                 />
               </label>
@@ -209,22 +208,22 @@ const ProductDealInformationUpdate = ({
                   required
                   mode="multiple"
                   className="product-deal-information-update-country-input"
-                  value={formData.countries}
+                  value={formData?.countries}
                   placeholder={"Select One"}
                   onChange={(value) =>
                     setFormData({ ...formData, countries: value })
                   }
                 >
-                  {flags.map((flag) => (
+                  {flags?.map((flag) => (
                     <>
                       (
                       <Option
                         className="product-deal-information-update-country-input"
-                        key={flag.countryName}
-                        value={flag.countryName}
+                        key={flag?.countryName}
+                        value={flag?.countryName}
                       >
-                        <img src={flag.flagUrl} alt="" />
-                        {flag.countryName}
+                        <img src={flag?.flagUrl} alt="" />
+                        {flag?.countryName}
                       </Option>
                       ),
                     </>
@@ -242,7 +241,7 @@ const ProductDealInformationUpdate = ({
                   type="text"
                   placeholder="Type product title"
                   style={{ height: "50px", width: "100%" }}
-                  value={formData.postTitle}
+                  value={formData?.postTitle}
                   // onChange={(value) =>
                   //   setFormData({ ...formData, productTitle: value })
                   // }
@@ -266,7 +265,7 @@ const ProductDealInformationUpdate = ({
                     setFormData({
                       ...formData,
                       store: store?.data?.find(
-                        (storeData) => storeData.storeName === value
+                        (storeData) => storeData?.storeName === value
                       ),
                     })
                   }
@@ -287,7 +286,7 @@ const ProductDealInformationUpdate = ({
                   className="product-deal-information-update-category-input"
                   id="post-type"
                   defaultValue="Coupon"
-                  value={formData.categoryName}
+                  value={formData?.categoryName}
                   onChange={(value) =>
                     setFormData({ ...formData, categoryName: value })
                   }
@@ -356,7 +355,7 @@ const ProductDealInformationUpdate = ({
                     type="text"
                     placeholder="Old price"
                     style={{ height: "50px", width: "100%" }}
-                    value={formData.oldPrice}
+                    value={formData?.oldPrice}
                     onChange={handleInputChange}
                   />
                 </div>
@@ -369,7 +368,7 @@ const ProductDealInformationUpdate = ({
                     type="text"
                     placeholder="Discounted Price"
                     style={{ height: "50px", width: "100%" }}
-                    value={formData.discount}
+                    value={formData?.discount}
                     onChange={handleInputChange}
                   />
                 </div>
@@ -387,7 +386,7 @@ const ProductDealInformationUpdate = ({
                 resize: "none",
               }}
               placeholder="Type Here...."
-              value={formData.postDescription}
+              value={formData?.postDescription}
               onChange={handleInputChange}
             />
           </div>

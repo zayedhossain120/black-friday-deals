@@ -15,67 +15,67 @@ const flags = [
     countryName: "United State",
     flagUrl: US,
     shortForm: "US",
-    shortFormToo: "US"
+    shortFormToo: "US",
   },
   {
     countryName: "Canada",
     flagUrl: Canada,
     shortForm: "Canada",
-    shortFormToo: "CAN"
+    shortFormToo: "CAN",
   },
   {
     countryName: "France",
     flagUrl: France,
     shortForm: "France",
-    shortFormToo: "FRA"
+    shortFormToo: "FRA",
   },
   {
     countryName: "Netherlands",
     flagUrl: Netherlands,
     shortForm: "Netherlands",
-    shortFormToo:"NLD"
+    shortFormToo: "NLD",
   },
   {
     countryName: "Germany",
     flagUrl: Germany,
     shortForm: "Germany",
-    shortFormToo:"GER"
+    shortFormToo: "GER",
   },
   {
     countryName: "India",
     flagUrl: India,
     shortForm: "India",
-    shortFormToo:"IND"
+    shortFormToo: "IND",
   },
   {
     countryName: "Italy",
     flagUrl: Italy,
     shortForm: "Italy",
-    shortFormToo:"ITA"
+    shortFormToo: "ITA",
   },
   {
     countryName: "Poland",
     flagUrl: Poland,
     shortForm: "Poland",
-    shortFormToo:"POL"
+    shortFormToo: "POL",
   },
   {
     countryName: "Spain",
     flagUrl: Spain,
     shortForm: "Spain",
-    shortFormToo:"ESP"
+    shortFormToo: "ESP",
   },
   {
     countryName: "Sweden",
     flagUrl: Sweden,
     shortForm: "Sweden",
-    shortFormToo:"SWE"
+    shortFormToo: "SWE",
   },
   {
     countryName: "United Kingdom",
     flagUrl: UK,
     shortForm: "United Kingdom",
-    shortFormToo:"UK"
+    shortFormToo: "UK",
   },
 ];
 

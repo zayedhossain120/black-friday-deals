@@ -1,6 +1,5 @@
 import "./Carousel.css";
 import useFetch from "../../CustomHooks/useFetch";
-import { Row } from "antd";
 import CarouselModal from "./CarouselModal/CarouselModal";
 import { useState } from "react";
 import CarouselNavFilter from "./CarouselNavFilter/CarouselNavFilter";
