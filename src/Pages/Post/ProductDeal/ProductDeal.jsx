@@ -9,7 +9,13 @@ import ProductInformation from "./ProductInformation/ProductInformation";
 const ProductDeal = () => {
   const [productlImage, setProductImage] = useState({});
   const [formData, setFormData] = useState({});
-  // const [isSubmitting, setIsSubmitting] = useState(false);
+  const [discount, setDiscount] = useState(0);
+  const dataTag = () => {
+    const oldprice = formData.oldprice;
+    const discountprice = formData.discountprice;
+    const total = Number(oldprice + discountprice);
+    setDiscount(total);
+  };
   return (
     <main className="product-deal-page-main-container">
       <TopBar pageTitle={"Add new product deal"} />
@@ -27,6 +33,8 @@ const ProductDeal = () => {
           <ProductDealAsidBar
             productlImage={productlImage}
             formData={formData}
+            dataTag={dataTag}
+            discount={discount}
           />
         </div>
       </section>

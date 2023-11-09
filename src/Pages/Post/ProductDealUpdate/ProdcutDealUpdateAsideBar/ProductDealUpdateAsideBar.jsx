@@ -1,15 +1,10 @@
-// import React from 'react';
 import "./ProductDealUpdateAsideBar.css";
 /* eslint-disable react/prop-types */
-// import React from "react";
-// import "./ProductDealAsidBar.css";
-import { useEffect, useState } from "react";
 import notAvailable from "../../../../assets/nodataAvailable.png";
 import flags from "../../../../Utils/variables/flags";
-import googleicon from "../../../../assets/Icons/googleIcon.png";
 import { getExpireInAtDays } from "../../../../Utils/variables/formattedDates";
 
-const ProductDealUpdateAsideBar = ({ productlImage, formData }) => {
+const ProductDealUpdateAsideBar = ({ formData }) => {
   // const [asidebar, setAsidebar] = useState(null);
   // useEffect(() => {
   //   fetch(`https://restcountries.com/v3.1/all`)
