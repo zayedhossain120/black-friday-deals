@@ -93,7 +93,6 @@ const ProductDealInformationUpdate = ({
             postPhotoURL: url,
             storeName: formData?.store?.storeName,
             brandeName: formData?.brand?.brandName,
-            campaignName: formData?.campaign?.campaignName,
             ...formData,
           }),
         })
@@ -112,7 +111,8 @@ const ProductDealInformationUpdate = ({
           .catch((error) => {
             console.error("Error:", error);
             toast.error("An error occurred while adding the new post");
-          });
+          })
+          .finally();
       });
     }
   };
@@ -142,8 +142,7 @@ const ProductDealInformationUpdate = ({
                     htmlFor="photoURL"
                     className="product-deal-update-img-upload-lable "
                   >
-                    {Object.keys(productlImage).length ||
-                    formData?.postPhotoURL ? (
+                    {productlImage || formData?.postPhotoURL ? (
                       <div className="product-deal-update-information-img-top">
                         <img src={formData?.postPhotoURL} alt="" />
                       </div>

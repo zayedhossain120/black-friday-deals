@@ -97,6 +97,7 @@ const ProductInformation = ({
       });
     }
   };
+
   console.log("this is product img", productlImage);
   return (
     <section className="product-deal-information-main-contaner">
@@ -144,7 +145,7 @@ const ProductInformation = ({
                   required
                   placeholder="Select brand"
                   id="brandName"
-                  value={formData.brand?.brandName}
+                  value={formData?.brand?.brandName}
                   onChange={(value) =>
                     setFormData({
                       ...formData,
@@ -171,7 +172,7 @@ const ProductInformation = ({
                   id="dealLink"
                   placeholder="https://"
                   style={{ height: "50px", width: "100%" }}
-                  value={formData.dealLink}
+                  value={formData?.dealLink}
                   onChange={handleInputChange}
                 />
               </div>
@@ -184,7 +185,7 @@ const ProductInformation = ({
                   required
                   mode="multiple"
                   className="product-deal-information-country-input"
-                  value={formData.countries}
+                  value={formData?.countries}
                   placeholder={"Select One"}
                   onChange={(value) =>
                     setFormData({ ...formData, countries: value })
@@ -217,7 +218,7 @@ const ProductInformation = ({
                   type="text"
                   placeholder="Type product title"
                   style={{ height: "50px", width: "100%" }}
-                  value={formData.postTitle}
+                  value={formData?.postTitle}
                   // onChange={(value) =>
                   //   setFormData({ ...formData, productTitle: value })
                   // }
@@ -264,7 +265,7 @@ const ProductInformation = ({
                   className="product-deal-information-category-input"
                   id="post-type"
                   // defaultValue="Coupon"
-                  value={formData.categoryName}
+                  value={formData?.categoryName}
                   onChange={(value) =>
                     setFormData({ ...formData, categoryName: value })
                   }
@@ -287,7 +288,7 @@ const ProductInformation = ({
                   required
                   style={{ width: "100%" }}
                   id="expireDate"
-                  value={formData.expireDate}
+                  value={formData?.expireDate}
                   onChange={(value) =>
                     setFormData({ ...formData, expireDate: value })
                   }
@@ -331,7 +332,7 @@ const ProductInformation = ({
                     type="text"
                     placeholder="Old price"
                     style={{ height: "50px", width: "100%" }}
-                    value={formData.oldPrice}
+                    value={formData?.oldPrice}
                     onChange={handleInputChange}
                   />
                 </div>
@@ -344,7 +345,7 @@ const ProductInformation = ({
                     type="text"
                     placeholder="Discounted Price"
                     style={{ height: "50px", width: "100%" }}
-                    value={formData.discount}
+                    value={formData?.discount}
                     onChange={handleInputChange}
                   />
                 </div>
@@ -362,7 +363,7 @@ const ProductInformation = ({
                 resize: "none",
               }}
               placeholder="Type Here...."
-              value={formData.postDescription}
+              value={formData?.postDescription}
               onChange={handleInputChange}
             />
           </div>

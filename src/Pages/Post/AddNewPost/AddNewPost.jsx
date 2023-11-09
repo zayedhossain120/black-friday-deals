@@ -30,11 +30,11 @@ const AddNewPost = () => {
       [id]: value,
     });
   };
-  // console.log(formData);
   const handleAddNewPost = async (e) => {
     e.preventDefault();
 
     const accessToken = getToken();
+    console.log(formData);
 
     try {
       setIsSubmitting(true);
@@ -44,13 +44,6 @@ const AddNewPost = () => {
           Authorization: `Bearer ${accessToken}`,
         },
       });
-      // const {data} = await Axios.po
-      // setIsSubmitting(true);
-      // const { data } = await axios.post(${apiUrl}/post/add, formData, {
-      //   headers: {
-      //     Authorization:` Bearer ${accessToken}`,
-      //   },
-      // });
 
       if (data?.success) {
         toast.success("New post added");

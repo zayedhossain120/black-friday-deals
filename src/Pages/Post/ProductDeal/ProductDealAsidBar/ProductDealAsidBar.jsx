@@ -8,9 +8,10 @@ import flags from "../../../../Utils/variables/flags";
 import { getExpireInAtDays } from "../../../../Utils/variables/formattedDates";
 import apiUrl from "../../../../Utils/variables/apiUrl";
 
-const ProductDealAsidBar = ({ productlImage, formData }) => {
-  const [asidebar, setAsidebar] = useState(null);
-  const [discount, setDiscount] = useState(0);
+const ProductDealAsidBar = ({ productlImage, formData, dataTag, discount }) => {
+  // const [asidebar, setAsidebar] = useState(null);
+  // const [number1, setNumber1] = useState();
+  // const [number2, setNumber2] = useState();
   // const discountedMoney = (oldPrice, discountedPrice) => {
   //   const oldPrices = formData.oldPrice;
   //   console.log("Wowo", oldPrices);
@@ -29,12 +30,6 @@ const ProductDealAsidBar = ({ productlImage, formData }) => {
   // }, []);
   console.log("this is formDtata Name", formData);
   // console.log("this is formData", formData);
-  // const dataTag = () => {
-  //   const oldprice = formData.oldprice;
-  //   const discountprice = formData.discountprice;
-  //   const total = oldprice - discountprice;
-  //   return total;
-  // };
   return (
     <aside className="product-deal-aside-main-container">
       {Object.keys(formData).length || productlImage.url ? (
@@ -56,8 +51,8 @@ const ProductDealAsidBar = ({ productlImage, formData }) => {
                     - <s>$ {formData.oldprice}</s>
                   </span>{" "}
                 </h2>
-                <p> {discount} OFF</p>
-                {/* <button onClick={discountedMoney()}>event</button> */}
+                <button onClick={dataTag()}></button>
+                <p>{discount} OFF</p>
               </div>
               {/* validity section */}
               <div className="product-deal-aside-details-product-price-expire-day">
