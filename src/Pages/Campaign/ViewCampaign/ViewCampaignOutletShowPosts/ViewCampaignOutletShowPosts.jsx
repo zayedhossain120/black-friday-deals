@@ -1,60 +1,56 @@
-import React, { useContext, useEffect, useState } from 'react';
+/* eslint-disable react/prop-types */
+import { useContext, useEffect, useState } from "react";
 import "./ViewCampaignOutletShowPosts.css";
-import useFetchInfinite from '../../../../CustomHooks/useFetchInfinite';
-import { useLoaderData, useNavigate } from 'react-router-dom';
-import MainLoading from '../../../../Components/MainLoading/MainLoading';
-import EmptyData from '../../../../Components/EmptyData/EmptyData';
-import { Button, Spin } from 'antd';
-import PostViewCustomModal from '../../../../Components/PostViewCustomModal/PostViewCustomModal';
-import PostDeleteModal from '../../../../Components/PostDeleteModal/PostDeleteModal';
-import postDeleteIcon from '../../../../assets/Icons/postDelete.svg';
-import ViewCampaignPostRow from '../../ViewCampaign/ViewCampaignOutletShowPosts/ViewCampaignPostRow/ViewCampaignPostRow';
-import { SelectedCountryContext } from '../../../../Contexts/CountryContext/CountryProviderContext';
-import EditCampaignButton from '../../../../Components/EditCampaignButton/EditCampaignButton';
-import apiUrl from '../../../../Utils/variables/apiUrl';
+import useFetchInfinite from "../../../../CustomHooks/useFetchInfinite";
+import { useLoaderData } from "react-router-dom";
+import MainLoading from "../../../../Components/MainLoading/MainLoading";
+import EmptyData from "../../../../Components/EmptyData/EmptyData";
+import { Button, Spin } from "antd";
+import PostViewCustomModal from "../../../../Components/PostViewCustomModal/PostViewCustomModal";
+import PostDeleteModal from "../../../../Components/PostDeleteModal/PostDeleteModal";
+import postDeleteIcon from "../../../../assets/Icons/postDelete.svg";
+import ViewCampaignPostRow from "../../ViewCampaign/ViewCampaignOutletShowPosts/ViewCampaignPostRow/ViewCampaignPostRow";
+import { SelectedCountryContext } from "../../../../Contexts/CountryContext/CountryProviderContext";
+import EditCampaignButton from "../../../../Components/EditCampaignButton/EditCampaignButton";
 
-
-const ViewCampaignOutlet = ({query}) => {
- 
-   const store = useLoaderData();
+const ViewCampaignOutlet = ({ query }) => {
+  const store = useLoaderData();
   const countryContext = useContext(SelectedCountryContext);
-  // const [post, setPost] = useState(null)
   const [openPostViewModal, setOpenPostViewModal] = useState(null);
   const [openDeletePostModal, setOpenDeletePostModal] = useState(null);
   const [selectMultipleItem, setSelectMultipleItem] = useState([]);
 
+  const {
+    data: StorePages /** change */,
+    error,
+    hasNextPage,
+    fetchNextPage,
+    isFetching,
+    isFetchingNextPage,
+    refetch,
+  } = useFetchInfinite(
+    `post/all?StorePages=${store?.data?.storeName}&${query}&country=${countryContext?.selectedCountry}&limit=10`,
+    "store-route",
+    { query, countryContext }
+  );
+  useEffect(() => {
+    setSelectMultipleItem([]);
+  }, [query]);
 
-    const {
-        data: StorePages /** change */,
-        error,
-        hasNextPage,
-        fetchNextPage,
-        isFetching,
-        isFetchingNextPage,
-        refetch,
-      } = useFetchInfinite(
-        `post/all?StorePages=${store?.data?.storeName}&${query}&country=${countryContext?.selectedCountry}&limit=10`,
-        "store-route",
-        { query, countryContext }
-      );
-      useEffect(() => {
-        setSelectMultipleItem([]);
-      }, [query]);
-
-      if (!isFetchingNextPage && isFetching) {
-        return <MainLoading />;
-      }
-      if (error || StorePages?.status === "failed") {
-        return <p>{error?.message || StorePages?.message}</p>;
-      }
-      if (!StorePages[0]?.data?.length) {
-        return <EmptyData />;
-      }
-    return (
-        <section className="campaign-outlet-container">
-          <div className="campaign-table">
-          {StorePages?.map((page) =>
-            page?.data?.map((post) => (
+  if (!isFetchingNextPage && isFetching) {
+    return <MainLoading />;
+  }
+  if (error || StorePages?.status === "failed") {
+    return <p>{error?.message || StorePages?.message}</p>;
+  }
+  if (!StorePages[0]?.data?.length) {
+    return <EmptyData />;
+  }
+  return (
+    <section className="campaign-outlet-container">
+      <div className="campaign-table">
+        {StorePages?.map((page) =>
+          page?.data?.map((post) => (
             <ViewCampaignPostRow
               key={post?._id}
               post={post}
@@ -66,7 +62,7 @@ const ViewCampaignOutlet = ({query}) => {
         )}
         {selectMultipleItem.length ? (
           <button onClick={() => setOpenDeletePostModal(selectMultipleItem)}>
-            <img src={postDeleteIcon} alt='' />
+            <img src={postDeleteIcon} alt="" />
             Delete all selected items
           </button>
         ) : (
@@ -95,8 +91,7 @@ const ViewCampaignOutlet = ({query}) => {
       )}
       {openPostViewModal && (
         <PostViewCustomModal
-          setOpenPostViewModal={
-setOpenPostViewModal} 
+          setOpenPostViewModal={setOpenPostViewModal}
           setOpenDeletePostModal={setOpenDeletePostModal}
           openPostViewModal={openPostViewModal}
         />
@@ -108,13 +103,9 @@ setOpenPostViewModal}
           refetch={refetch}
         />
       )}{" "}
-
-     
-     <EditCampaignButton />
-     
+      <EditCampaignButton />
     </section>
-    
-    );
+  );
 };
 
 export default ViewCampaignOutlet;

@@ -5,8 +5,6 @@ import placeholder from "../../assets/placeholder.webp";
 import verifiedCodeChecked from "../../assets/Icons/verifiedChecked.svg";
 import copyIcon from "../../assets/Icons/copyIcon.svg";
 import flags from "../../Utils/variables/flags";
-import DeleteIcon from "../IconsComponents/DeleteIcon";
-import EditIcon from "../IconsComponents/EditIcon";
 import postViewEditIcon from "../../assets/Icons/postViewEdit.svg";
 import postViewDltIcon from "../../assets/Icons/postDelete.svg";
 import { useClipboard } from "@mantine/hooks";
