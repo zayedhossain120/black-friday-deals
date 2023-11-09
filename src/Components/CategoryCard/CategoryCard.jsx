@@ -10,7 +10,7 @@ const CategoryCard = ({
   setOpenDeleteCategoryModal,
   setOpenEditCategoryModal,
 }) => {
-  const { data: category } = useFetch("category");
+  const { data: category } = useFetch("category/all");
   console.log("here come the category", category);
 
   return (

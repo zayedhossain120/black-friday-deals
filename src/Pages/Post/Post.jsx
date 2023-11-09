@@ -5,7 +5,7 @@ import PostInnerNav from "../../Components/PostInnerNav/PostInnerNav";
 const Post = () => {
   return (
     <main>
-      <TopBar navigateTo="" pageTitle="Posts" />
+      <TopBar pageTitle="Posts" />
       <section>
         <PostInnerNav />
         <Outlet />
