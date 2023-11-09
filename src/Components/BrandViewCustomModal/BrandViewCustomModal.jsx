@@ -45,7 +45,7 @@ const PostViewCustomModal = ({
         <img
           src={removeIcon}
           alt="Remove"
-          className="user-edit-remove-icon"
+          className="user-edit-remove-icon user-edit-remove-icon-brand-modal"
           onClick={handleCancel}
         />
         {openPostViewModal?.error ? (
@@ -70,14 +70,18 @@ const PostViewCustomModal = ({
                     <del>$70</del>
                     <p className="">75% OFF</p>
                   </div>
-                  <p>
+                  <div className="expired-container-with-brand">
+                    <img
+                    src={openPostViewModal?.data?.brand?.brandPhotoURL}
+                    />
+                    <p>{openPostViewModal?.data?.brand?.brandName} {" "}</p>
                     {" "}
                     {getExpireInAtDays(openPostViewModal?.data?.expireDate) <
                     1 ? (
                       "Expired"
                     ) : (
                       <span>
-                        End in{" "}
+                        - End in{" "}
                         <strong>
                           {getExpireInAtDays(
                             openPostViewModal?.data?.expireDate
@@ -86,7 +90,7 @@ const PostViewCustomModal = ({
                         days
                       </span>
                     )}
-                  </p>
+                  </div>
                   <div className="brand-modal-country-flags">
                     {openPostViewModal?.data?.countries?.map((country) => (
                       <img
@@ -101,13 +105,10 @@ const PostViewCustomModal = ({
                   </div>
                 </div>
                 <div className="availablestore-view-container">
-                  <p>Available On</p>
+                  <p className="child-one-of">Available On</p>
                   <img
+                  className="store-image-at-modal"
                     src={openPostViewModal?.data?.store?.storePhotoURL}
-                    style={{
-                      width: "45px",
-                      height: "45px",
-                    }}
                   />
                   <div className="view-icon-count-container">
                     <img src={viewIcon} alt="view icon" />
@@ -120,7 +121,7 @@ const PostViewCustomModal = ({
               <p>{openPostViewModal?.data?.postDescription}</p>
             </div>
             <div className="delete-edit-duo">
-              <button
+            <button
                 onClick={() => {
                   setOpenDeletePostModal(openPostViewModal.data);
                   setOpenPostViewModal(false);

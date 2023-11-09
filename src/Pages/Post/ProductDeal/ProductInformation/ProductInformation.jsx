@@ -24,7 +24,7 @@ const ProductInformation = ({
   const { data: store } = useFetch("store/all?limit=1000");
   const { data: brand } = useFetch("brand/all?limit=1000");
   // const { data: category } = useFetch("category");
-  const { data: category } = useFetch("category/?limit=1000");
+  const { data: category } = useFetch("category/all?limit=1000");
   const { data: campaign } = useFetch("campaign/all?limit=1000");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { postPhotoAtFirebase, progress } = useSubmitPhotoAtFirebase();

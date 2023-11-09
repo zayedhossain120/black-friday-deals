@@ -148,6 +148,7 @@ const countryFlagStyle = {
           <div className="country-flags-child-div">
             <img src={viewStoreFlagIcon} alt="view-store-flag-img" />
             <Select
+            bordered={false}
               className="country-flags-dropdown"
               // style={{dropdownSelectStyle}}
               defaultValue={`${post?.countries?.length} Countries`}
