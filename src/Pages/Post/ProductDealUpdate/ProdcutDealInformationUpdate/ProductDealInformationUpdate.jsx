@@ -6,7 +6,6 @@ import "./ProductDealInformationUpdate.css";
 
 import uploadImages from "../../../../assets/Icons/uploadedImages2.svg";
 import { DatePicker, Input, Select, Spin } from "antd";
-import { Option } from "antd/es/mentions";
 import useFetch from "../../../../CustomHooks/useFetch";
 import flags from "../../../../Utils/variables/flags";
 import TextArea from "antd/es/input/TextArea";
@@ -25,6 +24,7 @@ const ProductDealInformationUpdate = ({
   setProductImage,
   formData,
   setFormData,
+  remainderPrice,
 }) => {
   const { data: store } = useFetch("store/all?limit=1000");
   const { data: brand } = useFetch("brand/all?limit=1000");
@@ -171,7 +171,7 @@ const ProductDealInformationUpdate = ({
                     setFormData({
                       ...formData,
                       brand: brand?.data?.find(
-                        (brandData) => brandData.brandName === value
+                        (brandData) => brandData?.brandName === value
                       ),
                     })
                   }
@@ -195,7 +195,7 @@ const ProductDealInformationUpdate = ({
                   id="dealLink"
                   placeholder="https://"
                   style={{ height: "50px", width: "100%" }}
-                  value={formData.dealLink}
+                  value={formData?.dealLink}
                   onChange={handleInputChange}
                 />
               </label>
@@ -208,7 +208,7 @@ const ProductDealInformationUpdate = ({
                   required
                   mode="multiple"
                   className="product-deal-information-update-country-input"
-                  value={formData.countries}
+                  value={formData?.countries}
                   placeholder={"Select One"}
                   onChange={(value) =>
                     setFormData({ ...formData, countries: value })
@@ -241,7 +241,7 @@ const ProductDealInformationUpdate = ({
                   type="text"
                   placeholder="Type product title"
                   style={{ height: "50px", width: "100%" }}
-                  value={formData.postTitle}
+                  value={formData?.postTitle}
                   // onChange={(value) =>
                   //   setFormData({ ...formData, productTitle: value })
                   // }
@@ -265,7 +265,7 @@ const ProductDealInformationUpdate = ({
                     setFormData({
                       ...formData,
                       store: store?.data?.find(
-                        (storeData) => storeData.storeName === value
+                        (storeData) => storeData?.storeName === value
                       ),
                     })
                   }
@@ -286,7 +286,7 @@ const ProductDealInformationUpdate = ({
                   className="product-deal-information-update-category-input"
                   id="post-type"
                   defaultValue="Coupon"
-                  value={formData.categoryName}
+                  value={formData?.categoryName}
                   onChange={(value) =>
                     setFormData({ ...formData, categoryName: value })
                   }
@@ -311,6 +311,7 @@ const ProductDealInformationUpdate = ({
                   style={{ width: "100%" }}
                   id="expireDate"
                   // value={formData.expireDate}
+                  onKeyUp={remainderPrice}
                   onChange={(value) => {
                     const formattedDate = dayjs(value).format(dateFormat);
                     setFormData({ ...formData, expireDate: formattedDate });
@@ -330,7 +331,12 @@ const ProductDealInformationUpdate = ({
                   id="campain-name"
                   value={formData?.campaign?.campaignName}
                   onChange={(value) =>
-                    setFormData({ ...formData, campaignName: value })
+                    setFormData({
+                      ...formData,
+                      campaign: campaign?.data?.find(
+                        (campaigns) => campaigns?.campaignName === value
+                      ),
+                    })
                   }
                 >
                   {campaign?.data?.map((item) => (
@@ -355,7 +361,7 @@ const ProductDealInformationUpdate = ({
                     type="text"
                     placeholder="Old price"
                     style={{ height: "50px", width: "100%" }}
-                    value={formData.oldPrice}
+                    value={formData?.oldPrice}
                     onChange={handleInputChange}
                   />
                 </div>
@@ -368,7 +374,8 @@ const ProductDealInformationUpdate = ({
                     type="text"
                     placeholder="Discounted Price"
                     style={{ height: "50px", width: "100%" }}
-                    value={formData.discount}
+                    value={formData?.discount}
+                    onKeyUp={remainderPrice}
                     onChange={handleInputChange}
                   />
                 </div>
@@ -386,7 +393,7 @@ const ProductDealInformationUpdate = ({
                 resize: "none",
               }}
               placeholder="Type Here...."
-              value={formData.postDescription}
+              value={formData?.postDescription}
               onChange={handleInputChange}
             />
           </div>

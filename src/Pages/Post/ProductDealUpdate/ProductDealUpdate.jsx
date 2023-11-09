@@ -13,6 +13,19 @@ import ProductDealUpdateApiUrlDev from "./ProductDealUpdateApiUrlDev/ProductDeal
 const ProductDealUpdate = () => {
   const [productlImage, setProductImage] = useState({});
   const [formData, setFormData] = useState({});
+  const [discount, setDiscount] = useState(0);
+
+  const remainderPrice = () => {
+    const currentPrice = formData.oldprice;
+    const discountPrice = formData.discountprice;
+    const remainderPrice = parseInt(currentPrice) - parseInt(discountPrice);
+
+    const discountAmount = (remainderPrice * 100) / currentPrice;
+    // if (discountPrice === 0) {
+    //   return;
+    // }
+    setDiscount(discountAmount);
+  };
   return (
     <main className="product-deal-update-page-main-container">
       <TopBar pageTitle={"Add new product dea"} />
@@ -31,12 +44,14 @@ const ProductDealUpdate = () => {
             setProductImage={setProductImage}
             formData={formData}
             setFormData={setFormData}
+            remainderPrice={remainderPrice}
           />
         </div>
         <div className="product-deal-update-information-container-asidebar">
           <ProductDealUpdateAsideBar
             productlImage={productlImage}
             formData={formData}
+            discount={discount}
           />
         </div>
       </section>

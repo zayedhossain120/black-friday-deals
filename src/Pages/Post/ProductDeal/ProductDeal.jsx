@@ -10,11 +10,17 @@ const ProductDeal = () => {
   const [productlImage, setProductImage] = useState({});
   const [formData, setFormData] = useState({});
   const [discount, setDiscount] = useState(0);
-  const dataTag = () => {
-    const oldprice = formData.oldprice;
-    const discountprice = formData.discountprice;
-    const total = Number(oldprice + discountprice);
-    setDiscount(total);
+
+  const remainderPrice = () => {
+    const currentPrice = formData.oldprice;
+    const discountPrice = formData.discountprice;
+    const remainderPrice = parseInt(currentPrice) - parseInt(discountPrice);
+
+    const discountAmount = (remainderPrice * 100) / currentPrice;
+    // if (discountPrice === 0) {
+    //   return;
+    // }
+    setDiscount(discountAmount);
   };
   return (
     <main className="product-deal-page-main-container">
@@ -27,13 +33,14 @@ const ProductDeal = () => {
             setProductImage={setProductImage}
             formData={formData}
             setFormData={setFormData}
+            remainderPrice={remainderPrice}
           />
         </div>
         <div className="product-deal-information-container-asidebar">
           <ProductDealAsidBar
             productlImage={productlImage}
             formData={formData}
-            dataTag={dataTag}
+            remainderPrice={remainderPrice}
             discount={discount}
           />
         </div>

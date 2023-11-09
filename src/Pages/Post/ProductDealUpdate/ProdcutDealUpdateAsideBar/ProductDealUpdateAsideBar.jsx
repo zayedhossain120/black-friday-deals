@@ -4,7 +4,7 @@ import notAvailable from "../../../../assets/nodataAvailable.png";
 import flags from "../../../../Utils/variables/flags";
 import { getExpireInAtDays } from "../../../../Utils/variables/formattedDates";
 
-const ProductDealUpdateAsideBar = ({ formData }) => {
+const ProductDealUpdateAsideBar = ({ formData, discount }) => {
   // const [asidebar, setAsidebar] = useState(null);
   // useEffect(() => {
   //   fetch(`https://restcountries.com/v3.1/all`)
@@ -43,7 +43,7 @@ const ProductDealUpdateAsideBar = ({ formData }) => {
                     - <s>$ {formData.oldprice}</s>
                   </span>{" "}
                 </h2>
-                <p> 75% OFF</p>
+                <p> {discount}% OFF</p>
               </div>
               {/* validity section */}
               <div className="product-deal-aside-details-product-price-expire-day">

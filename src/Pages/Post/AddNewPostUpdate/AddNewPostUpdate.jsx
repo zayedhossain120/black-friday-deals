@@ -186,7 +186,7 @@ const AddNewPostUpdate = () => {
                 <div className="add-post-update-form-items-container-right">
                   {/* select store name  */}
 
-                  <span>
+                  <d>
                     <p>Store Name</p>
 
                     <Select
@@ -197,13 +197,22 @@ const AddNewPostUpdate = () => {
                       placeholder="Select Store"
                       id="storeName"
                       value={formData?.store?.storeName}
-                      onChange={(value) => {
-                        const { store, ...reset } = formData;
+                      // onChange={(value) => {
+                      //   const { store, ...reset } = formData;
+                      //   setFormData({
+                      //     storeName: value,
+                      //     ...reset,
+                      //   });
+                      // }}
+                      const
+                      onChange={(value) =>
                         setFormData({
-                          storeName: value,
-                          ...reset,
-                        });
-                      }}
+                          ...formData,
+                          store: store?.data?.find(
+                            (brandsData) => brandsData?.storeName === value
+                          ),
+                        })
+                      }
                     >
                       {store?.data?.map((item) => (
                         <Option key={item?.storeName} value={item?.storeName}>
@@ -211,7 +220,7 @@ const AddNewPostUpdate = () => {
                         </Option>
                       ))}
                     </Select>
-                  </span>
+                  </d>
                   {/* select category name  */}
 
                   <span>
@@ -228,7 +237,12 @@ const AddNewPostUpdate = () => {
                       id="store-name"
                       value={formData?.category?.categoryName}
                       onChange={(value) =>
-                        setFormData({ ...formData, categoryName: value })
+                        setFormData({
+                          ...formData,
+                          category: category?.data.find(
+                            (categorys) => categorys.categoryName === value
+                          ),
+                        })
                       }
                     >
                       {category?.data?.map((item) => (
@@ -236,7 +250,7 @@ const AddNewPostUpdate = () => {
                           key={item?.categoryName}
                           value={item?.categoryName}
                         >
-                          {item?.categoryName}
+                          {item?.category?.categoryName}
                         </Option>
                       ))}
                     </Select>
@@ -270,7 +284,12 @@ const AddNewPostUpdate = () => {
                       id="store-name"
                       value={formData?.campaign?.campaignName}
                       onChange={(value) =>
-                        setFormData({ ...formData, campaignName: value })
+                        setFormData({
+                          ...formData,
+                          campaign: campaign?.data?.find(
+                            (campaigns) => campaigns?.campaignName === value
+                          ),
+                        })
                       }
                     >
                       {campaign?.data?.map((item) => (
