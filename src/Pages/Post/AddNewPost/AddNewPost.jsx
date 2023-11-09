@@ -16,7 +16,7 @@ import axios from "axios";
 const AddNewPost = () => {
   const { data: store } = useFetch("store/all?limit=1000");
   // const { data: brand } = useFetch("brand/?limit=1000");
-  const { data: category } = useFetch("category/?limit=1000");
+  const { data: category } = useFetch("category/all?limit=1000");
   const { data: campaign } = useFetch("campaign/all?limit=1000");
   const { data: network } = useFetch("network/?limit=1000");
   const [formData, setFormData] = useState({});
