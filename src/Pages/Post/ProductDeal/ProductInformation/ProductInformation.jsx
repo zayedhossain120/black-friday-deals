@@ -19,6 +19,7 @@ const ProductInformation = ({
   setProductImage,
   formData,
   setFormData,
+  remainderPrice,
 }) => {
   const { data: store } = useFetch("store/all?limit=1000");
   const { data: brand } = useFetch("brand/all?limit=1000");
@@ -333,6 +334,7 @@ const ProductInformation = ({
                     placeholder="Old price"
                     style={{ height: "50px", width: "100%" }}
                     value={formData?.oldPrice}
+                    onKeyUp={remainderPrice}
                     onChange={handleInputChange}
                   />
                 </div>
@@ -346,6 +348,7 @@ const ProductInformation = ({
                     placeholder="Discounted Price"
                     style={{ height: "50px", width: "100%" }}
                     value={formData?.discount}
+                    onKeyUp={remainderPrice}
                     onChange={handleInputChange}
                   />
                 </div>

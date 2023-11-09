@@ -6,7 +6,6 @@ import "./ProductDealInformationUpdate.css";
 
 import uploadImages from "../../../../assets/Icons/uploadedImages2.svg";
 import { DatePicker, Input, Select, Spin } from "antd";
-import { Option } from "antd/es/mentions";
 import useFetch from "../../../../CustomHooks/useFetch";
 import flags from "../../../../Utils/variables/flags";
 import TextArea from "antd/es/input/TextArea";
@@ -25,6 +24,7 @@ const ProductDealInformationUpdate = ({
   setProductImage,
   formData,
   setFormData,
+  remainderPrice,
 }) => {
   const { data: store } = useFetch("store/all?limit=1000");
   const { data: brand } = useFetch("brand/all?limit=1000");
@@ -311,6 +311,7 @@ const ProductDealInformationUpdate = ({
                   style={{ width: "100%" }}
                   id="expireDate"
                   // value={formData.expireDate}
+                  onKeyUp={remainderPrice}
                   onChange={(value) => {
                     const formattedDate = dayjs(value).format(dateFormat);
                     setFormData({ ...formData, expireDate: formattedDate });
@@ -330,7 +331,12 @@ const ProductDealInformationUpdate = ({
                   id="campain-name"
                   value={formData?.campaign?.campaignName}
                   onChange={(value) =>
-                    setFormData({ ...formData, campaignName: value })
+                    setFormData({
+                      ...formData,
+                      campaign: campaign?.data?.find(
+                        (campaigns) => campaigns?.campaignName === value
+                      ),
+                    })
                   }
                 >
                   {campaign?.data?.map((item) => (
@@ -369,6 +375,7 @@ const ProductDealInformationUpdate = ({
                     placeholder="Discounted Price"
                     style={{ height: "50px", width: "100%" }}
                     value={formData?.discount}
+                    onKeyUp={remainderPrice}
                     onChange={handleInputChange}
                   />
                 </div>
