@@ -59,11 +59,11 @@ const ProductInformation = ({
   // handleProductDeal
   const handleProductDeal = (event) => {
     event.preventDefault();
+    setIsSubmitting(true);
     const accessToken = getToken();
     if (!productlImage.file) {
       return;
     } else {
-      setIsSubmitting(true);
       postPhotoAtFirebase(productlImage.file).then((url) => {
         fetch(`${apiUrl}/post/add`, {
           method: "POST",

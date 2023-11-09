@@ -214,16 +214,16 @@ const ProductDealInformationUpdate = ({
                     setFormData({ ...formData, countries: value })
                   }
                 >
-                  {flags.map((flag) => (
+                  {flags?.map((flag) => (
                     <>
                       (
                       <Option
                         className="product-deal-information-update-country-input"
-                        key={flag.countryName}
-                        value={flag.countryName}
+                        key={flag?.countryName}
+                        value={flag?.countryName}
                       >
-                        <img src={flag.flagUrl} alt="" />
-                        {flag.countryName}
+                        <img src={flag?.flagUrl} alt="" />
+                        {flag?.countryName}
                       </Option>
                       ),
                     </>

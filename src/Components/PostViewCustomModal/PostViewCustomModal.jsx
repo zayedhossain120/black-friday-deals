@@ -7,6 +7,8 @@ import copyIcon from "../../assets/Icons/copyIcon.svg";
 import flags from "../../Utils/variables/flags";
 import DeleteIcon from "../IconsComponents/DeleteIcon";
 import EditIcon from "../IconsComponents/EditIcon";
+import postViewEditIcon from "../../assets/Icons/postViewEdit.svg";
+import postViewDltIcon from "../../assets/Icons/postDelete.svg";
 import { useClipboard } from "@mantine/hooks";
 import removeIcon from "../../assets/Icons/remove.svg";
 import React from "react";
@@ -20,8 +22,7 @@ const PostViewCustomModal = ({
   setOpenDeletePostModal,
 }) => {
   console.log(openPostViewModal);
-  
-  
+
   const handleCancel = () => {
     setOpenPostViewModal(false);
   };
@@ -116,7 +117,7 @@ const PostViewCustomModal = ({
                 }}
                 className="delete-button"
               >
-                <DeleteIcon />
+                <img src={postViewDltIcon} alt="" />
                 <span>Delete</span>
               </button>
               <button
@@ -125,7 +126,7 @@ const PostViewCustomModal = ({
                   navigate(`/post/editpost/${openPostViewModal?.data?._id}`)
                 }
               >
-                <EditIcon />
+                <img src={postViewEditIcon} alt="" />
                 Edit
               </button>
             </div>
