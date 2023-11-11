@@ -55,25 +55,27 @@ const ViewBrandPostRow = ({
     display: "flex",
     gap: "0",
     border: "none",
-    outline: "none"
+    outline: "none",
   };
 
-const countryFlagStyle = {
-  width: "20px",
-  // height: "100%"
-  height: "20px"
-}
+  const countryFlagStyle = {
+    width: "20px",
+    // height: "100%"
+    height: "20px",
+  };
 
   const items = post?.countries?.map((country) => ({
     key: country.key,
     label: (
       <div className="" style={selectStyle}>
         <img
-        style={{countryFlagStyle}}
-        src={flags.find((flag) => flag.countryName === country)?.flagUrl}
-        alt="Country Flag" 
+          style={{ countryFlagStyle }}
+          src={flags.find((flag) => flag.countryName === country)?.flagUrl}
+          alt="Country Flag"
         />
-       <p>{flags.find((flag) => flag.countryName === country)?.shortFormToo}</p>
+        <p>
+          {flags.find((flag) => flag.countryName === country)?.shortFormToo}
+        </p>
       </div>
     ),
   }));
@@ -142,13 +144,11 @@ const countryFlagStyle = {
       </div>
       {/* flags section */}
       <div className="table-data">
-        <div
-        onClick={(e) => e.stopPropagation()}
-        className="country-flags">
+        <div onClick={(e) => e.stopPropagation()} className="country-flags">
           <div className="country-flags-child-div">
             <img src={viewStoreFlagIcon} alt="view-store-flag-img" />
             <Select
-            bordered={false}
+              bordered={false}
               className="country-flags-dropdown"
               // style={{dropdownSelectStyle}}
               defaultValue={`${post?.countries?.length} Countries`}
@@ -179,8 +179,8 @@ const countryFlagStyle = {
           onClick={(e) => {
             e.stopPropagation();
             post?.postType === "Deal"
-            ? navigate(`/post/productDealUpdate/${post?._id}`)
-            : navigate(`/post/addnewpostupdate/${post?._id}`);
+              ? navigate(`/post/editdeal/${post?._id}`)
+              : navigate(`/post/editpost/${post?._id}`);
           }}
         >
           <EditIcon />

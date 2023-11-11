@@ -124,8 +124,8 @@ const PostRow = ({
             e.stopPropagation();
 
             post?.postType === "Deal"
-              ? navigate(`/post/productDealUpdate/${post?._id}`)
-              : navigate(`/post/addnewpostupdate/${post?._id}`);
+              ? navigate(`/post/editdeal/${post?._id}`)
+              : navigate(`/post/editpost/${post?._id}`);
           }}
         >
           <EditIcon />

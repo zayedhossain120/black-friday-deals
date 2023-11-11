@@ -13,13 +13,14 @@ import React from "react";
 import { getExpireInAtDays } from "../../Utils/variables/formattedDates";
 import { useNavigate } from "react-router-dom";
 
-const PostViewCustomModal = ({
+const BrandViewCustomModal = ({
   post,
   openPostViewModal,
   setOpenPostViewModal,
   setOpenDeletePostModal,
 }) => {
   console.log(openPostViewModal, "check desc");
+  console.log("this is view store custom modal", post);
 
   const handleCancel = () => {
     setOpenPostViewModal(false);
@@ -71,11 +72,8 @@ const PostViewCustomModal = ({
                     <p className="">75% OFF</p>
                   </div>
                   <div className="expired-container-with-brand">
-                    <img
-                    src={openPostViewModal?.data?.brand?.brandPhotoURL}
-                    />
-                    <p>{openPostViewModal?.data?.brand?.brandName} {" "}</p>
-                    {" "}
+                    <img src={openPostViewModal?.data?.brand?.brandPhotoURL} />
+                    <p>{openPostViewModal?.data?.brand?.brandName} </p>{" "}
                     {getExpireInAtDays(openPostViewModal?.data?.expireDate) <
                     1 ? (
                       "Expired"
@@ -107,7 +105,7 @@ const PostViewCustomModal = ({
                 <div className="availablestore-view-container">
                   <p className="child-one-of">Available On</p>
                   <img
-                  className="store-image-at-modal"
+                    className="store-image-at-modal"
                     src={openPostViewModal?.data?.store?.storePhotoURL}
                   />
                   <div className="view-icon-count-container">
@@ -121,7 +119,7 @@ const PostViewCustomModal = ({
               <p>{openPostViewModal?.data?.postDescription}</p>
             </div>
             <div className="delete-edit-duo">
-            <button
+              <button
                 onClick={() => {
                   setOpenDeletePostModal(openPostViewModal.data);
                   setOpenPostViewModal(false);
@@ -137,8 +135,8 @@ const PostViewCustomModal = ({
                   e.stopPropagation();
                   console.log(post, "here or not");
                   openPostViewModal?.data?.postType === "Deal"
-                    ? navigate(`/post/productDealUpdate/${post?._id}`)
-                    : navigate(`/post/addnewpostupdate/${post?._id}`);
+                    ? navigate(`/post/editdeal/${post?._id}`)
+                    : navigate(`/post/editpost/${post?._id}`);
                 }}
               >
                 <EditIcon />
@@ -151,4 +149,4 @@ const PostViewCustomModal = ({
     </div>
   );
 };
-export default PostViewCustomModal;
+export default BrandViewCustomModal;

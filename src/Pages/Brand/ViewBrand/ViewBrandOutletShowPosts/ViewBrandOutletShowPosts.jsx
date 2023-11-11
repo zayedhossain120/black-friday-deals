@@ -21,6 +21,8 @@ const ViewBrandOutlet = ({ query }) => {
   const [openPostViewModal, setOpenPostViewModal] = useState(null);
   const [openDeletePostModal, setOpenDeletePostModal] = useState(null);
   const [selectMultipleItem, setSelectMultipleItem] = useState([]);
+
+  console.log("openPostViewModal");
   const {
     data: StorePages /** change */,
     error,

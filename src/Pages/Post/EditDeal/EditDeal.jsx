@@ -3,14 +3,11 @@ import "./ProductdealUpdate.css";
 import { useState } from "react";
 import TopBar from "../../../Components/TopBar/TopBar";
 // import "../../Post/ProductDeal/ProductDeal.css";
-import ProductDealInformationUpdate from "./ProdcutDealInformationUpdate/ProductDealInformationUpdate";
+import EiditDealInformationPage from "./EditDealInformationPage/EditDealInformationPage";
 import ProductDealUpdateAsideBar from "./ProdcutDealUpdateAsideBar/ProductDealUpdateAsideBar";
 import ProductDealUpdateApiUrlDev from "./ProductDealUpdateApiUrlDev/ProductDealUpdateApiUrlDev";
-// import ProductDealApiUrl from "./ProductDealApiUrl/ProductDealApiUrl";
-// import ProductDealAsidBar from "./ProductDealAsidBar/ProductDealAsidBar";
-// import ProductDealInformationUpdate from "../../../Pages/Post/ProductDealUpdate/ProdcutDealInformationUpdate";
 
-const ProductDealUpdate = () => {
+const EditDeal = () => {
   const [productlImage, setProductImage] = useState({});
   const [formData, setFormData] = useState({});
   const [discount, setDiscount] = useState(0);
@@ -20,7 +17,7 @@ const ProductDealUpdate = () => {
     const discountPrice = formData.discountprice;
     const remainderPrice = parseInt(currentPrice) - parseInt(discountPrice);
 
-    const discountAmount = (remainderPrice * 100) / currentPrice;
+    const discountAmount = ((remainderPrice * 100) / currentPrice).toFixed();
     // if (discountPrice === 0) {
     //   return;
     // }
@@ -39,7 +36,7 @@ const ProductDealUpdate = () => {
             setFormData={setFormData}
           /> */}
           <ProductDealUpdateApiUrlDev />
-          <ProductDealInformationUpdate
+          <EiditDealInformationPage
             productlImage={productlImage}
             setProductImage={setProductImage}
             formData={formData}
@@ -59,4 +56,4 @@ const ProductDealUpdate = () => {
   );
 };
 
-export default ProductDealUpdate;
+export default EditDeal;

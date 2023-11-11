@@ -16,7 +16,7 @@ const ProductDeal = () => {
     const discountPrice = formData.discountprice;
     const remainderPrice = parseInt(currentPrice) - parseInt(discountPrice);
 
-    const discountAmount = (remainderPrice * 100) / currentPrice;
+    const discountAmount = ((remainderPrice * 100) / currentPrice).toFixed();
     // if (discountPrice === 0) {
     //   return;
     // }

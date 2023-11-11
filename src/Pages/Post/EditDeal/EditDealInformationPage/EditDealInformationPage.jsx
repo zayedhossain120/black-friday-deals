@@ -19,7 +19,7 @@ import usePostFetch from "../../../../CustomHooks/usePostFetch";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
-const ProductDealInformationUpdate = ({
+const EditDealInformationPage = ({
   productlImage,
   setProductImage,
   formData,
@@ -144,7 +144,10 @@ const ProductDealInformationUpdate = ({
                   >
                     {productlImage || formData?.postPhotoURL ? (
                       <div className="product-deal-update-information-img-top">
-                        <img src={formData?.postPhotoURL} alt="" />
+                        <img
+                          src={formData?.postPhotoURL || productlImage.url}
+                          alt=""
+                        />
                       </div>
                     ) : (
                       <div className="product-deal-update-information-img-button">
@@ -408,4 +411,4 @@ const ProductDealInformationUpdate = ({
   );
 };
 
-export default ProductDealInformationUpdate;
+export default EditDealInformationPage;

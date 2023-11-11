@@ -43,10 +43,10 @@ import EditBrand from "../Pages/EditBrand/EditBrand";
 import EditBrandHowToUse from "../Pages/EditBrand/EditBrandHowToUse/EditBrandHowToUse";
 import CreateBrand from "../Pages/CreateBrand/CreateBrand";
 import CreateBrandHowToUse from "../Pages/CreateBrand/CreateBrandHowToUse/CreateBrandHowToUse";
-import AddNewPostUpdate from "../Pages/Post/AddNewPostUpdate/AddNewPostUpdate";
-import ProductDealUpdate from "../Pages/Post/ProductDealUpdate/ProductDealUpdate";
 import ViewBrandOutletShowPosts from "../Pages/Brand/ViewBrand/ViewBrandOutletShowPosts/ViewBrandOutletShowPosts";
 import EditCampaign from "../Pages/EditCampaign/EditCampaign";
+import EditDeal from "../Pages/Post/EditDeal/EditDeal";
+import EditPost from "../Pages/Post/EditPost/EditPost";
 
 const Routes = () => {
   const router = createBrowserRouter([
@@ -326,12 +326,12 @@ const Routes = () => {
         //   element: <EditPost />,
         // },
         {
-          path: "/post/addnewpostupdate/:id",
-          element: <AddNewPostUpdate />,
+          path: "/post/editpost/:id",
+          element: <EditPost />,
         },
         {
-          path: "/post/productDealUpdate/:id",
-          element: <ProductDealUpdate />,
+          path: "/post/editdeal/:id",
+          element: <EditDeal />,
         },
 
         {

@@ -13,7 +13,6 @@ import { getExpireInAtDays } from "../../../../../Utils/variables/formattedDates
 import { useNavigate } from "react-router-dom";
 import { Select } from "antd";
 
-
 const ViewStorePostRow = ({
   post,
   setOpenPostViewModal,
@@ -52,18 +51,18 @@ const ViewStorePostRow = ({
   }
 
   const selectStyle = {
-    display: 'flex',
-    gap: '0px'
-  }
+    display: "flex",
+    gap: "0px",
+  };
 
   const items = post?.countries?.map((country) => ({
     key: country.key,
     label: (
       <div className="" style={selectStyle}>
         <img
-        src={flags.find((flag) => flag.countryName === country).flagUrl}
-        title={flags.shortForm}
-        alt="" 
+          src={flags.find((flag) => flag.countryName === country).flagUrl}
+          title={flags.shortForm}
+          alt=""
         />
         <p>{flags.find((flag) => flag.countryName === country).shortFormToo}</p>
       </div>
@@ -170,8 +169,8 @@ const ViewStorePostRow = ({
           onClick={(e) => {
             e.stopPropagation();
             post?.postType === "Deal"
-            ? navigate(`/post/productDealUpdate/${post?._id}`)
-            : navigate(`/post/addnewpostupdate/${post?._id}`);
+              ? navigate(`/post/editdeal/${post?._id}`)
+              : navigate(`/post/EditPost/${post?._id}`);
           }}
         >
           <EditIcon />

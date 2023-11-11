@@ -1,21 +1,27 @@
+// import React from 'react';
+// import "./AddNewPost.css";
+import "./AddNewPostUpdate.css";
 import { useLayoutEffect, useState } from "react";
 import { Checkbox, DatePicker, Input, Select, Spin } from "antd";
-import "../AddNewPost/AddNewPost.css";
+
 import TextArea from "antd/es/input/TextArea";
 import flags from "../../../Utils/variables/flags";
 import axios from "axios";
 import useFetch from "../../../CustomHooks/useFetch";
+// import { Option } from "antd/es/mentions";
 import getToken from "../../../Utils/getToken";
 import apiUrl from "../../../Utils/variables/apiUrl";
 import { toast } from "react-toastify";
-import { useNavigate, useParams } from "react-router-dom";
+import TopBar from "../../../Components/TopBar/TopBar";
 import usePostFetch from "../../../CustomHooks/usePostFetch";
-import { postTypes } from "../../../Utils/variables/postTypes";
+import { useNavigate, useParams } from "react-router-dom";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
-import TopBar from "../../../Components/TopBar/TopBar";
 
 const EditPost = () => {
+  const { data: category } = useFetch("category/?limit=1000");
+  const { data: network } = useFetch("network/?limit=1000");
+  const { data: campaign } = useFetch("campaign/all?limit=1000");
   const { Option } = Select;
   const navigate = useNavigate();
   const { id } = useParams();
@@ -23,6 +29,8 @@ const EditPost = () => {
   const { fetchPostById } = usePostFetch();
   const { data: store } = useFetch("store/all?limit=1000");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  console.log("this is form data", formData);
 
   useLayoutEffect(() => {
     const handlePromise = async () => {
@@ -36,11 +44,10 @@ const EditPost = () => {
     const { id, value } = e.target;
     setFormData({
       ...formData,
-
       [id]: value,
     });
   };
-
+  console.log("this is form data", formData);
   const handleUpdatePost = async (e) => {
     e.preventDefault();
 
@@ -48,198 +55,317 @@ const EditPost = () => {
 
     try {
       setIsSubmitting(true);
-      const { data } = await axios.put(`${apiUrl}/post/${id}`, formData, {
+      const { data } = await axios.patch(`${apiUrl}/post/${id}`, formData, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       });
 
-      if (data?.status === "success") {
-        console.log(data);
-        toast.success("Post is updated");
+      if (data?.success) {
+        toast.success("New post Update");
+        setFormData({});
       } else {
         toast.error("Failed to update the post");
       }
     } catch (error) {
       console.error("Error:", error);
-      toast.error("An error occurred while updating the post");
+      toast.error("An error occurred while adding the new post");
     } finally {
       setIsSubmitting(false);
       navigate("/post/");
     }
   };
-
   // for date initial value
   dayjs.extend(customParseFormat);
   const dateFormat = "YYYY/MM/DD";
-
   return (
-    <div className="create-new-post-main-container">
-      <TopBar pageTitle={"Edit Post"} />
-      <div className="create-new-post-container">
-        <h1>Edit Post</h1>
+    <div className="add-new-post-update-main-container">
+      <TopBar pageTitle={"Create New Post"} />
+      <div className="add-new-post-update-container">
+        <h1>Create New Coupon</h1>
 
-        <div className="create-posts-items-container">
+        <div className="add-posts-items-update-container">
           <Spin spinning={isSubmitting}>
             <form onSubmit={handleUpdatePost}>
-              <div className="create-post-items">
-                {/* post title start */}
-                <span>
-                  <p>Post Title</p>
-                  <Input
-                    id="postTitle"
-                    type="text"
-                    placeholder="Type post title"
-                    style={{ height: "50px", width: "100%" }}
-                    value={formData.postTitle}
-                    onChange={handleInputChange}
-                  />
-                </span>
-
-                {/* store name start */}
-                <span>
-                  <p>Store Name</p>
-
-                  <Select
-                    placeholder="Select Store"
-                    id="store-name"
-                    value={formData?.store?.storeName}
-                    style={{ width: "100%" }}
-                    onChange={
-                      (value) => {
-                        const { store, ...rest } = formData;
-                        setFormData({ store: value, ...rest });
-                      }
-                      // setFormData({ storeName: value, ...formData })
-                    }
-                  >
-                    {store?.data?.map((item) => (
-                      <Option key={item?.storeName} value={item?._id}>
-                        {item?.storeName}
-                      </Option>
-                    ))}
-                  </Select>
-                </span>
-
-                {/* post type start */}
-
-                <span>
-                  <p>Post Type</p>
-                  <Select
-                    className="add-new-post-type"
-                    id="postType"
-                    style={{ width: "100%" }}
-                    value={formData?.postType}
-                    onChange={(value) =>
-                      setFormData({ ...formData, postType: value })
-                    }
-                  >
-                    {postTypes.map((item) => (
-                      <Option key={item?.value} value={item?.value}>
-                        {item?.label}
-                      </Option>
-                    ))}
-                  </Select>
-                </span>
-
-                {/* coupon code start */}
-
-                <span>
-                  <p>Coupon Code</p>
-                  <Input
-                    type="text"
-                    placeholder="Input the coupon code"
-                    style={{ height: "50px", width: "100%" }}
-                    id="couponCode"
-                    value={formData.couponCode}
-                    onChange={handleInputChange}
-                  />
-                </span>
-
-                {/* date picker start */}
-
-                <div className="date-picker">
-                  <p>Expire Date</p>
-
-                  <DatePicker
-                    value={dayjs(formData.expireDate, dateFormat)}
-                    format={dateFormat}
-                    style={{ width: "100%" }}
-                    onChange={(value) => {
-                      const formattedDate = dayjs(value).format(dateFormat);
-                      setFormData({ ...formData, expireDate: formattedDate });
-                    }}
-                  />
-                </div>
-
-                {/* deal link start */}
-
-                <span>
-                  <p>ExternalLink</p>
-                  <Input
-                    required={formData?.postType === "deal"}
-                    type="url"
-                    id="externalLink"
-                    placeholder="https://"
-                    style={{ height: "50px", width: "100%" }}
-                    value={formData.externalLink}
-                    onChange={handleInputChange}
-                  />
-                </span>
-
-                {/* post description start  */}
-
-                <div className="post-description">
-                  <label htmlFor="post-description">Post Description</label>
-                  <TextArea
-                    id="postDescription"
-                    style={{
-                      height: "100px",
-                      resize: "none",
-                    }}
-                    placeholder="Type Here...."
-                    value={formData.postDescription}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                {/* country selete start */}
-
-                <div className="add-new-post-country-select">
-                  <p>Country</p>
-                  <Select
-                    mode="multiple"
-                    style={{ width: "400px" }}
-                    value={formData.country}
-                    onChange={(value) =>
-                      setFormData({ ...formData, country: value })
-                    }
-                  >
-                    {flags.map((flag) => (
-                      <Option key={flag.countryName} value={flag.countryName}>
-                        {flag.countryName}
-                      </Option>
-                    ))}
-                  </Select>
-                  {/* verify symble start */}
-
-                  <div className="code-verify-container">
-                    <label htmlFor="isVerified" className="code-verify">
-                      Is This Code Verified ?
-                    </label>
-                    <Checkbox
-                      id="isVerified"
-                      checked={formData.isVerified}
-                      onChange={(e) => {
-                        const isChecked = e.target.checked;
-                        setFormData({ ...formData, isVerified: isChecked });
-                      }}
+              <div className="add-post-update-items-form-container">
+                <div className="add-post-update-form-items-container-left">
+                  {/* Post title input */}
+                  <span>
+                    <p>Post Title</p>
+                    <Input
+                      required
+                      id="postTitle"
+                      type="text"
+                      placeholder="Type post title"
+                      style={{ height: "50px", width: "100%" }}
+                      value={formData?.postTitle}
+                      onChange={handleInputChange}
                     />
+                  </span>
+                  {/* select post type  */}
+
+                  <span>
+                    <p>Post Type</p>
+                    <Select
+                      required
+                      // style={{ width: "100%" }}
+                      className="create-new-coupn-post-type-input"
+                      id="post-type"
+                      showSearch
+                      defaultValue="Coupon"
+                      value={formData?.postType}
+                      onChange={(value) =>
+                        setFormData({ ...formData, postType: value })
+                      }
+                    >
+                      <Option value="Voucher">Voucher</Option>
+                      <Option value="Coupon">Coupon</Option>
+                    </Select>
+                  </span>
+                  {/* coupon input */}
+
+                  <span>
+                    <p className="ant-design-input-height-control-create-new-post">
+                      Coupon Code
+                    </p>
+                    <Input
+                      required={formData?.postType === "coupon"}
+                      type="text"
+                      placeholder="Input the coupon code"
+                      style={{ height: "50px", width: "100%" }}
+                      id="couponCode"
+                      value={formData?.couponCode}
+                      onChange={handleInputChange}
+                    />
+                  </span>
+                  {/* select date  */}
+
+                  <div className="date-picker">
+                    <p>Expire Date</p>
+                    <DatePicker
+                      value={dayjs(formData?.expireDate, dateFormat)}
+                      required
+                      id="expireDate"
+                      style={{ width: "100%" }}
+                      // value={formData.expireDate}
+                      onChange={(value) => {
+                        const formattedDate = dayjs(value).format(dateFormat);
+                        setFormData({ ...formData, expireDate: formattedDate });
+                      }}
+                    ></DatePicker>
+                  </div>
+                  {/* select Network */}
+
+                  <span>
+                    <p>Network</p>
+
+                    <Select
+                      // style={{ width: "100%" }}
+                      className="add-new-post-country-network-input"
+                      required
+                      showSearch
+                      placeholder="Select Store"
+                      id="networkName"
+                      value={formData?.network?.networkName}
+                      // defaultValue={formData.network?.networkName}
+                      onChange={(value) =>
+                        setFormData({ ...formData, networkName: value })
+                      }
+                    >
+                      {network?.data?.map((item) => (
+                        <Option
+                          key={item?.networkName}
+                          value={item?.networkName}
+                        >
+                          {item?.networkName}
+                        </Option>
+                      ))}
+                    </Select>
+                  </span>
+                </div>
+                <div className="add-post-update-form-items-container-right">
+                  {/* select store name  */}
+
+                  <d>
+                    <p>Store Name</p>
+
+                    <Select
+                      // style={{ width: "100%" }}
+                      className="add-new-post-country-stores-input"
+                      required
+                      showSearcha
+                      placeholder="Select Store"
+                      id="storeName"
+                      value={formData?.store?.storeName}
+                      // onChange={(value) => {
+                      //   const { store, ...reset } = formData;
+                      //   setFormData({
+                      //     storeName: value,
+                      //     ...reset,
+                      //   });
+                      // }}
+                      const
+                      onChange={(value) =>
+                        setFormData({
+                          ...formData,
+                          store: store?.data?.find(
+                            (brandsData) => brandsData?.storeName === value
+                          ),
+                        })
+                      }
+                    >
+                      {store?.data?.map((item) => (
+                        <Option key={item?.storeName} value={item?.storeName}>
+                          {item?.storeName}
+                        </Option>
+                      ))}
+                    </Select>
+                  </d>
+                  {/* select category name  */}
+
+                  <span>
+                    <p className="ant-design-input-height-control-create-new-post">
+                      Category
+                    </p>
+
+                    <Select
+                      // style={{ width: "100%" }}
+                      className="add-new-post-country-category-input"
+                      required
+                      showSearch
+                      placeholder="Select Store"
+                      id="store-name"
+                      value={formData?.category?.categoryName}
+                      onChange={(value) =>
+                        setFormData({
+                          ...formData,
+                          category: category?.data.find(
+                            (categorys) => categorys.categoryName === value
+                          ),
+                        })
+                      }
+                    >
+                      {category?.data?.map((item) => (
+                        <Option
+                          key={item?.categoryName}
+                          value={item?.categoryName}
+                        >
+                          {item?.category?.categoryName}
+                        </Option>
+                      ))}
+                    </Select>
+                  </span>
+                  {/* set deal link */}
+
+                  <span>
+                    <p className="ant-design-input-height-control-create-new-post">
+                      Link
+                    </p>
+                    <Input
+                      required={formData?.postType === "dealLink"}
+                      type="url"
+                      id="dealLink"
+                      placeholder="https://"
+                      style={{ height: "50px", width: "100%" }}
+                      value={formData?.dealLink}
+                      onChange={handleInputChange}
+                    />
+                  </span>
+                  {/* select campain  */}
+
+                  <span>
+                    <p>Campaign</p>
+
+                    <Select
+                      className="add-new-post-country-Campaign-input"
+                      required
+                      showSearch
+                      placeholder="Select Store"
+                      id="store-name"
+                      value={formData?.campaign?.campaignName}
+                      onChange={(value) =>
+                        setFormData({
+                          ...formData,
+                          campaign: campaign?.data?.find(
+                            (campaigns) => campaigns?.campaignName === value
+                          ),
+                        })
+                      }
+                    >
+                      {campaign?.data?.map((item) => (
+                        <Option
+                          key={item?.campaignName}
+                          value={item?.campaignName}
+                        >
+                          {item?.campaignName}
+                        </Option>
+                      ))}
+                    </Select>
+                  </span>
+                  {/* select country */}
+                  <div className="add-new-post-country-select">
+                    <p className="ant-design-input-height-control-create-new-post">
+                      Country
+                    </p>
+
+                    <Select
+                      required
+                      mode="multiple"
+                      className="add-new-post-country-input"
+                      // style={{ width: "388px", height: "20%" }}
+                      value={formData?.countries}
+                      placeholder={"countries"}
+                      onChange={(value) =>
+                        setFormData({ ...formData, countries: value })
+                      }
+                    >
+                      {flags.map((flag) => (
+                        <Option key={flag.countryName} value={flag.countryName}>
+                          <img src={flag.flagUrl} alt="" />
+                          {flag.countryName}
+                          {}
+                        </Option>
+                      ))}
+                    </Select>
+
+                    {/* verify checker */}
+
+                    <div className="code-verify-container">
+                      <label htmlFor="isVerified" className="code-verify">
+                        Is This Code Verified ?
+                      </label>
+                      <Checkbox
+                        id="isVerified"
+                        checked={formData?.isVerified}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            isVerified: e.target.checked,
+                          })
+                        }
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
+              {/* post description */}
+
+              <div className="post-description">
+                <p>Post Description</p>
+                <TextArea
+                  id="postDescription"
+                  style={{
+                    height: "100px",
+                    resize: "none",
+                  }}
+                  placeholder="Type Here...."
+                  value={formData?.postDescription}
+                  onChange={handleInputChange}
+                />
+              </div>
               <div className="create-new-coupon-btn">
                 <button className="add-new-btn" type="submit">
-                  Update Post
+                  Add New Post
                 </button>
               </div>
             </form>
