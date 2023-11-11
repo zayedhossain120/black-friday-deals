@@ -14,14 +14,15 @@ import { SelectedCountryContext } from "../../../../Contexts/CountryContext/Coun
 import EditCampaignButton from "../../../../Components/EditCampaignButton/EditCampaignButton";
 
 const ViewCampaignOutlet = ({ query }) => {
-  const store = useLoaderData();
+  const campaign = useLoaderData();
   const countryContext = useContext(SelectedCountryContext);
   const [openPostViewModal, setOpenPostViewModal] = useState(null);
   const [openDeletePostModal, setOpenDeletePostModal] = useState(null);
+
   const [selectMultipleItem, setSelectMultipleItem] = useState([]);
 
   const {
-    data: StorePages /** change */,
+    data: CampaignPages /** change */,
     error,
     hasNextPage,
     fetchNextPage,
@@ -29,7 +30,7 @@ const ViewCampaignOutlet = ({ query }) => {
     isFetchingNextPage,
     refetch,
   } = useFetchInfinite(
-    `post/all?StorePages=${store?.data?.storeName}&${query}&country=${countryContext?.selectedCountry}&limit=10`,
+    `post/all?campaignName=${campaign?.data?.campaignName}&${query}&country=${countryContext?.selectedCountry}&limit=10`,
     "store-route",
     { query, countryContext }
   );
@@ -40,16 +41,16 @@ const ViewCampaignOutlet = ({ query }) => {
   if (!isFetchingNextPage && isFetching) {
     return <MainLoading />;
   }
-  if (error || StorePages?.status === "failed") {
-    return <p>{error?.message || StorePages?.message}</p>;
+  if (error || CampaignPages?.status === "failed") {
+    return <p>{error?.message || CampaignPages?.message}</p>;
   }
-  if (!StorePages[0]?.data?.length) {
+  if (!CampaignPages[0]?.data?.length) {
     return <EmptyData />;
   }
   return (
     <section className="campaign-outlet-container">
       <div className="campaign-table">
-        {StorePages?.map((page) =>
+        {CampaignPages?.map((page) =>
           page?.data?.map((post) => (
             <ViewCampaignPostRow
               key={post?._id}

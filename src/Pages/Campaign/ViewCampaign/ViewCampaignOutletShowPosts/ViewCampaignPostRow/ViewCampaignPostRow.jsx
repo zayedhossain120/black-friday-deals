@@ -11,6 +11,8 @@ import { getExpireInAtDays } from "../../../../../Utils/variables/formattedDates
 import { Select } from "antd";
 import EditIcon from "../../../../../Components/IconsComponents/EditIcon";
 import DeleteIcon from "../../../../../Components/IconsComponents/DeleteIcon";
+import viewEye from "../../../../../assets/Icons/viewEye.svg";
+import loveIcon from "../../../../../assets/Icons/LoveIcon.svg";
 
 const ViewCampaignPostRow = ({
   post,
@@ -78,7 +80,7 @@ const ViewCampaignPostRow = ({
             </h4>
             <p>
               {post?.store?.storeName}{" "}
-              {post?.postType === "deal" && (
+              {post?.postType === "Deal" && (
                 <small className="tooltip">Deal</small>
               )}
             </p>
@@ -116,6 +118,7 @@ const ViewCampaignPostRow = ({
           <div className="available-country-container">
             <img src={FlagIconIndicateAllFlag} alt="view-store-flag-img" />
             <Select
+              onPopupScroll={() => {}}
               onClick={(e) => {
                 e.stopPropagation();
               }}
@@ -147,16 +150,28 @@ const ViewCampaignPostRow = ({
       </div>
       {/* validity section */}
       <div className="table-data expire-time">
-        {getExpireInAtDays(post?.expireDate) < 1 ? (
-          "Expired"
-        ) : (
-          <span>
-            End in <strong>{getExpireInAtDays(post?.expireDate)}</strong> days
-          </span>
-        )}
-        {post?.postType === "deal" && (
-          <small className="tooltip display-only-on-mobile">Deal</small>
-        )}
+        <div className="ends-date">
+          {getExpireInAtDays(post?.expireDate) < 1 ? (
+            "Expired"
+          ) : (
+            <span>
+              End in <strong>{getExpireInAtDays(post?.expireDate)}</strong> days
+            </span>
+          )}
+          {post?.postType === "deal" && (
+            <small className="tooltip display-only-on-mobile">Deal</small>
+          )}
+        </div>
+        <div className="campaign-favorite-and-view">
+          <div>
+            <img alt="" src={loveIcon} />
+            <span>{post?.revealed}</span>
+          </div>
+          <div>
+            <img src={viewEye} alt="view icon" />
+            <span>{post?.revealed}</span>
+          </div>
+        </div>
       </div>
 
       {/* modifier buttons section */}

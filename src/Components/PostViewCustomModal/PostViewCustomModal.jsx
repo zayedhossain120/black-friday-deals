@@ -11,16 +11,13 @@ import { useClipboard } from "@mantine/hooks";
 import removeIcon from "../../assets/Icons/remove.svg";
 import React from "react";
 import { getExpireInAtDays } from "../../Utils/variables/formattedDates";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const PostViewCustomModal = ({
-  post,
   openPostViewModal,
   setOpenPostViewModal,
   setOpenDeletePostModal,
 }) => {
-  console.log(openPostViewModal);
-
   const handleCancel = () => {
     setOpenPostViewModal(false);
   };
@@ -58,7 +55,7 @@ const PostViewCustomModal = ({
             />
             <p>{openPostViewModal?.data?.post?.campaignName}</p>
             <h1>{openPostViewModal?.data?.postTitle}</h1>
-            <p>{openPostViewModal?.data?.postDescription}</p>
+            <p>{openPostViewModal?.data?.postDescription?.slice(0, 200)}</p>
             <div className="view-icon-count-container">
               <img src={viewIcon} alt="view icon" />
               <p>{openPostViewModal?.data?.revealed}</p>
@@ -75,24 +72,30 @@ const PostViewCustomModal = ({
                 />
               ))}
             </div>
-            <fieldset>
-              <legend className={clipboard.copied ? "code-copied" : ""}>
-                {clipboard.copied ? "Code Copied" : "Click to Copy"}
-              </legend>
-              <div>
-                {openPostViewModal?.data?.isVerified && (
-                  <img src={verifiedCodeChecked} alt="verified code" />
-                )}
-                <span>{openPostViewModal?.data?.couponCode}</span>
-              </div>
-              <button
-                onClick={() =>
-                  clipboard.copy(openPostViewModal?.data?.couponCode)
-                }
-              >
-                <img src={copyIcon} alt="copy icon" />
-              </button>
-            </fieldset>
+            {openPostViewModal?.data?.postType === "Voucher" ? (
+              <Link to="/post" target="_blank" className="deal-link-btn">
+                www.amazon.com
+              </Link>
+            ) : (
+              <fieldset>
+                <legend className={clipboard.copied ? "code-copied" : ""}>
+                  {clipboard.copied ? "Code Copied" : "Click to Copy"}
+                </legend>
+                <div>
+                  {openPostViewModal?.data?.isVerified && (
+                    <img src={verifiedCodeChecked} alt="verified code" />
+                  )}
+                  <span>{openPostViewModal?.data?.couponCode}</span>
+                </div>
+                <button
+                  onClick={() =>
+                    clipboard.copy(openPostViewModal?.data?.couponCode)
+                  }
+                >
+                  <img src={copyIcon} alt="copy icon" />
+                </button>
+              </fieldset>
+            )}
             <p>
               {" "}
               {getExpireInAtDays(openPostViewModal?.data?.expireDate) < 1 ? (

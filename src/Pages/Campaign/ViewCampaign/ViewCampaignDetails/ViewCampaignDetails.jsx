@@ -1,14 +1,25 @@
+/* eslint-disable react/prop-types */
 import "./ViewCampaignDetails.css";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import flags from "../../../../Utils/variables/flags";
 import EditIconView from "../../../../Components/IconsComponents/EditIconView";
+import { useEffect, useState } from "react";
 
 const ViewCampaignDetails = () => {
+  const [country, setCountry] = useState(null);
   const { id } = useParams();
   const campaign = useLoaderData();
-
   const navigate = useNavigate();
-  console.log(campaign);
+
+  useEffect(() => {
+    fetch(`https://black-friday-affiliate-server.vercel.app/api/v1/campaign`)
+      .then((res) => res.json())
+      .then((data) => setCountry(data));
+  }, []);
+  console.log(country?.data?.[1]);
+  const campaingFlag = country?.data?.[1].countries;
+  console.log(campaingFlag);
+
   return (
     <div className="view-campaign-detail-container">
       <section className="view-campaign-section-container">
@@ -19,7 +30,7 @@ const ViewCampaignDetails = () => {
               <h1>{campaign?.data?.campaignName}</h1>
             </div>
             <div className="view-campaign-country-flags">
-              {campaign?.data?.countries?.map((country) => (
+              {campaingFlag?.map((country) => (
                 <img
                   className="campaign-country-flags-image"
                   key={country}
@@ -28,6 +39,8 @@ const ViewCampaignDetails = () => {
                   }
                   title={country}
                   alt={country}
+                  width="30px"
+                  height="22px"
                 />
               ))}
             </div>
@@ -39,7 +52,6 @@ const ViewCampaignDetails = () => {
             Period: {campaign?.data?.startPeriod.slice(0, 10)}
             {" - "}
             {campaign?.data?.endPeriod.slice(0, 10)}
-            {/* {getExpireInAtDays(campaign?.data?.endPeriod)} */}
           </p>
           <div className="set-two-button">
             <button

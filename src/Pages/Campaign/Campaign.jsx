@@ -7,6 +7,7 @@ import CampaignsCardsContainer from "../../Components/CampaignsCardsContainer/Ca
 
 const Campaign = () => {
   const country = useContext(SelectedCountryContext);
+
   const {
     data: campaignData,
     error,

@@ -1,27 +1,23 @@
 .country-option {
   display: flex;
 }
+
 .available-country-container {
   display: flex;
 }
-/* .ant-select-selector{
-  border: none !important;
-  background: transparent !important;
-}
-.ant-select-selector:focus{
-  outline: none!important;
-  box-shadow: none !important;
-} */
+
 .post-table {
   width: 100%;
   margin: 0 auto;
 }
+
 .edit-and-delete-buttons {
   position: absolute;
   display: flex;
   gap: 20px;
   visibility: hidden;
 }
+
 .view-campaign-table-row {
   /*  only change post table**/
   display: grid;
@@ -34,7 +30,9 @@
 
 .view-campaign-table-row:hover {
   background: rgba(98, 86, 233, 0.05);
+
 }
+
 .view-campaign-table-row input[type="checkbox"] {
   width: clamp(14px, 2vw, 1.1rem);
   height: clamp(14px, 2vw, 1.1rem);
@@ -44,13 +42,16 @@
   display: flex;
   gap: 5px;
 }
-.view-campaign-table-row .table-data h4 > img {
+
+.view-campaign-table-row .table-data h4>img {
   width: clamp(12px, 2vw, 16px);
 }
-.view-campaign-table-row .table-data h4 ~ p {
+
+.view-campaign-table-row .table-data h4~p {
   color: rgba(0, 0, 0, 0.5);
   font-weight: 400;
 }
+
 .view-campaign-table-row .table-data .tooltip {
   color: black;
   border: 0.5px solid #f1f1f1;
@@ -59,12 +60,14 @@
   border-radius: 10px;
   font-size: 12px;
 }
+
 .view-campaign-table-row .post-title-photo-container {
   display: grid;
   grid-template-columns: 30px 70px 1fr;
   align-items: center;
   gap: 20px;
 }
+
 .view-campaign-table-row .post-title-photo-container img {
   max-width: 100%;
   max-height: 100%;
@@ -72,6 +75,7 @@
   object-position: center;
   word-wrap: break-word;
 }
+
 .view-campaign-table-row .table-data.expire-time {
   justify-content: center;
   font-size: 12px;
@@ -81,9 +85,10 @@
   gap: 5px;
 }
 
-.view-campaign-table-row .table-data.expire-time > .display-only-on-mobile {
+.view-campaign-table-row .table-data.expire-time>.display-only-on-mobile {
   display: none;
 }
+
 .view-campaign-table-row .table-data:last-child {
   display: flex;
   justify-content: center;
@@ -91,21 +96,10 @@
   transition: all 1s ease;
 }
 
-.store-campaign .span-img-container button {
-  /** this post table*/
-  transition: all 0.5s ease;
-  opacity: 0;
-  width: 0;
-}
-.view-campaign-table-row:hover .span-img-container :is(img, span) {
+.view-campaign-table-row:hover .ends-date :is(img, span) {
   display: none;
 }
-.view-campaign-table-row:hover .span-img-container button {
-  margin-left: clamp(5px, 1vw, 20px);
-  margin-right: clamp(5px, 1vw, 20px);
-  opacity: 1;
-  width: fit-content;
-}
+
 
 /* dynamic price and available store poran change */
 .dynamic-price-div {
@@ -114,35 +108,42 @@
   justify-content: center;
   align-items: center;
 }
+
 .dynamic-price-div .dynamic-price-div-childOne {
   display: flex;
   align-items: center;
   gap: 8px;
 }
+
 .dynamic-price-div .dynamic-price-div-childOne p {
   color: rgba(0, 0, 0, 0.8);
   font-size: 20px;
   font-weight: 700;
 }
+
 .dynamic-price-div .dynamic-price-div-childOne del {
   color: rgba(255, 0, 0, 0.4);
 }
+
 .dynamic-price-div .percentage {
   font-size: 14px;
   color: rgba(0, 0, 0, 1);
 }
+
 .available-online-store {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: start;
-  /* padding-right: 36%; */
+
 }
+
 .available-online-store p {
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 10px;
-  font-weight: 400;
+  color: rgba(0, 0, 0, 0.60);
+  font-size: 11px !important;
+
 }
+
 .available-online-store img {
   width: 70px;
   height: 40px;
@@ -152,10 +153,44 @@
 .mobile-v-flag {
   display: none;
 }
+
 .available-online-store .expired-item-copy {
   display: none;
 }
 
+.campaign-favorite-and-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.campaign-favorite-and-view div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.5s ease;
+  opacity: 0;
+  width: 0;
+}
+
+.campaign-favorite-and-view div>span {
+  color: rgba(0, 0, 0, 0.70);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.view-campaign-table-row:hover .campaign-favorite-and-view div {
+  margin-left: clamp(5px, 1vw, 20px);
+  margin-right: clamp(5px, 1vw, 20px);
+  opacity: 1;
+  width: fit-content;
+
+
+}
+
+/* view-campaign-table-row */
 /* responsive========================= */
 @media screen and (max-width: 700px) {
   .view-campaign-table-row {
@@ -173,11 +208,12 @@
   .view-campaign-table-row .post-title-photo-container {
     display: flex;
   }
-  .view-campaign-table-row .table-data h4 ~ p {
+
+  .view-campaign-table-row .table-data h4~p {
     display: none;
   }
 
-  .view-campaign-table-row .table-data.expire-time > .display-only-on-mobile {
+  .view-campaign-table-row .table-data.expire-time>.display-only-on-mobile {
     display: block;
   }
 
@@ -186,6 +222,7 @@
     grid-column: 1 / span 4;
     border-top: 1px solid gainsboro;
   }
+
   .store-table .table-data:nth-child(3) {
     position: absolute;
     left: 110px;
@@ -197,6 +234,7 @@
     max-width: 200%;
     max-height: 100%;
   }
+
   .mobile-v-flag {
     display: block;
     width: 100%;
@@ -206,21 +244,27 @@
     border-top: 1px solid rgba(0, 0, 0, 0.06);
     padding-top: 10px;
   }
+
   .view-campaign-table-row input[type="checkbox"] {
     display: none;
   }
-  .view-campaign-table-row .table-data h4 > img {
+
+  .view-campaign-table-row .table-data h4>img {
     display: none;
   }
+
   .dynamic-price-div {
     padding-left: 70px;
   }
+
   .table-data .span-img-container img {
     display: none;
   }
+
   .table-data .span-img-container span {
     display: none;
   }
+
   .available-online-store {
     width: 100%;
     flex-direction: row;
@@ -228,23 +272,32 @@
     gap: 10px;
     padding-bottom: 10px;
   }
+
   .available-online-store .expired-item-copy {
     display: block;
   }
+
   .available-online-store p {
     font-size: 12px;
     color: rgba(0, 0, 0, 0.6);
   }
+
   .available-online-store img {
     width: 50px;
     height: 30px;
   }
+
   .edit-and-delete-buttons {
     visibility: visible;
-    top: 40%;
+    top: 30%;
     right: 5%;
   }
+
   .available-country-container-parent {
+    display: none;
+  }
+
+  .campaign-favorite-and-view {
     display: none;
   }
 }
