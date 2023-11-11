@@ -13,13 +13,13 @@ import React from "react";
 import { getExpireInAtDays } from "../../Utils/variables/formattedDates";
 import { useNavigate } from "react-router-dom";
 
-const PostViewCustomModal = ({
+const BrandViewCustomModal = ({
   post,
   openPostViewModal,
   setOpenPostViewModal,
   setOpenDeletePostModal,
 }) => {
-  console.log(openPostViewModal, "check desc");
+  console.log(post, "check desc");
 
   const handleCancel = () => {
     setOpenPostViewModal(false);
@@ -135,7 +135,6 @@ const PostViewCustomModal = ({
                 className="edit-button"
                 onClick={(e) => {
                   e.stopPropagation();
-                  console.log(post, "here or not");
                   openPostViewModal?.data?.postType === "Deal"
                     ? navigate(`/post/productDealUpdate/${post?._id}`)
                     : navigate(`/post/addnewpostupdate/${post?._id}`);
@@ -151,4 +150,4 @@ const PostViewCustomModal = ({
     </div>
   );
 };
-export default PostViewCustomModal;
+export default BrandViewCustomModal;

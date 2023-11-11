@@ -65,7 +65,6 @@ const StoreCardsContainer = ({
                   <h1>{store?.storeName}</h1>
                   <div className="country-flags">
                     {store?.countries?.map((country) => (
-                      console.log(country, 'country checking'),
                       <img
                         key={country}
                         src={

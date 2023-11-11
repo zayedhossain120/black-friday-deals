@@ -9,6 +9,8 @@ import EditIconView from "../../../../Components/IconsComponents/EditIconView";
 const ViewStoreDetails = () => {
   const { id } = useParams();
   const store = useLoaderData();
+
+  console.log(store.data,'Im checking country');
   const navigate = useNavigate();
 
   
@@ -27,7 +29,7 @@ const ViewStoreDetails = () => {
                   className="store-country-flags-image"
                   key={country}
                   src={
-                    flags.find((flag) => flag.countryName === country).flagUrl
+                    flags.find((flag) => flag?.countryName === country)?.flagUrl
                   }
                   title={country}
                   alt={country}

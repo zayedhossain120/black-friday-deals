@@ -138,6 +138,7 @@ const ViewStorePostRow = ({
           <div className="country-flags-child-div">
             <img src={viewStoreFlagIcon} alt="view-store-flag-img" />
             <Select
+            bordered={false}
               onClick={(e) => {
                 e.stopPropagation();
               }}

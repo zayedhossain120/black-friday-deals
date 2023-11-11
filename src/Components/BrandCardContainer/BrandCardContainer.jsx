@@ -34,6 +34,8 @@ const BrandCardContainer = ({
           page?.data
             ?.sort((a, b) => (a?.totalPosts > b?.totalPosts ? -1 : 1))
             ?.map((brand) => (
+
+              console.log(brand, 'fkdjlslfdlfj'),
               <div
               key={brand?._id}
                 className="individual-store-container"

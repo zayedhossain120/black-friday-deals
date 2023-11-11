@@ -3,6 +3,7 @@ import "./ViewStoreOutletHowToUse.css";
 
 const ViewStoreOutletHowToUse = () => {
   const store = useLoaderData();
+
   {
     if (!store?.data?.howToUse?.length) {
       return <p className="text-center">Nothing to show!</p>;
@@ -19,7 +20,7 @@ const ViewStoreOutletHowToUse = () => {
                 return (
                   <img
                     key={element?.id}
-                    src={element?.photoURL}
+                    src={element?.storePhotoURL}
                     alt={element?.content}
                     height={200}
                     width={400}
