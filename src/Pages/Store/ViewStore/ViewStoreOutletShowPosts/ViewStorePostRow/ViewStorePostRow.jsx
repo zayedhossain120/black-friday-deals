@@ -23,6 +23,9 @@ const ViewStorePostRow = ({
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { fetchPostById } = usePostFetch();
+
+  console.log(post, 'check');
+
   // open a post information on modal
   const handleOpenPostViewModalWithApiData = async (postId) => {
     const { data, isLoading, error } = await fetchPostById(postId);
@@ -85,7 +88,7 @@ const ViewStorePostRow = ({
             onClick={(e) => handleMultipleSelectItem(e)}
           />
           <img
-            src={post?.store?.storePhotoURL || placeholder}
+            src={post?.postPhotoURL || placeholder}
             alt={post?.postTitle?.slice(0, 5)}
             height={50}
             width={50}

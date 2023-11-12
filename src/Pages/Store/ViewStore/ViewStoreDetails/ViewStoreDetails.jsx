@@ -9,11 +9,10 @@ import EditIconView from "../../../../Components/IconsComponents/EditIconView";
 const ViewStoreDetails = () => {
   const { id } = useParams();
   const store = useLoaderData();
-
-  console.log(store.data,'Im checking country');
   const navigate = useNavigate();
 
-  
+  console.log(store, "check for store");
+
   return (
     <div className="view-store-detail-container">
       <section className="view-store-section-container">
@@ -41,7 +40,9 @@ const ViewStoreDetails = () => {
         {/* <hr className="view-store-hr" /> */}
         <div className="view-store-button">
           <p className="shipping-cost-text">
-            {store?.data?.storeDescription ? store.data.storeDescription : "undefined Desc"}
+            {store?.data?.storeDescription
+              ? store.data.storeDescription
+              : "undefined Desc"}
           </p>
           <div className="set-two-button">
             <button className="view-store-first-button">

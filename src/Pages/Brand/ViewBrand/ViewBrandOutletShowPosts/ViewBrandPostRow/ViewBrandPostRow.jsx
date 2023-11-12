@@ -93,7 +93,7 @@ const countryFlagStyle = {
             onClick={(e) => handleMultipleSelectItem(e)}
           />
           <img
-            src={post?.brand?.brandPhotoURL || placeholder}
+            src={post?.postPhotoURL || placeholder}
             alt={post?.postTitle?.slice(0, 5)}
             height={50}
             width={50}
