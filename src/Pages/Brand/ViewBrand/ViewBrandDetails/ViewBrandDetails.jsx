@@ -21,7 +21,7 @@ const ViewBrandDetails = () => {
               <h1>{brand?.data?.brandName}</h1>
             </div>
             <div className="view-store-country-flags">
-              {brand?.data?.country?.map((country) => (
+              {brand?.data?.countries?.map((country) => (
                 <img
                   className="store-country-flags-image"
                   key={country}
