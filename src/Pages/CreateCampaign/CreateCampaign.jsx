@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./CreateCampaign.css";
 import TopBar from "../../Components/TopBar/TopBar";
 import { DatePicker, Input, Select, Spin } from "antd";
-import { useNavigate } from "react-router-dom";
+
 import useSubmitPhotoAtFirebase from "../../Utils/useSubmitPhotoAtFirebase";
 import flags from "../../Utils/variables/flags";
 import placeholder from "../../assets/Icons/uploadImgIcon.svg";
@@ -16,8 +16,6 @@ const CreateCampaign = () => {
   const [selectedCountries, setSelectedCountries] = useState([]);
   const { postPhotoAtFirebase } = useSubmitPhotoAtFirebase();
   const [isLoading, setIsLoading] = useState(false);
-
-  console.log(selectedCountries);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

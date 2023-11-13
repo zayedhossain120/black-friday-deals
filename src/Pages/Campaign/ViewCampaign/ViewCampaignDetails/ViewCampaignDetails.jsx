@@ -3,22 +3,12 @@ import "./ViewCampaignDetails.css";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import flags from "../../../../Utils/variables/flags";
 import EditIconView from "../../../../Components/IconsComponents/EditIconView";
-import { useEffect, useState } from "react";
 
 const ViewCampaignDetails = () => {
-  const [country, setCountry] = useState(null);
   const { id } = useParams();
   const campaign = useLoaderData();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    fetch(`https://black-friday-affiliate-server.vercel.app/api/v1/campaign`)
-      .then((res) => res.json())
-      .then((data) => setCountry(data));
-  }, []);
-  console.log(country?.data?.[1]);
-  const campaingFlag = country?.data?.[1].countries;
-  console.log(campaingFlag);
+  console.log(campaign);
 
   return (
     <div className="view-campaign-detail-container">
@@ -30,7 +20,7 @@ const ViewCampaignDetails = () => {
               <h1>{campaign?.data?.campaignName}</h1>
             </div>
             <div className="view-campaign-country-flags">
-              {campaingFlag?.map((country) => (
+              {campaign?.data?.countries?.map((country) => (
                 <img
                   className="campaign-country-flags-image"
                   key={country}
@@ -46,7 +36,7 @@ const ViewCampaignDetails = () => {
             </div>
           </div>
         </div>
-        <hr className="view-campaign-hr" />
+        {/* <hr className="view-campaign-hr" /> */}
         <div className="view-campaign-button">
           <p className="shipping-cost-text">
             Period: {campaign?.data?.startPeriod.slice(0, 10)}

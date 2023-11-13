@@ -7,7 +7,7 @@ import ViewCampaignInnerNav from "./ViewCampaignInnerNav/ViewCampaignInnerNav";
 const ViewCampaign = () => {
   return (
     <div className="view-campaign-main-container">
-      <TopBar pageTitle={"View Campaign"} />
+      <TopBar pageTitle={"Campaign"} />
 
       <div className="view-campaign-container">
         <ViewCampaignDetails />

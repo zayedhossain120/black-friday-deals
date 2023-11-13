@@ -2,19 +2,22 @@
 import { useContext, useEffect, useState } from "react";
 import "./ViewCampaignOutletShowPosts.css";
 import useFetchInfinite from "../../../../CustomHooks/useFetchInfinite";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import MainLoading from "../../../../Components/MainLoading/MainLoading";
 import EmptyData from "../../../../Components/EmptyData/EmptyData";
 import { Button, Spin } from "antd";
 import PostViewCustomModal from "../../../../Components/PostViewCustomModal/PostViewCustomModal";
 import PostDeleteModal from "../../../../Components/PostDeleteModal/PostDeleteModal";
 import postDeleteIcon from "../../../../assets/Icons/postDelete.svg";
+import campaignEditIcon from "../../../../assets/Icons/campaignEditIcon.svg";
 import ViewCampaignPostRow from "../../ViewCampaign/ViewCampaignOutletShowPosts/ViewCampaignPostRow/ViewCampaignPostRow";
 import { SelectedCountryContext } from "../../../../Contexts/CountryContext/CountryProviderContext";
-import EditCampaignButton from "../../../../Components/EditCampaignButton/EditCampaignButton";
 
 const ViewCampaignOutlet = ({ query }) => {
   const campaign = useLoaderData();
+  const post = useLoaderData();
+
+  const navigate = useNavigate();
   const countryContext = useContext(SelectedCountryContext);
   const [openPostViewModal, setOpenPostViewModal] = useState(null);
   const [openDeletePostModal, setOpenDeletePostModal] = useState(null);
@@ -47,6 +50,9 @@ const ViewCampaignOutlet = ({ query }) => {
   if (!CampaignPages[0]?.data?.length) {
     return <EmptyData />;
   }
+  const handleEditPostClick = () => {
+    navigate(`/post/${post._id}`);
+  };
   return (
     <section className="campaign-outlet-container">
       <div className="campaign-table">
@@ -104,7 +110,10 @@ const ViewCampaignOutlet = ({ query }) => {
           refetch={refetch}
         />
       )}{" "}
-      <EditCampaignButton />
+      <button onClick={handleEditPostClick} className="edit-campaign-button">
+        <img src={campaignEditIcon} alt="" />
+        Edit Campaign
+      </button>
     </section>
   );
 };
