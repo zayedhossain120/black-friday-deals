@@ -87,6 +87,7 @@
 
 /* buttons design with psodu class */
 .modal-content-container div:last-child button {
+  color: rgba(0, 0, 0, 0.70);
   background: transparent;
   font-size: 18px;
   display: flex;

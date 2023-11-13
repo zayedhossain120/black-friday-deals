@@ -48,7 +48,7 @@
   padding-left: 81px;
 }
 
-.shipping-cost-text {
+.date-period-text {
   color: rgba(0, 0, 0, 0.60);
   font-size: 18px;
 }
@@ -154,11 +154,8 @@
     font-weight: 600;
   }
 
-  .shipping-cost-text {
-    padding: 1% 14%;
-  }
-
-  .shipping-cost-text p {
+  .date-period-text {
+    padding: 3% 14%;
     color: rgba(0, 0, 0, 0.60) !important;
     font-size: 16px;
     font-weight: 500;

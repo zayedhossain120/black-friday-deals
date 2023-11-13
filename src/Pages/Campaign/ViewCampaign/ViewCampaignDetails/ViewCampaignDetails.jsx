@@ -38,7 +38,7 @@ const ViewCampaignDetails = () => {
         </div>
         {/* <hr className="view-campaign-hr" /> */}
         <div className="view-campaign-button">
-          <p className="shipping-cost-text">
+          <p className="date-period-text">
             Period: {campaign?.data?.startPeriod.slice(0, 10)}
             {" - "}
             {campaign?.data?.endPeriod.slice(0, 10)}

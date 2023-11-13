@@ -6,37 +6,41 @@ const EditIcon = () => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="20"
-      height="20"
-      viewBox="0 0 20 20"
+      height="21"
+      viewBox="0 0 20 21"
       fill="none"
-      className="custom-icons edit-icon"
     >
-      <g clipPath="url(#clip0_272_6720)">
+      <g clip-path="url(#clip0_803_5148)">
         <path
-          d="M10 12.5L16.9875 5.4875C17.3157 5.15929 17.5001 4.71415 17.5001 4.25C17.5001 3.78584 17.3157 3.3407 16.9875 3.0125C16.6593 2.68429 16.2142 2.49991 15.75 2.49991C15.2858 2.49991 14.8407 2.68429 14.5125 3.0125L7.5 10V12.5H10Z"
+          d="M5.83398 6.33301H5.00065C4.55862 6.33301 4.1347 6.5086 3.82214 6.82116C3.50958 7.13372 3.33398 7.55765 3.33398 7.99967V15.4997C3.33398 15.9417 3.50958 16.3656 3.82214 16.6782C4.1347 16.9907 4.55862 17.1663 5.00065 17.1663H12.5007C12.9427 17.1663 13.3666 16.9907 13.6792 16.6782C13.9917 16.3656 14.1673 15.9417 14.1673 15.4997V14.6663"
           stroke="black"
-          strokeOpacity="0.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-opacity="0.7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
         />
         <path
-          d="M13.3333 4.16666L15.8333 6.66666"
+          d="M16.9875 5.98759C17.3157 5.65938 17.5001 5.21424 17.5001 4.75009C17.5001 4.28594 17.3157 3.84079 16.9875 3.51259C16.6593 3.18438 16.2142 3 15.75 3C15.2858 3 14.8407 3.18438 14.5125 3.51259L7.5 10.5001V13.0001H10L16.9875 5.98759Z"
           stroke="black"
-          strokeOpacity="0.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-opacity="0.7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
         />
         <path
-          d="M7.50002 5.89167C6.03818 6.09995 4.70972 6.85488 3.78261 8.00416C2.85551 9.15344 2.39876 10.6115 2.50448 12.0844C2.61021 13.5572 3.27056 14.9351 4.35232 15.9402C5.43408 16.9452 6.85675 17.5027 8.33335 17.5C9.73618 17.5002 11.0921 16.9948 12.1526 16.0765C13.2131 15.1582 13.9071 13.8884 14.1075 12.5"
+          d="M13.334 4.66699L15.834 7.16699"
           stroke="black"
-          strokeOpacity="0.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-opacity="0.7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
         />
       </g>
       <defs>
-        <clipPath id="clip0_272_6720">
-          <rect width="20" height="20" fill="white" />
+        <clipPath id="clip0_803_5148">
+          <rect
+            width="20"
+            height="20"
+            fill="white"
+            transform="translate(0 0.5)"
+          />
         </clipPath>
       </defs>
     </svg>
