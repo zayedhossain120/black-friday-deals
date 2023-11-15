@@ -19,7 +19,6 @@ const BrandViewCustomModal = ({
   setOpenPostViewModal,
   setOpenDeletePostModal,
 }) => {
-  console.log(post, "check desc");
 
   const handleCancel = () => {
     setOpenPostViewModal(false);

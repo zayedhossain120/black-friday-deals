@@ -212,7 +212,7 @@ const Routes = () => {
               path: "",
               loader: async ({ params }) =>
                 fetchStoreDataAtRouterLevel(params.id),
-              element: <ViewStoreOutlet query={`${hasValidity()}`} />,
+              element: <ViewStoreOutlet query={`${hasValidity()}&postType=Deal`} />,
             },
             {
               path: "coupons",
@@ -289,7 +289,7 @@ const Routes = () => {
           children: [
             {
               path: "",
-              element: <PostOutlet query={`${hasValidity()}`} />,
+              element: <PostOutlet query={`${hasValidity()}&postType=Deal`} />,
             },
             {
               path: "voucher",

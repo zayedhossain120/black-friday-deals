@@ -50,6 +50,7 @@
   margin-right: 10px;
   width: 30px !important;
   height: 22.5px !important;
+object-fit: contain;
 }
 .view-store-hr {
   display: none;

@@ -12,7 +12,9 @@ import { useState } from "react";
 import { getExpireInAtDays } from "../../../../../Utils/variables/formattedDates";
 import { useNavigate } from "react-router-dom";
 import { Select } from "antd";
-
+import { useClipboard } from "@mantine/hooks";
+import copyIcon from "../../../../../assets/Icons/copyIcon.svg";
+import verifiedCodeChecked from "../../../../../assets/Icons/verifiedChecked.svg";
 
 const ViewStorePostRow = ({
   post,
@@ -24,7 +26,8 @@ const ViewStorePostRow = ({
   const navigate = useNavigate();
   const { fetchPostById } = usePostFetch();
 
-  console.log(post, 'check');
+  const clipboard = useClipboard({ timeout: 2000 });
+  console.log(post, "another check check");
 
   // open a post information on modal
   const handleOpenPostViewModalWithApiData = async (postId) => {
@@ -55,18 +58,18 @@ const ViewStorePostRow = ({
   }
 
   const selectStyle = {
-    display: 'flex',
-    gap: '0px'
-  }
+    display: "flex",
+    gap: "0px",
+  };
 
   const items = post?.countries?.map((country) => ({
     key: country.key,
     label: (
       <div className="" style={selectStyle}>
         <img
-        src={flags.find((flag) => flag.countryName === country).flagUrl}
-        title={flags.shortForm}
-        alt="" 
+          src={flags.find((flag) => flag.countryName === country).flagUrl}
+          title={flags.shortForm}
+          alt=""
         />
         <p>{flags.find((flag) => flag.countryName === country).shortFormToo}</p>
       </div>
@@ -111,46 +114,90 @@ const ViewStorePostRow = ({
         </div>
       </div>
       {/* Dynamic Price and available store */}
-      <div className="dynamic-price-div">
-        <div className="dynamic-price-div-childOne">
-          <p>$20</p>
-          <del>$70</del>
-        </div>
-        <p className="percentage">75% OFF</p>
-      </div>
-      <div className="available-online-store">
-        <p className="">Available On</p>
-        <img
-          src={post?.store?.storePhotoURL || placeholder}
-          alt={post?.postTitle?.slice(0, 5)}
-          height={50}
-          width={50}
-          loading="lazy"
-        />
-        {getExpireInAtDays(post?.expireDate) < 1 ? (
-          "Expired"
+      <div>
+        {post?.postType === "Deal" ? (
+          <div className="dynamic-price-div">
+            <div className="dynamic-price-div-childOne">
+              <p>$20</p>
+              <del>$70</del>
+            </div>
+            <p className="percentage">75% OFF</p>
+          </div>
         ) : (
-          <p className="expired-item-copy">
-            End in <strong>{getExpireInAtDays(post?.expireDate)}</strong> days
-          </p>
+          ""
+        )}
+      </div>
+      <div>
+        {post.postType === "Deal" ? (
+          <div className="available-online-store">
+            <p className="">Available On</p>
+            <img
+              src={post?.store?.storePhotoURL || placeholder}
+              alt={post?.postTitle?.slice(0, 5)}
+              height={50}
+              width={50}
+              loading="lazy"
+            />
+            {getExpireInAtDays(post?.expireDate) < 1 ? (
+              "Expired"
+            ) : (
+              <p className="expired-item-copy">
+                End in <strong>{getExpireInAtDays(post?.expireDate)}</strong>{" "}
+                days
+              </p>
+            )}
+          </div>
+        ) : (
+          <div>
+            {post?.postType === "Coupon" ? (
+              <fieldset>
+                <div>
+                  {post?.isVerified && (
+                    <img src={verifiedCodeChecked} alt="verified code" />
+                  )}
+                  <span>{post?.couponCode}</span>
+                </div>
+                <button onClick={() => clipboard.copy(post?.couponCode)}>
+                  <img src={copyIcon} alt="copy icon" />
+                </button>
+              </fieldset>
+            ) : (
+              ""
+            )}
+          </div>
         )}
       </div>
       {/* flags section */}
       <div className="table-data">
         <div className="country-flags">
-          <div className="country-flags-child-div">
-            <img src={viewStoreFlagIcon} alt="view-store-flag-img" />
-            <Select
-            bordered={false}
-              onClick={(e) => {
-                e.stopPropagation();
-              }}
-              className="country-flags-dropdown"
-              defaultValue={`${post?.countries?.length} Countries`}
-              // style={selectStyle}
-              options={items}
-            ></Select>
-          </div>
+          {post?.postType === "Deal" ? (
+            <div className="country-flags-child-div">
+              <img src={viewStoreFlagIcon} alt="view-store-flag-img" />
+              <Select
+                bordered={false}
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+                className="country-flags-dropdown"
+                defaultValue={`${post?.countries?.length} Countries`}
+                // style={selectStyle}
+                options={items}
+              ></Select>
+            </div>
+          ) : (
+            <div className="country-for-voucher-coupon">
+              {post?.countries?.map((country) => (
+                <img
+                  key={country}
+                  src={
+                    flags.find((flag) => flag.countryName === country).flagUrl
+                  }
+                  alt={country}
+                  title={country}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
       {/* validity section */}
@@ -174,8 +221,8 @@ const ViewStorePostRow = ({
           onClick={(e) => {
             e.stopPropagation();
             post?.postType === "Deal"
-            ? navigate(`/post/productDealUpdate/${post?._id}`)
-            : navigate(`/post/addnewpostupdate/${post?._id}`);
+              ? navigate(`/post/productDealUpdate/${post?._id}`)
+              : navigate(`/post/addnewpostupdate/${post?._id}`);
           }}
         >
           <EditIcon />

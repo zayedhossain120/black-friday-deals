@@ -11,14 +11,6 @@
   padding: 20px;
   cursor: pointer;
 }
-/* .post-table .table-row {
-  display: grid;
-  grid-template-columns: 2.5fr 1fr 1fr 1fr;
-  justify-content: start;
-  align-items: center;
-  padding: 20px;
-  cursor: pointer;
-} */
 .view-store-table-row:hover {
   background: rgba(98, 86, 233, 0.05);
 }
@@ -59,16 +51,7 @@
   object-position: center;
   word-wrap: break-word;
 }
-/* .view-store-table-row .table-data .expire-time {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  color: rgba(0, 0, 0, 0.5);
-  font-weight: 400;
-  gap: 5px;
-  background: firebrick;
-} */
+
 .expire-time {
   display: flex;
   align-items: center;
@@ -160,7 +143,9 @@
 .available-online-store .expired-item-copy {
   display: none;
 }
-
+.table-data .country-for-voucher-coupon img{
+  margin-right: 10px;
+}
 /* responsive========================= */
 @media screen and (max-width: 700px) {
   .view-store-table-row {
