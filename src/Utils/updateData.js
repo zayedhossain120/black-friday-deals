@@ -4,7 +4,7 @@ import getToken from "./getToken";
 
 export const updateData = (url, payload) => {
   axios
-    .put(
+    .patch(
       `${apiUrl}/${url}`,
       {
         ...payload,

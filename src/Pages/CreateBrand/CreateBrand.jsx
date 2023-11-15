@@ -48,10 +48,7 @@ const CreateBrand = () => {
             }
           )
           .then(({ data }) => {
-            console.log(data, "data data");
             navigate(`howtouse/${data?.data?._id}`);
-            console.log(data?.data?._id, "console logging data");
-            console.log(data, "data log");
           })
           .catch((e) => {
             console.log(e);
