@@ -87,7 +87,7 @@
   background: transparent;
 }
 
-/* dynamic price and available store poran change */
+/* dynamic price and available store Jack change */
 .dynamic-price-div {
   display: flex;
   flex-direction: column;
@@ -143,8 +143,20 @@
 .available-online-store .expired-item-copy {
   display: none;
 }
-.table-data .country-for-voucher-coupon img{
+.table-data .country-for-voucher-coupon img {
   margin-right: 10px;
+}
+.view-store-post-row-fieldset {
+  width: 75%;
+  padding: 5px 0;
+  border: 1px solid #283d27;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.expired-date-with-title-name {
+  display: none;
 }
 /* responsive========================= */
 @media screen and (max-width: 700px) {
@@ -154,7 +166,7 @@
     justify-content: start;
     align-items: flex-start;
     box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.09);
-    min-height: 150px;
+    /* min-height: 150px; */
     position: relative;
     margin-bottom: 20px;
     padding: 20px 20px 10px 20px;
@@ -238,5 +250,11 @@
     position: absolute;
     right: 40px;
     top: 50px;
+  }
+  .view-store-post-row-fieldset {
+    display: none;
+  }
+  .expired-date-with-title-name {
+    display: block;
   }
 }

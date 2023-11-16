@@ -12,9 +12,6 @@ import { useState } from "react";
 import { getExpireInAtDays } from "../../../../../Utils/variables/formattedDates";
 import { useNavigate } from "react-router-dom";
 import { Select } from "antd";
-import { useClipboard } from "@mantine/hooks";
-import copyIcon from "../../../../../assets/Icons/copyIcon.svg";
-import verifiedCodeChecked from "../../../../../assets/Icons/verifiedChecked.svg";
 
 const ViewStorePostRow = ({
   post,
@@ -25,9 +22,6 @@ const ViewStorePostRow = ({
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { fetchPostById } = usePostFetch();
-
-  const clipboard = useClipboard({ timeout: 2000 });
-  console.log(post, "another check check");
 
   // open a post information on modal
   const handleOpenPostViewModalWithApiData = async (postId) => {
@@ -104,6 +98,14 @@ const ViewStorePostRow = ({
                 <img src={verifiedChecked} alt="verified icon" />
               )}
             </h4>
+           <div>
+            {
+              post?.postType === "Deal" ? "" :  <span className="expired-date-with-title-name">
+              End in <strong>{getExpireInAtDays(post?.expireDate)}</strong>{" "}
+              days
+            </span>
+            }
+           </div>
             <p>
               {post?.store?.storeName}{" "}
               {post?.postType === "Deal" && (
@@ -124,7 +126,7 @@ const ViewStorePostRow = ({
             <p className="percentage">75% OFF</p>
           </div>
         ) : (
-          ""
+         ""
         )}
       </div>
       <div>
@@ -150,17 +152,12 @@ const ViewStorePostRow = ({
         ) : (
           <div>
             {post?.postType === "Coupon" ? (
-              <fieldset>
-                <div>
-                  {post?.isVerified && (
-                    <img src={verifiedCodeChecked} alt="verified code" />
-                  )}
-                  <span>{post?.couponCode}</span>
-                </div>
-                <button onClick={() => clipboard.copy(post?.couponCode)}>
-                  <img src={copyIcon} alt="copy icon" />
-                </button>
-              </fieldset>
+                  <span 
+                   className="view-store-post-row-fieldset"
+                   onClick={(e) => {
+                     e.stopPropagation();
+                   }}
+                  >{post?.couponCode}</span>
             ) : (
               ""
             )}
