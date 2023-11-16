@@ -22,7 +22,7 @@
   position: relative;
 }
 
-.modal-main-container-with-mask .modal-content-container>img {
+.modal-main-container-with-mask .modal-content-container > img {
   box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
@@ -31,7 +31,7 @@
   padding: 20px;
 }
 
-.modal-content-container>h1 {
+.modal-content-container > h1 {
   text-align: center;
   margin: 10px;
 
@@ -39,7 +39,7 @@
   font-weight: 600;
 }
 
-.modal-main-container-with-mask .modal-content-container>p {
+.modal-main-container-with-mask .modal-content-container > p {
   color: rgba(0, 0, 0, 0.5);
   font-size: 16px;
 }
@@ -76,7 +76,7 @@
   cursor: copy;
 }
 
-.modal-content-container fieldset>div {
+.modal-content-container fieldset > div {
   display: flex;
   align-items: center;
 }
@@ -93,7 +93,6 @@
 
 /* buttons design with psodu class */
 .modal-content-container div:last-child button {
-  background: transparent;
   font-size: 18px;
   display: flex;
   justify-content: center;

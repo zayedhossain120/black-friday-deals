@@ -52,6 +52,10 @@ const CarouselModal = ({ isVisible, onClose }) => {
               photoURL: url,
               couponCode: couponCode,
             },
+            {
+              photoURL: url,
+              couponCode: couponCode,
+            },
           ],
         },
         {
