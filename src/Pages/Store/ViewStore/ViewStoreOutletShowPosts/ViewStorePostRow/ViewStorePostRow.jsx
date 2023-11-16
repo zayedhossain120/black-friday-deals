@@ -72,7 +72,13 @@ const ViewStorePostRow = ({
 
   return (
     <div
-      className="view-store-table-row"
+      className={
+        post?.postType === "Deal"
+          ? "view-store-table-row"
+          : post?.postType === "Coupon"
+          ? "view-store-table-row-for-coupon"
+          : "view-store-table-row-for-voucher"
+      }
       onClick={() => handleOpenPostViewModalWithApiData(post?._id)}
     >
       {/* title Store name and photo section */}
@@ -152,7 +158,7 @@ const ViewStorePostRow = ({
             )}
           </div>
         ) : (
-          <div>
+          <div className="coupon-code-container">
             {post?.postType === "Coupon" ? (
               <span
                 className="view-store-post-row-fieldset"

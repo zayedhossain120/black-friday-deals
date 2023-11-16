@@ -11,7 +11,23 @@
   padding: 20px;
   cursor: pointer;
 }
-.view-store-table-row:hover {
+.view-store-table-row-for-coupon{
+  display: grid;
+  grid-template-columns: 2.5fr 1fr 1fr 2fr 1fr 1fr;
+  justify-content: start;
+  align-items: center;
+  padding: 20px;
+  cursor: pointer;
+}
+.view-store-table-row-for-voucher{
+  display: grid;
+  grid-template-columns: 3fr 0.2fr 0.2fr 2.5fr 1.5fr 1.5fr;
+  justify-content: start;
+  align-items: center;
+  padding: 20px;
+  cursor: pointer;
+}
+.view-store-table-row:hover, .view-store-table-row-for-coupon:hover, .view-store-table-row-for-voucher:hover {
   background: rgba(98, 86, 233, 0.05);
 }
 .view-store-table-row input[type="checkbox"] {
@@ -40,7 +56,20 @@
 }
 .view-store-table-row .post-title-photo-container {
   display: grid;
-  grid-template-columns: 30px 70px 1fr;
+  grid-template-columns: 20px 50px 1fr !important;
+  align-items: center;
+  gap: 20px;
+}
+.view-store-table-row-for-coupon .post-title-photo-container{
+  display: grid;
+  grid-template-columns: 20px 50px 1fr;
+  align-items: center;
+  gap: 20px;
+}
+
+.view-store-table-row-for-voucher .post-title-photo-container{
+  display: grid;
+  grid-template-columns: 20px 50px 1fr;
   align-items: center;
   gap: 20px;
 }
@@ -78,6 +107,12 @@
 .view-store-table-row:hover .span-img-container :is(img, span) {
   display: none;
 }
+.view-store-table-row-for-coupon:hover .span-img-container :is(img, span){
+  display: none;
+}
+.view-store-table-row-for-voucher:hover .span-img-container :is(img, span){
+  display: none;
+}
 .view-store-table-row:hover .span-img-container button {
   margin-left: clamp(5px, 1vw, 20px);
   margin-right: clamp(5px, 1vw, 20px);
@@ -86,6 +121,27 @@
   border: none;
   background: transparent;
 }
+.view-store-table-row-for-coupon .span-img-container button{
+  margin-left: clamp(5px, 1vw, 20px);
+  margin-right: clamp(5px, 1vw, 20px);
+  opacity: 1;
+  width: fit-content;
+  border: none;
+  background: transparent;
+}
+.view-store-table-row-for-voucher .span-img-container button{
+  margin-left: clamp(5px, 1vw, 20px);
+  margin-right: clamp(5px, 1vw, 20px);
+  opacity: 1;
+  width: fit-content;
+  border: none;
+  background: transparent;
+}
+
+
+
+
+
 
 /* dynamic price and available store Jack change */
 .dynamic-price-div {
@@ -157,6 +213,10 @@
 }
 .expired-date-with-title-name {
   display: none;
+}
+.coupon-code-container{
+  display: flex;
+  justify-content: center;
 }
 /* responsive========================= */
 @media screen and (max-width: 700px) {
