@@ -78,7 +78,7 @@ const EditDealInformationPage = ({
     event.preventDefault();
     const accessToken = getToken();
     setIsSubmitting(true);
-    if (!productlImage.file) {
+    if (productlImage.file) {
       return;
     } else {
       postPhotoAtFirebase(productlImage.file).then((url) => {
