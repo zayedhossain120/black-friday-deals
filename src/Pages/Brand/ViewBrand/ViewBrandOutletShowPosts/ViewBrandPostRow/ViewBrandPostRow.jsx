@@ -1,19 +1,19 @@
 /* eslint-disable react/prop-types */
 import "./ViewBrandPostRow.css";
-import usePostFetch from "../../../../../CustomHooks/usePostFetch.js";
-import flags from "../../../../../Utils/variables/flags.js";
+import usePostFetch from "../../../../../CustomHooks/usePostFetch";
+import flags from "../../../../../Utils/variables/flags";
 import DeleteIcon from "../../../../../Components/IconsComponents/DeleteIcon.jsx";
-import EditIcon from "../../../../../Components/IconsComponents/EditIcon.jsx";
+import EditIcon from "../../../../../Components/IconsComponents/EditIcon";
 import viewEye from "../../../../../assets/Icons/viewEye.svg";
 import verifiedChecked from "../../../../../assets/Icons/verifiedChecked.svg";
 import placeholder from "../../../../../assets/placeholder.svg";
 import viewStoreFlagIcon from "../../../../../assets/Icons/view-store-flag-icon.svg";
 import { useState } from "react";
-import { getExpireInAtDays } from "../../../../../Utils/variables/formattedDates.js";
+import { getExpireInAtDays } from "../../../../../Utils/variables/formattedDates";
 import { useNavigate } from "react-router-dom";
 import { Select } from "antd";
 
-const ViewBrandPostRow = ({
+const ViewStorePostRow = ({
   post,
   setOpenPostViewModal,
   setOpenDeletePostModal,
@@ -22,8 +22,8 @@ const ViewBrandPostRow = ({
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { fetchPostById } = usePostFetch();
-  // open a post information on modal
 
+  // open a post information on modal
   const handleOpenPostViewModalWithApiData = async (postId) => {
     const { data, isLoading, error } = await fetchPostById(postId);
     if (isLoading) {
@@ -53,15 +53,7 @@ const ViewBrandPostRow = ({
 
   const selectStyle = {
     display: "flex",
-    gap: "0",
-    border: "none",
-    outline: "none",
-  };
-
-  const countryFlagStyle = {
-    width: "20px",
-    // height: "100%"
-    height: "20px",
+    gap: "0px",
   };
 
   const items = post?.countries?.map((country) => ({
@@ -69,13 +61,11 @@ const ViewBrandPostRow = ({
     label: (
       <div className="" style={selectStyle}>
         <img
-          style={{ countryFlagStyle }}
-          src={flags.find((flag) => flag.countryName === country)?.flagUrl}
-          alt="Country Flag"
+          src={flags.find((flag) => flag.countryName === country).flagUrl}
+          title={flags.shortForm}
+          alt=""
         />
-        <p>
-          {flags.find((flag) => flag.countryName === country)?.shortFormToo}
-        </p>
+        <p>{flags.find((flag) => flag.countryName === country).shortFormToo}</p>
       </div>
     ),
   }));
@@ -108,8 +98,18 @@ const ViewBrandPostRow = ({
                 <img src={verifiedChecked} alt="verified icon" />
               )}
             </h4>
+            <div>
+              {post?.postType === "Deal" ? (
+                ""
+              ) : (
+                <span className="expired-date-with-title-name">
+                  End in <strong>{getExpireInAtDays(post?.expireDate)}</strong>{" "}
+                  days
+                </span>
+              )}
+            </div>
             <p>
-              {post?.brand?.brandName}{" "}
+              {post?.store?.storeName}{" "}
               {post?.postType === "Deal" && (
                 <small className="tooltip">Deal</small>
               )}
@@ -118,44 +118,87 @@ const ViewBrandPostRow = ({
         </div>
       </div>
       {/* Dynamic Price and available store */}
-      <div className="dynamic-price-div">
-        <div className="dynamic-price-div-childOne">
-          <p>$20</p>
-          <del>$70</del>
-        </div>
-        <p className="percentage">75% OFF</p>
-      </div>
-      <div className="available-online-store">
-        <p className="">Available On</p>
-        <img
-          src={post?.store?.storePhotoURL || placeholder}
-          alt={post?.postTitle?.slice(0, 5)}
-          height={50}
-          width={50}
-          loading="lazy"
-        />
-        {getExpireInAtDays(post?.expireDate) < 1 ? (
-          "Expired"
+      <div>
+        {post?.postType === "Deal" ? (
+          <div className="dynamic-price-div">
+            <div className="dynamic-price-div-childOne">
+              <p>$20</p>
+              <del>$70</del>
+            </div>
+            <p className="percentage">75% OFF</p>
+          </div>
         ) : (
-          <p className="expired-item-copy">
-            End in <strong>{getExpireInAtDays(post?.expireDate)}</strong> days
-          </p>
+          ""
+        )}
+      </div>
+      <div>
+        {post.postType === "Deal" ? (
+          <div className="available-online-store">
+            <p className="">Available On</p>
+            <img
+              src={post?.store?.storePhotoURL || placeholder}
+              alt={post?.postTitle?.slice(0, 5)}
+              height={50}
+              width={50}
+              loading="lazy"
+            />
+            {getExpireInAtDays(post?.expireDate) < 1 ? (
+              "Expired"
+            ) : (
+              <p className="expired-item-copy">
+                End in <strong>{getExpireInAtDays(post?.expireDate)}</strong>{" "}
+                days
+              </p>
+            )}
+          </div>
+        ) : (
+          <div>
+            {post?.postType === "Coupon" ? (
+              <span
+                className="view-store-post-row-fieldset"
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+              >
+                {post?.couponCode}
+              </span>
+            ) : (
+              ""
+            )}
+          </div>
         )}
       </div>
       {/* flags section */}
       <div className="table-data">
-        <div onClick={(e) => e.stopPropagation()} className="country-flags">
-          <div className="country-flags-child-div">
-            <img src={viewStoreFlagIcon} alt="view-store-flag-img" />
-            <Select
-              bordered={false}
-              className="country-flags-dropdown"
-              // style={{dropdownSelectStyle}}
-              defaultValue={`${post?.countries?.length} Countries`}
-              style={selectStyle}
-              options={items}
-            ></Select>
-          </div>
+        <div className="country-flags">
+          {post?.postType === "Deal" ? (
+            <div className="country-flags-child-div">
+              <img src={viewStoreFlagIcon} alt="view-store-flag-img" />
+              <Select
+                bordered={false}
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+                className="country-flags-dropdown"
+                defaultValue={`${post?.countries?.length} Countries`}
+                // style={selectStyle}
+                options={items}
+              ></Select>
+            </div>
+          ) : (
+            <div className="country-for-voucher-coupon">
+              {post?.countries?.map((country) => (
+                <img
+                  key={country}
+                  src={
+                    flags.find((flag) => flag.countryName === country).flagUrl
+                  }
+                  alt={country}
+                  title={country}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
       {/* validity section */}
@@ -167,7 +210,7 @@ const ViewBrandPostRow = ({
             End in <strong>{getExpireInAtDays(post?.expireDate)}</strong> days
           </span>
         )}
-        {post?.postType === "Deal" && (
+        {post?.postType === "deal" && (
           <small className="tooltip display-only-on-mobile">Deal</small>
         )}
       </div>
@@ -180,7 +223,7 @@ const ViewBrandPostRow = ({
             e.stopPropagation();
             post?.postType === "Deal"
               ? navigate(`/post/editdeal/${post?._id}`)
-              : navigate(`/post/editpost/${post?._id}`);
+              : navigate(`/post/EditPost/${post?._id}`);
           }}
         >
           <EditIcon />
@@ -208,4 +251,4 @@ const ViewBrandPostRow = ({
   );
 };
 
-export default ViewBrandPostRow;
+export default ViewStorePostRow;
