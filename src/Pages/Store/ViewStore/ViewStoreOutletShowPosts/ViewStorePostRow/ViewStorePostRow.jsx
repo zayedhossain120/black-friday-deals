@@ -243,7 +243,7 @@ const ViewStorePostRow = ({
           <DeleteIcon />
         </button>
       </div>
-      <div className="mobile-v-flag">
+      <div className={post?.postType === "Deal" ? "mobile-v-flag" : "mobile-v-flag-for-coupon-voucher"}>
         {post?.countries?.map((country) => (
           <img
             key={country}
