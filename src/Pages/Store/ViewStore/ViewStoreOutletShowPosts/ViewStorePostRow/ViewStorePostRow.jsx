@@ -22,6 +22,7 @@ const ViewStorePostRow = ({
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { fetchPostById } = usePostFetch();
+
   // open a post information on modal
   const handleOpenPostViewModalWithApiData = async (postId) => {
     const { data, isLoading, error } = await fetchPostById(postId);
@@ -84,7 +85,7 @@ const ViewStorePostRow = ({
             onClick={(e) => handleMultipleSelectItem(e)}
           />
           <img
-            src={post?.store?.storePhotoURL || placeholder}
+            src={post?.postPhotoURL || placeholder}
             alt={post?.postTitle?.slice(0, 5)}
             height={50}
             width={50}
@@ -97,6 +98,16 @@ const ViewStorePostRow = ({
                 <img src={verifiedChecked} alt="verified icon" />
               )}
             </h4>
+            <div>
+              {post?.postType === "Deal" ? (
+                ""
+              ) : (
+                <span className="expired-date-with-title-name">
+                  End in <strong>{getExpireInAtDays(post?.expireDate)}</strong>{" "}
+                  days
+                </span>
+              )}
+            </div>
             <p>
               {post?.store?.storeName}{" "}
               {post?.postType === "Deal" && (
@@ -107,45 +118,87 @@ const ViewStorePostRow = ({
         </div>
       </div>
       {/* Dynamic Price and available store */}
-      <div className="dynamic-price-div">
-        <div className="dynamic-price-div-childOne">
-          <p>$20</p>
-          <del>$70</del>
-        </div>
-        <p className="percentage">75% OFF</p>
-      </div>
-      <div className="available-online-store">
-        <p className="">Available On</p>
-        <img
-          src={post?.store?.storePhotoURL || placeholder}
-          alt={post?.postTitle?.slice(0, 5)}
-          height={50}
-          width={50}
-          loading="lazy"
-        />
-        {getExpireInAtDays(post?.expireDate) < 1 ? (
-          "Expired"
+      <div>
+        {post?.postType === "Deal" ? (
+          <div className="dynamic-price-div">
+            <div className="dynamic-price-div-childOne">
+              <p>$20</p>
+              <del>$70</del>
+            </div>
+            <p className="percentage">75% OFF</p>
+          </div>
         ) : (
-          <p className="expired-item-copy">
-            End in <strong>{getExpireInAtDays(post?.expireDate)}</strong> days
-          </p>
+          ""
+        )}
+      </div>
+      <div>
+        {post.postType === "Deal" ? (
+          <div className="available-online-store">
+            <p className="">Available On</p>
+            <img
+              src={post?.store?.storePhotoURL || placeholder}
+              alt={post?.postTitle?.slice(0, 5)}
+              height={50}
+              width={50}
+              loading="lazy"
+            />
+            {getExpireInAtDays(post?.expireDate) < 1 ? (
+              "Expired"
+            ) : (
+              <p className="expired-item-copy">
+                End in <strong>{getExpireInAtDays(post?.expireDate)}</strong>{" "}
+                days
+              </p>
+            )}
+          </div>
+        ) : (
+          <div>
+            {post?.postType === "Coupon" ? (
+              <span
+                className="view-store-post-row-fieldset"
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+              >
+                {post?.couponCode}
+              </span>
+            ) : (
+              ""
+            )}
+          </div>
         )}
       </div>
       {/* flags section */}
       <div className="table-data">
         <div className="country-flags">
-          <div className="country-flags-child-div">
-            <img src={viewStoreFlagIcon} alt="view-store-flag-img" />
-            <Select
-              onClick={(e) => {
-                e.stopPropagation();
-              }}
-              className="country-flags-dropdown"
-              defaultValue={`${post?.countries?.length} Countries`}
-              // style={selectStyle}
-              options={items}
-            ></Select>
-          </div>
+          {post?.postType === "Deal" ? (
+            <div className="country-flags-child-div">
+              <img src={viewStoreFlagIcon} alt="view-store-flag-img" />
+              <Select
+                bordered={false}
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+                className="country-flags-dropdown"
+                defaultValue={`${post?.countries?.length} Countries`}
+                // style={selectStyle}
+                options={items}
+              ></Select>
+            </div>
+          ) : (
+            <div className="country-for-voucher-coupon">
+              {post?.countries?.map((country) => (
+                <img
+                  key={country}
+                  src={
+                    flags.find((flag) => flag.countryName === country).flagUrl
+                  }
+                  alt={country}
+                  title={country}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
       {/* validity section */}

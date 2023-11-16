@@ -24,7 +24,7 @@ const ViewBrandOutlet = ({ query }) => {
 
   console.log("openPostViewModal");
   const {
-    data: StorePages /** change */,
+    data: brandPages /** change */,
     error,
     hasNextPage,
     fetchNextPage,
@@ -33,7 +33,7 @@ const ViewBrandOutlet = ({ query }) => {
     refetch,
   } = useFetchInfinite(
     `post/all?brandName=${brand?.data?.brandName}&${query}&country=${countryContext?.selectedCountry}&limit=10`,
-    "store-route",
+    "brand-route",
     { query, countryContext }
   );
   // first render deselect previous items on others components
@@ -44,17 +44,17 @@ const ViewBrandOutlet = ({ query }) => {
   if (!isFetchingNextPage && isFetching) {
     return <MainLoading />;
   }
-  if (error || StorePages?.status === "failed") {
-    return <p>{error?.message || StorePages?.message}</p>;
+  if (error || brandPages?.status === "failed") {
+    return <p>{error?.message || brandPages?.message}</p>;
   }
-  if (!StorePages[0]?.data?.length) {
+  if (!brandPages[0]?.data?.length) {
     return <EmptyData />;
   }
 
   return (
     <section className="store-outlet-container">
       <div className="store-table">
-        {StorePages?.map((page) =>
+        {brandPages?.map((page) =>
           page?.data?.map((post) => (
             <ViewBrandPostRow
               key={post?._id}

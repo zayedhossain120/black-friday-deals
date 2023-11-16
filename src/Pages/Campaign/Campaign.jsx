@@ -17,7 +17,7 @@ const Campaign = () => {
     refetch,
   } = useFetchInfinite(
     `campaign/all?country=${country.selectedCountry}&limit=100`,
-    "store-page-stores",
+    "campaign-page-campaigns",
     { country: country.selectedCountry }
   );
   return (

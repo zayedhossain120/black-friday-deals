@@ -16,7 +16,7 @@ import {
   TrademarkOutlined,
   WhatsAppOutlined,
   LoginOutlined,
-  MailOutlined,
+  FileTextOutlined,
   SlidersOutlined,
   NotificationOutlined,
   UsergroupAddOutlined,
@@ -118,7 +118,7 @@ const MenuBar = () => {
                 },
                 {
                   label: "Post",
-                  icon: <MailOutlined />,
+                  icon: <FileTextOutlined />,
                   link: "/post",
                   key: "/post",
                 },

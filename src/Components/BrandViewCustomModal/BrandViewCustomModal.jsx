@@ -19,9 +19,6 @@ const BrandViewCustomModal = ({
   setOpenPostViewModal,
   setOpenDeletePostModal,
 }) => {
-  console.log(openPostViewModal, "check desc");
-  console.log("this is view store custom modal", post);
-
   const handleCancel = () => {
     setOpenPostViewModal(false);
   };
@@ -133,7 +130,6 @@ const BrandViewCustomModal = ({
                 className="edit-button"
                 onClick={(e) => {
                   e.stopPropagation();
-                  console.log(post, "here or not");
                   openPostViewModal?.data?.postType === "Deal"
                     ? navigate(`/post/editdeal/${post?._id}`)
                     : navigate(`/post/editpost/${post?._id}`);

@@ -11,7 +11,8 @@ const ViewStoreDetails = () => {
   const store = useLoaderData();
   const navigate = useNavigate();
 
-  
+  console.log(store, "check for store");
+
   return (
     <div className="view-store-detail-container">
       <section className="view-store-section-container">
@@ -27,7 +28,7 @@ const ViewStoreDetails = () => {
                   className="store-country-flags-image"
                   key={country}
                   src={
-                    flags.find((flag) => flag.countryName === country).flagUrl
+                    flags.find((flag) => flag?.countryName === country)?.flagUrl
                   }
                   title={country}
                   alt={country}
@@ -39,7 +40,9 @@ const ViewStoreDetails = () => {
         {/* <hr className="view-store-hr" /> */}
         <div className="view-store-button">
           <p className="shipping-cost-text">
-            {store?.data?.storeDescription ? store.data.storeDescription : "undefined Desc"}
+            {store?.data?.storeDescription
+              ? store.data.storeDescription
+              : "undefined Desc"}
           </p>
           <div className="set-two-button">
             <button className="view-store-first-button">
